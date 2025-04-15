@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR ・ Projects</title>
+    <link rel="icon" href="assets/Favicon.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/projects.css" />
+  </head>
+
+  <body>
+    <div class="main-content">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="home.html">
+            <img src="assets/JR. Logo.png" alt="JR. Logo" class="logo" />
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
+
+        <div class="signup-hamburger">
+          <button class="signup-btn">Sign Up</button>
+          <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <h1 class="title">Our Projects</h1>
+        <h2 class="subtitle">Discover our innovative technology solutions</h2>
+
+        <div class="projects-grid">
+          <div class="project-card" data-project="jr-lang">
+            <div class="project-logo">
+              <img src="assets/JR. Lang Logo.png" alt="JR. Lang Logo" />
+            </div>
+            <h3 class="project-name">JR. Lang</h3>
+            <p class="project-desc">
+              A modern programming language designed for efficiency and
+              readability.
+            </p>
+            <div class="project-buttons">
+              <a href="docs/jr-lang" class="docs-btn">Docs</a>
+              <a href="downloads/jr-lang.zip" class="download-btn" download
+                >Download</a
+              >
+            </div>
+          </div>
+          <div class="project-card" data-project="jr-browse">
+            <div class="project-logo">
+              <img src="assets/JR. Browse Logo.png" alt="JR. Browse Logo" />
+            </div>
+            <h3 class="project-name">JR. Browse</h3>
+            <p class="project-desc">
+              A lightweight, privacy-focused web browser for modern users.
+            </p>
+            <div class="project-buttons">
+              <a href="docs/jr-browse" class="docs-btn">Docs</a>
+              <a href="downloads/jr-browse.zip" class="download-btn" download
+                >Download</a
+              >
+            </div>
+          </div>
+          <div class="project-card" data-project="jr-ai">
+            <div class="project-logo">
+              <img src="assets/JR. AI Logo.png" alt="JR. AI Logo" />
+            </div>
+            <h3 class="project-name">JR. AI</h3>
+            <p class="project-desc">
+              Advanced artificial intelligence solutions for developers and
+              businesses.
+            </p>
+            <div class="project-buttons">
+              <a href="docs/jr-ai" class="docs-btn">Docs</a>
+              <a href="downloads/jr-ai.zip" class="download-btn" download
+                >Download</a
+              >
+            </div>
+          </div>
+
+          <div class="project-card" data-project="doodlemon">
+            <div class="project-logo">
+              <img src="assets/DoodleMon Circular.png" alt="DoodleMon Logo" />
+            </div>
+            <h3 class="project-name">DoodleMon</h3>
+            <p class="project-desc">
+              Create, collect, and battle with your own digital creatures.
+            </p>
+            <div class="project-buttons">
+              <a href="docs/doodlemon" class="docs-btn">Docs</a>
+              <a href="downloads/doodlemon.zip" class="download-btn" download
+                >Download</a
+              >
+            </div>
+          </div>
+
+          <div class="project-card" data-project="jr-cloud">
+            <div class="project-logo">
+              <img src="assets/JR. Cloud Logo.png" alt="JR. Cloud Logo" />
+            </div>
+            <h3 class="project-name">JR. Cloud</h3>
+            <p class="project-desc">
+              Secure, scalable cloud infrastructure for your applications.
+            </p>
+            <div class="project-buttons">
+              <a href="docs/jr-cloud" class="docs-btn">Docs</a>
+              <a href="downloads/jr-cloud.zip" class="download-btn" download
+                >Download</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="project-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-header">
+          <div class="modal-logo">
+            <img id="modal-logo-img" src="" alt="Project Logo" />
+          </div>
+          <h2 id="modal-title"></h2>
+        </div>
+        <div class="modal-body">
+          <div id="modal-description"></div>
+          <div class="modal-features">
+            <h3>Key Features</h3>
+            <ul id="modal-features-list"></ul>
+          </div>
+          <div class="modal-tech">
+            <h3>Technologies</h3>
+            <div id="modal-tech-tags"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a id="modal-docs-link" href="#" class="modal-docs-btn"
+            >Documentation</a
+          >
+          <a
+            id="modal-download-link"
+            href="#"
+            class="modal-download-btn"
+            download
+            >Download</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+            <a href="#">Donate</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">License Information</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Community</h3>
+          <div class="footer-links">
+            <a href="https://github.com/jr-official">GitHub</a>
+            <a href="https://discord.gg/d4kfXDrcG8">Discord</a>
+            <a href="https://x.com/jr_suite">Twitter</a>
+            <a href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="copyright">© 2025 JR. All rights reserved.</div>
+    </footer>
+
+    <script src="../js/projects.js"></script>
+  </body>
+</html>

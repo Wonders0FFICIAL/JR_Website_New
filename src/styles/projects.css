@@ -1,0 +1,541 @@
+body {
+    background-color: #090C15;
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px; 
+    background-color: #0A0D18;
+    border-bottom: 1px solid #5638E5;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;  
+}
+
+.logo {
+    width: 45px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #543fce;
+}
+
+.nav-links a.active {
+    color: #543fce;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.signup-hamburger {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.signup-btn {
+    background-color: #0E0634;
+    border: 2px solid #5638E5;
+    border-radius: 7px;
+    padding: 10px 20px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.signup-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.hamburger {
+    width: 25px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.container {
+    padding: 60px 50px;
+}
+
+.title {
+    font-size: 40px;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.subtitle {
+    font-size: 24px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: #0E0F1D;
+    border-radius: 12px;
+    padding: 25px;
+    border: 2px solid #5638E5;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    box-shadow: 0 0 20px rgba(86, 56, 229, 0.5);
+    transform: translateY(-5px);
+}
+
+.project-logo {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.project-logo img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.project-name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #6f54f8;
+}
+
+.project-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.project-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.docs-btn, .download-btn {
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.docs-btn {
+    background-color: #0E0634;
+    color: white;
+    border: 1px solid #5638E5;
+}
+
+.docs-btn:hover {
+    background-color: #1a1045;
+    transform: translateY(-2px);
+}
+
+.download-btn {
+    background-color: #5638E5;
+    color: white;
+    border: none;
+}
+
+.download-btn:hover {
+    background-color: #4325c2;
+    transform: translateY(-2px);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: #0E0F1D;
+    margin: 5% auto;
+    padding: 30px;
+    border: 2px solid #5638E5;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 30px rgba(86, 56, 229, 0.7);
+    animation: slideIn 0.4s;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #5638E5;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #2C2F45;
+}
+
+.modal-logo {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.modal-logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#modal-title {
+    font-size: 28px;
+    color: #6f54f8;
+    margin: 0;
+}
+
+.modal-body {
+    margin-bottom: 25px;
+}
+
+#modal-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.modal-features h3, .modal-tech h3 {
+    font-size: 18px;
+    color: #6f54f8;
+    margin-bottom: 10px;
+}
+
+#modal-features-list {
+    padding-left: 20px;
+}
+
+#modal-features-list li {
+    margin-bottom: 8px;
+}
+
+#modal-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-tag {
+    background-color: #1a1045;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 12px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #2C2F45;
+}
+
+.modal-docs-btn, .modal-download-btn {
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+    max-width: 200px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.modal-docs-btn {
+    background-color: #0E0634;
+    color: white;
+    border: 1px solid #5638E5;
+}
+
+.modal-docs-btn:hover {
+    background-color: #1a1045;
+    transform: translateY(-2px);
+}
+
+.modal-download-btn {
+    background-color: #5638E5;
+    color: white;
+    border: none;
+}
+
+.modal-download-btn:hover {
+    background-color: #4325c2;
+    transform: translateY(-2px);
+}
+
+footer {
+    background-color: #0A0D18;
+    border-top: 1px solid #2C2F45;
+    padding: 40px 50px;
+    font-family: 'Comfortaa', sans-serif;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #6f54f8;
+}
+
+.footer-section p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.footer-section a {
+    color: #5638E5;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: none;
+}
+
+.footer-links a {
+    display: block;
+    margin-bottom: 12px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #5638E5;
+    text-decoration: none;
+}
+
+.footer-separator {
+    width: 100%;
+    height: 1px;
+    background-color: #1A1F36;
+    margin: 20px 0;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        background-color: #0A0D18;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px;
+        z-index: 99;
+        transition: left 0.3s ease;
+        border-bottom: 1px solid #5638E5;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links a {
+        padding: 15px 0;
+        display: block;
+        border-bottom: 1px solid #1A1F36;
+        width: 100%;
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+        margin: 10% auto;
+    }
+
+    .modal-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .modal-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .modal-docs-btn, .modal-download-btn {
+        max-width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+.project-card[data-project="doodlemon"] {
+    border-color: #02B24E;
+  }
+  
+  .project-card[data-project="doodlemon"]:hover {
+    box-shadow: 0 0 20px rgba(2, 178, 78, 0.5);
+  }
+  
+  .project-card[data-project="doodlemon"] .project-name {
+    color: #02B24E;
+  }
+  
+  .project-card[data-project="doodlemon"] .docs-btn {
+    border-color: #02B24E;
+    background-color: #08d4604a;
+  }
+  
+  .project-card[data-project="doodlemon"] .download-btn {
+    background-color: #02B24E;
+  }
+  
+  .project-card[data-project="doodlemon"] .download-btn:hover {
+    background-color: #01913e;
+  }
