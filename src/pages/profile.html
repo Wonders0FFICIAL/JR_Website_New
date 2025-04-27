@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR ・ Profile</title>
+    <link rel="icon" href="assets/Favicon.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"
+    />
+    <link rel="stylesheet" href="../styles/profile.css" />
+  </head>
+
+  <body>
+    <div class="main-content">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="home.html">
+            <img src="assets/JR. Logo.png" alt="JR. Logo" class="logo" />
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="projects.html">Projects</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
+
+        <div class="signup-hamburger">
+          <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
+          <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="signup-container">
+        <div class="card">
+          <h2>Profile</h2>
+
+          <div class="profile-picture-container">
+            <label>Profile Picture</label>
+            <div class="profile-image-wrapper">
+              <div class="profile-image" id="profile-image">
+                <i class="fa fa-user"></i>
+              </div>
+              <button id="upload-picture-btn" class="upload-btn">
+                Upload picture
+              </button>
+              <input
+                type="file"
+                id="profile-image-input"
+                accept="image/*"
+                style="display: none"
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="username">Username</label>
+            <div class="input-container">
+              <div class="input-icon">
+                <img
+                  src="assets/username.png"
+                  alt="Username"
+                  class="input-icon-img"
+                />
+              </div>
+              <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+              />
+            </div>
+            <div id="username-error" class="error-message"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="display-name">Display Name</label>
+            <div class="input-container">
+              <div class="input-icon">
+                <img
+                  src="assets/display_name.png"
+                  alt="Display Name"
+                  class="input-icon-img"
+                />
+              </div>
+              <input
+                type="text"
+                id="display-name"
+                placeholder="Enter a display name"
+              />
+            </div>
+            <div id="display-name-error" class="error-message"></div>
+          </div>
+
+          <button id="save-profile-button" class="btn">Save Profile</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="image-cropper-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Adjust Profile Picture</h3>
+          <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="cropper-container">
+            <div id="image-cropper"></div>
+          </div>
+          <div class="cropper-controls">
+            <div class="zoom-controls">
+              <button id="zoom-out-btn" class="icon-btn">
+                <i class="fa fa-minus"></i>
+              </button>
+              <input
+                type="range"
+                id="zoom-slider"
+                min="1"
+                max="3"
+                step="0.1"
+                value="1"
+              />
+              <button id="zoom-in-btn" class="icon-btn">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="done-crop-btn" class="btn">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+            <a
+              href="https://ko-fi.com/jr_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Donate</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">License Information</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Community</h3>
+          <div class="footer-links">
+            <a
+              href="https://github.com/jr-official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+            <a
+              href="https://discord.gg/d4kfXDrcG8"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Discord</a
+            >
+            <a
+              href="https://x.com/jr_suite"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Twitter</a
+            >
+            <a
+              href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="copyright">© 2025 JR. All rights reserved.</div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="../js/profile.js"></script>
+  </body>
+</html>

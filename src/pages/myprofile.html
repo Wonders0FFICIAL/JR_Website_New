@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR ・ My Profile</title>
+    <link rel="icon" href="assets/Favicon.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/myprofile.css" />
+  </head>
+
+  <body>
+    <div class="main-content">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="home.html">
+            <img src="assets/JR. Logo.png" alt="JR. Logo" class="logo" />
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="projects.html">Projects</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
+
+        <div class="signup-hamburger">
+          <div class="user-menu-container">
+            <div class="user-avatar" id="user-menu-trigger">
+              <img id="nav-profile-image" src="assets/default-avatar.png" alt="Profile" />
+            </div>
+            <div class="user-menu" id="user-menu">
+              <div class="user-menu-header">
+                <div class="user-menu-avatar">
+                  <img id="menu-profile-image" src="assets/default-avatar.png" alt="Profile" />
+                </div>
+                <div class="user-menu-info">
+                  <span id="menu-display-name">Display Name</span>
+                  <span id="menu-username">@username</span>
+                </div>
+              </div>
+              <div class="user-menu-items">
+                <a href="myprofile.html" class="menu-item active">
+                  <i class="fas fa-user"></i>
+                  <span>My Profile</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                  <i class="fas fa-cog"></i>
+                  <span>Settings</span>
+                </a>
+                <a href="#" class="menu-item" id="logout-btn">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="profile-container">
+        <div class="profile-header">
+          <div class="profile-header-bg"></div>
+          <div class="profile-info">
+            <div class="profile-avatar">
+              <div class="profile-image-wrapper">
+                <img id="profile-image" src="assets/default-avatar.png" alt="Profile" />
+                <div class="edit-overlay" id="edit-profile-btn">
+                  <i class="fas fa-pencil-alt"></i>
+                </div>
+              </div>
+            </div>
+            <div class="profile-details">
+              <h1 id="display-name">Display Name</h1>
+              <h2 id="username">@username</h2>
+              <div class="profile-stats">
+                <div class="stat">
+                  <span class="stat-value">0</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">0</span>
+                  <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-value">0</span>
+                  <span class="stat-label">Following</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-tabs">
+          <button class="tab-btn active" data-tab="overview">Overview</button>
+          <button class="tab-btn" data-tab="projects">Projects</button>
+          <button class="tab-btn" data-tab="activity">Activity</button>
+          <button class="tab-btn" data-tab="badges">Badges</button>
+        </div>
+
+        <div class="profile-content">
+          <!-- Overview Tab Content -->
+          <div class="tab-content active" id="overview-content">
+            <div class="profile-section">
+              <div class="section-header">
+                <h3>About Me</h3>
+                <button class="edit-btn"><i class="fas fa-pencil-alt"></i> Edit</button>
+              </div>
+              <div class="section-content">
+                <p class="about-text">
+                  No bio yet. Tell the world a bit about yourself!
+                </p>
+              </div>
+            </div>
+
+            <div class="profile-cards-row">
+              <div class="profile-card gradient-card skill-card">
+                <div class="card-header">
+                  <h3>Skills</h3>
+                  <button class="edit-btn"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                <div class="card-content">
+                  <div class="empty-state">
+                    <i class="fas fa-code"></i>
+                    <p>Add your skills to showcase your expertise</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="profile-card gradient-card interest-card">
+                <div class="card-header">
+                  <h3>Interests</h3>
+                  <button class="edit-btn"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                <div class="card-content">
+                  <div class="empty-state">
+                    <i class="fas fa-heart"></i>
+                    <p>Add your interests to connect with like-minded people</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-section achievements-section">
+              <div class="section-header">
+                <h3>Recent Achievements</h3>
+                <a href="#" class="view-all">View All</a>
+              </div>
+              <div class="achievements-grid">
+                <div class="achievement locked">
+                  <div class="achievement-icon">
+                    <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <h4>First Project</h4>
+                    <p>Create your first project</p>
+                  </div>
+                </div>
+                <div class="achievement locked">
+                  <div class="achievement-icon">
+                    <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <h4>Profile Star</h4>
+                    <p>Complete your profile</p>
+                  </div>
+                </div>
+                <div class="achievement locked">
+                  <div class="achievement-icon">
+                    <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="achievement-info">
+                    <h4>Community Member</h4>
+                    <p>Join the community forum</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projects Tab Content -->
+          <div class="tab-content" id="projects-content">
+            <div class="empty-projects">
+              <div class="empty-projects-icon">
+                <i class="fas fa-folder-open"></i>
+              </div>
+              <h3>No Projects Yet</h3>
+              <p>You haven't created any projects yet. Ready to build something amazing?</p>
+              <a href="new-project.html" class="btn primary-btn">
+                <i class="fas fa-plus"></i> Create New Project
+              </a>
+            </div>
+          </div>
+
+          <!-- Activity Tab Content -->
+          <div class="tab-content" id="activity-content">
+            <div class="empty-activity">
+              <div class="empty-activity-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>No Activity Yet</h3>
+              <p>Your recent activities will be shown here</p>
+            </div>
+          </div>
+
+          <!-- Badges Tab Content -->
+          <div class="tab-content" id="badges-content">
+            <div class="badges-container">
+              <div class="badges-header">
+                <h3>My Badges</h3>
+                <p>Earn badges by participating in the community and completing challenges</p>
+              </div>
+              <div class="badges-grid">
+                <div class="badge locked">
+                  <div class="badge-icon">
+                    <i class="fas fa-medal"></i>
+                  </div>
+                  <div class="badge-info">
+                    <h4>Newbie</h4>
+                    <p>Join the community</p>
+                  </div>
+                </div>
+                <div class="badge locked">
+                  <div class="badge-icon">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="badge-info">
+                    <h4>Coder</h4>
+                    <p>Share your first code snippet</p>
+                  </div>
+                </div>
+                <div class="badge locked">
+                  <div class="badge-icon">
+                    <i class="fas fa-comments"></i>
+                  </div>
+                  <div class="badge-info">
+                    <h4>Social Butterfly</h4>
+                    <p>Make 5 comments</p>
+                  </div>
+                </div>
+                <div class="badge locked">
+                  <div class="badge-icon">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <div class="badge-info">
+                    <h4>Creator</h4>
+                    <p>Create 3 projects</p>
+                  </div>
+                </div>
+                <div class="badge locked">
+                  <div class="badge-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="badge-info">
+                    <h4>Rising Star</h4>
+                    <p>Get 10 likes on a project</p>
+                  </div>
+                </div>
+                <div class="badge locked">
+                  <div class="badge-icon">
+                    <i class="fas fa-award"></i>
+                  </div>
+                  <div class="badge-info">
+                    <h4>Mentor</h4>
+                    <p>Help 5 community members</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+            <a
+              href="https://ko-fi.com/jr_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Donate</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">License Information</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Community</h3>
+          <div class="footer-links">
+            <a
+              href="https://github.com/jr-official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+            <a
+              href="https://discord.gg/d4kfXDrcG8"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Discord</a
+            >
+            <a
+              href="https://x.com/jr_suite"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Twitter</a
+            >
+            <a
+              href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="copyright">© 2025 JR. All rights reserved.</div>
+    </footer>
+
+    <script src="../js/myprofile.js"></script>
+  </body>
+</html>
