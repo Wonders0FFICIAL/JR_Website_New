@@ -337,8 +337,7 @@ body {
 }
 
 .subscribe-btn:hover {
-    background-color: #4328c2;
-    transform: scale(1.05);
+    background-color: #4328c2
 }
 
 .main-content {

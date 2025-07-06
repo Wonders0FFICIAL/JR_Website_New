@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JR ・ Profile</title>
+    <title>JR ・ Login</title>
     <link rel="icon" href="assets/Favicon.png" type="image/png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
@@ -13,11 +13,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"
-    />
-    <link rel="stylesheet" href="../styles/profile.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
   </head>
 
   <body>
@@ -36,7 +32,7 @@
           </div>
         </div>
 
-        <div class="signup-hamburger">
+        <div class="login-hamburger">
           <a href="signup.html"><button class="signup-btn">Sign Up</button></a>
           <div class="hamburger">
             <div></div>
@@ -46,102 +42,91 @@
         </div>
       </nav>
 
-      <div class="signup-container">
+      <div class="login-container">
         <div class="card">
-          <h2>Profile</h2>
-
-          <div class="profile-picture-container">
-            <label>Profile Picture</label>
-            <div class="profile-image-wrapper">
-              <div class="profile-image" id="profile-image">
-                <i class="fa fa-user"></i>
-              </div>
-              <button id="upload-picture-btn" class="upload-btn">
-                Upload picture
-              </button>
-              <input
-                type="file"
-                id="profile-image-input"
-                accept="image/*"
-                style="display: none"
-              />
-            </div>
-          </div>
+          <h2>Log In</h2>
 
           <div class="input-group">
-            <label for="username">Username</label>
+            <label for="email">Email</label>
             <div class="input-container">
               <div class="input-icon">
                 <img
-                  src="assets/username.png"
-                  alt="Username"
+                  src="assets/email.png"
+                  alt="Email"
+                  class="input-icon-img"
+                />
+              </div>
+              <input type="email" id="email" placeholder="Enter your email" />
+            </div>
+            <div id="email-error" class="error-message"></div>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <div class="input-container">
+              <div class="input-icon">
+                <img
+                  src="assets/lock.png"
+                  alt="Password"
                   class="input-icon-img"
                 />
               </div>
               <input
-                type="text"
-                id="username"
-                placeholder="Enter your username"
+                type="password"
+                id="password"
+                placeholder="Enter your password"
               />
-            </div>
-            <div id="username-error" class="error-message"></div>
-          </div>
-
-          <div class="input-group">
-            <label for="display-name">Display Name</label>
-            <div class="input-container">
-              <div class="input-icon">
-                <img
-                  src="assets/display_name.png"
-                  alt="Display Name"
-                  class="input-icon-img"
-                />
-              </div>
-              <input
-                type="text"
-                id="display-name"
-                placeholder="Enter a display name"
-              />
-            </div>
-            <div id="display-name-error" class="error-message"></div>
-          </div>
-
-          <button id="save-profile-button" class="btn">Save Profile</button>
-        </div>
-      </div>
-    </div>
-
-    <div id="image-cropper-modal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Adjust Profile Picture</h3>
-          <span class="close-modal">&times;</span>
-        </div>
-        <div class="modal-body">
-          <div class="cropper-container">
-            <div id="image-cropper"></div>
-          </div>
-          <div class="cropper-controls">
-            <div class="zoom-controls">
-              <button id="zoom-out-btn" class="icon-btn">
-                <i class="fa fa-minus"></i>
-              </button>
-              <input
-                type="range"
-                id="zoom-slider"
-                min="1"
-                max="3"
-                step="0.1"
-                value="1"
-              />
-              <button id="zoom-in-btn" class="icon-btn">
-                <i class="fa fa-plus"></i>
+              <button type="button" id="toggle-password">
+                <i class="fa fa-eye"></i>
               </button>
             </div>
+
+            <div id="password-error" class="error-message"></div>
+            <div class="forgot-password">
+              <button id="forgot-password-btn">Forgot Password?</button>
+            </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button id="done-crop-btn" class="btn">Done</button>
+
+          <button id="login-button" class="btn">Log In</button>
+
+          <div class="divider">
+            <span>or</span>
+          </div>
+
+          <div class="social-login circle-buttons">
+            <button
+              class="social-icon-btn google-btn"
+              title="Log in with Google"
+            >
+              <img
+                src="assets/Google.png"
+                alt="Google logo"
+                class="social-logo"
+              />
+            </button>
+            <button
+              class="social-icon-btn github-btn"
+              title="Log in with GitHub"
+            >
+              <img
+                src="assets/Github.png"
+                alt="GitHub logo"
+                class="social-logo"
+              />
+            </button>
+            <button class="social-icon-btn apple-btn" title="Log in with Apple">
+              <img
+                src="assets/Apple.png"
+                alt="Apple logo"
+                class="social-logo"
+              />
+            </button>
+          </div>
+
+          <div class="auth-links">
+            <label>Don't have an account?</label>
+            <button id="signup-btn" class="link-btn">Sign Up</button>
+          </div>
         </div>
       </div>
     </div>
@@ -210,7 +195,6 @@
       <div class="copyright">© 2025 JR. All rights reserved.</div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-    <script src="../js/profile.js"></script>
+    <script src="../js/login.js"></script>
   </body>
 </html>

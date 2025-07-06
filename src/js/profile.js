@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     checkAuth();
-    
-    // Image upload & cropping logic (unchanged)...
+
     profileImage.addEventListener('click', () => {
         if (currentImageSrc) openCropperModal(currentImageSrc);
         else profileImageInput.click();
@@ -112,52 +111,44 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
     });
 
-    // Username validation
     usernameInput.addEventListener('input', validateUsername);
     displayNameInput.addEventListener('input', validateDisplayName);
 
     function validateUsername() {
         const u = usernameInput.value.trim();
         
-        // Invalid characters
         if (!/^[a-zA-Z0-9._-]*$/.test(u)) {
             usernameError.textContent = 'Only letters, numbers, periods, hyphens and underscores are allowed';
             return false;
         }
         
-        // Start/end special chars
         if (/^[._-]/.test(u) || /[._-]$/.test(u)) {
             usernameError.textContent = 'Cannot start or end with period, underscore, or hyphen';
             return false;
         }
         
-        // Consecutive special characters
         if (/[._-]{2}/.test(u)) {
             usernameError.textContent = 'Cannot use consecutive periods, underscores, or hyphens';
             return false;
         }
         
-        // Reserved words
         const reserved = ['admin', 'moderator', 'root', 'null'];
         if (reserved.includes(u.toLowerCase())) {
             usernameError.textContent = 'This username is reserved';
             return false;
         }
         
-        // Email/URL style
         const emailPattern = /^[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}$/;
         if (emailPattern.test(u) || u.toLowerCase().startsWith('http')) {
             usernameError.textContent = 'Username cannot be an email address or URL';
             return false;
         }
         
-        // Required
         if (!u) {
             usernameError.textContent = 'Username is required';
             return false;
         }
         
-        // Length checks
         if (u.length < 3) {
             usernameError.textContent = 'Username must be at least 3 characters';
             return false;
@@ -191,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
       }
       
-    // Save profile
     saveProfileButton.addEventListener('click', e => {
         e.preventDefault();
         const okUser = validateUsername();
@@ -208,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Load existing data
     function loadProfileData() {
         const cu = JSON.parse(sessionStorage.getItem('currentUser'));
         if (cu?.username) usernameInput.value = cu.username;

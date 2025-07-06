@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR ・ Account Settings</title>
+    <link rel="icon" href="assets/Favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/account.css" />
+  </head>
+
+  <body>
+    <div class="main-content">
+      <!-- Navbar start -->
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="home.html">
+            <img src="assets/JR. Logo.png" alt="JR. Logo" class="logo" />
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="projects.html">Projects</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
+
+        <div class="signup-hamburger">
+          <div class="user-profile">
+            <i class="fa fa-user" style="font-size: 18px; color: #5638e5"></i>
+          </div>
+          <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar end -->
+
+      <div class="settings-wrapper">
+        <!-- Sidebar start -->
+        <div class="sidebar">
+          <h2 class="sidebar-title">Settings</h2>
+          <div class="sidebar-links">
+            <a href="public-profile.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/display_name.png" alt="Profile Icon" />
+              </span>
+              <span>Public Profile</span>
+            </a>
+            <a href="#" class="sidebar-link active">
+              <span class="icon">
+                <img src="assets/account.png" alt="Account Icon" />
+              </span>
+              <span>Account</span>
+            </a>
+            <a href="appearance.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/appearance.png" alt="Appearance Icon" />
+              </span>
+              <span>Appearance</span>
+            </a>
+            <a href="accessibility.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/accessibility.png" alt="Accessibility Icon" />
+              </span>
+              <span>Accessibility</span>
+            </a>
+            <a href="notifications.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/notifications.png" alt="Notifications Icon" />
+              </span>
+              <span>Notifications</span>
+            </a>
+            <a href="billing.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/billing.png" alt="Billing Icon" />
+              </span>
+              <span>Billing & Plans</span>
+            </a>
+            <a href="privacy.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/privacy.png" alt="Privacy Icon" />
+              </span>
+              <span>Privacy</span>
+            </a>
+            <a href="security.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/lock.png" alt="Security Icon" />
+              </span>
+              <span>Security</span>
+            </a>
+            <a href="developer.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/code.png" alt="Developer Icon" />
+              </span>
+              <span>Developer</span>
+            </a>
+            <a href="activity.html" class="sidebar-link">
+              <span class="icon">
+                <img src="assets/activity.png" alt="Activity Icon" />
+              </span>
+              <span>Activity</span>
+            </a>
+          </div>
+        </div>
+        <!-- Sidebar end -->
+
+        <!-- Content area -->
+        <div class="content-area">
+          <!-- Search bar -->
+          <div class="search-box">
+            <img src="assets/search.png" alt="Search" class="search-icon" />
+            <input type="text" placeholder="Search settings..." />
+          </div>
+
+          <!-- Account header -->
+          <div class="account-header">
+            <div class="account-title">
+              <h2>Account</h2>
+              <p>Manage your account settings</p>
+            </div>
+          </div>
+
+          <!-- Email Section -->
+          <div class="settings-section">
+            <h3>Email Address</h3>
+            <div class="email-container">
+              <div class="current-email">
+                <span class="email-label">Current Email:</span>
+                <span class="email-address" id="currentEmail">user@example.com</span>
+                <span class="verified-badge" id="verifiedBadge">
+                  <i class="fas fa-check-circle"></i> Verified
+                </span>
+              </div>
+              <button class="change-email-btn" id="changeEmailBtn">Change Email</button>
+            </div>
+
+            <!-- Change Email Form (Hidden by default) -->
+            <div class="change-email-form" id="changeEmailForm" style="display: none;">
+              <div class="form-group">
+                <label for="newEmail">New Email Address</label>
+                <input
+                  type="email"
+                  id="newEmail"
+                  placeholder="Enter your new email address"
+                />
+                <div id="email-error" class="error-message"></div>
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="Enter your current password to confirm"
+                />
+                <div id="password-error" class="error-message"></div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="save-btn" id="saveEmailBtn">Send Verification</button>
+                <button type="button" class="cancel-btn" id="cancelEmailBtn">Cancel</button>
+              </div>
+            </div>
+
+            <!-- Email Verification Notice -->
+            <div class="verification-notice" id="verificationNotice" style="display: none;">
+              <i class="fas fa-clock"></i>
+              <div>
+                <strong>Verification Pending</strong>
+                <p>We've sent a verification email to your new address. Please check your inbox and click the verification link.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linked Accounts Section -->
+          <div class="settings-section">
+            <h3>Linked Accounts</h3>
+            <p class="section-description">Connect your JR account with other services for easier sign-in and enhanced features.</p>
+            
+            <div class="linked-accounts">
+              <!-- GitHub -->
+              <div class="account-item">
+                <div class="account-info">
+                  <div class="account-icon github">
+                    <i class="fab fa-github"></i>
+                  </div>
+                  <div class="account-details">
+                    <span class="account-name">GitHub</span>
+                    <span class="account-status" id="githubStatus">Not connected</span>
+                  </div>
+                </div>
+                <button class="connect-btn" id="githubBtn" data-provider="github">Connect</button>
+              </div>
+
+              <!-- Google -->
+              <div class="account-item">
+                <div class="account-info">
+                  <div class="account-icon google">
+                    <i class="fab fa-google"></i>
+                  </div>
+                  <div class="account-details">
+                    <span class="account-name">Google</span>
+                    <span class="account-status" id="googleStatus">Not connected</span>
+                  </div>
+                </div>
+                <button class="connect-btn" id="googleBtn" data-provider="google">Connect</button>
+              </div>
+
+              <!-- Discord -->
+              <div class="account-item">
+                <div class="account-info">
+                  <div class="account-icon discord">
+                    <i class="fab fa-discord"></i>
+                  </div>
+                  <div class="account-details">
+                    <span class="account-name">Discord</span>
+                    <span class="account-status" id="discordStatus">Not connected</span>
+                  </div>
+                </div>
+                <button class="connect-btn" id="discordBtn" data-provider="discord">Connect</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session Management Section -->
+          <div class="settings-section">
+            <h3>Active Sessions</h3>
+            <p class="section-description">Manage devices and locations where you're currently signed in to your JR account.</p>
+            
+            <div class="sessions-list" id="sessionsList">
+              <!-- Current Session -->
+              <div class="session-item current-session">
+                <div class="session-info">
+                  <div class="session-icon">
+                    <i class="fas fa-desktop"></i>
+                  </div>
+                  <div class="session-details">
+                    <div class="session-header">
+                      <span class="device-name">Chrome on Windows</span>
+                      <span class="current-badge">Current Session</span>
+                    </div>
+                    <div class="session-meta">
+                      <span class="location">Kanayannur, Kerala, IN</span>
+                      <span class="last-active">Active now</span>
+                    </div>
+                    <div class="session-ip">IP: 192.168.1.100</div>
+                  </div>
+                </div>
+                <div class="session-actions">
+                  <span class="current-indicator">This device</span>
+                </div>
+              </div>
+
+              <!-- Other Sessions -->
+              <div class="session-item">
+                <div class="session-info">
+                  <div class="session-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <div class="session-details">
+                    <div class="session-header">
+                      <span class="device-name">Safari on iPhone</span>
+                    </div>
+                    <div class="session-meta">
+                      <span class="location">Kochi, Kerala, IN</span>
+                      <span class="last-active">2 hours ago</span>
+                    </div>
+                    <div class="session-ip">IP: 192.168.1.101</div>
+                  </div>
+                </div>
+                <div class="session-actions">
+                  <button class="logout-session-btn" data-session-id="session-2">Sign Out</button>
+                </div>
+              </div>
+
+              <div class="session-item">
+                <div class="session-info">
+                  <div class="session-icon">
+                    <i class="fas fa-laptop"></i>
+                  </div>
+                  <div class="session-details">
+                    <div class="session-header">
+                      <span class="device-name">Firefox on Ubuntu</span>
+                    </div>
+                    <div class="session-meta">
+                      <span class="location">Ernakulam, Kerala, IN</span>
+                      <span class="last-active">1 day ago</span>
+                    </div>
+                    <div class="session-ip">IP: 203.192.12.34</div>
+                  </div>
+                </div>
+                <div class="session-actions">
+                  <button class="logout-session-btn" data-session-id="session-3">Sign Out</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="session-management-actions">
+              <button class="logout-all-btn" id="logoutAllBtn">Sign Out All Other Sessions</button>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="settings-section danger-zone">
+            <h3>Danger Zone</h3>
+            <div class="danger-content">
+              <div class="danger-item">
+                <div class="danger-info">
+                  <h4>Delete Account</h4>
+                  <p>Permanently delete your JR account and all associated data. This action cannot be undone.</p>
+                </div>
+                <button class="delete-account-btn" id="deleteAccountBtn">Delete Account</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer start -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+            <a
+              href="https://ko-fi.com/jr_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Donate</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">License Information</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Community</h3>
+          <div class="footer-links">
+            <a
+              href="https://github.com/jr-official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+            <a
+              href="https://discord.gg/d4kfXDrcG8"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Discord</a
+            >
+            <a
+              href="https://x.com/jr_suite"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X</a
+            >
+            <a
+              href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="copyright">© 2025 JR. All rights reserved.</div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Delete Account Modal -->
+    <div class="modal-overlay" id="deleteModalOverlay" style="display: none;">
+      <div class="modal delete-modal">
+        <div class="modal-header">
+          <h3>Delete Account</h3>
+          <button class="modal-close" id="closeDeleteModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="warning-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <p><strong>Are you absolutely sure?</strong></p>
+          <p>This action will permanently delete your account and all associated data, including:</p>
+          <ul>
+            <li>Your profile information</li>
+            <li>All your projects and files</li>
+            <li>Your community posts and comments</li>
+            <li>Your subscription and billing history</li>
+          </ul>
+          <p>This action <strong>cannot be undone</strong>.</p>
+          
+          <div class="confirmation-input">
+            <label for="deleteConfirmation">Type <strong>DELETE</strong> to confirm:</label>
+            <input
+              type="text"
+              id="deleteConfirmation"
+              placeholder="Type DELETE here"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="cancel-btn" id="cancelDeleteBtn">Cancel</button>
+          <button class="delete-confirm-btn" id="confirmDeleteBtn" disabled>Delete My Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal-overlay" id="logoutModalOverlay" style="display: none;">
+      <div class="modal logout-modal">
+        <div class="modal-header">
+          <h3>Sign Out Sessions</h3>
+          <button class="modal-close" id="closeLogoutModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to sign out of the selected session(s)?</p>
+          <p>You'll need to sign in again on those devices.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="cancel-btn" id="cancelLogoutBtn">Cancel</button>
+          <button class="confirm-logout-btn" id="confirmLogoutBtn">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/account.js"></script>
+  </body>
+</html>

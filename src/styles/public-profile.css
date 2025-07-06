@@ -1,0 +1,611 @@
+body {
+    background-color: #090C15;
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #0A0D18;
+    border-bottom: 1px solid #5638E5;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 45px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #543fce;
+}
+
+.nav-links a.active {
+    color: #543fce;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.signup-hamburger {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.hamburger {
+    width: 25px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #5638E5;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+}
+
+.main-content {
+    flex: 1;
+}
+
+.settings-wrapper {
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 265px;
+    background-color: #0A0D18;
+    padding: 25px 20px; 
+    min-height: calc(100vh - 74px);
+    border-right: 1px solid #2C2F45;
+}
+
+.sidebar-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    color: white;
+    padding-left: 10px;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 18px;
+    text-decoration: none;
+    color: white;
+    border-radius: 9px;
+    transition: all 0.3s ease;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.sidebar-link:hover {
+    background-color: #161830;
+    color: #5638E5;
+}
+
+.sidebar-link.active {
+    background-color: #1A1C36;
+    color: #5638E5;
+    border-left: 4px solid #5638E5;
+}
+
+.sidebar-link .icon {
+    font-size: 24px;
+    width: 34px;  /* Increased from 24px */
+    height: 34px; /* Increased from 24px */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-link .icon img {
+    width: 24px;  /* Increased from 20px */
+    height: 24px; /* Increased from 20px */
+}
+
+.content-area {
+    flex: 1;
+    padding: 30px 40px;
+    background-color: #090C15;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 1085px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 15px 12px 45px; 
+    background-color: #161830;
+    border: 1px solid #2C2F45;
+    border-radius: 25px;
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #5638E5;
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #543fce;
+}
+
+.profile-title h2 {
+    font-size: 24px;
+    margin: 0 0 8px 0;
+}
+
+.profile-title p {
+    font-size: 16px;
+    color: #a7a7c7;
+    margin: 0;
+}
+
+.goto-profile-btn {
+    background-color: #0E0634;
+    border: 2px solid #5638E5;
+    border-radius: 7px;
+    padding: 10px 24px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.goto-profile-btn:hover {
+    transform: scale(1.05);
+    background-color: #1a1046;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 920px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px; 
+}
+
+.form-group-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px; /* Increased spacing between form elements */
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 0; /* Removed default margin bottom */
+    max-width: 600px; 
+}
+
+#username.form-group {
+    margin-bottom: 8px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px; 
+    font-weight: 600;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px 18px; 
+    background-color: #161830;
+    border: 1px solid #2C2F45;
+    border-radius: 8px;
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Make placeholder text more visible */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a7a7c7;
+    opacity: 0.8;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #5638E5;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 110px; 
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #a7a7c7;
+    font-size: 12px;
+}
+
+.profile-pic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-right: 0; 
+    margin-left: 40px; 
+}
+
+.profile-pic-wrapper {
+    position: relative;
+    width: 150px; 
+    height: 150px; 
+}
+
+.profile-pic-circle {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%;
+    background-color: #161830;
+    border: 2px solid #5638E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.profile-icon {
+    width: 75px; 
+    height: 75px;
+    object-fit: contain;
+}
+
+.edit-pic-btn {
+    position: absolute;
+    bottom: 6px; 
+    right: 6px;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5638E5;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 0;
+}
+
+.edit-icon {
+    width: 20px; 
+    height: 20px; 
+}
+
+.edit-pic-btn:hover {
+    transform: scale(1.1);
+}
+
+.profile-pic-container p {
+    font-size: 15px; 
+    color: #a7a7c7;
+    margin: 0;
+}
+
+
+.form-actions {
+    display: flex;
+    gap: 18px; 
+    margin-top: 36px; /* Increased top margin */
+}
+
+.save-btn {
+    background-color: #5638E5;
+    border: none;
+    border-radius: 7px;
+    padding: 14px 24px; 
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    transform: scale(1.05);
+    background-color: #4325c2;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    border: 1px solid #5638E5;
+    border-radius: 7px;
+    padding: 14px 24px; 
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    transform: scale(1.05);
+    background-color: rgba(86, 56, 229, 0.1);
+}
+
+.error-message {
+    color:rgb(255, 0, 0);
+    font-size: 14px;
+    margin-top: 5px;
+    font-family: 'PT Sans', sans-serif;
+    min-height: 18px; /* Provides space for error message even when empty */
+}
+
+footer {
+    background-color: #0A0D18;
+    border-top: 1px solid #2C2F45;
+    padding: 40px 50px;
+    font-family: 'Comfortaa', sans-serif;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #6f54f8;
+}
+
+.footer-section p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.footer-section a {
+    color: #5638E5;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: none;
+}
+
+.footer-links a {
+    display: block;
+    margin-bottom: 12px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #5638E5;
+    text-decoration: none;
+}
+
+.footer-separator {
+    width: 100%;
+    height: 1px;
+    background-color: #1A1F36;
+    margin: 20px 0;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #888;
+}
+
+@media (max-width: 992px) {
+    .form-row {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+    
+    .profile-pic-container {
+        margin: 0 auto 30px; 
+    }
+    
+    .form-group {
+        max-width: 100%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #0A0D18;
+        padding: 20px;
+        z-index: 999;
+        border-bottom: 1px solid #5638E5;
+    }
+    
+    .content-area {
+        padding: 20px 15px;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .goto-profile-btn {
+        width: 100%;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .save-btn, .cancel-btn {
+        width: 100%;
+    }
+}
+
+/* Add these styles to your settings.css file */
+
+/* Container for textarea and character count */
+.textarea-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Character count display styling - positioned inside the textarea */
+.character-count {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 14px;
+  color: #a7a7c7;
+  font-family: 'PT Sans', sans-serif;
+  background-color: rgba(22, 24, 48, 0.8); /* Semi-transparent background to ensure readability */
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Style for when character count is close to limit */
+.character-count.approaching-limit {
+  color: #ffa500;
+}
+
+/* Style for when character count exceeds limit */
+.character-count.over-limit {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Ensure there's padding on the right side of the textarea to prevent text from going under the counter */
+.form-group textarea {
+  padding-right: 70px;
+}
