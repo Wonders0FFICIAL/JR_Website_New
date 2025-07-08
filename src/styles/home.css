@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../assets/fonts/comfortaa-regular.woff2') format('woff2'),
+        url('../assets/fonts/comfortaa-regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../assets/fonts/comfortaa-bold.woff2') format('woff2'),
+        url('../assets/fonts/comfortaa-bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
 body {
     background-color: #090C15;
     color: white;
@@ -13,7 +29,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px; 
+    padding: 15px 25px;
     background-color: #0A0D18;
     border-bottom: 1px solid #5638E5;
 }
@@ -21,7 +37,7 @@ body {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 20px;  
+    gap: 20px;
 }
 
 .logo {
@@ -310,7 +326,7 @@ footer {
 
     .subtitle {
         font-size: 20px;
-        margin-bottom: 25px; 
+        margin-bottom: 25px;
     }
 
     .description {
