@@ -225,8 +225,8 @@ body {
 }
 
 .settings-section {
-    margin-bottom: 20px;  /* Reduced from 50px */
-    padding: 20px 0;      /* Reduced from 30px */
+    margin-bottom: 20px;
+    padding: 20px 0;
     border-bottom: 1px solid #2C2F45;
 }
 
@@ -237,12 +237,12 @@ body {
 .settings-section h3 {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 15px; /* Back to original value */
+    margin-bottom: 15px;
     color: white;
 }
 
 .linked-accounts-section h3 {
-    margin-bottom: 8px; /* or whatever spacing you prefer */
+    margin-bottom: 8px;
 }
 
 .section-description {
@@ -252,7 +252,6 @@ body {
     line-height: 1.5;
 }
 
-/* Email Section Styles */
 .email-container {
     display: flex;
     align-items: center;
@@ -427,7 +426,6 @@ body {
     line-height: 1.4;
 }
 
-/* Linked Accounts Styles */
 .linked-accounts {
     display: flex;
     flex-direction: column;
@@ -501,7 +499,6 @@ body {
     color: #4CAF50;
 }
 
-/* Continuing from where the CSS was cut off */
 
 .connect-btn {
     background-color: #5638E5;
@@ -528,7 +525,6 @@ body {
     background-color: #45a049;
 }
 
-/* Session Management Styles */
 .sessions-list {
     display: flex;
     flex-direction: column;
@@ -666,12 +662,12 @@ body {
 }
 
 .settings-section:not(.danger-zone) {
-    margin-bottom: 15px;  /* Smaller spacing for content sections */
+    margin-bottom: 15px; 
 }
 
 .danger-zone {
-    margin-top: 30px;  /* Add some extra space before danger zone */
-    margin-bottom: 20px;  /* Keep some space after */
+    margin-top: 30px;
+    margin-bottom: 20px;
     padding: 30px;
     border-radius: 10px;
 }
@@ -726,27 +722,46 @@ body {
     transform: scale(1.05);
 }
 
-/* Footer Styles */
 footer {
     background-color: #0A0D18;
     border-top: 1px solid #2C2F45;
-    padding: 40px 25px 20px;
+    padding: 40px 50px;
     margin-top: auto;
+    font-family: 'Comfortaa', sans-serif;
+    color: white;
 }
 
 .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+    flex: 1;
 }
 
 .footer-section h3 {
     font-size: 18px;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    color: #6f54f8;
+}
+
+.footer-section p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.footer-section a {
+    color: #5638E5;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: none;
 }
 
 .footer-links {
@@ -756,34 +771,31 @@ footer {
 }
 
 .footer-links a {
-    color: #a7a7c7;
+    display: block;
+    margin-bottom: 12px;
+    color: white;
     text-decoration: none;
-    font-size: 14px;
     transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
     color: #5638E5;
+    text-decoration: none;
 }
 
 .footer-separator {
     height: 1px;
-    background-color: #2C2F45;
-    margin: 30px 0 20px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: #1A1F36;
+    margin: 20px 0;
 }
 
 .copyright {
     text-align: center;
-    color: #a7a7c7;
+    padding-top: 20px;
     font-size: 14px;
-    max-width: 1200px;
-    margin: 0 auto;
+    color: #888;
 }
 
-/* Modal Styles */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -848,7 +860,6 @@ footer {
     justify-content: flex-end;
 }
 
-/* Delete Modal Specific Styles */
 .delete-modal .warning-icon {
     text-align: center;
     margin-bottom: 20px;
@@ -943,7 +954,6 @@ footer {
     transform: scale(1.05);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .settings-wrapper {
         flex-direction: column;

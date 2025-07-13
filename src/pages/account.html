@@ -4,25 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JR ・ Account Settings</title>
-    <link rel="icon" href="assets/Favicon.png" type="image/png" />
+    <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/account.css" />
   </head>
 
   <body>
     <div class="main-content">
-      <!-- Navbar start -->
       <nav class="navbar">
         <div class="nav-left">
           <a href="home.html">
-            <img src="assets/JR. Logo.png" alt="JR. Logo" class="logo" />
+            <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
           </a>
           <div class="nav-links">
             <a href="home.html">Home</a>
@@ -44,86 +39,80 @@
           </div>
         </div>
       </nav>
-      <!-- Navbar end -->
 
       <div class="settings-wrapper">
-        <!-- Sidebar start -->
         <div class="sidebar">
           <h2 class="sidebar-title">Settings</h2>
           <div class="sidebar-links">
             <a href="public-profile.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/display_name.png" alt="Profile Icon" />
+                <img src="../assets/images/display_name.png" alt="Profile Icon" />
               </span>
               <span>Public Profile</span>
             </a>
             <a href="#" class="sidebar-link active">
               <span class="icon">
-                <img src="assets/account.png" alt="Account Icon" />
+                <img src="../assets/images/account.png" alt="Account Icon" />
               </span>
               <span>Account</span>
             </a>
             <a href="appearance.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/appearance.png" alt="Appearance Icon" />
+               <img src="../assets/images/appearance.png" alt="Appearance Icon" />
               </span>
               <span>Appearance</span>
             </a>
             <a href="accessibility.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/accessibility.png" alt="Accessibility Icon" />
+          <img src="../assets/images/accessibility.png" alt="Accessibility Icon" />
               </span>
               <span>Accessibility</span>
             </a>
             <a href="notifications.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/notifications.png" alt="Notifications Icon" />
+                <img src="../assets/images/notifications.png" alt="Notifications Icon" />
               </span>
               <span>Notifications</span>
             </a>
             <a href="billing.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/billing.png" alt="Billing Icon" />
+                <img src="../assets/images/billing.png" alt="Billing Icon" />
               </span>
               <span>Billing & Plans</span>
             </a>
             <a href="privacy.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/privacy.png" alt="Privacy Icon" />
+             <img src="../assets/images/privacy.png" alt="Privacy Icon" />
               </span>
               <span>Privacy</span>
             </a>
             <a href="security.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/lock.png" alt="Security Icon" />
+           <img src="../assets/images/lock.png" alt="Security Icon" />
               </span>
               <span>Security</span>
             </a>
             <a href="developer.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/code.png" alt="Developer Icon" />
+<img src="../assets/images/code.png" alt="Developer Icon" />
               </span>
               <span>Developer</span>
             </a>
             <a href="activity.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/activity.png" alt="Activity Icon" />
+<img src="../assets/images/activity.png" alt="Activity Icon" />
               </span>
               <span>Activity</span>
             </a>
           </div>
         </div>
-        <!-- Sidebar end -->
 
-        <!-- Content area -->
         <div class="content-area">
-          <!-- Search bar -->
           <div class="search-box">
-            <img src="assets/search.png" alt="Search" class="search-icon" />
+<img src="../assets/images/search.png" alt="Search" class="search-icon" />
             <input type="text" placeholder="Search settings..." />
           </div>
 
-          <!-- Account header -->
           <div class="account-header">
             <div class="account-title">
               <h2>Account</h2>
@@ -131,7 +120,6 @@
             </div>
           </div>
 
-          <!-- Email Section -->
           <div class="settings-section">
             <h3>Email Address</h3>
             <div class="email-container">
@@ -145,7 +133,6 @@
               <button class="change-email-btn" id="changeEmailBtn">Change Email</button>
             </div>
 
-            <!-- Change Email Form (Hidden by default) -->
             <div class="change-email-form" id="changeEmailForm" style="display: none;">
               <div class="form-group">
                 <label for="newEmail">New Email Address</label>
@@ -171,7 +158,6 @@
               </div>
             </div>
 
-            <!-- Email Verification Notice -->
             <div class="verification-notice" id="verificationNotice" style="display: none;">
               <i class="fas fa-clock"></i>
               <div>
@@ -181,13 +167,11 @@
             </div>
           </div>
 
-          <!-- Linked Accounts Section -->
           <div class="settings-section">
             <h3>Linked Accounts</h3>
             <p class="section-description">Connect your JR account with other services for easier sign-in and enhanced features.</p>
             
             <div class="linked-accounts">
-              <!-- GitHub -->
               <div class="account-item">
                 <div class="account-info">
                   <div class="account-icon github">
@@ -201,7 +185,6 @@
                 <button class="connect-btn" id="githubBtn" data-provider="github">Connect</button>
               </div>
 
-              <!-- Google -->
               <div class="account-item">
                 <div class="account-info">
                   <div class="account-icon google">
@@ -215,7 +198,6 @@
                 <button class="connect-btn" id="googleBtn" data-provider="google">Connect</button>
               </div>
 
-              <!-- Discord -->
               <div class="account-item">
                 <div class="account-info">
                   <div class="account-icon discord">
@@ -231,13 +213,11 @@
             </div>
           </div>
 
-          <!-- Session Management Section -->
           <div class="settings-section">
             <h3>Active Sessions</h3>
             <p class="section-description">Manage devices and locations where you're currently signed in to your JR account.</p>
             
             <div class="sessions-list" id="sessionsList">
-              <!-- Current Session -->
               <div class="session-item current-session">
                 <div class="session-info">
                   <div class="session-icon">
@@ -260,7 +240,6 @@
                 </div>
               </div>
 
-              <!-- Other Sessions -->
               <div class="session-item">
                 <div class="session-info">
                   <div class="session-icon">
@@ -309,7 +288,6 @@
             </div>
           </div>
 
-          <!-- Danger Zone -->
           <div class="settings-section danger-zone">
             <h3>Danger Zone</h3>
             <div class="danger-content">
@@ -326,8 +304,7 @@
       </div>
     </div>
 
-    <!-- Footer start -->
-    <footer>
+ <footer>
       <div class="footer-content">
         <div class="footer-section">
           <h3>Quick Links</h3>
@@ -390,9 +367,7 @@
       <div class="footer-separator"></div>
       <div class="copyright">© 2025 JR. All rights reserved.</div>
     </footer>
-    <!-- Footer end -->
 
-    <!-- Delete Account Modal -->
     <div class="modal-overlay" id="deleteModalOverlay" style="display: none;">
       <div class="modal delete-modal">
         <div class="modal-header">
@@ -431,7 +406,6 @@
       </div>
     </div>
 
-    <!-- Logout Confirmation Modal -->
     <div class="modal-overlay" id="logoutModalOverlay" style="display: none;">
       <div class="modal logout-modal">
         <div class="modal-header">

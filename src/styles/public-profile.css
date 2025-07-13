@@ -171,8 +171,8 @@ body {
 
 .sidebar-link .icon {
     font-size: 24px;
-    width: 34px;  /* Increased from 24px */
-    height: 34px; /* Increased from 24px */
+    width: 34px;
+    height: 34px; 
     text-align: center;
     display: flex;
     align-items: center;
@@ -180,8 +180,8 @@ body {
 }
 
 .sidebar-link .icon img {
-    width: 24px;  /* Increased from 20px */
-    height: 24px; /* Increased from 20px */
+    width: 24px;  
+    height: 24px;
 }
 
 .content-area {
@@ -278,12 +278,12 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 28px; /* Increased spacing between form elements */
+    gap: 28px; 
 }
 
 .form-group {
     width: 100%;
-    margin-bottom: 0; /* Removed default margin bottom */
+    margin-bottom: 0;
     max-width: 600px; 
 }
 
@@ -309,10 +309,9 @@ body {
     color: white;
     font-family: 'PT Sans', sans-serif;
     font-size: 15px;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    box-sizing: border-box; 
 }
 
-/* Make placeholder text more visible */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: #a7a7c7;
@@ -416,7 +415,7 @@ body {
 .form-actions {
     display: flex;
     gap: 18px; 
-    margin-top: 36px; /* Increased top margin */
+    margin-top: 36px; 
 }
 
 .save-btn {
@@ -458,7 +457,7 @@ body {
     font-size: 14px;
     margin-top: 5px;
     font-family: 'PT Sans', sans-serif;
-    min-height: 18px; /* Provides space for error message even when empty */
+    min-height: 18px;
 }
 
 footer {
@@ -589,15 +588,12 @@ footer {
     }
 }
 
-/* Add these styles to your settings.css file */
 
-/* Container for textarea and character count */
 .textarea-container {
   position: relative;
   width: 100%;
 }
 
-/* Character count display styling - positioned inside the textarea */
 .character-count {
   position: absolute;
   bottom: 10px;
@@ -605,23 +601,21 @@ footer {
   font-size: 14px;
   color: #a7a7c7;
   font-family: 'PT Sans', sans-serif;
-  background-color: rgba(22, 24, 48, 0.8); /* Semi-transparent background to ensure readability */
+  background-color: rgba(22, 24, 48, 0.8);
   padding: 2px 8px;
   border-radius: 4px;
 }
 
-/* Style for when character count is close to limit */
+
 .character-count.approaching-limit {
   color: #ffa500;
 }
 
-/* Style for when character count exceeds limit */
 .character-count.over-limit {
   color: #ff0000;
   font-weight: bold;
 }
 
-/* Ensure there's padding on the right side of the textarea to prevent text from going under the counter */
 .form-group textarea {
   padding-right: 70px;
 }

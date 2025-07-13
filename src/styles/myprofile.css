@@ -29,7 +29,6 @@ body {
     flex: 1;
   }
   
-  /* Navbar Styles */
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -100,7 +99,6 @@ body {
     border-radius: 2px;
   }
   
-  /* User Menu */
   .user-menu-container {
     position: relative;
   }
@@ -212,14 +210,12 @@ body {
     color: #5638e5;
   }
   
-  /* Profile Container */
   .profile-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
   }
   
-  /* Profile Header */
   .profile-header {
     position: relative;
     border-radius: 15px;
@@ -337,7 +333,6 @@ body {
     color: #888;
   }
   
-  /* Profile Tabs */
   .profile-tabs {
     display: flex;
     border-bottom: 1px solid #222;
@@ -373,7 +368,6 @@ body {
     border-bottom-color: #5638e5;
   }
   
-  /* Tab Content */
   .tab-content {
     display: none;
   }
@@ -382,7 +376,6 @@ body {
     display: block;
   }
   
-  /* Profile Section */
   .profile-section {
     background-color: #0f1320;
     border-radius: 15px;
@@ -428,7 +421,6 @@ body {
     line-height: 1.6;
   }
   
-  /* Profile Cards */
   .profile-cards-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -501,7 +493,6 @@ body {
     font-size: 14px;
   }
   
-  /* Achievements */
   .achievements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -571,7 +562,6 @@ body {
     text-decoration: underline;
   }
   
-  /* Empty States */
   .empty-projects, .empty-activity {
     display: flex;
     flex-direction: column;
@@ -625,7 +615,6 @@ body {
     transform: translateY(-2px);
   }
   
-  /* Badges */
   .badges-container {
     padding: 20px 0;
   }
@@ -704,7 +693,6 @@ body {
     color: #444;
   }
   
-  /* Footer */
   footer {
     background-color: #0a0d18;
     border-top: 1px solid #2c2f45;
@@ -760,7 +748,6 @@ body {
     color: #888;
   }
   
-  /* Responsive Styles */
   @media (max-width: 992px) {
     .profile-cards-row {
       grid-template-columns: 1fr;
@@ -825,7 +812,6 @@ body {
     }
   }
   
-  /* Animations */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -858,7 +844,6 @@ body {
     animation-delay: 0.2s;
   }
   
-  /* Custom color themes */
   .theme-purple .profile-header-bg {
     background: linear-gradient(135deg, #5638e5, #8c54ff, #a56ef7);
   }
@@ -879,7 +864,6 @@ body {
     background: linear-gradient(135deg, #3eff8b, #00d2a0, #02f2c2);
   }
   
-  /* Theme color picker */
   .theme-picker {
     position: absolute;
     top: 20px;

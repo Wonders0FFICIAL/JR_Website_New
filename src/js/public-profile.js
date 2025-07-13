@@ -15,13 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const usernameError = document.getElementById('username-error');
     const displayNameError = document.getElementById('display-name-error');
     const bioError = document.getElementById('bio-error');
-    
-    // Custom pronouns elements
     const pronounsSelect = document.getElementById('pronouns');
     const customPronounsContainer = document.getElementById('custom-pronouns-container');
     const customPronounsInput = document.getElementById('custom-pronouns');
 
-    // Handle display of custom pronouns input
     if (pronounsSelect && customPronounsContainer && customPronounsInput) {
         pronounsSelect.addEventListener('change', () => {
             if (pronounsSelect.value === 'custom') {
@@ -32,13 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Initialize custom pronouns container visibility
         if (pronounsSelect.value === 'custom') {
             customPronounsContainer.style.display = 'block';
         }
     }
 
-    // Initialize originalValues if the form elements exist
     const originalValues = {};
     
     if (usernameInput) originalValues.username = usernameInput.value;
@@ -50,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pronounsElement = document.getElementById('pronouns');
     if (pronounsElement) originalValues.pronouns = pronounsElement.value;
     
-    // Add original value for custom pronouns if present
     if (customPronounsInput) originalValues.customPronouns = customPronounsInput.value;
     
     const locationElement = document.getElementById('location');
@@ -62,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayLocalTimeElement = document.getElementById('displayLocalTime');
     if (displayLocalTimeElement) originalValues.displayLocalTime = displayLocalTimeElement.checked;
 
-    // Track if fields have been interacted with
     const fieldInteracted = {
         username: false,
         displayName: false,
@@ -70,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         customPronouns: false
     };
 
-    // Edit profile picture functionality
     const editPicBtn = document.querySelector('.edit-pic-btn');
     if (editPicBtn) {
         editPicBtn.addEventListener('click', () => {
@@ -78,9 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Username validation function - improved with code from profile.js
     function validateUsername() {
-        // If the field hasn't been interacted with, don't show errors yet
+
         if (!fieldInteracted.username && !isFormSubmission) {
             return true;
         }
@@ -142,9 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
     }
 
-    // Display name validation function
     function validateDisplayName() {
-        // If the field hasn't been interacted with, don't show errors yet
         if (!fieldInteracted.displayName && !isFormSubmission) {
             return true;
         }
@@ -180,16 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
     }
 
-   // Bio validation function
     function validateBio() {
-        // If the field hasn't been interacted with, don't show errors yet
         if (!fieldInteracted.bio && !isFormSubmission) {
             return true;
         }
         
         const b = bioInput.value;
         
-        // Bio is not required, so empty is fine
         if (!b) {
             bioError.textContent = '';
             bioInput.classList.remove('input-error');
@@ -202,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
         
-        // Check for URLs/links in bio
         const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|([^\s]+\.(com|org|net|edu|gov|io|co)[^\s]*)/gi;
         if (urlPattern.test(b)) {
             bioError.textContent = 'Links are not allowed in bio';
@@ -215,13 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
     }
 
-    // Custom pronouns validation - only needed if 'custom' is selected
     function validateCustomPronouns() {
         if (pronounsSelect.value !== 'custom') {
             return true;
         }
-        
-        // If custom is selected but no value is provided
+
         if (customPronounsInput.value.trim() === '') {
             customPronounsInput.classList.add('input-error');
             return false;
@@ -231,27 +214,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
     }
 
-    // Flag to track if validation is triggered by form submission
     let isFormSubmission = false;
 
-    // Add event listeners for validation
     if (usernameInput) {
-        // Don't validate on load - wait for user interaction
+
         usernameError.textContent = '';
         
         usernameInput.addEventListener('input', () => {
-            // Mark as interacted with on first keystroke
             if (!fieldInteracted.username && usernameInput.value.trim() !== '') {
                 fieldInteracted.username = true;
             }
-            
-            // Validate in real-time once interaction has begun
+
             if (fieldInteracted.username) {
                 validateUsername();
             }
         });
-        
-        // Also validate on blur for when a user tabs through fields
+
         usernameInput.addEventListener('blur', () => {
             fieldInteracted.username = true;
             validateUsername();
@@ -259,22 +237,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (displayNameInput) {
-        // Don't validate on load - wait for user interaction
         displayNameError.textContent = '';
         
         displayNameInput.addEventListener('input', () => {
-            // Mark as interacted with on first keystroke
             if (!fieldInteracted.displayName && displayNameInput.value.trim() !== '') {
                 fieldInteracted.displayName = true;
             }
             
-            // Validate in real-time once interaction has begun
             if (fieldInteracted.displayName) {
                 validateDisplayName();
             }
         });
         
-        // Also validate on blur for when a user tabs through fields
         displayNameInput.addEventListener('blur', () => {
             fieldInteracted.displayName = true;
             validateDisplayName();
@@ -299,71 +273,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (bioInput) {
-        // Don't validate on load - wait for user interaction
         bioError.textContent = '';
         
-        // Update placeholder to include character limit
         bioInput.setAttribute('placeholder', 'Tell us about yourself... Share your interests, expertise, or anything you\'d like others to know');
         
-        // Add character counter display
         const bioCharCounter = document.getElementById('bio-char-count');
         
         function updateBioCounter() {
             const charCount = bioInput.value.length;
             const remainingChars = 500 - charCount;
             bioCharCounter.textContent = remainingChars.toString();
-            
-            // Add visual indicator when approaching limit
+        
             if (remainingChars <= -1 && remainingChars >= 0) {
                 bioCharCounter.classList.add('approaching-limit');
                 bioCharCounter.classList.remove('over-limit');
             } else if (remainingChars < 0) {
                 bioCharCounter.classList.remove('approaching-limit');
                 bioCharCounter.classList.add('over-limit');
-                // Make the negative number text red
                 bioCharCounter.style.color = '#ff0000';
             } else {
                 bioCharCounter.classList.remove('approaching-limit', 'over-limit');
-                // Reset the color to default
                 bioCharCounter.style.color = '';
             }
         }
         
-        // Initialize counter
         if (bioCharCounter) {
             updateBioCounter();
         }
         
         bioInput.addEventListener('input', () => {
-            // Mark as interacted with on first keystroke
             if (!fieldInteracted.bio && bioInput.value.trim() !== '') {
                 fieldInteracted.bio = true;
             }
             
-            // Update character counter
+
             if (bioCharCounter) {
                 updateBioCounter();
             }
             
-            // Validate in real-time once interaction has begun
             if (fieldInteracted.bio) {
                 validateBio();
             }
         });
-        
-        // Also validate on blur for when a user tabs through fields
+
         bioInput.addEventListener('blur', () => {
             fieldInteracted.bio = true;
             validateBio();
         });
     }
 
-    // Save button functionality
     if (saveBtn) {
         saveBtn.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // Set form submission flag to true for validation
             isFormSubmission = true;
             
             let isValid = true;
@@ -399,15 +361,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // If using custom pronouns, we would store the value here in a real app
             if (pronounsSelect.value === 'custom' && customPronounsInput) {
-                // In a real app, we'd store the custom pronouns value from customPronounsInput.value
                 console.log('Custom pronouns:', customPronounsInput.value);
             }
             
             showNotification('Settings saved successfully!');
-            
-            // Update original values
+
             Object.keys(originalValues).forEach(key => {
                 const element = document.getElementById(key);
                 if (element) {
@@ -419,7 +378,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            // Update custom pronouns original value if relevant
             if (customPronounsInput && pronounsSelect.value === 'custom') {
                 originalValues.customPronouns = customPronounsInput.value;
             }
@@ -428,7 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cancel button functionality
     if (cancelBtn) {
         cancelBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -444,11 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            // Reset custom pronouns field specifically
             if (pronounsSelect) {
                 pronounsSelect.value = originalValues.pronouns || '';
-                
-                // Toggle visibility of custom pronouns input
+
                 if (customPronounsContainer) {
                     if (pronounsSelect.value === 'custom') {
                         customPronounsContainer.style.display = 'block';
@@ -461,7 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Clear error messages and reset field interaction status
             if (usernameError) {
                 usernameError.textContent = '';
                 usernameInput.classList.remove('input-error');
@@ -479,7 +433,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 bioInput.classList.remove('input-error');
                 fieldInteracted.bio = false;
                 
-                // Update character counter if it exists
                 const bioCharCounter = document.getElementById('bio-char-count');
                 if (bioCharCounter) {
                     const remainingChars = 500 - bioInput.value.length;
@@ -497,7 +450,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Search functionality
     const searchInput = document.querySelector('.search-box input');
     if (searchInput) {
         searchInput.addEventListener('keyup', (e) => {
@@ -505,7 +457,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const searchTerm = searchInput.value.trim().toLowerCase();
                 if (searchTerm) {
                     showNotification(`Searching for: "${searchTerm}"`);
-                    // In a real application, this would perform a search
                 }
             }
         });
@@ -585,14 +536,12 @@ sidebarLinks.forEach(link => {
     });
 });
 
-    // Load profile data from session storage if available
     function loadProfileData() {
         const cu = JSON.parse(sessionStorage.getItem('currentUser'));
         if (cu?.username && usernameInput) usernameInput.value = cu.username;
         if (cu?.displayName && displayNameInput) displayNameInput.value = cu.displayName;
         if (cu?.bio && bioInput) bioInput.value = cu.bio;
         if (cu?.pronouns && pronounsSelect) {
-            // Handle custom pronouns if needed
             if (cu.pronouns !== 'he/him' && cu.pronouns !== 'she/her' && 
                 cu.pronouns !== 'they/them' && cu.pronouns !== 'other' && 
                 cu.pronouns !== '' && customPronounsInput) {
@@ -606,7 +555,6 @@ sidebarLinks.forEach(link => {
             }
         }
         
-        // Update originalValues for newly loaded values
         if (usernameInput) originalValues.username = usernameInput.value;
         if (displayNameInput) originalValues.displayName = displayNameInput.value;
         if (bioInput) originalValues.bio = bioInput.value;
@@ -615,7 +563,6 @@ sidebarLinks.forEach(link => {
             originalValues.customPronouns = customPronounsInput.value;
         }
         
-        // Update bio character counter if it exists
         if (bioInput) {
             const bioCharCounter = document.getElementById('bio-char-count');
             if (bioCharCounter) {
@@ -624,17 +571,14 @@ sidebarLinks.forEach(link => {
             }
         }
         
-        // Don't run validation on initial load
     }
     
-    // Try to load profile data if available
     try {
         loadProfileData();
     } catch (error) {
         console.error("Error loading profile data:", error);
     }
     
-    // Ensure error messages are empty on initial load
     if (usernameError) usernameError.textContent = '';
     if (displayNameError) displayNameError.textContent = '';
     if (bioError) bioError.textContent = '';

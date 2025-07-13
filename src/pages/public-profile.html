@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JR ・ Settings</title>
-    <link rel="icon" href="assets/Favicon.png" type="image/png" />
+<link rel="icon" href="../assets/images/Favicon.png" type="image/png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -20,16 +20,14 @@
         font-size: 14px;
         margin-top: 8px;
         font-family: "PT Sans", sans-serif;
-        min-height: 18px; /* Provides space for error message even when empty */
-        display: block; /* Ensures the error message takes up space */
+        min-height: 18px;
+        display: block;
       }
 
-      /* Style for invalid input fields */
       .input-error {
         border-color: red !important;
       }
 
-      /* Animation for error messages to make them more noticeable */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -45,7 +43,6 @@
         animation: fadeIn 0.3s ease-in-out;
       }
 
-      /* Extended placeholder width */
       .form-group input,
       .form-group textarea,
       .select-wrapper select {
@@ -53,12 +50,10 @@
         min-width: 450px;
       }
 
-      /* Added spacing between form groups */
       .form-group {
         margin-bottom: 24px;
       }
 
-      /* Ensure error messages are visible in all scenarios */
       #username-error,
       #display-name-error {
         display: block !important;
@@ -69,11 +64,10 @@
 
   <body>
     <div class="main-content">
-      <!-- Navbar start -->
       <nav class="navbar">
         <div class="nav-left">
           <a href="home.html">
-            <img src="assets/JR. Logo.png" alt="JR. Logo" class="logo" />
+<img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
           </a>
           <div class="nav-links">
             <a href="home.html">Home</a>
@@ -95,86 +89,80 @@
           </div>
         </div>
       </nav>
-      <!-- Navbar end -->
 
       <div class="settings-wrapper">
-        <!-- Sidebar start -->
         <div class="sidebar">
           <h2 class="sidebar-title">Settings</h2>
           <div class="sidebar-links">
             <a href="#" class="sidebar-link active">
               <span class="icon">
-                <img src="assets/display_name.png" alt="Profile Icon" />
+                <img src="../assets/images/display_name.png" alt="Profile Icon" />
               </span>
               <span>Public Profile</span>
             </a>
             <a href="account.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/account.png" alt="Account Icon" />
+                <img src="../assets/images/account.png" alt="Account Icon" />
               </span>
               <span>Account</span>
             </a>
             <a href="appearance.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/appearance.png" alt="Appearance Icon" />
+               <img src="../assets/images/appearance.png" alt="Appearance Icon" />
               </span>
               <span>Appearance</span>
             </a>
             <a href="accessibility.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/accessibility.png" alt="Accessibility Icon" />
+          <img src="../assets/images/accessibility.png" alt="Accessibility Icon" />
               </span>
               <span>Accessibility</span>
             </a>
             <a href="notifications.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/notifications.png" alt="Notifications Icon" />
+                <img src="../assets/images/notifications.png" alt="Notifications Icon" />
               </span>
               <span>Notifications</span>
             </a>
             <a href="billing.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/billing.png" alt="Billing Icon" />
+                <img src="../assets/images/billing.png" alt="Billing Icon" />
               </span>
               <span>Billing & Plans</span>
             </a>
             <a href="privacy.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/privacy.png" alt="Privacy Icon" />
+             <img src="../assets/images/privacy.png" alt="Privacy Icon" />
               </span>
               <span>Privacy</span>
             </a>
             <a href="security.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/lock.png" alt="Security Icon" />
+           <img src="../assets/images/lock.png" alt="Security Icon" />
               </span>
               <span>Security</span>
             </a>
             <a href="developer.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/code.png" alt="Developer Icon" />
+<img src="../assets/images/code.png" alt="Developer Icon" />
               </span>
               <span>Developer</span>
             </a>
             <a href="activity.html" class="sidebar-link">
               <span class="icon">
-                <img src="assets/activity.png" alt="Activity Icon" />
+<img src="../assets/images/activity.png" alt="Activity Icon" />
               </span>
               <span>Activity</span>
             </a>
           </div>
         </div>
-        <!-- Sidebar end -->
 
-        <!-- Content area -->
         <div class="content-area">
-          <!-- Search bar -->
           <div class="search-box">
-            <img src="assets/search.png" alt="Search" class="search-icon" />
+<img src="../assets/images/search.png" alt="Search" class="search-icon" />
             <input type="text" placeholder="Search settings..." />
           </div>
 
-          <!-- Profile header with Go To Profile button -->
           <div class="profile-header">
             <div class="profile-title">
               <h2>Public Profile</h2>
@@ -183,7 +171,6 @@
             <a href="myprofile.html" class="goto-profile-btn">Go To Profile</a>
           </div>
 
-          <!-- Settings form -->
           <form class="settings-form">
             <div class="form-row">
               <div class="form-group-container">
@@ -209,7 +196,6 @@
                   <div id="display-name-error" class="error-message"></div>
                 </div>
 
-                <!-- Replace the existing Bio form-group with this updated version -->
                 <div class="form-group">
                   <label for="bio">Bio</label>
                   <div class="textarea-container">
@@ -486,7 +472,7 @@
                   </div>
 
                   <button type="button" class="edit-pic-btn">
-                    <img src="assets/edit.png" alt="Edit" class="edit-icon" />
+                    <img src="../assets/images/edit.png" alt="Edit" class="edit-icon" />
                   </button>
                 </div>
                 <p>Profile picture</p>
@@ -502,7 +488,6 @@
       </div>
     </div>
 
-    <!-- Footer start -->
     <footer>
       <div class="footer-content">
         <div class="footer-section">
@@ -566,12 +551,9 @@
       <div class="footer-separator"></div>
       <div class="copyright">© 2025 JR. All rights reserved.</div>
     </footer>
-    <!-- Footer end -->
 
     <script>
-      // Additional script to ensure validation happens immediately
       document.addEventListener("DOMContentLoaded", function () {
-        // Add visual feedback for input validation
         function addValidationVisualFeedback() {
           const usernameInput = document.getElementById("username");
           const displayNameInput = document.getElementById("displayName");
@@ -600,7 +582,6 @@
           }
         }
 
-        // Call this function after the main script loads
         setTimeout(addValidationVisualFeedback, 500);
       });
     </script>
