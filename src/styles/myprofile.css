@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../assets/fonts/comfortaa-regular.woff2') format('woff2'),
+        url('../assets/fonts/comfortaa-regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../assets/fonts/comfortaa-bold.woff2') format('woff2'),
+        url('../assets/fonts/comfortaa-bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
 body {
     background-color: #090c15;
     color: white;
@@ -288,6 +304,7 @@ body {
     font-size: 28px;
     background: linear-gradient(90deg, #5638e5, #ff3e9d);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
   }
   

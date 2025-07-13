@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectsData = {
         'jr-lang': {
             name: 'JR. Lang',
-            logo: '../pages/assets/JR. Lang Logo.png',
+            logo: '../assets/images/JR. Lang Logo.png',
             description: 'JR. Lang is a modern programming language designed for efficiency, readability, and performance. Built from the ground up to address the shortcomings of existing languages, JR. Lang offers intuitive syntax, powerful features, and excellent integration capabilities for today\'s development needs.',
             features: [
                 'Intuitive syntax that promotes clean, maintainable code',
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'jr-browse': {
             name: 'JR. Browse',
-            logo: '../pages/assets/JR. Browse Logo.png',
+            logo: '../assets/images/JR. Browse Logo.png',
             description: 'JR. Browse is a lightweight, privacy-focused web browser built for the modern internet. Designed with speed and security in mind, it gives users complete control over their browsing experience while protecting their personal data from trackers and unwanted advertisements.',
             features: [
                 'Optimized rendering engine for faster page loads',
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'jr-ai': {
             name: 'JR. AI',
-            logo: '../pages/assets/JR. AI Logo.png',
+            logo: '../assets/images/JR. AI Logo.png',
             description: 'JR. AI is our advanced artificial intelligence platform providing powerful machine learning solutions for developers and businesses. From natural language processing to computer vision, JR. AI offers state-of-the-art models that can be easily integrated into your applications.',
             features: [
                 'Pre-trained models for common AI tasks',
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'jr-cloud': {
             name: 'JR. Cloud',
-            logo: '../pages/assets/JR. Cloud Logo.png',
+            logo: '../assets/images/JR. Cloud Logo.png',
             description: 'JR. Cloud provides secure, scalable infrastructure for your applications. Our cloud platform is built to handle everything from small personal projects to enterprise-level applications, offering reliable performance, robust security, and intuitive management tools.',
             features: [
                 'Elastic compute resources that scale with your needs',
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'doodlemon': {
             name: 'DoodleMon',
-            logo: '../pages/assets/DoodleMon Circular.png',
+            logo: '../assets/images/DoodleMon Circular.png',
             description: 'DoodleMon is an innovative gaming platform where players can create, collect, and battle with their own digital creatures. Using our proprietary AI technology, your hand-drawn doodles come to life as unique monsters with special abilities and characteristics based on your drawing style.',
             features: [
                 'AI-powered conversion of drawings to animated creatures',
@@ -171,13 +171,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'hidden';
         });
     });
-function closeModal() {
+
+    function closeModal() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
+    
     closeBtn.addEventListener('click', () => {
         closeModal();
     });
+    
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal();
