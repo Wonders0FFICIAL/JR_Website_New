@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editPicBtn = document.querySelector('.edit-pic-btn');
     if (editPicBtn) {
         editPicBtn.addEventListener('click', () => {
-            alert('This would open a file upload dialog in a real application');
+            window.location.href = 'profile.html';
         });
     }
 
@@ -563,6 +563,18 @@ sidebarLinks.forEach(link => {
             originalValues.customPronouns = customPronounsInput.value;
         }
         
+        const profileImage = sessionStorage.getItem('profileImage');
+        if (profileImage) {
+            const profilePicCircle = document.querySelector('.profile-pic-circle');
+            profilePicCircle.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = profileImage;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            profilePicCircle.appendChild(img);
+        }
+
         if (bioInput) {
             const bioCharCounter = document.getElementById('bio-char-count');
             if (bioCharCounter) {
