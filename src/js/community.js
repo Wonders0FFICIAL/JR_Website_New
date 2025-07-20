@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    
     const communityBtns = document.querySelectorAll('.community-btn');
     communityBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -23,19 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'Browse Forums':
                     url = 'https://forums.jrofficial.org';
                     break;
+                case 'Follow on X':
+                    url = 'https://x.com/jr_suite';
+                    break;
+                case 'Follow Instagram':
+                    url = 'https://instagram.com/jr_official';
+                    break;
+                case 'Join Reddit':
+                    url = 'https://reddit.com/r/jrofficial';
+                    break;
+                case 'Subscribe':
+                    url = 'https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63';
+                    break;
+                case 'Follow Mastodon':
+                    url = 'https://mastodon.social/@jrofficial';
+                    break;
                 default:
                     url = '#';
             }
             
             window.open(url, '_blank');
-        });
-    });
-
-    const registerBtns = document.querySelectorAll('.register-btn');
-    registerBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const eventName = this.closest('.event-details').querySelector('h3').textContent;
-            alert(`Registration for "${eventName}" will open in a new tab.`);
         });
     });
 
@@ -53,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please enter a valid email address.');
             return;
         }
-        
 
         alert(`Thank you! Your email ${email} has been subscribed to our newsletter.`);
         emailInput.value = '';

@@ -140,34 +140,32 @@ body {
 }
 
 .cards-container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding: 20px 50px 50px;
-    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .community-card {
     background-color: #0E0F1D;
     border-radius: 12px;
     padding: 30px;
-    width: 300px;
     text-align: center;
     border: 2px solid #5638E5;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.community-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(86, 56, 229, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
 }
 
 .card-icon {
     margin-bottom: 20px;
-}
-
-.card-icon img {
-    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Remove this line: height: 80px; */
 }
 
 .community-card h3 {
@@ -180,6 +178,7 @@ body {
     line-height: 1.5;
     margin-bottom: 25px;
     color: #cccccc;
+    flex-grow: 1;
 }
 
 .community-btn {
@@ -193,6 +192,7 @@ body {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: auto;
 }
 
 .community-btn:hover {
@@ -200,112 +200,21 @@ body {
     transform: scale(1.05);
 }
 
-.divider {
-    width: 80%;
-    height: 1px;
-    margin: 20px auto;
-    background-color: #2C2F45;
+.social-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain; /* Add this to preserve aspect ratio */
 }
 
-.events-section {
-    padding: 30px 50px;
+.newsletter-section {
+    padding: 40px 50px 60px;
+    text-align: center;
 }
 
 .section-title {
     font-size: 32px;
     text-align: center;
     margin-bottom: 30px;
-}
-
-.events-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.event-card {
-    display: flex;
-    background-color: #0E0F1D;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #2C2F45;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(86, 56, 229, 0.2);
-    border-color: #5638E5;
-}
-
-.event-date {
-    background-color: #5638E5;
-    color: white;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 100px;
-}
-
-.day {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.month {
-    font-size: 16px;
-}
-
-.event-details {
-    padding: 20px;
-    flex-grow: 1;
-}
-
-.event-details h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.event-description {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: #cccccc;
-}
-
-.event-location {
-    font-size: 14px;
-    color: #aaaaaa;
-    margin-bottom: 15px;
-}
-
-.location-icon {
-    margin-right: 5px;
-}
-
-.register-btn {
-    background-color: transparent;
-    border: 2px solid #5638E5;
-    border-radius: 7px;
-    padding: 8px 16px;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.register-btn:hover {
-    background-color: #5638E5;
-}
-
-.newsletter-section {
-    padding: 40px 50px 60px;
-    text-align: center;
 }
 
 .newsletter-description {
@@ -353,7 +262,7 @@ body {
 }
 
 .subscribe-btn:hover {
-    background-color: #4328c2
+    background-color: #4328c2;
 }
 
 .main-content {
@@ -459,29 +368,8 @@ footer {
     }
 
     .cards-container {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
         padding: 20px;
-    }
-
-    .community-card {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .events-container {
-        gap: 15px;
-    }
-
-    .event-card {
-        flex-direction: column;
-    }
-
-    .event-date {
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px;
     }
 
     .newsletter-form {
