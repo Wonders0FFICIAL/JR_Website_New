@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             technologies: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Neural Networks', 'Edge AI', 'Cloud AI'],
             docsLink: 'docs/jr-ai',
-            downloadLink: 'downloads/jr-ai.zip'
+            downloadLink: 'https://ai.jrofficial.org'
         },
         'jr-cloud': {
             name: 'JR. Cloud',
@@ -132,9 +132,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalTechTags.appendChild(span);
             });
             
-
             modalDocsLink.href = projectData.docsLink;
             modalDownloadLink.href = projectData.downloadLink;
+            
+            // Set button text based on project type
+            if (projectId === 'jr-ai') {
+                modalDownloadLink.textContent = 'Use';
+            } else {
+                modalDownloadLink.textContent = 'Download';
+            }
+            
             if (projectId === 'doodlemon') {
                 document.querySelector('.modal-content').style.borderColor = '#02B24E';
                 document.querySelector('.modal-content').style.boxShadow = '0 0 30px rgba(2, 178, 78, 0.7)';

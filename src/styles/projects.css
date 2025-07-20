@@ -174,7 +174,7 @@ body {
 .project-name {
     font-size: 22px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 3px; /* Changed from 10px to 5px */
     color: #6f54f8;
 }
 
