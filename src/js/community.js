@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let url;
             
             switch(buttonText) {
-                case 'Join Discord':
+                case 'Join The Server':
                     url = 'https://discord.gg/d4kfXDrcG8';
                     break;
                 case 'Visit GitHub':
@@ -25,17 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'Follow on X':
                     url = 'https://x.com/jr_suite';
                     break;
-                case 'Follow Instagram':
-                    url = 'https://instagram.com/jr_official';
+                case 'Follow On Instagram':
+                    url = 'https://www.instagram.com/junior.0fficial/';
                     break;
-                case 'Join Reddit':
-                    url = 'https://reddit.com/r/jrofficial';
+                case 'Join The Subreddit':
+                    url = 'https://www.reddit.com/r/jr_tech/';
                     break;
-                case 'Subscribe':
+                case 'Subscribe On YouTube':
                     url = 'https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63';
                     break;
-                case 'Follow Mastodon':
-                    url = 'https://mastodon.social/@jrofficial';
+                case 'Follow On Mastodon':
+                    url = 'https://mastodon.social/@jr_official';
                     break;
                 default:
                     url = '#';

@@ -165,7 +165,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Remove this line: height: 80px; */
+    height: 80px; /* Add this back for consistent alignment */
 }
 
 .community-card h3 {
@@ -191,19 +191,19 @@ body {
     font-weight: 600;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
     margin-top: auto;
+    /* Removed transition and hover transform */
 }
 
 .community-btn:hover {
     background-color: #4328c2;
-    transform: scale(1.05);
+    /* Removed transform: scale(1.05); */
 }
 
 .social-icon {
     width: 80px;
     height: 80px;
-    object-fit: contain; /* Add this to preserve aspect ratio */
+    object-fit: contain;
 }
 
 .newsletter-section {
