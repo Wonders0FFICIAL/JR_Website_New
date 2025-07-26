@@ -464,11 +464,13 @@ footer {
 }
 
 .footer-links a {
-  display: block;
-  margin-bottom: 12px;
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 12px;
+    padding: 2px 0;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    width: fit-content;
 }
 
 .footer-links a:hover {
