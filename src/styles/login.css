@@ -90,11 +90,11 @@ body {
     color: white;
     cursor: pointer;
     margin-right: 10px;
-    transition: transform 0.3s ease;
+transition: background-color 0.3s ease;
 }
 
 .signup-btn:hover {
-    transform: translateY(-3px) scale(1.05);
+    background-color: #5638E5;
 }
 
 .hamburger {
