@@ -75,7 +75,6 @@ body {
 .nav-links a.active {
     color: #543fce;
     font-weight: bold;
-    pointer-events: none;
 }
 
 .signup-hamburger {
