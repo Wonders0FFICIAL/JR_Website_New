@@ -482,7 +482,6 @@ input:checked + .toggle-slider:before {
 
 .plan-cta:hover {
     background-color: #5638E5;
-    transform: translateY(-3px);
 }
 
 .plan-cta.featured {
@@ -490,6 +489,7 @@ input:checked + .toggle-slider:before {
 }
 
 .plan-cta.featured:hover {
+    border-color: #4325c2;
     background-color: #4325c2;
 }
 
