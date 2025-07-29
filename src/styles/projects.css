@@ -211,7 +211,6 @@ transition: background-color 0.3s ease;
 
 .docs-btn:hover {
     background-color: #1a1045;
-    transform: translateY(-2px);
 }
 
 .download-btn {
@@ -222,7 +221,6 @@ transition: background-color 0.3s ease;
 
 .download-btn:hover {
     background-color: #4325c2;
-    transform: translateY(-2px);
 }
 
 .modal {
@@ -547,6 +545,10 @@ footer {
   .project-card[data-project="doodlemon"] .docs-btn {
     border-color: #02B24E;
     background-color: #08d4604a;
+  }
+
+    .project-card[data-project="doodlemon"] .docs-btn:hover {
+    background-color: #08d4605d;
   }
   
   .project-card[data-project="doodlemon"] .download-btn {
