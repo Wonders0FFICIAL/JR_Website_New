@@ -8,11 +8,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const communityBtns = document.querySelectorAll('.community-btn');
     communityBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        const buttonText = btn.textContent;
+        const card = btn.closest('.community-card');
+
+        switch (buttonText) {
+            case 'Join The Server':
+                btn.classList.add('discord');
+                card.classList.add('discord');
+                break;
+            case 'Visit GitHub':
+                btn.classList.add('github');
+                card.classList.add('github');
+                break;
+            case 'Browse Forums':
+                btn.classList.add('forums');
+                card.classList.add('forums');
+                break;
+            case 'Follow on X':
+                btn.classList.add('twitter');
+                card.classList.add('twitter');
+                break;
+            case 'Follow On Instagram':
+                btn.classList.add('instagram');
+                card.classList.add('instagram');
+                break;
+            case 'Join The Subreddit':
+                btn.classList.add('reddit');
+                card.classList.add('reddit');
+                break;
+            case 'Subscribe On YouTube':
+                btn.classList.add('youtube');
+                card.classList.add('youtube');
+                break;
+            case 'Follow On Mastodon':
+                btn.classList.add('mastodon');
+                card.classList.add('mastodon');
+                break;
+        }
+
+        btn.addEventListener('click', function () {
             const buttonText = this.textContent;
             let url;
-            
-            switch(buttonText) {
+
+            switch (buttonText) {
                 case 'Join The Server':
                     url = 'https://discord.gg/d4kfXDrcG8';
                     break;
@@ -40,21 +78,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 default:
                     url = '#';
             }
-            
+
             window.open(url, '_blank');
         });
     });
 
     const subscribeBtn = document.querySelector('.subscribe-btn');
     const emailInput = document.querySelector('.email-input');
-    
+
     subscribeBtn.addEventListener('click', () => {
         const email = emailInput.value.trim();
         if (email === '') {
             alert('Please enter your email address.');
             return;
         }
-        
+
         if (!isValidEmail(email)) {
             alert('Please enter a valid email address.');
             return;

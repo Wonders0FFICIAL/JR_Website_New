@@ -159,12 +159,47 @@ transition: background-color 0.3s ease;
     min-height: 280px;
 }
 
+.community-card.discord {
+    border-color: #5865F2;
+}
+
+.community-card.github {
+    border-color: #4b525a;
+}
+
+.community-card.reddit {
+    border-color: #FF4500;
+}
+
+.community-card.forums {
+    border-color: #d4d1e4;
+}
+
+.community-card.youtube {
+    border-color: #FF0000;
+}
+
+.community-card.instagram {
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(#0E0F1D, #0E0F1D) padding-box,
+                linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) border-box;
+}
+
+.community-card.twitter {
+    border-color: #1D9BF0;
+}
+
+.community-card.mastodon {
+    border-color: #563ACC;
+}
+
 .card-icon {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px; /* Add this back for consistent alignment */
+    height: 80px;
 }
 
 .community-card h3 {
@@ -181,7 +216,6 @@ transition: background-color 0.3s ease;
 }
 
 .community-btn {
-    background-color: #5638E5;
     border: none;
     border-radius: 7px;
     padding: 12px 24px;
@@ -191,12 +225,70 @@ transition: background-color 0.3s ease;
     color: white;
     cursor: pointer;
     margin-top: auto;
-    /* Removed transition and hover transform */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .community-btn:hover {
-    background-color: #4328c2;
-    /* Removed transform: scale(1.05); */
+    transform: translateY(-2px);
+}
+
+.community-btn.discord {
+    background-color: #5865F2;
+}
+.community-btn.discord:hover {
+    background-color: #4752C4;
+}
+
+.community-btn.github {
+    background-color: #363d46;
+    color: #f0f6fc;
+}
+.community-btn.github:hover {
+    background-color: #30363d;
+}
+
+.community-btn.reddit {
+    background-color: #FF4500;
+}
+.community-btn.reddit:hover {
+    background-color: #e63c00;
+}
+
+.community-btn.forums {
+    background-color: #d4d1e4;
+    color: #090C15;
+}
+.community-btn.forums:hover {
+    background-color: #b6b4c4;
+}
+
+.community-btn.youtube {
+    background-color: #FF0000;
+}
+.community-btn.youtube:hover {
+    background-color: #cc0000;
+}
+
+.community-btn.instagram {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+.community-btn.instagram:hover {
+    background: linear-gradient(45deg, #d4852a 0%,#c55a33 25%,#b8213a 50%,#a91d5a 75%,#9a1577 100%);
+}
+
+.community-btn.twitter {
+    background-color: #0f87d6;
+    color: #e7e9ea;
+}
+.community-btn.twitter:hover {
+    background-color: #0C7BC4;
+}
+
+.community-btn.mastodon {
+    background-color: #563ACC;
+}
+.community-btn.mastodon:hover {
+    background-color: #4a2eb3;
 }
 
 .social-icon {

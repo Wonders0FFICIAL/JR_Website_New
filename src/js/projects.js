@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalDocsLink.href = projectData.docsLink;
             modalDownloadLink.href = projectData.downloadLink;
             
-            // Set button text based on project type
             if (projectId === 'jr-ai') {
                 modalDownloadLink.textContent = 'Use';
             } else {

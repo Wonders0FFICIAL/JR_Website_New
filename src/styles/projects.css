@@ -173,7 +173,7 @@ transition: background-color 0.3s ease;
 .project-name {
     font-size: 22px;
     font-weight: 700;
-    margin-bottom: 3px; /* Changed from 10px to 5px */
+    margin-bottom: 3px;
     color: #6f54f8;
 }
 
