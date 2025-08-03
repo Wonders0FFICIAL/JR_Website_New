@@ -70,22 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
             technologies: ['Cloud Computing', 'IaaS', 'PaaS', 'Serverless', 'Containers', 'Microservices'],
             docsLink: 'docs/jr-cloud',
             downloadLink: 'downloads/jr-cloud.zip'
-        },
-        'doodlemon': {
-            name: 'DoodleMon',
-            logo: '../assets/images/DoodleMon Circular.png',
-            description: 'DoodleMon is an innovative gaming platform where players can create, collect, and battle with their own digital creatures. Using our proprietary AI technology, your hand-drawn doodles come to life as unique monsters with special abilities and characteristics based on your drawing style.',
-            features: [
-                'AI-powered conversion of drawings to animated creatures',
-                'Unique monster attributes based on drawing characteristics',
-                'Real-time multiplayer battles',
-                'Trading marketplace for collectors',
-                'Regular events and competitions',
-                'Cross-platform play on mobile and web'
-            ],
-            technologies: ['Game Development', 'AI', 'Augmented Reality', 'Mobile', 'WebGL', 'Multiplayer'],
-            docsLink: 'docs/doodlemon',
-            downloadLink: 'downloads/doodlemon.zip'
         }
     };
 
@@ -141,37 +125,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalDownloadLink.textContent = 'Download';
             }
             
-            if (projectId === 'doodlemon') {
-                document.querySelector('.modal-content').style.borderColor = '#02B24E';
-                document.querySelector('.modal-content').style.boxShadow = '0 0 30px rgba(2, 178, 78, 0.7)';
-                document.getElementById('modal-title').style.color = '#02B24E';
-                document.querySelectorAll('.modal-features h3, .modal-tech h3').forEach(el => {
-                    el.style.color = '#02B24E';
-                });
-                document.getElementById('modal-docs-link').style.borderColor = '#02B24E';
-                document.getElementById('modal-docs-link').style.backgroundColor = '#08d4604a';
-                document.getElementById('modal-download-link').style.backgroundColor = '#02B24E';
-                
-                document.querySelectorAll('.tech-tag').forEach(tag => {
-                    tag.style.backgroundColor = 'rgba(2, 178, 78, 0.2)';
-                    tag.style.color = '#02B24E';
-                });
-            } else {
-                document.querySelector('.modal-content').style.borderColor = '#5638E5';
-                document.querySelector('.modal-content').style.boxShadow = '0 0 30px rgba(86, 56, 229, 0.7)';
-                document.getElementById('modal-title').style.color = '#6f54f8';
-                document.querySelectorAll('.modal-features h3, .modal-tech h3').forEach(el => {
-                    el.style.color = '#6f54f8';
-                });
-                document.getElementById('modal-docs-link').style.borderColor = '#5638E5';
-                document.getElementById('modal-docs-link').style.backgroundColor = '#0E0634';
-                document.getElementById('modal-download-link').style.backgroundColor = '#5638E5';
-                
-                document.querySelectorAll('.tech-tag').forEach(tag => {
-                    tag.style.backgroundColor = '#1a1045';
-                    tag.style.color = 'white';
-                });
-            }
+            document.querySelector('.modal-content').style.borderColor = '#5638E5';
+            document.querySelector('.modal-content').style.boxShadow = '0 0 30px rgba(86, 56, 229, 0.7)';
+            document.getElementById('modal-title').style.color = '#6f54f8';
+            document.querySelectorAll('.modal-features h3, .modal-tech h3').forEach(el => {
+                el.style.color = '#6f54f8';
+            });
+            document.getElementById('modal-docs-link').style.borderColor = '#5638E5';
+            document.getElementById('modal-docs-link').style.backgroundColor = '#0E0634';
+            document.getElementById('modal-download-link').style.backgroundColor = '#5638E5';
+            
+            document.querySelectorAll('.tech-tag').forEach(tag => {
+                tag.style.backgroundColor = '#1a1045';
+                tag.style.color = 'white';
+            });
 
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';

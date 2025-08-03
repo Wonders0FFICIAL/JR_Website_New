@@ -529,32 +529,3 @@ footer {
         flex-direction: column;
     }
 }
-
-.project-card[data-project="doodlemon"] {
-    border-color: #02B24E;
-  }
-  
-  .project-card[data-project="doodlemon"]:hover {
-    box-shadow: 0 0 20px rgba(2, 178, 78, 0.5);
-  }
-  
-  .project-card[data-project="doodlemon"] .project-name {
-    color: #02B24E;
-  }
-  
-  .project-card[data-project="doodlemon"] .docs-btn {
-    border-color: #02B24E;
-    background-color: #08d4604a;
-  }
-
-    .project-card[data-project="doodlemon"] .docs-btn:hover {
-    background-color: #08d4605d;
-  }
-  
-  .project-card[data-project="doodlemon"] .download-btn {
-    background-color: #02B24E;
-  }
-  
-  .project-card[data-project="doodlemon"] .download-btn:hover {
-    background-color: #01913e;
-  }
