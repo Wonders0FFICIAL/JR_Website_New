@@ -15,21 +15,15 @@
 }
 
 body {
-    background-color: #090C15;
     color: white;
     font-family: 'Comfortaa', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px; 
+    padding: 15px 25px;
     background-color: #0A0D18;
     border-bottom: 1px solid #5638E5;
 }
@@ -37,7 +31,7 @@ body {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 20px;  
+    gap: 20px;
 }
 
 .logo {
@@ -90,7 +84,7 @@ body {
     color: white;
     cursor: pointer;
     margin-right: 10px;
-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .signup-btn:hover {
@@ -118,14 +112,19 @@ transition: background-color 0.3s ease;
 
 .main-content {
     flex: 1;
+    position: relative;
+    z-index: 5;
 }
 
 footer {
-    background-color: #0A0D18;
+    background-color: rgba(10, 13, 24, 0.9);
+    backdrop-filter: blur(10px);
     border-top: 1px solid #2C2F45;
     padding: 40px 50px;
     font-family: 'Comfortaa', sans-serif;
     color: white;
+    position: relative;
+    z-index: 10;
 }
 
 .footer-content {
@@ -367,12 +366,12 @@ footer {
     border-radius: 50%;
 }
 
-input:checked + .toggle-slider {
+input:checked+.toggle-slider {
     background-color: #5638E5;
     border-color: #5638E5;
 }
 
-input:checked + .toggle-slider:before {
+input:checked+.toggle-slider:before {
     transform: translateX(24px);
 }
 
@@ -511,7 +510,7 @@ input:checked + .toggle-slider:before {
     text-align: left;
 }
 
-.comparison-table th, 
+.comparison-table th,
 .comparison-table td {
     padding: 15px;
     border-bottom: 1px solid #2C2F45;
@@ -551,20 +550,20 @@ input:checked + .toggle-slider:before {
     .pricing-container {
         padding: 30px 15px;
     }
-    
+
     .pricing-title {
         font-size: 32px;
     }
-    
+
     .pricing-subtitle {
         font-size: 16px;
     }
-    
+
     .product-tab {
         padding: 10px 15px;
         font-size: 14px;
     }
-    
+
     .pricing-card {
         width: 100%;
         max-width: 350px;

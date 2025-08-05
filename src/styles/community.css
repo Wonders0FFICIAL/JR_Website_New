@@ -15,21 +15,15 @@
 }
 
 body {
-    background-color: #090C15;
     color: white;
     font-family: 'Comfortaa', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px; 
+    padding: 15px 25px;
     background-color: #0A0D18;
     border-bottom: 1px solid #5638E5;
 }
@@ -37,7 +31,7 @@ body {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 20px;  
+    gap: 20px;
 }
 
 .logo {
@@ -90,7 +84,7 @@ body {
     color: white;
     cursor: pointer;
     margin-right: 10px;
-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .signup-btn:hover {
@@ -183,7 +177,7 @@ transition: background-color 0.3s ease;
     border: 2px solid transparent;
     border-radius: 12px;
     background: linear-gradient(#0E0F1D, #0E0F1D) padding-box,
-                linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) border-box;
+        linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) border-box;
 }
 
 .community-card.twitter {
@@ -235,6 +229,7 @@ transition: background-color 0.3s ease;
 .community-btn.discord {
     background-color: #5865F2;
 }
+
 .community-btn.discord:hover {
     background-color: #4752C4;
 }
@@ -243,6 +238,7 @@ transition: background-color 0.3s ease;
     background-color: #363d46;
     color: #f0f6fc;
 }
+
 .community-btn.github:hover {
     background-color: #30363d;
 }
@@ -250,6 +246,7 @@ transition: background-color 0.3s ease;
 .community-btn.reddit {
     background-color: #FF4500;
 }
+
 .community-btn.reddit:hover {
     background-color: #e63c00;
 }
@@ -258,6 +255,7 @@ transition: background-color 0.3s ease;
     background-color: #d4d1e4;
     color: #090C15;
 }
+
 .community-btn.forums:hover {
     background-color: #b6b4c4;
 }
@@ -265,21 +263,24 @@ transition: background-color 0.3s ease;
 .community-btn.youtube {
     background-color: #FF0000;
 }
+
 .community-btn.youtube:hover {
     background-color: #cc0000;
 }
 
 .community-btn.instagram {
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
+
 .community-btn.instagram:hover {
-    background: linear-gradient(45deg, #d4852a 0%,#c55a33 25%,#b8213a 50%,#a91d5a 75%,#9a1577 100%);
+    background: linear-gradient(45deg, #d4852a 0%, #c55a33 25%, #b8213a 50%, #a91d5a 75%, #9a1577 100%);
 }
 
 .community-btn.twitter {
     background-color: #0f87d6;
     color: #e7e9ea;
 }
+
 .community-btn.twitter:hover {
     background-color: #0C7BC4;
 }
@@ -287,6 +288,7 @@ transition: background-color 0.3s ease;
 .community-btn.mastodon {
     background-color: #563ACC;
 }
+
 .community-btn.mastodon:hover {
     background-color: #4a2eb3;
 }
@@ -358,14 +360,19 @@ transition: background-color 0.3s ease;
 
 .main-content {
     flex: 1;
+    position: relative;
+    z-index: 5;
 }
 
 footer {
-    background-color: #0A0D18;
+    background-color: rgba(10, 13, 24, 0.9);
+    backdrop-filter: blur(10px);
     border-top: 1px solid #2C2F45;
     padding: 40px 50px;
     font-family: 'Comfortaa', sans-serif;
     color: white;
+    position: relative;
+    z-index: 10;
 }
 
 .footer-content {
