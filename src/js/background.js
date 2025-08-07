@@ -9,6 +9,10 @@ function getCurrentPage() {
         return 'pricing';
     } else if (filename.includes('community') || document.querySelector('.community-card')) {
         return 'community';
+    } else if (filename.includes('signup') || document.querySelector('.signup-container')) {
+        return 'signup';
+    } else if (filename.includes('login') || document.querySelector('.login-container')) {
+        return 'login';
     } else {
         return 'other';
     }

@@ -252,12 +252,12 @@ body {
 }
 
 .community-btn.forums {
-    background-color: #d4d1e4;
+    background-color: #ffffff;
     color: #090C15;
 }
 
 .community-btn.forums:hover {
-    background-color: #b6b4c4;
+    background-color: #dddce2;
 }
 
 .community-btn.youtube {
