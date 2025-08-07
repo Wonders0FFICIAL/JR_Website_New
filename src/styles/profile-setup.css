@@ -25,6 +25,41 @@ body {
   min-height: 100vh;
 }
 
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #333;
+  border-top: 4px solid #5638e5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-indicator p {
+  color: white;
+  font-size: 16px;
+  margin: 0;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -90,7 +125,7 @@ body {
   color: white;
   cursor: pointer;
   margin-right: 10px;
-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .signup-btn:hover {
@@ -179,6 +214,11 @@ transition: background-color 0.3s ease;
   box-shadow: 0 0 15px rgba(86, 56, 229, 0.5);
 }
 
+.profile-image:focus {
+  outline: 2px solid #5638e5;
+  outline-offset: 2px;
+}
+
 .profile-image i {
   font-size: 60px;
   color: #5638e5;
@@ -204,6 +244,22 @@ transition: background-color 0.3s ease;
 .upload-btn:hover {
   background-color: #4325c2;
   transform: translateY(-2px);
+}
+
+.upload-btn:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.file-info {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.file-info small {
+  color: #aaa;
+  font-size: 12px;
 }
 
 .input-container {
@@ -258,12 +314,20 @@ transition: background-color 0.3s ease;
   border-color: #5638e5;
 }
 
+.input-group input.error {
+  border-color: #ff0000;
+}
+
 .error-message {
   color: #ff0000;
   font-size: 12px;
   margin-top: 6px;
   min-height: 16px;
   display: block;
+}
+
+.error-message.error-style {
+  color: #ff0000;
 }
 
 .btn {
@@ -286,6 +350,12 @@ transition: background-color 0.3s ease;
   transform: translateY(-2px);
 }
 
+.btn:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .secondary-btn {
   background-color: transparent;
   border: 1px solid #5638e5;
@@ -299,6 +369,12 @@ transition: background-color 0.3s ease;
 
 .secondary-btn:hover {
   background-color: #5638e51a;
+}
+
+.secondary-btn:disabled {
+  border-color: #666;
+  color: #666;
+  cursor: not-allowed;
 }
 
 .modal {
@@ -322,6 +398,12 @@ transition: background-color 0.3s ease;
   border-radius: 15px;
   border: 2px solid #5638e5;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.error-modal-content {
+  max-width: 400px;
 }
 
 .modal-header {
@@ -337,15 +419,20 @@ transition: background-color 0.3s ease;
   color: #fff;
 }
 
-.close-modal {
+.close-modal,
+.close-error-modal {
   color: #aaa;
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
-.close-modal:hover {
+.close-modal:hover,
+.close-error-modal:hover {
   color: #fff;
 }
 
@@ -360,6 +447,18 @@ transition: background-color 0.3s ease;
   overflow: hidden;
   margin-bottom: 20px;
   border-radius: 8px;
+  position: relative;
+}
+
+.cropper-container.loading::after {
+  content: "Loading image...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 16px;
+  z-index: 10;
 }
 
 #image-cropper {
@@ -370,15 +469,21 @@ transition: background-color 0.3s ease;
 
 .cropper-controls {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 15px;
   margin-bottom: 15px;
 }
 
 .zoom-controls {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+}
+
+.zoom-value {
+  text-align: center;
+  color: #aaa;
 }
 
 .icon-btn {
@@ -397,6 +502,12 @@ transition: background-color 0.3s ease;
 
 .icon-btn:hover {
   background-color: #5638e51a;
+}
+
+.icon-btn:disabled {
+  border-color: #666;
+  color: #666;
+  cursor: not-allowed;
 }
 
 #zoom-slider {
@@ -434,6 +545,19 @@ transition: background-color 0.3s ease;
   display: flex;
   justify-content: flex-end;
   gap: 15px;
+}
+
+.cropper-view-box {
+  border: 2px solid #5638e5 !important;
+  border-radius: 50% !important;
+}
+
+.cropper-face {
+  background-color: transparent !important;
+}
+
+.cropper-dashed {
+  border-color: rgba(86, 56, 229, 0.5) !important;
 }
 
 footer {
@@ -539,16 +663,47 @@ footer {
   #zoom-slider {
     width: 100%;
   }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .modal-footer .btn,
+  .modal-footer .secondary-btn {
+    width: 100%;
+  }
 }
 
-.error-message {
-  color: #ff0000;
-  font-size: 12px;
-  margin-top: 6px;
-  min-height: 16px;
-  display: block;
+*:focus {
+  outline: 2px solid #5638e5;
+  outline-offset: 2px;
 }
 
-.error-message.error-style {
-  color: #ff0000;
+button:focus,
+input:focus {
+  outline: 2px solid #5638e5;
+  outline-offset: 1px;
+}
+
+.modal.show {
+  display: flex !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal.show .modal-content {
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal.show {
+  animation: fadeIn 0.3s ease-out;
 }

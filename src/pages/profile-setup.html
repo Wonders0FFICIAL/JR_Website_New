@@ -21,6 +21,12 @@
   </head>
 
   <body>
+
+    <div id="loading-indicator" class="loading-indicator" style="display: none;">
+      <div class="loading-spinner"></div>
+      <p>Processing image...</p>
+    </div>
+
     <div class="main-content">
       <nav class="navbar">
         <div class="nav-left">
@@ -37,9 +43,9 @@
         </div>
 
         <div class="signup-hamburger">
-<a href="signup.html" style="text-decoration: none">
-  <button class="signup-btn">Sign Up</button>
-</a>
+          <a href="signup.html" style="text-decoration: none">
+            <button class="signup-btn">Sign Up</button>
+          </a>
           <div class="hamburger">
             <div></div>
             <div></div>
@@ -55,8 +61,8 @@
           <div class="profile-picture-container">
             <label>Profile Picture</label>
             <div class="profile-image-wrapper">
-              <div class="profile-image" id="profile-image">
-                <i class="fa fa-user"></i>
+              <div class="profile-image" id="profile-image" role="button" tabindex="0" aria-label="Profile picture - click to upload or edit">
+                <i class="fa fa-user" aria-hidden="true"></i>
               </div>
               <button id="upload-picture-btn" class="upload-btn">
                 Upload picture
@@ -64,9 +70,13 @@
               <input
                 type="file"
                 id="profile-image-input"
-                accept="image/*"
+                accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
                 style="display: none"
+                aria-label="Select profile image file"
               />
+            </div>
+            <div class="file-info">
+              <small>Supported formats: JPEG, PNG, GIF, WebP (Max 10MB)</small>
             </div>
           </div>
 
@@ -76,7 +86,7 @@
               <div class="input-icon">
                 <img
                   src="../assets/images/username.png"
-                  alt="Username"
+                  alt="Username icon"
                   class="input-icon-img"
                 />
               </div>
@@ -84,9 +94,12 @@
                 type="text"
                 id="username"
                 placeholder="Enter your username"
+                aria-describedby="username-error"
+                maxlength="21"
+                autocomplete="username"
               />
             </div>
-            <div id="username-error" class="error-message"></div>
+            <div id="username-error" class="error-message" role="alert"></div>
           </div>
 
           <div class="input-group">
@@ -95,7 +108,7 @@
               <div class="input-icon">
                 <img
                   src="../assets/images/display_name.png"
-                  alt="Display Name"
+                  alt="Display name icon"
                   class="input-icon-img"
                 />
               </div>
@@ -103,9 +116,12 @@
                 type="text"
                 id="display-name"
                 placeholder="Enter a display name"
+                aria-describedby="display-name-error"
+                maxlength="30"
+                autocomplete="name"
               />
             </div>
-            <div id="display-name-error" class="error-message"></div>
+            <div id="display-name-error" class="error-message" role="alert"></div>
           </div>
 
           <button id="save-profile-button" class="btn">Save Profile</button>
@@ -113,20 +129,20 @@
       </div>
     </div>
 
-    <div id="image-cropper-modal" class="modal">
+    <div id="image-cropper-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
       <div class="modal-content">
         <div class="modal-header">
-          <h3>Adjust Profile Picture</h3>
-          <span class="close-modal">&times;</span>
+          <h3 id="modal-title">Adjust Profile Picture</h3>
+          <button class="close-modal" aria-label="Close modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="cropper-container">
-            <div id="image-cropper"></div>
+            <div id="image-cropper" aria-label="Image cropping area"></div>
           </div>
           <div class="cropper-controls">
             <div class="zoom-controls">
-              <button id="zoom-out-btn" class="icon-btn">
-                <i class="fa fa-minus"></i>
+              <button id="zoom-out-btn" class="icon-btn" aria-label="Zoom out">
+                <i class="fa fa-minus" aria-hidden="true"></i>
               </button>
               <input
                 type="range"
@@ -135,15 +151,35 @@
                 max="3"
                 step="0.1"
                 value="1"
+                aria-label="Zoom level"
               />
-              <button id="zoom-in-btn" class="icon-btn">
-                <i class="fa fa-plus"></i>
+              <button id="zoom-in-btn" class="icon-btn" aria-label="Zoom in">
+                <i class="fa fa-plus" aria-hidden="true"></i>
               </button>
+            </div>
+            <div class="zoom-value">
+              <small>Zoom: <span id="zoom-display">100%</span></small>
             </div>
           </div>
         </div>
         <div class="modal-footer">
+          <button id="cancel-crop-btn" class="secondary-btn">Cancel</button>
           <button id="done-crop-btn" class="btn">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="error-modal" class="modal" role="dialog" aria-labelledby="error-title" aria-modal="true">
+      <div class="modal-content error-modal-content">
+        <div class="modal-header">
+          <h3 id="error-title">Error</h3>
+          <button class="close-error-modal" aria-label="Close error modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p id="error-message"></p>
+        </div>
+        <div class="modal-footer">
+          <button id="close-error-btn" class="btn">OK</button>
         </div>
       </div>
     </div>
