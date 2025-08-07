@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 email: emailInput.value,
             }));
             
-            window.location.href = 'profile.html';
+            window.location.href = 'profile-setup.html';
         } else {
             if (!isEmailValid) emailInput.focus();
             else if (!isPasswordValid) passwordInput.focus();
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             provider: 'google'
         };
         sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = 'profile.html';
+        window.location.href = 'profile-setup.html';
     });
     
     githubBtn.addEventListener('click', () => {
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             provider: 'github'
         };
         sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = 'profile.html';
+        window.location.href = 'profile-setup.html';
     });
     
     appleBtn.addEventListener('click', () => {
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             provider: 'apple'
         };
         sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = 'profile.html';
+        window.location.href = 'profile-setup.html';
     });
     
     loginBtn.addEventListener('click', () => {

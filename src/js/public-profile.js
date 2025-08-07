@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editPicBtn = document.querySelector('.edit-pic-btn');
     if (editPicBtn) {
         editPicBtn.addEventListener('click', () => {
-            window.location.href = 'profile.html';
+            window.location.href = 'profile-setup.html';
         });
     }
 

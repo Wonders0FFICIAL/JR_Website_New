@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     editProfileBtn.addEventListener('click', () => {
-        window.location.href = 'profile.html';
+        window.location.href = 'profile-setup.html';
     });
     
     logoutBtn.addEventListener('click', (e) => {
