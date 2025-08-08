@@ -13,6 +13,8 @@ function getCurrentPage() {
         return 'signup';
     } else if (filename.includes('login') || document.querySelector('.login-container')) {
         return 'login';
+    } else if (filename.includes('profile-setup') || document.querySelector('.profile-setup-container') || document.querySelector('.card h2') && document.querySelector('.card h2').textContent === 'Profile') {
+        return 'profile-setup';
     } else {
         return 'other';
     }
