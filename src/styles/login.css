@@ -168,7 +168,7 @@ transition: background-color 0.3s ease;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 35px;
     position: relative;
 }
 
@@ -253,17 +253,18 @@ transition: background-color 0.3s ease;
 .error-message {
     color: #ff0000;
     font-size: 12px;
+    position: absolute;
+    top: 100%;
+    left: 0;
     margin-top: 6px;
-    min-height: 0; 
+    width: 100%;
     display: block;
     visibility: visible; 
-    transition: min-height 0.2s ease; 
 }
 
 .error-message:empty {
-    margin: 0;
-    min-height: 0;
-    visibility: hidden; 
+    visibility: hidden;
+    opacity: 0;
 }
 
 .btn {
