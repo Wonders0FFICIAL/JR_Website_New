@@ -52,15 +52,15 @@ body {
 
 .hero-section {
     text-align: center;
-    padding: 80px 40px 40px;
-    margin-bottom: 20px;
+    padding: 60px 40px 10px;
+    margin-bottom: 10px;
 }
 
 .hero-section h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    color: white; 
-    background: none; 
+    color: white;
+    background: none;
     -webkit-background-clip: initial;
     -webkit-text-fill-color: initial;
     background-clip: initial;
@@ -70,7 +70,7 @@ body {
     font-size: 1.2rem;
     color: #ccc;
     max-width: 600px;
-    margin: 0 auto 40px;
+    margin: 0 auto 15px;
     line-height: 1.6;
 }
 
@@ -121,8 +121,8 @@ body {
 
 
 .search-bar button i.fas {
-    color: #ffffff !important; 
-    font-size: 15px; 
+    color: #ffffff !important;
+    font-size: 15px;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
 }
@@ -139,8 +139,8 @@ body {
 .category-filter {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 0 40px 30px;
+    gap: 12px;
+    padding: 5px 40px 30px;
     flex-wrap: wrap;
 }
 
@@ -164,7 +164,7 @@ body {
 }
 
 .featured-section {
-    padding: 0 40px 30px;
+    padding: 20px 40px 30px;
 }
 
 .section-title {
@@ -508,8 +508,6 @@ body {
     background: linear-gradient(45deg, #5638E5, #8b73ff);
     border-color: transparent;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(86, 56, 229, 0.3);
 }
 
 footer {
@@ -679,7 +677,7 @@ footer {
     }
 
     .hero-section {
-        padding: 60px 20px 30px;
+        padding: 40px 20px 10px;
     }
 
     .hero-section h1 {
