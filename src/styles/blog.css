@@ -59,7 +59,7 @@ body {
 .hero-section h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    color: #543fce; 
+    color: white; 
     background: none; 
     -webkit-background-clip: initial;
     -webkit-text-fill-color: initial;
@@ -171,7 +171,7 @@ body {
     font-size: 2rem;
     margin-bottom: 40px;
     text-align: center;
-    color: #8b73ff;
+    color: #ffffff;
 }
 
 .featured-grid {
@@ -334,7 +334,7 @@ body {
     font-size: 2rem;
     margin-bottom: 40px;
     text-align: center;
-    color: #8b73ff;
+    color: #ffffff;
 }
 
 .recent-section .blog-grid {
