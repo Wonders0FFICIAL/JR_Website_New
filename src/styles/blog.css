@@ -53,7 +53,7 @@ body {
 .hero-section {
     text-align: center;
     padding: 60px 40px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px; 
 }
 
 .hero-section h1 {
@@ -70,13 +70,13 @@ body {
     font-size: 1.2rem;
     color: #ccc;
     max-width: 600px;
-    margin: 0 auto 15px;
+    margin: 0 auto 30px;
     line-height: 1.6;
 }
 
 .search-bar {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 3px;
     position: relative;
 }
 
@@ -95,7 +95,6 @@ body {
 }
 
 .search-bar input:focus {
-    box-shadow: 0 0 20px rgba(86, 56, 229, 0.5);
     border-color: #8b73ff;
 }
 
@@ -140,7 +139,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 12px;
-    padding: 5px 40px 30px;
+    padding: 3px 40px 30px;
     flex-wrap: wrap;
 }
 
@@ -254,7 +253,7 @@ body {
 }
 
 .sidebar-post {
-    background: rgba(14, 15, 29, 0.8);
+    background: linear-gradient(135deg, rgba(14, 15, 29, 0.9), rgba(68, 48, 167, 0.2));
     border: 1px solid #4430A7;
     border-radius: 12px;
     padding: 25px;
@@ -677,11 +676,23 @@ footer {
     }
 
     .hero-section {
-        padding: 40px 20px 10px;
+        padding: 40px 20px 15px;
     }
 
     .hero-section h1 {
         font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        margin: 0 auto 25px; 
+    }
+
+    .search-bar {
+        margin: 0 auto 2px;
+    }
+
+    .category-filter {
+        padding: 2px 20px 30px; 
     }
 
     .featured-grid {
@@ -689,8 +700,7 @@ footer {
     }
 
     .featured-section,
-    .recent-section,
-    .category-filter {
+    .recent-section {
         padding-left: 20px;
         padding-right: 20px;
     }
