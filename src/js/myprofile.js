@@ -1,153 +1,164 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const userMenuTrigger = document.getElementById('user-menu-trigger');
-    const userMenu = document.getElementById('user-menu');
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const editProfileBtn = document.getElementById('edit-profile-btn');
-    const logoutBtn = document.getElementById('logout-btn');
-    const profileImage = document.getElementById('profile-image');
-    const navProfileImage = document.getElementById('nav-profile-image');
-    const menuProfileImage = document.getElementById('menu-profile-image');
-    const displayNameEl = document.getElementById('display-name');
-    const usernameEl = document.getElementById('username');
-    const menuDisplayName = document.getElementById('menu-display-name');
-    const menuUsername = document.getElementById('menu-username');
-    
-    function checkAuth() {
-        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        if (!currentUser) {
-            window.location.href = 'signup.html';
-        }
-        return currentUser;
-    }
-    
-    function loadUserData() {
-        const currentUser = checkAuth();
-        
-        if (currentUser.username) {
-            usernameEl.textContent = '@' + currentUser.username;
-            menuUsername.textContent = '@' + currentUser.username;
-        }
-        
-        if (currentUser.displayName) {
-            displayNameEl.textContent = currentUser.displayName;
-            menuDisplayName.textContent = currentUser.displayName;
-        }
-        
-        const profileImageSrc = sessionStorage.getItem('profileImage');
-        if (profileImageSrc) {
-            profileImage.src = profileImageSrc;
-            navProfileImage.src = profileImageSrc;
-            menuProfileImage.src = profileImageSrc;
-        }
-    }
-    
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-    
-    userMenuTrigger.addEventListener('click', () => {
-        userMenu.classList.toggle('active');
-    });
-    
-    document.addEventListener('click', (e) => {
-        if (!userMenuTrigger.contains(e.target) && !userMenu.contains(e.target)) {
-            userMenu.classList.remove('active');
-        }
-    });
-    
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            button.classList.add('active');
-            const tabId = button.getAttribute('data-tab');
-            document.getElementById(`${tabId}-content`).classList.add('active');
-        });
-    });
-    
-    editProfileBtn.addEventListener('click', () => {
-        window.location.href = 'profile-setup.html';
-    });
-    
-    logoutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        sessionStorage.removeItem('currentUser');
-        sessionStorage.removeItem('profileImage');
-        sessionStorage.removeItem('cropperData');
-        sessionStorage.removeItem('cropperZoom');
-        window.location.href = 'signup.html';
-    });
-    
-    function createThemePicker() {
-        const profileHeaderBg = document.querySelector('.profile-header-bg');
-        const themePicker = document.createElement('div');
-        themePicker.className = 'theme-picker';
-        
-        const themes = ['purple', 'blue', 'pink', 'orange', 'green'];
-        
-        themes.forEach(theme => {
-            const themeOption = document.createElement('div');
-            themeOption.className = `theme-option ${theme}`;
-            themeOption.addEventListener('click', () => {
-                themes.forEach(t => document.body.classList.remove(`theme-${t}`));
-                document.body.classList.add(`theme-${theme}`);
-                sessionStorage.setItem('userTheme', theme);
-            });
-            themePicker.appendChild(themeOption);
-        });
-        
-        profileHeaderBg.appendChild(themePicker);
-        
-        const savedTheme = sessionStorage.getItem('userTheme');
-        if (savedTheme) {
-            document.body.classList.add(`theme-${savedTheme}`);
-        }
-    }
-    
-    function animateEmptyStates() {
-        const emptyStates = document.querySelectorAll('.empty-state, .empty-projects, .empty-activity');
-        
-        emptyStates.forEach(state => {
-            state.style.opacity = '0';
-            state.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                state.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                state.style.opacity = '1';
-                state.style.transform = 'translateY(0)';
-            }, 300);
-        });
-    }
+const navBtns = document.querySelectorAll('.nav-btn');
+const contentSections = document.querySelectorAll('.content-section');
+const profileImg = document.getElementById('profileImg');
+const contactForm = document.getElementById('contactForm');
+const themeToggle = document.getElementById('themeToggle');
+const timelineItems = document.querySelectorAll('.timeline-item');
 
-    function addHoverEffects() {
-        const items = document.querySelectorAll('.achievement, .badge');
+navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        navBtns.forEach(b => b.classList.remove('active'));
+        contentSections.forEach(section => section.classList.remove('active'));
+        btn.classList.add('active');
+        const sectionId = btn.getAttribute('data-section');
+        const targetSection = document.getElementById(sectionId);
+        targetSection.classList.add('active');
+    });
+});
+
+profileImg.addEventListener('click', () => {
+    const newImageUrl = prompt('Enter new profile image URL:');
+    if (newImageUrl) {
+        profileImg.src = newImageUrl;
+        showNotification('Profile image updated successfully!', 'success');
+    }
+});
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = contactForm.querySelector('input[type="text"]').value;
+    const email = contactForm.querySelector('input[type="email"]').value;
+    const message = contactForm.querySelector('textarea').value;
+
+    if (!name || !email || !message) {
+        showNotification('Please fill in all fields', 'error');
+        return;
+    }
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        showNotification('Please enter a valid email address', 'error');
+        return;
+    }
+    
+    setTimeout(() => {
+        showNotification('Message sent successfully!', 'success');
+        contactForm.reset();
+    }, 1000);
+});
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    
+    const icon = themeToggle.querySelector('i');
+    if (document.body.classList.contains('dark-theme')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+});
+
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+portfolioItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const title = item.querySelector('h3').textContent;
+        const description = item.querySelector('p').textContent;
+        const modal = document.createElement('div');
+        modal.className = 'portfolio-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h2>${title}</h2>
+                <p>${description}</p>
+                <div class="modal-buttons">
+                    <button class="btn-primary">View Project</button>
+                    <button class="btn-secondary">Close</button>
+                </div>
+            </div>
+        `;
         
-        items.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                if (item.classList.contains('locked')) return;
-                
-                const icon = item.querySelector('.achievement-icon, .badge-icon');
-                icon.style.transform = 'scale(1.1)';
-                icon.style.transition = 'transform 0.3s ease';
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                const icon = item.querySelector('.achievement-icon, .badge-icon');
-                icon.style.transform = 'scale(1)';
-            });
+        document.body.appendChild(modal);
+        
+        const closeBtn = modal.querySelector('.modal-close');
+        const closeBtnSecondary = modal.querySelector('.btn-secondary');
+        
+        const closeModal = () => {
+            modal.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => {
+                document.body.removeChild(modal);
+            }, 300);
+        };
+        
+        closeBtn.addEventListener('click', closeModal);
+        closeBtnSecondary.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
         });
-    }
+    });
+});
+
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
     
-    function init() {
-        loadUserData();
-        createThemePicker();
-        animateEmptyStates();
-        addHoverEffects();
-    }
+    document.body.appendChild(notification);
     
-    init();
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+function animateOnScroll() {
+    timelineItems.forEach(item => {
+        const position = item.getBoundingClientRect();
+        
+        if(position.top < window.innerHeight && position.bottom >= 0) {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+timelineItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+});
+
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+
+const statNumbers = document.querySelectorAll('.stat-number');
+statNumbers.forEach(stat => {
+    const target = parseInt(stat.textContent);
+    let current = 0;
+    const increment = Math.ceil(target / 50);
+    
+    const updateStat = () => {
+        if (current < target) {
+            current += increment;
+            if (current > target) current = target;
+            stat.textContent = current.toLocaleString();
+            setTimeout(updateStat, 20);
+        }
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                updateStat();
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+    
+    observer.observe(stat);
 });

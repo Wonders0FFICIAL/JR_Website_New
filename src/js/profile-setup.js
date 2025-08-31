@@ -38,6 +38,81 @@ document.addEventListener('DOMContentLoaded', () => {
   const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
   const CROPPED_SIZE = 300;
 
+  function validateUsername(username) {
+    const u = username.trim();
+    
+    if (!/^[a-zA-Z0-9._-]*$/.test(u)) {
+      return { valid: false, error: 'Only letters, numbers, periods, hyphens and underscores are allowed' };
+    }
+    
+    if (/^[._-]/.test(u) || /[._-]$/.test(u)) {
+      return { valid: false, error: 'Cannot start or end with period, underscore, or hyphen' };
+    }
+    
+    if (/[._-]{2}/.test(u)) {
+      return { valid: false, error: 'Cannot use consecutive periods, underscores, or hyphens' };
+    }
+    
+    const reserved = ['admin', 'moderator', 'root', 'null'];
+    if (reserved.includes(u.toLowerCase())) {
+      return { valid: false, error: 'This username is reserved' };
+    }
+    
+    const emailPattern = /^[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+    if (emailPattern.test(u) || u.toLowerCase().startsWith('http')) {
+      return { valid: false, error: 'Username cannot be an email address or URL' };
+    }
+    
+    if (!u) {
+      return { valid: false, error: 'Username is required' };
+    }
+    
+    if (u.length < 3 || u.length > 21) {
+      return { valid: false, error: 'Usernames can be 3 to 21 characters long' };
+    }
+    
+    return { valid: true };
+  }
+
+  function validateDisplayName(displayName) {
+    const d = displayName.trim();
+  
+    if (!/^[a-zA-Z0-9._-]*$/.test(d)) {
+      return { valid: false, error: 'Only letters, numbers, periods, hyphens and underscores are allowed' };
+    }
+
+    if (/[._-]{2}/.test(d)) {
+      return { valid: false, error: 'Cannot use consecutive periods, underscores, or hyphens' };
+    }
+    
+    if (d.length < 2 || d.length > 30) {
+      return { valid: false, error: 'Display name must be 2-30 characters' };
+    }
+  
+    return { valid: true };
+  }
+
+  function showError(message) {
+    errorMessage.textContent = message;
+    errorModal.style.display = 'flex';
+    closeErrorBtn?.focus();
+  }
+
+  function hideError() {
+    errorMessage.textContent = '';
+    errorModal.style.display = 'none';
+  }
+
+  function showValidationError(element, message) {
+    element.textContent = message;
+    element.classList.add('error-style');
+  }
+
+  function clearValidationError(element) {
+    element.textContent = '';
+    element.classList.remove('error-style');
+  }
+
   function showLoading() {
     loadingIndicator.style.display = 'flex';
     isProcessing = true;
@@ -52,15 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     [saveProfileButton, uploadPictureBtn, doneCropBtn].forEach(btn => {
       if (btn) btn.disabled = disabled;
     });
-  }
-  function showError(message) {
-    errorMessage.textContent = message;
-    errorModal.style.display = 'flex';
-    closeErrorBtn?.focus();
-  }
-  function hideError() {
-    errorMessage.textContent = '';
-    errorModal.style.display = 'none';
   }
   function updateZoomDisplay(zoom) {
     zoomDisplay.textContent = `${Math.round(zoom * 100)}%`;
@@ -220,6 +286,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function saveProfile() {
     if (isProcessing) return;
+    
+    const usernameValidation = validateUsername(usernameInput.value);
+    if (!usernameValidation.valid) {
+      showValidationError(usernameError, usernameValidation.error);
+      usernameInput.focus();
+      return;
+    }
+    
+    if (displayNameInput.value.trim()) {
+      const displayNameValidation = validateDisplayName(displayNameInput.value);
+      if (!displayNameValidation.valid) {
+        showValidationError(displayNameError, displayNameValidation.error);
+        displayNameInput.focus();
+        return;
+      }
+    }
+    
     showLoading();
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser')) || {};
     currentUser.username = usernameInput.value.trim();
@@ -255,6 +338,32 @@ document.addEventListener('DOMContentLoaded', () => {
     zoomSlider.addEventListener('input', handleZoomSlider);
     zoomInBtn.addEventListener('click', handleZoomIn);
     zoomOutBtn.addEventListener('click', handleZoomOut);
+
+    usernameInput.addEventListener('input', () => {
+      const value = usernameInput.value;
+      const validation = validateUsername(value);
+      
+      if (validation.valid) {
+        clearValidationError(usernameError);
+      } else {
+        showValidationError(usernameError, validation.error);
+      }
+    });
+    
+    displayNameInput.addEventListener('input', () => {
+      const value = displayNameInput.value;
+    
+      if (value.trim()) {
+        const validation = validateDisplayName(value);
+        if (validation.valid) {
+          clearValidationError(displayNameError);
+        } else {
+          showValidationError(displayNameError, validation.error);
+        }
+      } else {
+        clearValidationError(displayNameError);
+      }
+    });
 
     saveProfileButton.addEventListener('click', e => { e.preventDefault(); saveProfile(); });
 
