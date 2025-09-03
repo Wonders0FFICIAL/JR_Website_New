@@ -24,8 +24,6 @@ body {
   font-family: 'Comfortaa', sans-serif;
   line-height: 1.6;
   color: white;
-  min-height: 100vh;
-  position: relative;
 }
 
 .navbar {
@@ -145,7 +143,7 @@ body {
 }
 
 .cover-photo {
-  height: 200px;
+  height: 250px;
   background: linear-gradient(135deg, #5638E5 0%, #0E0634 100%);
   position: relative;
   display: flex;
@@ -155,35 +153,61 @@ body {
 
 .profile-image-container {
   position: absolute;
-  bottom: -50px;
+  bottom: -75px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .profile-image {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  border: 5px solid #5638E5;
-  box-shadow: 0 5px 20px rgba(86, 56, 229, 0.5);
+  border: 6px solid #5638E5;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   object-fit: cover;
+  position: relative;
 }
 
-.profile-image:hover {
-  transform: scale(1.05);
+.profile-actions {
+  margin-top: 25px;
+  margin-bottom: -25px;
+}
+
+.edit-profile-btn {
+  background: linear-gradient(45deg, #5638E5, #0E0634);
+  color: white;
+  border: 2px solid #5638E5;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comfortaa', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-profile-btn:hover {
+  background: linear-gradient(45deg, #0E0634, #5638E5);
 }
 
 .profile-info {
   text-align: center;
-  padding: 60px 20px 20px;
+  padding: 70px 20px 20px;
 }
 
 .profile-name {
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
+  margin-bottom: 5px;
+}
+
+.profile-username {
+  font-size: 1.1rem;
+  color: #aaa;
   margin-bottom: 10px;
 }
 
@@ -692,7 +716,7 @@ footer {
   padding: 15px 25px;
   color: white;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   animation: slideIn 0.3s ease;
 }
@@ -710,6 +734,7 @@ footer {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -721,10 +746,166 @@ footer {
     transform: translateX(0);
     opacity: 1;
   }
+
   to {
     transform: translateX(100%);
     opacity: 0;
   }
+}
+
+.profile-image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.profile-image-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content-image {
+  background: rgba(14, 15, 29, 0.95);
+  border: 2px solid #5638E5;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.profile-image-modal.show .modal-content-image {
+  transform: scale(1);
+}
+
+.modal-close-image {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.modal-close-image:hover {
+  color: #5638E5;
+}
+
+.modal-content-image h3 {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.image-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.image-option-btn {
+  background: linear-gradient(45deg, #5638E5, #0E0634);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comfortaa', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.image-option-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(86, 56, 229, 0.4);
+}
+
+.url-input-group {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.url-input-group.show {
+  display: flex;
+}
+
+.url-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #2C2F45;
+  border-radius: 8px;
+  background: rgba(14, 15, 29, 0.9);
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.url-input:focus {
+  outline: none;
+  border-color: #5638E5;
+  box-shadow: 0 0 10px rgba(86, 56, 229, 0.3);
+}
+
+.url-input::placeholder {
+  color: #888;
+}
+
+.url-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.url-save-btn,
+.url-cancel-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Comfortaa', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.url-save-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.url-cancel-btn {
+  background: #f44336;
+  color: white;
+}
+
+.url-save-btn:hover,
+.url-cancel-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.file-input {
+  display: none;
 }
 
 .portfolio-modal {
@@ -769,7 +950,8 @@ footer {
   gap: 15px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -789,9 +971,10 @@ footer {
   border: 2px solid #eee;
 }
 
-.btn-primary:hover, .btn-secondary:hover {
+.btn-primary:hover,
+.btn-secondary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes slideUp {
@@ -799,6 +982,7 @@ footer {
     transform: translateY(50px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -809,6 +993,7 @@ footer {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -894,11 +1079,28 @@ footer {
   .footer-section {
     width: 100%;
   }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-image-container {
+    bottom: -60px;
+  }
+
+  .profile-info {
+    padding: 55px 20px 20px;
+  }
 }
 
 @media (max-width: 480px) {
   .profile-name {
     font-size: 2rem;
+  }
+
+  .profile-username {
+    font-size: 1rem;
   }
 
   .profile-title {
@@ -907,5 +1109,22 @@ footer {
 
   .content-section h2 {
     font-size: 1.5rem;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-image-container {
+    bottom: -45px;
+  }
+
+  .profile-info {
+    padding: 40px 20px 20px;
+  }
+
+  .modal-content-image {
+    padding: 30px 20px;
   }
 }
