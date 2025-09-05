@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
+    function createStars() {
+        const starsContainer = document.getElementById('stars');
+        const starsCount = 150;
+
+        for (let i = 0; i < starsCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+
+            const duration = Math.random() * 3 + 2;
+            star.style.animationDuration = `${duration}s`;
+
+            starsContainer.appendChild(star);
+        }
+    }
+
+    createStars();
+
     const projectsData = {
         'jr-lang': {
             name: 'JR. Lang',
@@ -14,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             technologies: ['Compiler', 'Runtime', 'Cross-platform', 'High Performance', 'Low-level', 'Memory-safe'],
             docsLink: 'docs/jr-lang',
-            downloadLink: 'downloads/jr-lang.zip'
+            downloadLink: 'downloads/jr-lang.zip',
+            category: 'development'
         },
         'jr-browse': {
             name: 'JR. Browse',
@@ -30,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             technologies: ['Web', 'Privacy', 'Security', 'Lightweight', 'Cross-platform', 'Chromium'],
             docsLink: 'docs/jr-browse',
-            downloadLink: 'downloads/jr-browse.zip'
+            downloadLink: 'downloads/jr-browse.zip',
+            category: 'browser'
         },
         'jr-ai': {
             name: 'JR. AI',
@@ -46,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             technologies: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Neural Networks', 'Edge AI', 'Cloud AI'],
             docsLink: 'docs/jr-ai',
-            downloadLink: 'https://ai.jrofficial.org'
+            downloadLink: 'https://ai.jrofficial.org',
+            category: 'ai'
         },
         'jr-cloud': {
             name: 'JR. Cloud',
@@ -62,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             technologies: ['Cloud Computing', 'IaaS', 'PaaS', 'Serverless', 'Containers', 'Microservices'],
             docsLink: 'docs/jr-cloud',
-            downloadLink: 'downloads/jr-cloud.zip'
+            downloadLink: 'downloads/jr-cloud.zip',
+            category: 'cloud'
         }
     };
 
@@ -75,100 +103,148 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTechTags = document.getElementById('modal-tech-tags');
     const modalDocsLink = document.getElementById('modal-docs-link');
     const modalDownloadLink = document.getElementById('modal-download-link');
-
+    const projectSearch = document.getElementById('project-search');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectsContainer = document.getElementById('projects-container');
     const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            filterProjects(filter);
+        });
+    });
+
+    projectSearch.addEventListener('input', () => {
+        const searchTerm = projectSearch.value.toLowerCase();
+        filterProjects('all', searchTerm);
+    });
+
+    function filterProjects(filter, searchTerm = '') {
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            const name = card.querySelector('.project-name').textContent.toLowerCase();
+            const desc = card.querySelector('.project-desc').textContent.toLowerCase();
+
+            const matchesCategory = filter === 'all' || category === filter;
+            const matchesSearch = searchTerm === '' ||
+                name.includes(searchTerm) ||
+                desc.includes(searchTerm);
+
+            if (matchesCategory && matchesSearch) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        let noResults = document.querySelector('.no-results');
+        if (visibleCount === 0) {
+            if (!noResults) {
+                noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.innerHTML = `
+  <i class="fas fa-search"></i>
+  <p>No projects found matching your criteria</p>
+  <button class="filter-btn" id="reset-filters" style="margin-top: 20px;">Reset Filters</button>
+`;
+                projectsContainer.appendChild(noResults);
+
+                document.getElementById('reset-filters').addEventListener('click', () => {
+                    filterButtons.forEach(btn => {
+                        if (btn.getAttribute('data-filter') === 'all') {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    projectSearch.value = '';
+                    filterProjects('all');
+                    projectsContainer.removeChild(noResults);
+                });
+            }
+        } else if (noResults) {
+            projectsContainer.removeChild(noResults);
+        }
+    }
+
     projectCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            if (e.target.classList.contains('docs-btn') || 
+            if (e.target.classList.contains('docs-btn') ||
                 e.target.classList.contains('download-btn') ||
-                e.target.closest('.docs-btn') || 
+                e.target.closest('.docs-btn') ||
                 e.target.closest('.download-btn')) {
                 return;
             }
 
             const projectId = card.getAttribute('data-project');
-            const projectData = projectsData[projectId];
-            
-            modalLogo.src = projectData.logo;
-            modalLogo.alt = `${projectData.name} Logo`;
-            modalTitle.textContent = projectData.name;
-            modalDescription.textContent = projectData.description;
-            
-            modalFeaturesList.innerHTML = '';
-            projectData.features.forEach(feature => {
-                const li = document.createElement('li');
-                li.textContent = feature;
-                modalFeaturesList.appendChild(li);
-            });
-            
-            modalTechTags.innerHTML = '';
-            projectData.technologies.forEach(tech => {
-                const span = document.createElement('span');
-                span.className = 'tech-tag';
-                span.textContent = tech;
-                modalTechTags.appendChild(span);
-            });
-            
-            modalDocsLink.href = projectData.docsLink;
-            modalDownloadLink.href = projectData.downloadLink;
-            
-            if (projectId === 'jr-ai') {
-                modalDownloadLink.textContent = 'Use';
-            } else {
-                modalDownloadLink.textContent = 'Download';
-            }
-            
-            document.querySelector('.modal-content').style.borderColor = '#5638E5';
-            document.querySelector('.modal-content').style.boxShadow = '0 0 30px rgba(86, 56, 229, 0.7)';
-            document.getElementById('modal-title').style.color = '#6f54f8';
-            document.querySelectorAll('.modal-features h3, .modal-tech h3').forEach(el => {
-                el.style.color = '#6f54f8';
-            });
-            document.getElementById('modal-docs-link').style.borderColor = '#5638E5';
-            document.getElementById('modal-docs-link').style.backgroundColor = '#0E0634';
-            document.getElementById('modal-download-link').style.backgroundColor = '#5638E5';
-            
-            document.querySelectorAll('.tech-tag').forEach(tag => {
-                tag.style.backgroundColor = '#1a1045';
-                tag.style.color = 'white';
-            });
+            const project = projectsData[projectId];
 
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            if (project) {
+                modalLogo.src = project.logo;
+                modalTitle.textContent = project.name;
+                modalDescription.textContent = project.description;
+
+                modalFeaturesList.innerHTML = '';
+                project.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    modalFeaturesList.appendChild(li);
+                });
+
+                modalTechTags.innerHTML = '';
+                project.technologies.forEach(tech => {
+                    const span = document.createElement('span');
+                    span.className = 'tech-tag';
+                    span.textContent = tech;
+                    modalTechTags.appendChild(span);
+                });
+
+                modalDocsLink.href = project.docsLink;
+                modalDownloadLink.href = project.downloadLink;
+
+                if (projectId === 'jr-ai') {
+                    modalDownloadLink.innerHTML = '<i class="fas fa-external-link-alt"></i> Use';
+                } else {
+                    modalDownloadLink.innerHTML = '<i class="fas fa-download"></i> Download';
+                }
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         });
     });
 
-    function closeModal() {
+    closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
-    }
-    
-    closeBtn.addEventListener('click', () => {
-        closeModal();
-    });
-    
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
     });
 
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
     });
 
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.addEventListener('click', (e) => {
-        e.stopPropagation();
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     });
 
-    const downloadButtons = document.querySelectorAll('.download-btn');
-    downloadButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            console.log('Download started for:', button.getAttribute('href'));
-        });
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
 });
