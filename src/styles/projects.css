@@ -667,7 +667,7 @@ body {
 .modal-github-btn {
     background-color: rgba(36, 41, 46, 0.8);
     color: white;
-    border: 1px solid white;
+    border: 1px solid rgb(128, 127, 131);
     transition: all 0.3s ease;
 }
 
@@ -696,6 +696,11 @@ body {
 .modal-download-btn .material-symbols-outlined {
     font-size: 22px;
     margin-right: -3px;
+}
+
+.modal-github-btn i.fab.fa-github {
+    font-size: 18px;
+    margin-bottom: 2px;
 }
 
 footer {
