@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             technologies: ['Compiler', 'Runtime', 'Cross-platform', 'High Performance', 'Low-level', 'Memory-safe'],
             docsLink: 'docs/jr-lang',
             downloadLink: 'downloads/jr-lang.zip',
-            category: 'development'
+            category: 'development',
+            status: 'stable'
         },
         'jr-browse': {
             name: 'JR. Browse',
@@ -56,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             technologies: ['Web', 'Privacy', 'Security', 'Lightweight', 'Cross-platform', 'Chromium'],
             docsLink: 'docs/jr-browse',
             downloadLink: 'downloads/jr-browse.zip',
-            category: 'browser'
+            category: 'browser',
+            status: 'stable'
         },
         'jr-ai': {
             name: 'JR. AI',
@@ -73,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             technologies: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Neural Networks', 'Edge AI', 'Cloud AI'],
             docsLink: 'docs/jr-ai',
             downloadLink: 'https://ai.jrofficial.org',
-            category: 'ai'
+            category: 'ai',
+            status: 'beta'
         },
         'jr-cloud': {
             name: 'JR. Cloud',
@@ -90,7 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
             technologies: ['Cloud Computing', 'IaaS', 'PaaS', 'Serverless', 'Containers', 'Microservices'],
             docsLink: 'docs/jr-cloud',
             downloadLink: 'downloads/jr-cloud.zip',
-            category: 'cloud'
+            category: 'cloud',
+            status: 'alpha'
         }
     };
 
@@ -98,10 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector('.close-btn');
     const modalLogo = document.getElementById('modal-logo-img');
     const modalTitle = document.getElementById('modal-title');
+    const modalStatusTag = document.getElementById('modal-status-tag');
     const modalDescription = document.getElementById('modal-description');
     const modalFeaturesList = document.getElementById('modal-features-list');
     const modalTechTags = document.getElementById('modal-tech-tags');
     const modalDocsLink = document.getElementById('modal-docs-link');
+    const modalGitHubLink = document.getElementById('modal-github-link');
     const modalDownloadLink = document.getElementById('modal-download-link');
     const projectSearch = document.getElementById('project-search');
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -191,6 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalLogo.src = project.logo;
                 modalTitle.textContent = project.name;
                 modalDescription.textContent = project.description;
+
+                modalStatusTag.className = `modal-status-tag ${project.status}`;
+                modalStatusTag.textContent = project.status.charAt(0).toUpperCase() + project.status.slice(1);
 
                 modalFeaturesList.innerHTML = '';
                 project.features.forEach(feature => {
