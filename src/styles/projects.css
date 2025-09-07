@@ -345,6 +345,8 @@ body {
 
 .project-meta .fas.fa-star {
     color: #ffd700;
+    position: relative;
+    top: -1px;
 }
 
 .project-buttons {
@@ -375,11 +377,12 @@ body {
     background-color: rgba(14, 6, 52, 0.7);
     color: white;
     border: 1px solid #5638E5;
+    transition: all 0.3s ease;
 }
 
 .docs-btn:hover {
-    background-color: #1a1045;
-    transform: translateY(-2px);
+    background-color: #5638E5;
+    color: white;
 }
 
 .download-btn {
@@ -390,7 +393,6 @@ body {
 
 .download-btn:hover {
     background-color: #4325c2;
-    transform: translateY(-2px);
 }
 
 .no-results {
@@ -577,11 +579,12 @@ body {
     background-color: rgba(14, 6, 52, 0.7);
     color: white;
     border: 1px solid #5638E5;
+    transition: all 0.3s ease;
 }
 
 .modal-docs-btn:hover {
-    background-color: #1a1045;
-    transform: translateY(-2px);
+    background-color: #5638E5;
+    color: white;
 }
 
 .modal-download-btn {
@@ -592,7 +595,6 @@ body {
 
 .modal-download-btn:hover {
     background-color: #4325c2;
-    transform: translateY(-2px);
 }
 
 footer {

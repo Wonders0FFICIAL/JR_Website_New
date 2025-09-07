@@ -9,9 +9,33 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=download" />
     <link rel="stylesheet" href="../styles/background.css" />
     <link rel="stylesheet" href="../styles/projects.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  font-size: 20px;
+  vertical-align: middle;
+  line-height: 1;
+  display: inline-block;
+}
+
+.download-btn .material-symbols-outlined {
+  font-size: 20px;
+  margin-right: -3px;
+}
+
+.modal-download-btn .material-symbols-outlined {
+  font-size: 22px;
+  margin-right: -3px;
+}
+    </style>
   </head>
 
   <body>
@@ -95,7 +119,7 @@
             </div>
             <div class="project-buttons">
               <a href="docs/jr-lang" class="docs-btn"><i class="fas fa-book"></i> Docs</a>
-              <a href="downloads/jr-lang.zip" class="download-btn" download><i class="fas fa-download"></i> Download</a>
+              <a href="downloads/jr-lang.zip" class="download-btn" download><span class="material-symbols-outlined">download</span> Download</a>
             </div>
           </div>
           <div class="project-card" data-project="jr-browse" data-category="browser">
@@ -112,7 +136,7 @@
             </div>
             <div class="project-buttons">
               <a href="docs/jr-browse" class="docs-btn"><i class="fas fa-book"></i> Docs</a>
-              <a href="downloads/jr-browse.zip" class="download-btn" download><i class="fas fa-download"></i> Download</a>
+              <a href="downloads/jr-browse.zip" class="download-btn" download><span class="material-symbols-outlined">download</span> Download</a>
             </div>
           </div>
           <div class="project-card" data-project="jr-ai" data-category="ai">
@@ -147,7 +171,7 @@
             </div>
             <div class="project-buttons">
               <a href="docs/jr-cloud" class="docs-btn"><i class="fas fa-book"></i> Docs</a>
-              <a href="downloads/jr-cloud.zip" class="download-btn" download><i class="fas fa-download"></i> Download</a>
+              <a href="downloads/jr-cloud.zip" class="download-btn" download><span class="material-symbols-outlined">download</span> Download</a>
             </div>
           </div>
         </div>
@@ -181,7 +205,7 @@
             href="#"
             class="modal-download-btn"
             download
-            ><i class="fas fa-download"></i> Download</a
+            ><span class="material-symbols-outlined">download</span> Download</a
           >
         </div>
       </div>

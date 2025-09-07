@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (projectId === 'jr-ai') {
                     modalDownloadLink.innerHTML = '<i class="fas fa-external-link-alt"></i> Use';
                 } else {
-                    modalDownloadLink.innerHTML = '<i class="fas fa-download"></i> Download';
+                    modalDownloadLink.innerHTML = '<span class="material-symbols-outlined">download</span> Download';
                 }
 
                 modal.style.display = 'block';
