@@ -258,22 +258,22 @@ footer {
     margin: 0 auto;
 }
 
-.pricing-header {
-    margin-bottom: 50px;
-}
-
 .pricing-title {
     font-size: 40px;
     color: white;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .pricing-subtitle {
     font-size: 18px;
     color: #ccc;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 35px auto;
     line-height: 1.6;
+}
+
+.pricing-header {
+    margin-bottom: 15px;
 }
 
 .product-tabs {
