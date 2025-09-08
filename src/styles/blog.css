@@ -34,7 +34,7 @@ body {
 .hero-section {
     text-align: center;
     padding: 60px 40px 10px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .hero-section h1 {
@@ -198,7 +198,6 @@ body {
 }
 
 .featured-main:hover {
-    transform: translateY(-5px) scale(1.01);
     border-color: #8b73ff;
     box-shadow: 0 15px 30px rgba(86, 56, 229, 0.3);
 }
@@ -271,7 +270,6 @@ body {
 
 .sidebar-post:hover {
     border-color: #5638E5;
-    transform: translateY(-3px) scale(1.02);
     box-shadow: 0 10px 25px rgba(86, 56, 229, 0.25);
 }
 
@@ -300,10 +298,46 @@ body {
     z-index: 2;
 }
 
-.sidebar-post .post-date {
-    margin-top: 10px;
+.sidebar-post .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
     position: relative;
     z-index: 2;
+}
+
+.sidebar-post .card-meta {
+    display: flex;
+    align-items: flex-end;
+}
+
+.sidebar-post .post-date {
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+.sidebar-post .read-more {
+    color: #8b73ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sidebar-post .read-more:hover {
+    color: #5638E5;
+}
+
+.sidebar-post .read-more::after {
+    content: '→';
+    margin-left: 5px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar-post .read-more:hover::after {
+    margin-left: 8px;
 }
 
 .recent-section {
@@ -363,7 +397,6 @@ body {
 }
 
 .blog-card:hover {
-    transform: translateY(-5px) scale(1.02);
     border-color: #5638E5;
     box-shadow: 0 12px 25px rgba(86, 56, 229, 0.25);
 }
@@ -440,7 +473,6 @@ body {
 
 .read-more:hover {
     color: #5638E5;
-    transform: translateX(5px);
 }
 
 .read-more::after {
@@ -663,7 +695,7 @@ footer {
     }
 
     .hero-section p {
-        margin: 0 auto 25px; 
+        margin: 0 auto 25px;
     }
 
     .search-bar {
@@ -671,7 +703,7 @@ footer {
     }
 
     .category-filter {
-        padding: 2px 20px 30px; 
+        padding: 2px 20px 30px;
     }
 
     .featured-grid {
@@ -713,11 +745,5 @@ footer {
 
     .sidebar-post p {
         margin-bottom: 12px;
-    }
-
-    .featured-main:hover,
-    .sidebar-post:hover,
-    .blog-card:hover {
-        transform: none;
     }
 }

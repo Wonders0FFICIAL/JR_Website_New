@@ -82,20 +82,38 @@
                 
                 <div class="featured-sidebar">
                     <article class="sidebar-post">
-                        <h3>JR. Lang v1.2 Released</h3>
-                        <p>Enhanced performance and new syntax features</p>
-                        <div class="post-date">April 12, 2025</div>
-                    </article>
-                    <article class="sidebar-post">
-                        <h3>AI Assistant Updates</h3>
-                        <p>Voice control and improved memory capabilities</p>
-                        <div class="post-date">April 8, 2025</div>
-                    </article>
-                    <article class="sidebar-post">
-                        <h3>Cloud Services Launch</h3>
-                        <p>Seamless integration with all JR. products</p>
-                        <div class="post-date">March 7, 2025</div>
-                    </article>
+    <h3>JR. Lang v1.2 Released</h3>
+    <p>Enhanced performance and new syntax features</p>
+    <div class="card-footer">
+        <a href="#" class="read-more">Read More</a>
+        <div class="card-meta">
+            <span class="post-date">April 12, 2025</span>
+            <span class="author">by Tim Allen</span>
+        </div>
+    </div>
+</article>
+<article class="sidebar-post">
+    <h3>AI Assistant Updates</h3>
+    <p>Voice control and improved memory capabilities</p>
+    <div class="card-footer">
+        <a href="#" class="read-more">Read More</a>
+        <div class="card-meta">
+            <span class="post-date">April 8, 2025</span>
+            <span class="author">by Tim Allen</span>
+        </div>
+    </div>
+</article>
+<article class="sidebar-post">
+    <h3>Cloud Services Launch</h3>
+    <p>Seamless integration with all JR. products</p>
+    <div class="card-footer">
+        <a href="#" class="read-more">Read More</a>
+        <div class="card-meta">
+            <span class="post-date">March 7, 2025</span>
+            <span class="author">by Tim Allen</span>
+        </div>
+    </div>
+</article>
                 </div>
             </div>
         </section>
@@ -251,41 +269,6 @@
     </footer>
 
     <script src="../js/background.js"></script>
-    <script>
-        function initCategoryFilter() {
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    console.log('Filtering by:', btn.textContent);
-                });
-            });
-        }
-
-        function initSearch() {
-            const searchInput = document.querySelector('.search-bar input');
-            const searchBtn = document.querySelector('.search-bar button');
-            
-            searchBtn.addEventListener('click', () => {
-                const query = searchInput.value.trim();
-                if (query) {
-                    console.log('Searching for:', query);
-                }
-            });
-            
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    searchBtn.click();
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initCategoryFilter();
-            initSearch();
-        });
-    </script>
+    <script src="../js/blog.js"></script>
 </body>
 </html>
