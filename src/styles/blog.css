@@ -673,10 +673,6 @@ footer {
     transition: all 0.3s ease;
 }
 
-.hamburger:hover div {
-    background-color: #8b73ff;
-}
-
 @media (max-width: 768px) {
     .navbar {
         padding: 15px 20px;

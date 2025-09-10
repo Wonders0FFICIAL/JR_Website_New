@@ -361,6 +361,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
+            // Save the updated profile data to sessionStorage
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser')) || {};
+            if (usernameInput) currentUser.username = usernameInput.value.trim();
+            if (displayNameInput) currentUser.displayName = displayNameInput.value.trim();
+            if (bioInput) currentUser.bio = bioInput.value.trim();
+            if (pronounsSelect) {
+                if (pronounsSelect.value === 'custom' && customPronounsInput) {
+                    currentUser.pronouns = customPronounsInput.value.trim();
+                } else {
+                    currentUser.pronouns = pronounsSelect.value;
+                }
+            }
+            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
             if (pronounsSelect.value === 'custom' && customPronounsInput) {
                 console.log('Custom pronouns:', customPronounsInput.value);
             }
@@ -563,15 +577,16 @@ sidebarLinks.forEach(link => {
             originalValues.customPronouns = customPronounsInput.value;
         }
         
-        const profileImage = sessionStorage.getItem('profileImage');
-        if (profileImage) {
-            const profilePicCircle = document.querySelector('.profile-pic-circle');
+        // Load profile image from currentUser data
+        const profilePicCircle = document.querySelector('.profile-pic-circle');
+        if (profilePicCircle && cu?.profileImage) {
             profilePicCircle.innerHTML = '';
             const img = document.createElement('img');
-            img.src = profileImage;
+            img.src = cu.profileImage;
             img.style.width = '100%';
             img.style.height = '100%';
             img.style.objectFit = 'cover';
+            img.alt = 'Profile picture';
             profilePicCircle.appendChild(img);
         }
 
