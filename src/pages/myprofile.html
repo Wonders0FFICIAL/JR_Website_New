@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - My Profile</title>
+    <title>New User - My Profile</title>
     <link rel="icon" href="../assets/images/Favicon.png" type="image/png" />
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="../styles/background.css" rel="stylesheet">
-    <link href="../styles/myprofile.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/myprofile.css">
+    <link rel="stylesheet" href="../styles/background.css">
 </head>
 <body>
     <div class="stars" id="stars"></div>
@@ -39,38 +39,37 @@
         </nav>
 
         <div class="container">
-<header class="profile-header">
-    <div class="cover-photo">
-        <div class="profile-image-container">
-            <img src="https://via.placeholder.com/180" alt="Profile Picture" class="profile-image" id="profileImg">
-        </div>
-    </div>
-    <div class="profile-info">
-        <h1 class="profile-name" id="profileName">John Doe</h1>
-        <p class="profile-username" id="profileUsername">@johndoe</p>
-        <p class="profile-title">Full Stack Developer & UI/UX Designer</p>
-        <p class="profile-location"><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
-        <div class="profile-stats">
-            <div class="stat">
-                <span class="stat-number">150</span>
-                <span class="stat-label">Projects</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">2.5k</span>
-                <span class="stat-label">Followers</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">892</span>
-                <span class="stat-label">Following</span>
-            </div>
-        </div>
-        <div class="profile-actions">
-            <button class="edit-profile-btn" onclick="location.href='public-profile.html'">
-                <i class="fas fa-edit"></i> Edit Profile
-            </button>
-        </div>
-    </div>
-</header>
+            <header class="profile-header">
+                <div class="cover-photo">
+                    <div class="profile-image-container">
+                        <img src="https://via.placeholder.com/180/5638E5/white?text=U" alt="Profile Picture" class="profile-image" id="profileImg">
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name" id="profileName">New User</h1>
+                    <p class="profile-username" id="profileUsername">@newuser</p>
+                    <p class="profile-location"><i class="fas fa-map-marker-alt"></i> Location Not Set</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Following</span>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="edit-profile-btn" onclick="location.href='public-profile.html'">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </header>
 
             <nav class="profile-nav">
                 <button class="nav-btn active" data-section="about">About</button>
@@ -85,22 +84,9 @@
                     <h2>About Me</h2>
                     <div class="about-grid">
                         <div class="about-text">
-                            <p>Passionate full-stack developer with 5+ years of experience creating innovative web solutions. I specialize in React, Node.js, and modern web technologies. When I'm not coding, you'll find me exploring new design trends or contributing to open-source projects.</p>
-                            <p>I believe in writing clean, maintainable code and creating user experiences that make a difference. Always eager to learn new technologies and take on challenging projects.</p>
+                            <p>Hey, I'm new to JR.!</p>
                         </div>
-                        <div class="about-details">
-                            <div class="detail-item">
-                                <strong>Email:</strong> john.doe@example.com
-                            </div>
-                            <div class="detail-item">
-                                <strong>Phone:</strong> +1 (555) 123-4567
-                            </div>
-                            <div class="detail-item">
-                                <strong>Website:</strong> www.johndoe.dev
-                            </div>
-                            <div class="detail-item">
-                                <strong>Experience:</strong> 5+ years
-                            </div>
+                        <div class="about-details hidden">
                         </div>
                     </div>
                 </section>
@@ -111,34 +97,25 @@
                         <div class="skill-category">
                             <h3>Frontend</h3>
                             <div class="skill-list">
-                                <span class="skill-tag">HTML5</span>
-                                <span class="skill-tag">CSS3</span>
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">React</span>
-                                <span class="skill-tag">Vue.js</span>
-                                <span class="skill-tag">TypeScript</span>
+                                <button class="add-skill-btn" onclick="addSkill('frontend')">
+                                    <i class="fas fa-plus"></i> Add Skill
+                                </button>
                             </div>
                         </div>
                         <div class="skill-category">
                             <h3>Backend</h3>
                             <div class="skill-list">
-                                <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">Express</span>
-                                <span class="skill-tag">MongoDB</span>
-                                <span class="skill-tag">PostgreSQL</span>
-                                <span class="skill-tag">REST APIs</span>
+                                <button class="add-skill-btn" onclick="addSkill('backend')">
+                                    <i class="fas fa-plus"></i> Add Skill
+                                </button>
                             </div>
                         </div>
                         <div class="skill-category">
                             <h3>Tools & Others</h3>
                             <div class="skill-list">
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">Docker</span>
-                                <span class="skill-tag">AWS</span>
-                                <span class="skill-tag">Figma</span>
-                                <span class="skill-tag">Photoshop</span>
-                                <span class="skill-tag">Agile</span>
+                                <button class="add-skill-btn" onclick="addSkill('tools')">
+                                    <i class="fas fa-plus"></i> Add Skill
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -147,81 +124,24 @@
                 <section id="portfolio" class="content-section">
                     <h2>Portfolio</h2>
                     <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/300x200" alt="E-commerce Platform">
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>E-commerce Platform</h3>
-                                <p>Full-stack e-commerce solution built with React and Node.js</p>
-                                <div class="portfolio-tags">
-                                    <span>React</span>
-                                    <span>Node.js</span>
-                                    <span>MongoDB</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/300x200" alt="Task Management App">
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>Task Management App</h3>
-                                <p>Collaborative task management tool with real-time updates</p>
-                                <div class="portfolio-tags">
-                                    <span>Vue.js</span>
-                                    <span>Socket.io</span>
-                                    <span>PostgreSQL</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/300x200" alt="Weather Dashboard">
-                            </div>
-                            <div class="portfolio-content">
-                                <h3>Weather Dashboard</h3>
-                                <p>Interactive weather application with location-based forecasts</p>
-                                <div class="portfolio-tags">
-                                    <span>JavaScript</span>
-                                    <span>APIs</span>
-                                    <span>Charts.js</span>
-                                </div>
-                            </div>
+                        <div class="add-project-container" onclick="addProject()">
+                            <button class="add-project-btn">
+                                <i class="fas fa-plus"></i> Add Project
+                            </button>
+                            <p style="margin-top: 15px; color: #aaa; font-size: 0.9rem;">Start building your portfolio</p>
                         </div>
                     </div>
                 </section>
 
                 <section id="experience" class="content-section">
                     <h2>Work Experience</h2>
+                    <div class="add-experience-container" onclick="addExperience()">
+                        <button class="add-experience-btn">
+                            <i class="fas fa-plus"></i> Add Experience
+                        </button>
+                        <p style="margin-top: 15px; color: #aaa; font-size: 0.9rem;">Share your professional journey</p>
+                    </div>
                     <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>Senior Full Stack Developer</h3>
-                                <h4>TechCorp Inc.</h4>
-                                <span class="timeline-date">2022 - Present</span>
-                                <p>Lead development of web applications using React and Node.js. Mentor junior developers and collaborate with cross-functional teams to deliver high-quality products.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>Frontend Developer</h3>
-                                <h4>WebSolutions LLC</h4>
-                                <span class="timeline-date">2020 - 2022</span>
-                                <p>Developed responsive web interfaces and improved user experience across multiple client projects. Worked with design teams to implement pixel-perfect designs.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>Junior Developer</h3>
-                                <h4>StartupXYZ</h4>
-                                <span class="timeline-date">2019 - 2020</span>
-                                <p>Built and maintained web applications using modern JavaScript frameworks. Participated in code reviews and agile development processes.</p>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
@@ -233,21 +153,21 @@
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <h4>Email</h4>
-                                    <p>john.doe@example.com</p>
+                                    <p>Not provided yet</p>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-phone"></i>
                                 <div>
                                     <h4>Phone</h4>
-                                    <p>+1 (555) 123-4567</p>
+                                    <p>Not provided yet</p>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <h4>Location</h4>
-                                    <p>San Francisco, CA</p>
+                                    <p>Location Not Set</p>
                                 </div>
                             </div>
                             <div class="social-links">
@@ -310,7 +230,6 @@
             <div class="copyright">© 2025 JR. All rights reserved.</div>
         </footer>
     </div>
-
     <script src="../js/background.js"></script>
     <script src="../js/myprofile.js"></script>
 </body>

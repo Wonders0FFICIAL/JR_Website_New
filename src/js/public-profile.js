@@ -361,7 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // Save the updated profile data to sessionStorage
             const currentUser = JSON.parse(sessionStorage.getItem('currentUser')) || {};
             if (usernameInput) currentUser.username = usernameInput.value.trim();
             if (displayNameInput) currentUser.displayName = displayNameInput.value.trim();
@@ -577,7 +576,6 @@ sidebarLinks.forEach(link => {
             originalValues.customPronouns = customPronounsInput.value;
         }
         
-        // Load profile image from currentUser data
         const profilePicCircle = document.querySelector('.profile-pic-circle');
         if (profilePicCircle && cu?.profileImage) {
             profilePicCircle.innerHTML = '';
