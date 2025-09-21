@@ -6,6 +6,16 @@ const profileUsername = document.getElementById('profileUsername');
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
+let experiences = [];
+let projects = [];
+let editingProjectIndex = -1;
+
+const cachedElements = {
+    projectsCountElement: null,
+    portfolioGrid: null,
+    timeline: null
+};
+
 function loadProfileData() {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser')) || {};
 
@@ -97,12 +107,8 @@ function updateBioDisplay(bio) {
             aboutText.appendChild(bioP);
         } else {
             const defaultP = document.createElement('p');
-            defaultP.textContent = 'Welcome to my profile! I\'m passionate about technology and always eager to learn new things.';
+            defaultP.textContent = "Hey, I'm new to JR.!";
             aboutText.appendChild(defaultP);
-
-            const defaultP2 = document.createElement('p');
-            defaultP2.textContent = 'Feel free to connect with me and explore my work.';
-            aboutText.appendChild(defaultP2);
         }
     }
 }
@@ -122,6 +128,120 @@ navBtns.forEach(btn => {
         if (targetSection) targetSection.classList.add('active');
     });
 });
+
+function updateProjectsCount() {
+    if (!cachedElements.projectsCountElement) {
+        cachedElements.projectsCountElement = document.querySelector('.stat:nth-child(1) .stat-number');
+    }
+    if (cachedElements.projectsCountElement) {
+        cachedElements.projectsCountElement.textContent = projects.length;
+    }
+}
+
+function validateAndProcessImage(file) {
+    return new Promise((resolve, reject) => {
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+        if (!allowedTypes.includes(file.type)) {
+            reject('Please select a valid image file (JPG, PNG, or WebP)');
+            return;
+        }
+
+        const maxSize = 5 * 1024 * 1024;
+        if (file.size > maxSize) {
+            reject('Image size must be less than 5MB');
+            return;
+        }
+
+        const img = new Image();
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        img.onload = function () {
+            const maxWidth = 1920;
+            const maxHeight = 1080;
+
+            let { width, height } = img;
+
+            if (width > maxWidth || height > maxHeight) {
+                const widthRatio = maxWidth / width;
+                const heightRatio = maxHeight / height;
+                const ratio = Math.min(widthRatio, heightRatio);
+
+                width *= ratio;
+                height *= ratio;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const resizedImageData = canvas.toDataURL('image/jpeg', 0.9);
+            resolve(resizedImageData);
+        };
+
+        img.onerror = function () {
+            reject('Failed to process image');
+        };
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            img.src = e.target.result;
+        };
+        reader.onerror = function () {
+            reject('Failed to read image file');
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+function validateUrl(url, type = 'general') {
+    if (!url || url.trim() === '') return { valid: true };
+    
+    url = url.trim();
+    
+    const urlPattern = /^https?:\/\/.+/i;
+    if (!urlPattern.test(url)) {
+        return { 
+            valid: false, 
+            message: `${type === 'github' ? 'GitHub' : 'Project'} URL must start with http:// or https://` 
+        };
+    }
+    
+    if (type === 'github') {
+        const githubPattern = /^https?:\/\/(www\.)?github\.com\/.+/i;
+        if (!githubPattern.test(url)) {
+            return { 
+                valid: false, 
+                message: 'GitHub URL must be from github.com (e.g., https://github.com/username/repo)' 
+            };
+        }
+    }
+    
+    return { valid: true };
+}
+
+function createImageUploadField(fieldId, currentImage = null) {
+    return `
+        <div class="form-group">
+            <label>Project Image (Optional)</label>
+            <div class="image-upload-container">
+                <input type="file" id="${fieldId}" accept="image/jpeg,image/jpg,image/png,image/webp" style="display: none;">
+                <div class="image-preview" id="imagePreview">
+                    ${currentImage ? `<img src="${currentImage}" alt="Project preview" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">` : ''}
+                    <div class="upload-placeholder" style="display: ${currentImage ? 'none' : 'flex'};">
+                        <i class="fas fa-camera"></i>
+                        <span>Click to upload image</span>
+                        <small>JPG, PNG, WebP (max 5MB, 1920x1080)</small>
+                    </div>
+                </div>
+                <button type="button" class="browse-btn" id="browseBtn">
+                    <i class="fas fa-folder-open"></i> Browse Files
+                </button>
+                ${currentImage ? `<button type="button" class="remove-image-btn" id="removeImageBtn"><i class="fas fa-trash"></i> Remove Image</button>` : ''}
+            </div>
+        </div>
+    `;
+}
 
 function validateDateRange(startMonth, startYear, endMonth, endYear) {
     if (!startMonth || !startYear) {
@@ -155,7 +275,7 @@ function createModal(title, fields, onSubmit) {
         if (field.type === 'textarea') {
             return `
                 <div class="form-group">
-                    ${field.label ? `<label>${field.label}</label>` : ''}
+                    ${field.label ? `<label>${field.label}${field.required ? ' *' : ''}</label>` : ''}
                     <textarea id="${field.id}" placeholder="${field.placeholder}" ${field.maxLength ? `maxlength="${field.maxLength}"` : ''}></textarea>
                 </div>
             `;
@@ -188,12 +308,14 @@ function createModal(title, fields, onSubmit) {
         } else {
             return `
                 <div class="form-group">
-                    ${field.label ? `<label>${field.label}</label>` : ''}
+                    ${field.label ? `<label>${field.label}${field.required ? ' *' : ''}</label>` : ''}
                     <input type="${field.type || 'text'}" id="${field.id}" placeholder="${field.placeholder}" ${field.maxLength ? `maxlength="${field.maxLength}"` : ''}>
                 </div>
             `;
         }
     }).join('');
+
+    const imageUploadField = title.includes('Project') ? createImageUploadField('projectImage', null) : '';
 
     modal.innerHTML = `
         <div class="modal-content">
@@ -203,10 +325,11 @@ function createModal(title, fields, onSubmit) {
             </div>
             <div class="modal-body">
                 ${fieldsHTML}
+                ${imageUploadField}
             </div>
             <div class="modal-footer">
                 <button class="btn-cancel">Cancel</button>
-                <button class="btn-confirm">Add</button>
+                <button class="btn-confirm">${title.includes('Edit') ? 'Update' : 'Add'}</button>
             </div>
         </div>
     `;
@@ -214,6 +337,7 @@ function createModal(title, fields, onSubmit) {
     document.body.appendChild(modal);
 
     const closeModal = () => {
+        editingProjectIndex = -1;
         modal.style.animation = 'fadeOut 0.3s ease';
         setTimeout(() => {
             if (document.body.contains(modal)) document.body.removeChild(modal);
@@ -330,52 +454,242 @@ function addSkill(category) {
 }
 
 function addProject() {
-    createModal('Add New Project', [
-        { id: 'name', label: 'Project Name', placeholder: 'My Awesome Project', maxLength: 50 },
-        { id: 'description', label: 'Description', placeholder: 'Brief description of your project', type: 'textarea' },
-        { id: 'tags', label: 'Tags', placeholder: 'JavaScript, React, Node.js (comma-separated)' }
+    let selectedImageData = null;
+    const isEditing = editingProjectIndex >= 0;
+    const existingProject = isEditing ? projects[editingProjectIndex] : null;
+
+    createModal(isEditing ? 'Edit Project' : 'Add New Project', [
+        { id: 'name', label: 'Project Name', placeholder: 'My Awesome Project', maxLength: 50, required: true },
+        { id: 'description', label: 'Description', placeholder: 'Brief description of your project', type: 'textarea', required: true },
+        { id: 'tags', label: 'Tags', placeholder: 'JavaScript, React, Node.js (comma-separated)', required: true },
+        { id: 'projectUrl', label: 'Project URL', placeholder: 'https://myproject.com' },
+        { id: 'githubUrl', label: 'GitHub URL', placeholder: 'https://github.com/username/project' }
     ], (values) => {
-        if (!values.name || !values.description) {
-            showNotification('Please fill in project name and description', 'error');
+        if (!values.name || !values.description || !values.tags) {
+            showNotification('Please fill in project name, description, and tags', 'error');
+            return false;
+        }
+
+        const projectUrlValidation = validateUrl(values.projectUrl, 'project');
+        if (!projectUrlValidation.valid) {
+            showNotification(projectUrlValidation.message, 'error');
+            return false;
+        }
+
+        const githubUrlValidation = validateUrl(values.githubUrl, 'github');
+        if (!githubUrlValidation.valid) {
+            showNotification(githubUrlValidation.message, 'error');
             return false;
         }
 
         const tagArray = values.tags ? values.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
-        const portfolioGrid = document.querySelector('.portfolio-grid');
-        if (!portfolioGrid) {
-            showNotification('Portfolio grid not found', 'error');
-            return false;
+
+        const projectData = {
+            name: values.name,
+            description: values.description,
+            tags: tagArray,
+            projectUrl: values.projectUrl || null,
+            githubUrl: values.githubUrl || null,
+            image: selectedImageData || existingProject?.image || null
+        };
+
+        if (isEditing) {
+            projects[editingProjectIndex] = projectData;
+            editingProjectIndex = -1;
+            renderProjects();
+            showNotification('Project updated successfully!', 'success');
+        } else {
+            projects.push(projectData);
+            renderProjects();
+            updateProjectsCount();
+            showNotification('Project added successfully!', 'success');
         }
 
-        const addProjectContainer = portfolioGrid.querySelector('.add-project-container');
+        return true;
+    });
+
+    if (isEditing && existingProject) {
+        setTimeout(() => {
+            document.getElementById('name').value = existingProject.name;
+            document.getElementById('description').value = existingProject.description;
+            document.getElementById('tags').value = existingProject.tags.join(', ');
+            document.getElementById('projectUrl').value = existingProject.projectUrl || '';
+            document.getElementById('githubUrl').value = existingProject.githubUrl || '';
+        }, 50);
+    }
+
+    setTimeout(() => {
+        const imageInput = document.getElementById('projectImage');
+        const imagePreview = document.getElementById('imagePreview');
+        const removeBtn = document.getElementById('removeImageBtn');
+        const browseBtn = document.getElementById('browseBtn');
+
+        if (browseBtn && imageInput) {
+            browseBtn.addEventListener('click', () => {
+                imageInput.click();
+            });
+        }
+
+        if (imageInput) {
+            imageInput.addEventListener('change', async function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    try {
+                        selectedImageData = await validateAndProcessImage(file);
+
+                        imagePreview.innerHTML = `
+                            <img src="${selectedImageData}" alt="Project preview" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;">
+                        `;
+
+                        browseBtn.innerHTML = '<i class="fas fa-trash"></i> Remove Image';
+                        browseBtn.onclick = () => {
+                            selectedImageData = null;
+                            imageInput.value = '';
+                            imagePreview.innerHTML = `
+                                <div class="upload-placeholder" style="display: flex;">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Click to upload image</span>
+                                    <small>JPG, PNG, WebP (max 5MB, 1920x1080)</small>
+                                </div>
+                            `;
+                            browseBtn.innerHTML = '<i class="fas fa-folder-open"></i> Browse Files';
+                            browseBtn.onclick = () => imageInput.click();
+                        };
+
+                    } catch (error) {
+                        showNotification(error, 'error');
+                        imageInput.value = '';
+                    }
+                }
+            });
+        }
+
+        if (removeBtn) {
+            removeBtn.addEventListener('click', function () {
+                selectedImageData = null;
+                if (imageInput) imageInput.value = '';
+                imagePreview.innerHTML = `
+                    <div class="upload-placeholder" style="display: flex;">
+                        <i class="fas fa-camera"></i>
+                        <span>Click to upload image</span>
+                        <small>JPG, PNG, WebP (max 5MB, 1920x1080)</small>
+                    </div>
+                `;
+            });
+        }
+    }, 10);
+}
+
+function renderProjects() {
+    if (!cachedElements.portfolioGrid) {
+        cachedElements.portfolioGrid = document.querySelector('.portfolio-grid');
+    }
+    
+    const portfolioGrid = cachedElements.portfolioGrid;
+    if (!portfolioGrid) return;
+
+    const addProjectContainer = portfolioGrid.querySelector('.add-project-container');
+    portfolioGrid.innerHTML = '';
+
+    const fragment = document.createDocumentFragment();
+
+    projects.forEach((project, index) => {
         const projectItem = document.createElement('div');
         projectItem.className = 'portfolio-item';
-        projectItem.innerHTML = `
+
+        const imageSection = project.image ? `
             <div class="portfolio-image">
-                <img src="https://via.placeholder.com/300x200/5638E5/white?text=${encodeURIComponent(values.name.substring(0, 10))}" alt="${values.name}">
+                <img src="${project.image}" alt="${project.name}">
             </div>
+        ` : '';
+
+        projectItem.innerHTML = `
+            ${imageSection}
             <div class="portfolio-content">
-                <h3>${values.name}</h3>
-                <p>${values.description}</p>
+                <h3>${project.name}</h3>
+                <p>${project.description}</p>
                 <div class="portfolio-tags">
-                    ${tagArray.map(tag => `<span>${tag}</span>`).join('')}
+                    ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+                </div>
+                <div class="portfolio-actions">
+                    ${project.projectUrl ? `<a href="${project.projectUrl}" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> View Live</a>` : ''}
+                    ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>` : ''}
                 </div>
             </div>
         `;
 
-        projectItem.addEventListener('click', () => {
-            showProjectModal(values.name, values.description);
+        projectItem.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A' || e.target.closest('a')) return;
+
+            editingProjectIndex = index;
+            addProject();
         });
 
-        if (addProjectContainer) {
-            portfolioGrid.insertBefore(projectItem, addProjectContainer);
-        } else {
-            portfolioGrid.appendChild(projectItem);
+        fragment.appendChild(projectItem);
+    });
+
+    portfolioGrid.appendChild(fragment);
+
+    if (addProjectContainer) {
+        portfolioGrid.appendChild(addProjectContainer);
+    }
+}
+
+function sortAndRenderExperiences() {
+    experiences.sort((a, b) => {
+        if (a.currentRole && !b.currentRole) return -1;
+        if (!a.currentRole && b.currentRole) return 1;
+
+        if (a.currentRole && b.currentRole) {
+            const aStartDate = new Date(a.startYear, a.startMonth - 1);
+            const bStartDate = new Date(b.startYear, b.startMonth - 1);
+            return bStartDate - aStartDate;
         }
 
-        showNotification('Project added successfully!', 'success');
-        return true;
+        if (!a.currentRole && !b.currentRole) {
+            const aEndDate = new Date(a.endYear, a.endMonth - 1);
+            const bEndDate = new Date(b.endYear, b.endMonth - 1);
+            return bEndDate - aEndDate;
+        }
+
+        return 0;
     });
+
+    if (!cachedElements.timeline) {
+        cachedElements.timeline = document.querySelector('.timeline');
+    }
+    
+    const timeline = cachedElements.timeline;
+    if (timeline) {
+        timeline.innerHTML = '';
+
+        const fragment = document.createDocumentFragment();
+
+        experiences.forEach((exp, index) => {
+            const experienceItem = document.createElement('div');
+            experienceItem.className = 'timeline-item';
+            experienceItem.style.opacity = '0';
+            experienceItem.style.transform = 'translateY(20px)';
+            experienceItem.innerHTML = `
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>${exp.jobTitle}</h3>
+                    <h4>${exp.company}</h4>
+                    <span class="timeline-date">${exp.dateRange}</span>
+                    <p>${exp.description}</p>
+                </div>
+            `;
+
+            fragment.appendChild(experienceItem);
+
+            setTimeout(() => {
+                experienceItem.style.opacity = '1';
+                experienceItem.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+
+        timeline.appendChild(fragment);
+    }
 }
 
 function addExperience() {
@@ -460,63 +774,23 @@ function addExperience() {
             dateRange = `${startDate} - ${endDate}`;
         }
 
-        const timeline = document.querySelector('.timeline');
-        if (!timeline) {
-            showNotification('Timeline not found', 'error');
-            return false;
-        }
+        const newExperience = {
+            jobTitle: values.jobTitle,
+            company: values.company,
+            startMonth: parseInt(values.startMonth),
+            startYear: parseInt(values.startYear),
+            endMonth: values.currentRole ? null : parseInt(values.endMonth),
+            endYear: values.currentRole ? null : parseInt(values.endYear),
+            currentRole: values.currentRole,
+            dateRange: dateRange,
+            description: values.description
+        };
 
-        const experienceItem = document.createElement('div');
-        experienceItem.className = 'timeline-item';
-        experienceItem.style.opacity = '1';
-        experienceItem.style.transform = 'translateY(0)';
-        experienceItem.innerHTML = `
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-                <h3>${values.jobTitle}</h3>
-                <h4>${values.company}</h4>
-                <span class="timeline-date">${dateRange}</span>
-                <p>${values.description}</p>
-            </div>
-        `;
+        experiences.push(newExperience);
+        sortAndRenderExperiences();
 
-        timeline.appendChild(experienceItem);
         showNotification('Experience added successfully!', 'success');
         return true;
-    });
-}
-
-function showProjectModal(title, description) {
-    const existingModal = document.querySelector('.portfolio-modal');
-    if (existingModal) existingModal.remove();
-
-    const modal = document.createElement('div');
-    modal.className = 'portfolio-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h2>${title}</h2>
-            <p>${description}</p>
-            <div class="modal-buttons">
-                <button class="btn-primary">View Project</button>
-                <button class="btn-secondary">Close</button>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    const closeModal = () => {
-        modal.style.animation = 'fadeOut 0.3s ease';
-        setTimeout(() => {
-            if (document.body.contains(modal)) document.body.removeChild(modal);
-        }, 300);
-    };
-
-    modal.querySelector('.modal-close').addEventListener('click', closeModal);
-    modal.querySelector('.btn-secondary').addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
     });
 }
 
@@ -584,6 +858,7 @@ if (contactForm) {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadProfileData();
+    updateProjectsCount();
 
     const timelineItems = document.querySelectorAll('.timeline-item');
     timelineItems.forEach((item, index) => {
