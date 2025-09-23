@@ -196,28 +196,231 @@ function validateAndProcessImage(file) {
 
 function validateUrl(url, type = 'general') {
     if (!url || url.trim() === '') return { valid: true };
-    
+
     url = url.trim();
-    
-    const urlPattern = /^https?:\/\/.+/i;
-    if (!urlPattern.test(url)) {
-        return { 
-            valid: false, 
-            message: `${type === 'github' ? 'GitHub' : 'Project'} URL must start with http:// or https://` 
+
+    const dangerousChars = /[<>'"(){}[\]\\`]/;
+    if (dangerousChars.test(url)) {
+        return {
+            valid: false,
+            message: 'URL contains invalid characters. Please remove: < > \' " ( ) { } [ ] \\ `'
         };
     }
-    
-    if (type === 'github') {
-        const githubPattern = /^https?:\/\/(www\.)?github\.com\/.+/i;
-        if (!githubPattern.test(url)) {
-            return { 
-                valid: false, 
-                message: 'GitHub URL must be from github.com (e.g., https://github.com/username/repo)' 
+
+    let urlToValidate = url;
+    let hasProtocol = false;
+    let finalUrl = url;
+
+    if (/^https?:\/\//i.test(url)) {
+        hasProtocol = true;
+        finalUrl = url;
+    } else {
+        urlToValidate = 'https://' + url;
+        finalUrl = 'https://' + url;
+    }
+
+    let urlObj;
+    try {
+        urlObj = new URL(urlToValidate);
+    } catch (e) {
+        return {
+            valid: false,
+            message: 'Invalid URL format. Please check your URL.'
+        };
+    }
+
+    const hostname = urlObj.hostname.toLowerCase();
+
+    const localPatterns = [
+        /^localhost$/i,
+        /^127\.\d+\.\d+\.\d+$/,
+        /^192\.168\.\d+\.\d+$/,
+        /^10\.\d+\.\d+\.\d+$/,
+        /^172\.(1[6-9]|2[0-9]|3[0-1])\.\d+\.\d+$/,
+        /^0\.\d+\.\d+\.\d+$/,
+        /\.local$/i,
+        /^::1$/,
+        /^fe80::/i
+    ];
+
+    if (localPatterns.some(pattern => pattern.test(hostname))) {
+        return {
+            valid: false,
+            message: 'Local addresses and localhost are not allowed. Please use a public URL.'
+        };
+    }
+
+    const ipv4Pattern = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    const ipv6Pattern = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$/;
+
+    if (ipv4Pattern.test(hostname) || ipv6Pattern.test(hostname)) {
+        return {
+            valid: false,
+            message: 'IP addresses are not allowed. Please use a domain name.'
+        };
+    }
+
+    const parts = hostname.split('.');
+    if (parts.length < 2) {
+        return {
+            valid: false,
+            message: 'Domain must have at least two parts (e.g., example.com)'
+        };
+    }
+
+    const tld = parts[parts.length - 1];
+    const sld = parts[parts.length - 2];
+
+    const tldPattern = /^[a-z]{2,63}$/i;
+    if (!tldPattern.test(tld)) {
+        return {
+            valid: false,
+            message: 'Invalid top-level domain. TLD must be 2-63 letters only.'
+        };
+    }
+
+    const sldPattern = /^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$/i;
+    if (!sldPattern.test(sld)) {
+        return {
+            valid: false,
+            message: 'Invalid domain name. Domain should contain only letters, numbers, and hyphens (not at start/end).'
+        };
+    }
+
+    for (const part of parts) {
+        if (part.includes('--')) {
+            return {
+                valid: false,
+                message: 'Domain cannot contain consecutive hyphens.'
             };
         }
     }
-    
-    return { valid: true };
+
+    for (const part of parts) {
+        if (part.length > 63) {
+            return {
+                valid: false,
+                message: 'Each part of the domain must be 63 characters or less.'
+            };
+        }
+    }
+
+    if (hostname.length > 253) {
+        return {
+            valid: false,
+            message: 'Domain name is too long (max 253 characters).'
+        };
+    }
+
+    if (url.includes(' ')) {
+        return {
+            valid: false,
+            message: 'URL cannot contain spaces. Please remove any spaces.'
+        };
+    }
+
+    if (type === 'github') {
+        const githubPattern = /^(https?:\/\/)?(www\.)?github\.com\/.+/i;
+        if (!githubPattern.test(url)) {
+            return {
+                valid: false,
+                message: 'GitHub URL must be from github.com (e.g., github.com/username or github.com/username/repo)'
+            };
+        }
+
+        const githubUrl = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+        const pathMatch = githubUrl.match(/^github\.com\/(.+)/i);
+        
+        if (!pathMatch) {
+            return {
+                valid: false,
+                message: 'Invalid GitHub URL format.'
+            };
+        }
+
+        const path = pathMatch[1].replace(/\/$/, '');
+        const pathParts = path.split('/').filter(part => part.trim() !== '');
+
+        if (pathParts.length === 0) {
+            return {
+                valid: false,
+                message: 'GitHub URL must include a username (e.g., github.com/username)'
+            };
+        }
+
+        const username = pathParts[0];
+        const usernamePattern = /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$/;
+        if (!usernamePattern.test(username)) {
+            return {
+                valid: false,
+                message: 'Invalid GitHub username. Must be 1-39 characters, alphanumeric and hyphens only, cannot start or end with hyphen.'
+            };
+        }
+
+        if (pathParts.length > 1) {
+            const repoName = pathParts[1];
+            const repoPattern = /^[a-zA-Z0-9]([a-zA-Z0-9._-]{0,98}[a-zA-Z0-9])?$/;
+            if (!repoPattern.test(repoName) || repoName === '.' || repoName === '..') {
+                return {
+                    valid: false,
+                    message: 'Invalid GitHub repository name. Can contain letters, numbers, hyphens, dots, underscores, up to 100 characters.'
+                };
+            }
+        }
+
+        if (finalUrl.length > 200) {
+            return {
+                valid: false,
+                message: 'GitHub URL is too long. Please use a shorter URL.'
+            };
+        }
+    }
+
+    if (type === 'project') {
+        const blockedPatterns = [
+            /^example\.(com|org|net|io)$/i,
+            /^test\.(com|org|net|io)$/i,
+            /^localhost$/i,
+            /\.(test|invalid|localhost|example)$/i
+        ];
+
+        if (blockedPatterns.some(pattern => pattern.test(hostname))) {
+            return {
+                valid: false,
+                message: 'Please provide a real project URL, not a placeholder or test domain.'
+            };
+        }
+
+        if (finalUrl.length > 2000) {
+            return {
+                valid: false,
+                message: 'URL is too long. Please use a shorter URL or URL shortener.'
+            };
+        }
+    }
+
+    if (finalUrl.length > 2048) {
+        return {
+            valid: false,
+            message: 'URL is too long. Please use a shorter URL.'
+        };
+    }
+
+    if (hasProtocol) {
+        try {
+            decodeURIComponent(url);
+        } catch (e) {
+            return {
+                valid: false,
+                message: 'URL contains invalid encoded characters.'
+            };
+        }
+    }
+
+    return { 
+        valid: true, 
+        url: finalUrl
+    };
 }
 
 function createImageUploadField(fieldId, currentImage = null) {
@@ -470,28 +673,28 @@ function addProject() {
             return false;
         }
 
-        const projectUrlValidation = validateUrl(values.projectUrl, 'project');
-        if (!projectUrlValidation.valid) {
+        const projectUrlValidation = validateUrl(values.projectUrl || '', 'project');
+        if (values.projectUrl && !projectUrlValidation.valid) {
             showNotification(projectUrlValidation.message, 'error');
             return false;
         }
 
-        const githubUrlValidation = validateUrl(values.githubUrl, 'github');
-        if (!githubUrlValidation.valid) {
+        const githubUrlValidation = validateUrl(values.githubUrl || '', 'github');
+        if (values.githubUrl && !githubUrlValidation.valid) {
             showNotification(githubUrlValidation.message, 'error');
             return false;
         }
 
         const tagArray = values.tags ? values.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
 
-        const projectData = {
-            name: values.name,
-            description: values.description,
-            tags: tagArray,
-            projectUrl: values.projectUrl || null,
-            githubUrl: values.githubUrl || null,
-            image: selectedImageData || existingProject?.image || null
-        };
+const projectData = {
+    name: values.name,
+    description: values.description,
+    tags: tagArray,
+    projectUrl: projectUrlValidation.valid && projectUrlValidation.url ? projectUrlValidation.url : null,
+    githubUrl: githubUrlValidation.valid && githubUrlValidation.url ? githubUrlValidation.url : null,
+    image: selectedImageData || existingProject?.image || null
+};
 
         if (isEditing) {
             projects[editingProjectIndex] = projectData;
@@ -584,7 +787,7 @@ function renderProjects() {
     if (!cachedElements.portfolioGrid) {
         cachedElements.portfolioGrid = document.querySelector('.portfolio-grid');
     }
-    
+
     const portfolioGrid = cachedElements.portfolioGrid;
     if (!portfolioGrid) return;
 
@@ -658,7 +861,7 @@ function sortAndRenderExperiences() {
     if (!cachedElements.timeline) {
         cachedElements.timeline = document.querySelector('.timeline');
     }
-    
+
     const timeline = cachedElements.timeline;
     if (timeline) {
         timeline.innerHTML = '';
