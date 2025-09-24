@@ -426,7 +426,7 @@ function validateUrl(url, type = 'general') {
 function createImageUploadField(fieldId, currentImage = null) {
     return `
         <div class="form-group">
-            <label>Project Image (Optional)</label>
+            <label>Project Image</label>
             <div class="image-upload-container">
                 <input type="file" id="${fieldId}" accept="image/jpeg,image/jpg,image/png,image/webp" style="display: none;">
                 <div class="image-preview" id="imagePreview">
