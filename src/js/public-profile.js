@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const customPronounsContainer = document.getElementById('custom-pronouns-container');
     const customPronounsInput = document.getElementById('custom-pronouns');
     const locationInput = document.getElementById('location');
-    const timezoneInput = document.getElementById('timezone');
-    const displayLocalTimeInput = document.getElementById('displayLocalTime');
 
     if (pronounsSelect && customPronounsContainer && customPronounsInput) {
         pronounsSelect.addEventListener('change', () => {
@@ -51,12 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (customPronounsInput) originalValues.customPronouns = customPronounsInput.value;
 
     if (locationInput) originalValues.location = locationInput.value;
-
-    const timezoneElement = document.getElementById('timezone');
-    if (timezoneElement) originalValues.timezone = timezoneElement.value;
-
-    const displayLocalTimeElement = document.getElementById('displayLocalTime');
-    if (displayLocalTimeElement) originalValues.displayLocalTime = displayLocalTimeElement.checked;
 
     const fieldInteracted = {
         username: false,
@@ -185,13 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (b.length > 500) {
             bioError.textContent = 'Bio cannot exceed 500 characters';
-            bioInput.classList.add('input-error');
-            return false;
-        }
-
-        const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|([^\s]+\.(com|org|net|edu|gov|io|co)[^\s]*)/gi;
-        if (urlPattern.test(b)) {
-            bioError.textContent = 'Links are not allowed in bio';
             bioInput.classList.add('input-error');
             return false;
         }
@@ -366,8 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (displayNameInput) currentUser.displayName = displayNameInput.value.trim();
             if (bioInput) currentUser.bio = bioInput.value.trim();
             if (locationInput) currentUser.location = locationInput.value.trim();
-            if (timezoneInput) currentUser.timezone = timezoneInput.value.trim();
-            if (displayLocalTimeInput) currentUser.displayLocalTime = displayLocalTimeInput.checked;
 
             if (pronounsSelect) {
                 if (pronounsSelect.value === 'custom' && customPronounsInput) {
@@ -414,10 +397,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (locationInput) {
                 originalValues.location = locationInput.value;
-            }
-
-            if (displayLocalTimeInput) {
-                originalValues.displayLocalTime = displayLocalTimeInput.checked;
             }
 
             isFormSubmission = false;
@@ -580,7 +559,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cu?.displayName && displayNameInput) displayNameInput.value = cu.displayName;
         if (cu?.bio && bioInput) bioInput.value = cu.bio;
         if (cu?.location && locationInput) locationInput.value = cu.location;
-        if (cu?.timezone && timezoneInput) timezoneInput.value = cu.timezone;
 
         if (cu?.pronouns && pronounsSelect) {
             if (cu.pronouns !== 'he/him' && cu.pronouns !== 'she/her' &&

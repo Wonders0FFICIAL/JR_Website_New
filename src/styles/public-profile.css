@@ -79,6 +79,25 @@ body {
     gap: 30px;
 }
 
+.signup-btn {
+    background-color: #0E0634;
+    border: 2px solid #5638E5;
+    border-radius: 7px;
+    padding: 10px 20px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #5638E5;
+}
+
 .hamburger {
     width: 25px;
     height: 18px;
@@ -94,24 +113,6 @@ body {
     border-radius: 2px;
 }
 
-.user-profile {
-    display: flex;
-    align-items: center;
-}
-
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #5638E5;
-    transition: transform 0.3s ease;
-}
-
-.profile-pic:hover {
-    transform: scale(1.05);
-}
-
 .main-content {
     flex: 1;
 }
@@ -124,7 +125,7 @@ body {
 .sidebar {
     width: 265px;
     background-color: #0A0D18;
-    padding: 25px 20px; 
+    padding: 25px 20px;
     min-height: calc(100vh - 74px);
     border-right: 1px solid #2C2F45;
 }
@@ -171,7 +172,7 @@ body {
 .sidebar-link .icon {
     font-size: 24px;
     width: 34px;
-    height: 34px; 
+    height: 34px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -179,7 +180,7 @@ body {
 }
 
 .sidebar-link .icon img {
-    width: 24px;  
+    width: 24px;
     height: 24px;
 }
 
@@ -197,7 +198,7 @@ body {
 
 .search-box input {
     width: 100%;
-    padding: 12px 15px 12px 45px; 
+    padding: 12px 15px 12px 45px;
     background-color: #161830;
     border: 1px solid #2C2F45;
     border-radius: 25px;
@@ -213,7 +214,7 @@ body {
 
 .search-icon {
     position: absolute;
-    left: 20px; 
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
     width: 18px;
@@ -249,13 +250,12 @@ body {
     font-size: 15px;
     color: white;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: background-color 0.3s ease;
     text-decoration: none;
     display: inline-block;
 }
 
 .goto-profile-btn:hover {
-    transform: scale(1.05);
     background-color: #1a1046;
 }
 
@@ -270,29 +270,24 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 80px; 
+    gap: 80px;
 }
 
 .form-group-container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 28px; 
+    gap: 24px;
 }
 
-.form-group {
-    width: 100%;
-    margin-bottom: 0;
-    max-width: 600px; 
-}
-
-#username.form-group {
-    margin-bottom: 8px;
+.form-group:has(#pronouns),
+.form-group:has(#location) {
+    margin-bottom: 24px !important;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     font-weight: 600;
     font-family: 'PT Sans', sans-serif;
 }
@@ -301,14 +296,14 @@ body {
 .form-group textarea,
 .form-group select {
     width: 100%;
-    padding: 14px 18px; 
+    padding: 14px 18px;
     background-color: #161830;
     border: 1px solid #2C2F45;
     border-radius: 8px;
     color: white;
     font-family: 'PT Sans', sans-serif;
     font-size: 15px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .form-group input::placeholder,
@@ -326,7 +321,7 @@ body {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 110px; 
+    min-height: 110px;
 }
 
 .select-wrapper {
@@ -334,34 +329,23 @@ body {
     width: 100%;
 }
 
-.select-wrapper::after {
-    content: "▼";
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #a7a7c7;
-    font-size: 12px;
-}
-
 .profile-pic-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-right: 0; 
-    margin-left: 40px; 
+    margin-right: 0;
+    margin-left: 40px;
 }
 
 .profile-pic-wrapper {
     position: relative;
-    width: 150px; 
-    height: 150px; 
+    width: 150px;
+    height: 150px;
 }
 
 .profile-pic-circle {
-    width: 150px; 
+    width: 150px;
     height: 150px;
     border-radius: 50%;
     background-color: #161830;
@@ -372,17 +356,11 @@ body {
     overflow: hidden;
 }
 
-.profile-icon {
-    width: 75px; 
-    height: 75px;
-    object-fit: contain;
-}
-
 .edit-pic-btn {
     position: absolute;
-    bottom: 6px; 
+    bottom: 6px;
     right: 6px;
-    width: 40px; 
+    width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #5638E5;
@@ -396,16 +374,17 @@ body {
 }
 
 .edit-icon {
-    width: 20px; 
-    height: 20px; 
+    width: 20px;
+    height: 20px;
 }
 
 .edit-pic-btn:hover {
-    transform: scale(1.1);
+    background-color: #4325c2;
+    transition: background-color 0.3s ease;
 }
 
 .profile-pic-container p {
-    font-size: 15px; 
+    font-size: 15px;
     color: #a7a7c7;
     margin: 0;
 }
@@ -413,24 +392,24 @@ body {
 
 .form-actions {
     display: flex;
-    gap: 18px; 
-    margin-top: 36px; 
+    gap: 18px;
+    margin-top: 36px;
 }
 
 .save-btn {
     background-color: #5638E5;
     border: none;
     border-radius: 7px;
-    padding: 14px 24px; 
+    padding: 14px 24px;
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
+    font-weight: 600;
     color: white;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .save-btn:hover {
-    transform: scale(1.05);
     background-color: #4325c2;
 }
 
@@ -438,21 +417,21 @@ body {
     background-color: transparent;
     border: 1px solid #5638E5;
     border-radius: 7px;
-    padding: 14px 24px; 
+    padding: 14px 24px;
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
+    font-weight: 400;
     color: white;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .cancel-btn:hover {
-    transform: scale(1.05);
     background-color: rgba(86, 56, 229, 0.1);
 }
 
 .error-message {
-    color:rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
     font-size: 14px;
     margin-top: 5px;
     font-family: 'PT Sans', sans-serif;
@@ -534,13 +513,13 @@ footer {
         flex-direction: column-reverse;
         gap: 30px;
     }
-    
+
     .profile-pic-container {
-        margin: 0 auto 30px; 
+        margin: 0 auto 30px;
     }
-    
+
     .form-group {
-        max-width: 100%; 
+        max-width: 100%;
     }
 }
 
@@ -548,11 +527,11 @@ footer {
     .navbar {
         padding: 10px 20px;
     }
-    
+
     .nav-links {
         display: none;
     }
-    
+
     .nav-links.active {
         display: flex;
         flex-direction: column;
@@ -565,58 +544,59 @@ footer {
         z-index: 999;
         border-bottom: 1px solid #5638E5;
     }
-    
+
     .content-area {
         padding: 20px 15px;
     }
-    
+
     .profile-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
-    
+
     .goto-profile-btn {
         width: 100%;
     }
-    
+
     .form-actions {
         flex-direction: column;
     }
-    
-    .save-btn, .cancel-btn {
+
+    .save-btn,
+    .cancel-btn {
         width: 100%;
     }
 }
 
 
 .textarea-container {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .character-count {
-  position: absolute;
-  bottom: 10px;
-  right: 12px;
-  font-size: 14px;
-  color: #a7a7c7;
-  font-family: 'PT Sans', sans-serif;
-  background-color: rgba(22, 24, 48, 0.8);
-  padding: 2px 8px;
-  border-radius: 4px;
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 14px;
+    color: #a7a7c7;
+    font-family: 'PT Sans', sans-serif;
+    background-color: rgba(22, 24, 48, 0.8);
+    padding: 2px 8px;
+    border-radius: 4px;
 }
 
 
 .character-count.approaching-limit {
-  color: #ffa500;
+    color: #ffa500;
 }
 
 .character-count.over-limit {
-  color: #ff0000;
-  font-weight: bold;
+    color: #ff0000;
+    font-weight: bold;
 }
 
 .form-group textarea {
-  padding-right: 70px;
+    padding-right: 70px;
 }
