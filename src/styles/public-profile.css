@@ -25,6 +25,12 @@ body {
     min-height: 100vh;
 }
 
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -188,6 +194,9 @@ body {
     flex: 1;
     padding: 30px 40px;
     background-color: #090C15;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .search-box {
@@ -264,6 +273,8 @@ body {
     flex-direction: column;
     gap: 16px;
     max-width: 920px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-row {
@@ -294,8 +305,10 @@ body {
 
 .form-group input,
 .form-group textarea,
-.form-group select {
+.select-wrapper select {
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     padding: 14px 18px;
     background-color: #161830;
     border: 1px solid #2C2F45;

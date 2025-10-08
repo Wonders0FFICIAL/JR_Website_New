@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const togglePasswordBtn = document.getElementById('toggle-password');
     const passwordIcon = togglePasswordBtn.querySelector('i');
-    
+
     const emailError = document.getElementById('email-error');
     const passwordError = document.getElementById('password-error');
     const passwordStrengthBar = document.getElementById('password-strength-bar');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const strengthPercentage = (strength / 5) * 100;
         passwordStrengthBar.style.width = `${strengthPercentage}%`;
-        
+
         if (strength <= 1) {
             passwordStrengthBar.style.backgroundColor = '#ff0000';
         } else if (strength <= 3) {
@@ -98,53 +98,75 @@ document.addEventListener('DOMContentLoaded', () => {
                 email: emailInput.value,
                 password: passwordInput.value
             });
-            
+
             const userId = 'user_' + Date.now();
-            sessionStorage.setItem('currentUser', JSON.stringify({
+            const userData = {
                 id: userId,
                 email: emailInput.value,
-            }));
-            
+                password: passwordInput.value,
+                emailVerified: false,
+                linkedAccounts: {},
+                sessions: []
+            };
+
+            localStorage.setItem(userId, JSON.stringify(userData));
+            localStorage.setItem('currentUser', userId);
+
             window.location.href = 'profile-setup.html';
         } else {
             if (!isEmailValid) emailInput.focus();
             else if (!isPasswordValid) passwordInput.focus();
         }
     });
-    
+
     googleBtn.addEventListener('click', () => {
         console.log('Google signup clicked');
         const demoUser = {
             id: 'google_user_' + Date.now(),
             email: 'google_user@example.com',
-            provider: 'google'
+            provider: 'google',
+            emailVerified: true,
+            linkedAccounts: {
+                google: 'google_user@example.com'
+            },
+            sessions: []
         };
-        sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
+        localStorage.setItem('currentUser', JSON.stringify(demoUser));
         window.location.href = 'profile-setup.html';
     });
-    
+
     githubBtn.addEventListener('click', () => {
         console.log('GitHub signup clicked');
         const demoUser = {
             id: 'github_user_' + Date.now(),
             email: 'github_user@example.com',
-            provider: 'github'
+            provider: 'github',
+            emailVerified: true,
+            linkedAccounts: {
+                github: 'github_user@example.com'
+            },
+            sessions: []
         };
-        sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
+        localStorage.setItem('currentUser', JSON.stringify(demoUser));
         window.location.href = 'profile-setup.html';
     });
-    
+
     appleBtn.addEventListener('click', () => {
         console.log('Apple signup clicked');
         const demoUser = {
             id: 'apple_user_' + Date.now(),
             email: 'apple_user@example.com',
-            provider: 'apple'
+            provider: 'apple',
+            emailVerified: true,
+            linkedAccounts: {
+                apple: 'apple_user@example.com'
+            },
+            sessions: []
         };
-        sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
+        localStorage.setItem('currentUser', JSON.stringify(demoUser));
         window.location.href = 'profile-setup.html';
     });
-    
+
     loginBtn.addEventListener('click', () => {
         console.log('Login clicked');
         window.location.href = 'login.html';

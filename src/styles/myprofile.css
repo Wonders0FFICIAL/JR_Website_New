@@ -74,6 +74,11 @@ body {
   color: #543fce;
 }
 
+.nav-links a.active {
+  color: #543fce;
+  font-weight: bold;
+}
+
 .signup-hamburger {
   display: flex;
   align-items: center;

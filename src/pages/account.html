@@ -6,6 +6,10 @@
     <title>Account Settings</title>
     <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
     <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
@@ -14,31 +18,31 @@
 
   <body>
     <div class="main-content">
-      <nav class="navbar">
-        <div class="nav-left">
-          <a href="home.html">
-            <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
-          </a>
-          <div class="nav-links">
-            <a href="home.html">Home</a>
-            <a href="blog.html">Blog</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="projects.html">Projects</a>
-            <a href="community.html">Community</a>
-          </div>
-        </div>
+     <nav class="navbar">
+  <div class="nav-left">
+    <a href="home.html">
+      <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
+    </a>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="projects.html">Projects</a>
+      <a href="community.html">Community</a>
+    </div>
+  </div>
 
-        <div class="signup-hamburger">
-          <div class="user-profile">
-            <i class="fa fa-user" style="font-size: 18px; color: #5638e5"></i>
-          </div>
-          <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-      </nav>
+  <div class="signup-hamburger">
+    <a href="signup.html" style="text-decoration: none">
+      <button class="signup-btn">Sign Up</button>
+    </a>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</nav>
 
       <div class="settings-wrapper">
         <div class="sidebar">
@@ -167,28 +171,93 @@
             </div>
           </div>
 
+          <div class="settings-section" id="passwordSection">
+            <h3>Password</h3>
+            <p class="section-description">Change your account password. For your security, you'll need to confirm your current password.</p>
+            
+            <div class="password-display-container">
+              <div class="current-password-display">
+                <span class="password-label">Current Password:</span>
+                <div class="password-value-container">
+                  <span class="password-value" id="currentPasswordValue">••••••••</span>
+                  <button class="toggle-password-visibility" id="toggleCurrentPassword" type="button">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <button class="change-email-btn" id="changePasswordBtn">Change Password</button>
+            </div>
+
+            <div class="change-password-form" id="changePasswordForm" style="display: none;">
+              <div class="form-group">
+                <label for="currentPasswordInput">Current Password</label>
+                <div class="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="currentPasswordInput"
+                    placeholder="Enter your current password"
+                  />
+                  <button class="toggle-password-btn" id="toggleCurrentPasswordInput" type="button">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+                <div id="current-password-error" class="error-message"></div>
+              </div>
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <div class="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Enter your new password"
+                  />
+                  <button class="toggle-password-btn" id="toggleNewPassword" type="button">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+                <div id="password-strength-container" style="display: none;">
+                  <div id="password-strength-bar"></div>
+                </div>
+                <div id="new-password-error" class="error-message"></div>
+              </div>
+              <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <div class="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="confirmNewPassword"
+                    placeholder="Confirm your new password"
+                  />
+                  <button class="toggle-password-btn" id="toggleConfirmPassword" type="button">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+                <div id="confirm-password-error" class="error-message"></div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="save-btn" id="savePasswordBtn">Update Password</button>
+                <button type="button" class="cancel-btn" id="cancelPasswordBtn">Cancel</button>
+              </div>
+            </div>
+
+            <div class="success-notice" id="passwordSuccessNotice" style="display: none;">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <strong>Password Updated Successfully</strong>
+                <p>Your password has been changed. Please use your new password for future logins.</p>
+              </div>
+            </div>
+          </div>
+
           <div class="settings-section">
             <h3>Linked Accounts</h3>
-            <p class="section-description">Connect your JR account with other services for easier sign-in and enhanced features.</p>
+            <p class="section-description">Connect your JR. account with other services for easier sign-in and enhanced features.</p>
             
             <div class="linked-accounts">
               <div class="account-item">
                 <div class="account-info">
-                  <div class="account-icon github">
-                    <i class="fab fa-github"></i>
-                  </div>
-                  <div class="account-details">
-                    <span class="account-name">GitHub</span>
-                    <span class="account-status" id="githubStatus">Not connected</span>
-                  </div>
-                </div>
-                <button class="connect-btn" id="githubBtn" data-provider="github">Connect</button>
-              </div>
-
-              <div class="account-item">
-                <div class="account-info">
                   <div class="account-icon google">
-                    <i class="fab fa-google"></i>
+                    <img src="../assets/images/google.png" alt="Google" />
                   </div>
                   <div class="account-details">
                     <span class="account-name">Google</span>
@@ -200,87 +269,37 @@
 
               <div class="account-item">
                 <div class="account-info">
-                  <div class="account-icon discord">
-                    <i class="fab fa-discord"></i>
+                  <div class="account-icon github">
+                    <img src="../assets/images/github.png" alt="GitHub" />
                   </div>
                   <div class="account-details">
-                    <span class="account-name">Discord</span>
-                    <span class="account-status" id="discordStatus">Not connected</span>
+                    <span class="account-name">GitHub</span>
+                    <span class="account-status" id="githubStatus">Not connected</span>
                   </div>
                 </div>
-                <button class="connect-btn" id="discordBtn" data-provider="discord">Connect</button>
+                <button class="connect-btn" id="githubBtn" data-provider="github">Connect</button>
+              </div>
+
+              <div class="account-item">
+                <div class="account-info">
+                  <div class="account-icon apple">
+                    <img src="../assets/images/apple.png" alt="Apple" />
+                  </div>
+                  <div class="account-details">
+                    <span class="account-name">Apple</span>
+                    <span class="account-status" id="appleStatus">Not connected</span>
+                  </div>
+                </div>
+                <button class="connect-btn" id="appleBtn" data-provider="apple">Connect</button>
               </div>
             </div>
           </div>
 
           <div class="settings-section">
             <h3>Active Sessions</h3>
-            <p class="section-description">Manage devices and locations where you're currently signed in to your JR account.</p>
+            <p class="section-description">Manage devices and locations where you're currently signed in to your JR. account.</p>
             
             <div class="sessions-list" id="sessionsList">
-              <div class="session-item current-session">
-                <div class="session-info">
-                  <div class="session-icon">
-                    <i class="fas fa-desktop"></i>
-                  </div>
-                  <div class="session-details">
-                    <div class="session-header">
-                      <span class="device-name">Chrome on Windows</span>
-                      <span class="current-badge">Current Session</span>
-                    </div>
-                    <div class="session-meta">
-                      <span class="location">Kanayannur, Kerala, IN</span>
-                      <span class="last-active">Active now</span>
-                    </div>
-                    <div class="session-ip">IP: 192.168.1.100</div>
-                  </div>
-                </div>
-                <div class="session-actions">
-                  <span class="current-indicator">This device</span>
-                </div>
-              </div>
-
-              <div class="session-item">
-                <div class="session-info">
-                  <div class="session-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                  </div>
-                  <div class="session-details">
-                    <div class="session-header">
-                      <span class="device-name">Safari on iPhone</span>
-                    </div>
-                    <div class="session-meta">
-                      <span class="location">Kochi, Kerala, IN</span>
-                      <span class="last-active">2 hours ago</span>
-                    </div>
-                    <div class="session-ip">IP: 192.168.1.101</div>
-                  </div>
-                </div>
-                <div class="session-actions">
-                  <button class="logout-session-btn" data-session-id="session-2">Sign Out</button>
-                </div>
-              </div>
-
-              <div class="session-item">
-                <div class="session-info">
-                  <div class="session-icon">
-                    <i class="fas fa-laptop"></i>
-                  </div>
-                  <div class="session-details">
-                    <div class="session-header">
-                      <span class="device-name">Firefox on Ubuntu</span>
-                    </div>
-                    <div class="session-meta">
-                      <span class="location">Ernakulam, Kerala, IN</span>
-                      <span class="last-active">1 day ago</span>
-                    </div>
-                    <div class="session-ip">IP: 203.192.12.34</div>
-                  </div>
-                </div>
-                <div class="session-actions">
-                  <button class="logout-session-btn" data-session-id="session-3">Sign Out</button>
-                </div>
-              </div>
             </div>
 
             <div class="session-management-actions">
@@ -294,7 +313,7 @@
               <div class="danger-item">
                 <div class="danger-info">
                   <h4>Delete Account</h4>
-                  <p>Permanently delete your JR account and all associated data. This action cannot be undone.</p>
+                  <p>Permanently delete your JR. account and all associated data. This action cannot be undone.</p>
                 </div>
                 <button class="delete-account-btn" id="deleteAccountBtn">Delete Account</button>
               </div>
@@ -385,7 +404,6 @@
           <ul>
             <li>Your profile information</li>
             <li>All your projects and files</li>
-            <li>Your community posts and comments</li>
             <li>Your subscription and billing history</li>
           </ul>
           <p>This action <strong>cannot be undone</strong>.</p>
