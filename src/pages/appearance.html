@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appearance Settings</title>
+    <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/appearance.css" />
+  </head>
+
+  <body>    
+    <div class="main-content">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="home.html">
+            <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="projects.html">Projects</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
+
+        <div class="signup-hamburger">
+          <a href="signup.html" style="text-decoration: none">
+            <button class="signup-btn">Sign Up</button>
+          </a>
+          <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="settings-wrapper">
+        <div class="sidebar">
+          <h2 class="sidebar-title">Settings</h2>
+          <div class="sidebar-links">
+            <a href="public-profile.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/display_name.png" alt="Profile Icon" />
+              </span>
+              <span>Public Profile</span>
+            </a>
+            <a href="account.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/account.png" alt="Account Icon" />
+              </span>
+              <span>Account</span>
+            </a>
+            <a href="appearance.html" class="sidebar-link active">
+              <span class="icon">
+               <img src="../assets/images/appearance.png" alt="Appearance Icon" />
+              </span>
+              <span>Appearance</span>
+            </a>
+            <a href="accessibility.html" class="sidebar-link">
+              <span class="icon">
+          <img src="../assets/images/accessibility.png" alt="Accessibility Icon" />
+              </span>
+              <span>Accessibility</span>
+            </a>
+            <a href="notifications.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/notifications.png" alt="Notifications Icon" />
+              </span>
+              <span>Notifications</span>
+            </a>
+            <a href="billing.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/billing.png" alt="Billing Icon" />
+              </span>
+              <span>Billing & Plans</span>
+            </a>
+            <a href="privacy.html" class="sidebar-link">
+              <span class="icon">
+             <img src="../assets/images/privacy.png" alt="Privacy Icon" />
+              </span>
+              <span>Privacy</span>
+            </a>
+            <a href="security.html" class="sidebar-link">
+              <span class="icon">
+           <img src="../assets/images/lock.png" alt="Security Icon" />
+              </span>
+              <span>Security</span>
+            </a>
+            <a href="developer.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/code.png" alt="Developer Icon" />
+              </span>
+              <span>Developer</span>
+            </a>
+            <a href="activity.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/activity.png" alt="Activity Icon" />
+              </span>
+              <span>Activity</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="content-area">
+          <div class="search-box">
+            <img src="../assets/images/search.png" alt="Search" class="search-icon" />
+            <input type="text" placeholder="Search settings..." />
+          </div>
+
+          <div class="appearance-header">
+            <div class="appearance-title">
+              <h2>Appearance</h2>
+              <p>Customize how JR. looks and feels</p>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Theme</h3>
+            <p class="section-description">Choose your preferred color scheme for the interface.</p>
+            
+            <div class="theme-options">
+              <div class="theme-card" data-theme="default">
+                <div class="theme-preview-image">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Default Theme Preview" class="theme-img" data-theme-type="default">
+                </div>
+                <div class="theme-info">
+                  <div class="theme-name">
+                    <span>Default</span>
+                    <div class="theme-check">
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                  <p class="theme-description">Dark theme with purple accents</p>
+                </div>
+              </div>
+
+              <div class="theme-card" data-theme="light">
+                <div class="theme-preview-image">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" alt="Light Theme Preview" class="theme-img" data-theme-type="light">
+                </div>
+                <div class="theme-info">
+                  <div class="theme-name">
+                    <span>Light</span>
+                    <div class="theme-check">
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                  <p class="theme-description">Bright theme for daytime use</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Background Effects</h3>
+            <p class="section-description">Control the animated background elements on your pages.</p>
+            
+            <div class="effect-toggle-container">
+              <div class="effect-info">
+                <div class="effect-header">
+                  <i class="fas fa-star"></i>
+                  <div>
+                    <h4>Animated Stars</h4>
+                    <p>Display twinkling stars in the background</p>
+                  </div>
+                </div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="starsToggle" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Preview</h3>
+            <p class="section-description">See how your selected theme looks.</p>
+            
+            <div class="preview-container">
+              <div class="preview-window">
+                <div class="preview-window-header">
+                  <div class="preview-window-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <span class="preview-window-title">JR. Dashboard</span>
+                </div>
+                <div class="preview-window-content">
+                  <div class="preview-nav">
+                    <div class="preview-logo"></div>
+                    <div class="preview-nav-items">
+                      <div class="preview-nav-item"></div>
+                      <div class="preview-nav-item"></div>
+                      <div class="preview-nav-item"></div>
+                    </div>
+                  </div>
+                  <div class="preview-main-content">
+                    <div class="preview-card"></div>
+                    <div class="preview-card"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <div class="save-changes-container">
+              <button class="reset-btn" id="resetAppearance">
+                <i class="fas fa-undo"></i>
+                Reset to Defaults
+              </button>
+              <div style="display: flex; gap: 15px; align-items: center;">
+                <button class="save-btn" id="saveAppearance">
+                  <i class="fas fa-save"></i>
+                  Save Changes
+                </button>
+                <div class="save-notice" id="saveNotice" style="display: none;">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Changes applied to all pages</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+            <a
+              href="https://ko-fi.com/jr_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Donate</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">License Information</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Community</h3>
+          <div class="footer-links">
+            <a
+              href="https://github.com/jr-official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+            <a
+              href="https://discord.gg/d4kfXDrcG8"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Discord</a
+            >
+            <a
+              href="https://x.com/jr_suite"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X</a
+            >
+            <a
+              href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="copyright">© 2025 JR. All rights reserved.</div>
+    </footer>
+
+    <script src="../js/appearance.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const defaultImg = document.querySelector('.theme-img[data-theme-type="default"]');
+        const lightImg = document.querySelector('.theme-img[data-theme-type="light"]');
+        
+        defaultImg.src = '../assets/images/theme-default-preview.png';
+        lightImg.src = '../assets/images/theme-light-preview.png';
+      });
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@ let starsInitialized = false;
 function getCurrentPage() {
     const path = window.location.pathname;
     const filename = path.split('/').pop();
-    
+
     if (filename.includes('pricing') || document.querySelector('.pricing-container')) {
         return 'pricing';
     } else if (filename.includes('community') || document.querySelector('.community-card')) {
@@ -38,8 +38,8 @@ function isInContentZoneOriginal(position) {
         '.container',
         '.title',
         '.subtitle',
-        '.description', 
-        '.testimonials-section', 
+        '.description',
+        '.testimonials-section',
         '.blog-container',
         '.blog-header',
         '.projects-grid',
@@ -49,20 +49,20 @@ function isInContentZoneOriginal(position) {
         '.divider',
         'footer'
     ];
-    
+
     const buffer = 60;
     const dividerBuffer = 40;
-    
+
     for (let selector of contentSelectors) {
         const element = document.querySelector(selector);
         if (!element) continue;
-        
+
         const rect = element.getBoundingClientRect();
         if (rect.width === 0 && rect.height === 0) continue;
-        
-        const useBuffer = (selector === '.navbar' || selector === '.divider' || selector === 'footer') 
+
+        const useBuffer = (selector === '.navbar' || selector === '.divider' || selector === 'footer')
             ? dividerBuffer : buffer;
-        
+
         if (position.x >= rect.left - useBuffer &&
             position.x <= rect.right + useBuffer &&
             position.y >= rect.top - useBuffer &&
@@ -70,7 +70,7 @@ function isInContentZoneOriginal(position) {
             return true;
         }
     }
-    
+
     return false;
 }
 
@@ -79,24 +79,24 @@ function isInContentZonePricing(position) {
         '.navbar',
         'footer',
         '.pricing-title',
-        '.pricing-subtitle', 
+        '.pricing-subtitle',
         '.product-tabs',
         '.toggle-container',
         '.pricing-card',
         '.comparison-table'
     ];
-    
+
     for (let selector of contentSelectors) {
         const elements = document.querySelectorAll(selector);
-        
+
         for (let element of elements) {
             if (!element) continue;
-            
+
             const rect = element.getBoundingClientRect();
             if (rect.width === 0 && rect.height === 0) continue;
-            
+
             let buffer = 25;
-            
+
             if (selector === '.navbar' || selector === 'footer') {
                 buffer = 40;
             } else if (selector === '.pricing-card') {
@@ -104,7 +104,7 @@ function isInContentZonePricing(position) {
             } else if (selector === '.pricing-title') {
                 buffer = 30;
             }
-            
+
             if (position.x >= rect.left - buffer &&
                 position.x <= rect.right + buffer &&
                 position.y >= rect.top - buffer &&
@@ -113,31 +113,31 @@ function isInContentZonePricing(position) {
             }
         }
     }
-    
+
     return false;
 }
 
 function isInDeadZone(position) {
     if (getCurrentPage() !== 'pricing') return false;
-    
+
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    
+
     const centerLeft = screenWidth * 0.15;
     const centerRight = screenWidth * 0.85;
-    
+
     if (position.x > centerLeft && position.x < centerRight) {
         const hasContent = document.querySelector('.pricing-container');
         if (hasContent) {
             const contentTop = 100;
             const contentBottom = screenHeight - 200;
-            
+
             if (position.y > contentTop && position.y < contentBottom) {
                 return Math.random() > 0.7;
             }
         }
     }
-    
+
     return false;
 }
 
@@ -197,7 +197,7 @@ function findSafeStarPositionPricing(maxAttempts = 25) {
     for (let i = 0; i < 10; i++) {
         const side = Math.random();
         let position;
-        
+
         if (side < 0.25) {
             position = {
                 x: Math.random() * (window.innerWidth * 0.15),
@@ -233,7 +233,7 @@ function findSafeStarPositionPricing(maxAttempts = 25) {
 
 function findSafeStarPosition(maxAttempts) {
     const currentPage = getCurrentPage();
-    
+
     if (currentPage === 'pricing') {
         return findSafeStarPositionPricing(maxAttempts);
     } else {
@@ -245,7 +245,7 @@ function getOptimalStarCount() {
     const screenArea = window.innerWidth * window.innerHeight;
     const isMobile = window.innerWidth <= 768;
     const currentPage = getCurrentPage();
-    
+
     if (currentPage === 'pricing') {
         if (isMobile) {
             return Math.min(50, Math.floor(screenArea / 12000));
@@ -268,7 +268,7 @@ function createStars() {
     starPositions = [];
 
     const starCount = getOptimalStarCount();
-    
+
     document.body.offsetHeight;
 
     for (let i = 0; i < starCount; i++) {
@@ -277,17 +277,17 @@ function createStars() {
         star.className = 'star';
         star.style.left = position.x + 'px';
         star.style.top = position.y + 'px';
-        const size = Math.random() * 2.5 + 0.8; 
+        const size = Math.random() * 2.5 + 0.8;
         star.style.width = size + 'px';
         star.style.height = size + 'px';
         star.style.animationDelay = Math.random() * 3 + 's';
-        
+
         starPositions.push(position);
         starsContainer.appendChild(star);
     }
-    
+
     starsInitialized = true;
-    console.log(`Created ${starCount} stars for ${getCurrentPage()} page`); 
+    console.log(`Created ${starCount} stars for ${getCurrentPage()} page`);
 }
 
 let mouseX = 0, mouseY = 0;
@@ -295,19 +295,19 @@ let animationFrameId = null;
 
 function updateStarPositions() {
     const stars = document.querySelectorAll('.star');
-    
+
     stars.forEach((star, index) => {
         const speed = (index % 3 + 1) * 0.3;
         star.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
     });
-    
+
     animationFrameId = null;
 }
 
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX / window.innerWidth;
     mouseY = e.clientY / window.innerHeight;
-    
+
     if (!animationFrameId) {
         animationFrameId = requestAnimationFrame(updateStarPositions);
     }
