@@ -1,3 +1,6 @@
+let currentSelectedTheme = 'default';
+let currentStarsToggleState = true;
+
 function getAppearanceSettings() {
     const savedTheme = localStorage.getItem('theme') || 'default';
     const savedStars = localStorage.getItem('starsEnabled');
@@ -30,6 +33,50 @@ function applyTheme(theme) {
     });
 }
 
+function updateDefaultThemePreview() {
+    const defaultThemeImg = document.querySelector('.theme-card[data-theme="default"] .theme-img');
+    const starsToggle = document.getElementById('starsToggle');
+
+    if (defaultThemeImg && starsToggle) {
+        if (starsToggle.checked && !starsToggle.disabled) {
+            defaultThemeImg.src = '../assets/images/theme-default-stars-preview.png';
+        } else {
+            defaultThemeImg.src = '../assets/images/theme-default-preview.png';
+        }
+    }
+}
+
+function updateStarsToggleState() {
+    const starsToggle = document.getElementById('starsToggle');
+    const effectContainer = document.querySelector('.effect-toggle-container');
+
+    if (starsToggle && effectContainer) {
+        if (currentSelectedTheme === 'light') {
+            starsToggle.checked = false;
+            starsToggle.disabled = true;
+            effectContainer.style.opacity = '0.6';
+            effectContainer.style.cursor = 'not-allowed';
+
+            const effectDescription = effectContainer.querySelector('p');
+            if (effectDescription) {
+                effectDescription.textContent = 'Stars are only available in Default theme';
+            }
+        } else {
+            starsToggle.disabled = false;
+            starsToggle.checked = currentStarsToggleState;
+            effectContainer.style.opacity = '1';
+            effectContainer.style.cursor = 'default';
+
+            const effectDescription = effectContainer.querySelector('p');
+            if (effectDescription) {
+                effectDescription.textContent = 'Display twinkling stars in the background';
+            }
+        }
+
+        updateDefaultThemePreview();
+    }
+}
+
 function toggleStars(enabled) {
     const starsContainer = document.getElementById('stars');
     if (starsContainer) {
@@ -40,6 +87,7 @@ function toggleStars(enabled) {
             }
         } else {
             starsContainer.style.display = 'none';
+            starsContainer.innerHTML = '';
         }
     }
 }
@@ -55,7 +103,24 @@ function showSaveNotification() {
 }
 
 function applyToAllPages() {
-    const settings = getAppearanceSettings();
+    const selectedThemeCard = document.querySelector('.theme-card.selected');
+    const theme = selectedThemeCard ? selectedThemeCard.dataset.theme : 'default';
+    
+    const starsEnabled = (theme === 'light') ? false : document.getElementById('starsToggle').checked;
+
+    const settings = {
+        theme: theme,
+        starsEnabled: starsEnabled
+    };
+
+    saveAppearanceSettings(settings);
+
+    currentSelectedTheme = theme;
+    currentStarsToggleState = starsEnabled;
+
+    applyTheme(settings.theme);
+    updateStarsToggleState();
+    toggleStars(settings.starsEnabled);
 
     showSaveNotification();
 
@@ -65,24 +130,46 @@ function applyToAllPages() {
 function initializeAppearance() {
     const settings = getAppearanceSettings();
 
+    currentSelectedTheme = settings.theme;
+    currentStarsToggleState = settings.starsEnabled;
+
     applyTheme(settings.theme);
 
     const starsToggle = document.getElementById('starsToggle');
     if (starsToggle) {
-        starsToggle.checked = settings.starsEnabled;
+        starsToggle.checked = currentStarsToggleState;
     }
-    toggleStars(settings.starsEnabled);
+
+    updateStarsToggleState();
+
+    const defaultImg = document.querySelector('.theme-img[data-theme-type="default"]');
+    const lightImg = document.querySelector('.theme-img[data-theme-type="light"]');
+
+    if (defaultImg) {
+        defaultImg.src = settings.starsEnabled
+            ? '../assets/images/theme-default-stars-preview.png'
+            : '../assets/images/theme-default-preview.png';
+    }
+    if (lightImg) {
+        lightImg.src = '../assets/images/theme-light-preview.png';
+    }
 }
 
 function setupThemeSelection() {
     document.querySelectorAll('.theme-card').forEach(card => {
         card.addEventListener('click', function () {
             const theme = this.dataset.theme;
-            const settings = getAppearanceSettings();
-            settings.theme = theme;
+            currentSelectedTheme = theme;
 
-            applyTheme(theme);
-            saveAppearanceSettings(settings);
+            document.querySelectorAll('.theme-card').forEach(c => {
+                if (c.dataset.theme === theme) {
+                    c.classList.add('selected');
+                } else {
+                    c.classList.remove('selected');
+                }
+            });
+
+            updateStarsToggleState();
         });
     });
 }
@@ -91,12 +178,11 @@ function setupStarsToggle() {
     const starsToggle = document.getElementById('starsToggle');
     if (starsToggle) {
         starsToggle.addEventListener('change', function () {
-            const enabled = this.checked;
-            const settings = getAppearanceSettings();
-            settings.starsEnabled = enabled;
+            if (!starsToggle.disabled) {
+                currentStarsToggleState = this.checked;
 
-            toggleStars(enabled);
-            saveAppearanceSettings(settings);
+                updateDefaultThemePreview();
+            }
         });
     }
 }
@@ -119,15 +205,12 @@ function setupResetButton() {
                 starsEnabled: true
             };
 
+            currentSelectedTheme = defaultSettings.theme;
+            currentStarsToggleState = defaultSettings.starsEnabled;
+
             applyTheme(defaultSettings.theme);
+            updateStarsToggleState();
 
-            const starsToggle = document.getElementById('starsToggle');
-            if (starsToggle) {
-                starsToggle.checked = defaultSettings.starsEnabled;
-            }
-            toggleStars(defaultSettings.starsEnabled);
-
-            saveAppearanceSettings(defaultSettings);
             showSaveNotification();
         });
     }

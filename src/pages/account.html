@@ -14,35 +14,62 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../styles/account.css" />
+    <style>
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 8px;
+        font-family: "PT Sans", sans-serif;
+        min-height: 18px;
+        display: block;
+      }
+
+      .input-error {
+        border-color: red !important;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .error-message:not(:empty) {
+        animation: fadeIn 0.3s ease-in-out;
+      }
+    </style>
   </head>
 
   <body>
     <div class="main-content">
-     <nav class="navbar">
-  <div class="nav-left">
-    <a href="home.html">
-      <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
-    </a>
-    <div class="nav-links">
-      <a href="home.html">Home</a>
-      <a href="blog.html">Blog</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="projects.html">Projects</a>
-      <a href="community.html">Community</a>
-    </div>
-  </div>
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="home.html">
+            <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="projects.html">Projects</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
 
-  <div class="signup-hamburger">
-    <a href="signup.html" style="text-decoration: none">
-      <button class="signup-btn">Sign Up</button>
-    </a>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-</nav>
+        <div class="signup-hamburger">
+          <a href="signup.html" class="signup-btn">Sign Up</a>
+          <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </nav>
 
       <div class="settings-wrapper">
         <div class="sidebar">
@@ -113,7 +140,7 @@
 
         <div class="content-area">
           <div class="search-box">
-<img src="../assets/images/search.png" alt="Search" class="search-icon" />
+            <img src="../assets/images/search.png" alt="Search" class="search-icon" />
             <input type="text" placeholder="Search settings..." />
           </div>
 
@@ -308,11 +335,14 @@
           </div>
 
           <div class="settings-section danger-zone">
-            <h3>Danger Zone</h3>
+            <div class="danger-zone-header">
+              <i class="fas fa-exclamation-triangle"></i>
+              <h3>Danger Zone</h3>
+            </div>
             <div class="danger-content">
               <div class="danger-item">
                 <div class="danger-info">
-                  <h4>Delete Account</h4>
+                  <h4><i class="fas fa-trash-alt"></i> Delete Account</h4>
                   <p>Permanently delete your JR. account and all associated data. This action cannot be undone.</p>
                 </div>
                 <button class="delete-account-btn" id="deleteAccountBtn">Delete Account</button>
@@ -323,7 +353,7 @@
       </div>
     </div>
 
- <footer>
+    <footer>
       <div class="footer-content">
         <div class="footer-section">
           <h3>Quick Links</h3>
@@ -442,6 +472,31 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          document.body.classList.add('light-theme');
+        } else {
+          document.body.classList.remove('light-theme');
+        }
+      }
+
+      function loadThemeSettings() {
+        const savedTheme = localStorage.getItem('theme') || 'default';
+        applyTheme(savedTheme);
+      }
+
+      window.addEventListener('storage', function(e) {
+        if (e.key === 'theme') {
+          applyTheme(e.newValue);
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        loadThemeSettings();
+      });
+    </script>
 
     <script src="../js/account.js"></script>
   </body>

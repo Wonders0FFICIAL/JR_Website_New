@@ -7,6 +7,12 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 50%, #d4d8e8 100%);
+    color: #1a1a2e;
 }
 
 .stars {
@@ -30,13 +36,10 @@ body {
 }
 
 @keyframes twinkle {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 0.2;
         transform: scale(0.8);
     }
-
     50% {
         opacity: 0.9;
         transform: scale(1.1);
@@ -49,13 +52,10 @@ body {
     }
 
     @keyframes twinkle {
-
-        0%,
-        100% {
+        0%, 100% {
             opacity: 0.3;
             transform: scale(0.9);
         }
-
         50% {
             opacity: 0.8;
             transform: scale(1.05);

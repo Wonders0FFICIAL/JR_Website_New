@@ -17,6 +17,12 @@
 body {
     color: white;
     font-family: 'Comfortaa', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 50%, #d4d8e8 100%);
+    color: #1a1a2e;
 }
 
 .navbar {
@@ -29,12 +35,18 @@ body {
     border-bottom: 1px solid #5638E5;
     position: relative;
     z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #7c5cef;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 20px;  
+    gap: 20px;
 }
 
 .logo {
@@ -61,13 +73,25 @@ body {
     transition: color 0.3s ease;
 }
 
+body.light-theme .nav-links a {
+    color: #1a1a2e;
+}
+
 .nav-links a:hover {
     color: #543fce;
+}
+
+body.light-theme .nav-links a:hover {
+    color: #5638E5;
 }
 
 .nav-links a.active {
     color: #543fce;
     font-weight: bold;
+}
+
+body.light-theme .nav-links a.active {
+    color: #5638E5;
 }
 
 .login-hamburger {
@@ -87,11 +111,21 @@ body {
     color: white;
     cursor: pointer;
     margin-right: 10px;
-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .signup-btn {
+    background-color: #5638E5;
+    border-color: #4325c2;
+    color: white;
 }
 
 .signup-btn:hover {
     background-color: #5638E5;
+}
+
+body.light-theme .signup-btn:hover {
+    background-color: #4325c2;
 }
 
 .hamburger {
@@ -107,6 +141,11 @@ transition: background-color 0.3s ease;
     height: 3px;
     background-color: white;
     border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .hamburger div {
+    background-color: #1a1a2e;
 }
 
 .main-content {
@@ -134,6 +173,12 @@ transition: background-color 0.3s ease;
     width: 400px;
     position: relative;
     z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #7c5cef;
 }
 
 .card h2 {
@@ -141,6 +186,11 @@ transition: background-color 0.3s ease;
     color: #fff;
     margin-bottom: 30px;
     font-size: 28px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .card h2 {
+    color: #1a1a2e;
 }
 
 .input-container {
@@ -177,6 +227,11 @@ transition: background-color 0.3s ease;
     margin-bottom: 8px;
     font-size: 16px;
     color: #fff;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .input-group label {
+    color: #1a1a2e;
 }
 
 .input-group input {
@@ -189,6 +244,13 @@ transition: background-color 0.3s ease;
     color: #fff;
     font-size: 16px;
     box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .input-group input {
+    background-color: #ffffff;
+    border-color: #d4d8e8;
+    color: #1a1a2e;
 }
 
 .input-group input:focus {
@@ -203,7 +265,7 @@ transition: background-color 0.3s ease;
 
 .password-container input {
     width: 100%;
-    padding: 15px 10px 15px 42px; 
+    padding: 15px 10px 15px 42px;
     padding-right: 40px;
     font-size: 16px;
     box-sizing: border-box;
@@ -231,7 +293,7 @@ transition: background-color 0.3s ease;
 
 .forgot-password {
     text-align: left;
-    margin-top: 8px; 
+    margin-top: 8px;
     margin-bottom: 15px;
 }
 
@@ -259,7 +321,7 @@ transition: background-color 0.3s ease;
     margin-top: 6px;
     width: 100%;
     display: block;
-    visibility: visible; 
+    visibility: visible;
 }
 
 .error-message:empty {
@@ -308,9 +370,19 @@ transition: background-color 0.3s ease;
     transition: all 0.3s ease;
 }
 
+body.light-theme .social-btn {
+    background-color: #ffffff;
+    color: #1a1a2e;
+    border: 1px solid #d4d8e8;
+}
+
 .social-btn:hover {
     transform: translateY(-2px);
     background-color: #121212;
+}
+
+body.light-theme .social-btn:hover {
+    background-color: #f0f2f8;
 }
 
 .social-btn i {
@@ -322,12 +394,24 @@ transition: background-color 0.3s ease;
     border-color: #ffffff;
 }
 
+body.light-theme .google-btn:hover {
+    border-color: #5638E5;
+}
+
 .github-btn:hover {
     border-color: #ffffff;
 }
 
+body.light-theme .github-btn:hover {
+    border-color: #5638E5;
+}
+
 .apple-btn:hover {
     border-color: #ffffff;
+}
+
+body.light-theme .apple-btn:hover {
+    border-color: #5638E5;
 }
 
 .divider {
@@ -337,7 +421,8 @@ transition: background-color 0.3s ease;
     color: #5638E5;
 }
 
-.divider::before, .divider::after {
+.divider::before,
+.divider::after {
     content: "";
     flex-grow: 1;
     background-color: #5638E5;
@@ -354,6 +439,11 @@ transition: background-color 0.3s ease;
     color: white;
     font-size: 16px;
     margin-right: 5px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .auth-links label {
+    color: #1a1a2e;
 }
 
 #signup-btn {
@@ -380,6 +470,13 @@ footer {
     color: white;
     position: relative;
     z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme footer {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top-color: #d4d8e8;
+    color: #1a1a2e;
 }
 
 .footer-content {
@@ -399,6 +496,11 @@ footer {
     font-size: 18px;
     margin-bottom: 20px;
     color: #6f54f8;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .footer-section h3 {
+    color: #5638E5;
 }
 
 .footer-links a {
@@ -411,6 +513,10 @@ footer {
     width: fit-content;
 }
 
+body.light-theme .footer-links a {
+    color: #1a1a2e;
+}
+
 .footer-links a:hover {
     color: #5638E5;
     text-decoration: none;
@@ -421,6 +527,11 @@ footer {
     height: 1px;
     background-color: #1A1F36;
     margin: 20px 0;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .footer-separator {
+    background-color: #d4d8e8;
 }
 
 .copyright {
@@ -428,6 +539,11 @@ footer {
     padding-top: 20px;
     font-size: 14px;
     color: #888;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .copyright {
+    color: #6b6b7f;
 }
 
 @media (max-width: 768px) {
@@ -452,6 +568,11 @@ footer {
         border-bottom: 1px solid #5638E5;
     }
 
+    body.light-theme .nav-links.active {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-bottom-color: #7c5cef;
+    }
+
     .card {
         padding: 25px;
         width: 90%;
@@ -473,8 +594,8 @@ footer {
 }
 
 .social-icon-btn {
-    width: 50px;  
-    height: 50px; 
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: #000;
     border: 1px solid rgba(255, 255, 255, 0.651);
@@ -487,22 +608,45 @@ footer {
     cursor: pointer;
 }
 
+body.light-theme .social-icon-btn {
+    background-color: #ffffff;
+    border: 1px solid #d4d8e8;
+    color: #1a1a2e;
+}
+
 .social-icon-btn:hover {
     transform: translateY(-2px);
     background-color: #121212;
     border-color: #ffffff;
 }
 
+body.light-theme .social-icon-btn:hover {
+    background-color: #f0f2f8;
+    border-color: #5638E5;
+}
+
 .social-icon-btn.google-btn:hover {
     border-color: #ffffff;
+}
+
+body.light-theme .social-icon-btn.google-btn:hover {
+    border-color: #5638E5;
 }
 
 .social-icon-btn.github-btn:hover {
     border-color: #ffffff;
 }
 
+body.light-theme .social-icon-btn.github-btn:hover {
+    border-color: #5638E5;
+}
+
 .social-icon-btn.apple-btn:hover {
     border-color: #ffffff;
+}
+
+body.light-theme .social-icon-btn.apple-btn:hover {
+    border-color: #5638E5;
 }
 
 .social-icon-btn img.social-logo {

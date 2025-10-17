@@ -11,15 +11,18 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 50%, #d4d8e8 100%);
+    color: #1a1a2e;
 }
 
 @keyframes twinkle {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 0.3;
     }
-
     50% {
         opacity: 1;
     }
@@ -45,6 +48,11 @@ body {
     -webkit-background-clip: initial;
     -webkit-text-fill-color: initial;
     background-clip: initial;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .hero-section h1 {
+    color: #1a1a2e;
 }
 
 .hero-section p {
@@ -53,6 +61,11 @@ body {
     max-width: 600px;
     margin: 0 auto 30px;
     line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .hero-section p {
+    color: #6b6b7f;
 }
 
 .search-bar {
@@ -73,6 +86,12 @@ body {
     transition: all 0.3s ease;
     position: relative;
     z-index: 2;
+}
+
+body.light-theme .search-bar input {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a1a2e;
+    border-color: #7c5cef;
 }
 
 .search-bar input:focus {
@@ -98,7 +117,6 @@ body {
     transition: all 0.3s ease;
     z-index: 3;
 }
-
 
 .search-bar button i.fas {
     color: #ffffff !important;
@@ -136,6 +154,12 @@ body {
     font-weight: 500;
 }
 
+body.light-theme .category-btn {
+    background: rgba(255, 255, 255, 0.8);
+    color: #6b6b7f;
+    border-color: #7c5cef;
+}
+
 .category-btn:hover,
 .category-btn.active {
     background: linear-gradient(45deg, #5638E5, #8b73ff);
@@ -152,6 +176,11 @@ body {
     margin-bottom: 40px;
     text-align: center;
     color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .section-title {
+    color: #1a1a2e;
 }
 
 .featured-grid {
@@ -172,6 +201,11 @@ body {
     cursor: pointer;
 }
 
+body.light-theme .featured-main {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(124, 92, 239, 0.1));
+    border-color: #7c5cef;
+}
+
 .featured-main::before {
     content: '';
     position: absolute;
@@ -180,6 +214,10 @@ body {
     opacity: 0.95;
     z-index: -1;
     transition: opacity 0.3s ease;
+}
+
+body.light-theme .featured-main::before {
+    background: #ffffff;
 }
 
 .featured-main::after {
@@ -215,6 +253,11 @@ body {
     margin-bottom: 15px;
     position: relative;
     z-index: 2;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .featured-main h2 {
+    color: #1a1a2e;
 }
 
 .featured-main p {
@@ -224,6 +267,11 @@ body {
     margin-bottom: 20px;
     position: relative;
     z-index: 2;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .featured-main p {
+    color: #6b6b7f;
 }
 
 .featured-sidebar {
@@ -243,6 +291,11 @@ body {
     overflow: hidden;
 }
 
+body.light-theme .sidebar-post {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(124, 92, 239, 0.1));
+    border-color: #7c5cef;
+}
+
 .sidebar-post::before {
     content: '';
     position: absolute;
@@ -251,6 +304,10 @@ body {
     opacity: 0.9;
     z-index: -1;
     transition: opacity 0.3s ease;
+}
+
+body.light-theme .sidebar-post::before {
+    background: #ffffff;
 }
 
 .sidebar-post::after {
@@ -287,6 +344,11 @@ body {
     line-height: 1.3;
     position: relative;
     z-index: 2;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .sidebar-post h3 {
+    color: #1a1a2e;
 }
 
 .sidebar-post p {
@@ -296,6 +358,11 @@ body {
     line-height: 1.4;
     position: relative;
     z-index: 2;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .sidebar-post p {
+    color: #6b6b7f;
 }
 
 .sidebar-post .card-footer {
@@ -315,6 +382,11 @@ body {
 .sidebar-post .post-date {
     font-size: 0.8rem;
     color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .sidebar-post .post-date {
+    color: #1a1a2e;
 }
 
 .sidebar-post .read-more {
@@ -349,6 +421,11 @@ body {
     margin-bottom: 40px;
     text-align: center;
     color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .recent-section .section-title {
+    color: #1a1a2e;
 }
 
 .recent-section .blog-grid {
@@ -371,6 +448,11 @@ body {
     cursor: pointer;
 }
 
+body.light-theme .blog-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(124, 92, 239, 0.1));
+    border-color: #7c5cef;
+}
+
 .blog-card::before {
     content: '';
     position: absolute;
@@ -379,6 +461,10 @@ body {
     opacity: 0.95;
     z-index: -1;
     transition: opacity 0.3s ease;
+}
+
+body.light-theme .blog-card::before {
+    background: #ffffff;
 }
 
 .blog-card::after {
@@ -416,6 +502,11 @@ body {
     line-height: 1.4;
     position: relative;
     z-index: 2;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .blog-card h3 {
+    color: #1a1a2e;
 }
 
 .blog-card p {
@@ -426,6 +517,11 @@ body {
     flex-grow: 1;
     position: relative;
     z-index: 2;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .blog-card p {
+    color: #6b6b7f;
 }
 
 .tags {
@@ -488,12 +584,22 @@ body {
 .post-date {
     font-size: 0.85rem;
     color: white;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .post-date {
+    color: #1a1a2e;
 }
 
 .author {
     font-size: 0.8rem;
     color: white;
     font-style: normal;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .author {
+    color: #1a1a2e;
 }
 
 .pagination {
@@ -515,6 +621,12 @@ body {
     transition: all 0.3s ease;
 }
 
+body.light-theme .pagination button {
+    background: rgba(255, 255, 255, 0.8);
+    color: #6b6b7f;
+    border-color: #7c5cef;
+}
+
 .pagination button:hover,
 .pagination button.active {
     background: linear-gradient(45deg, #5638E5, #8b73ff);
@@ -532,6 +644,13 @@ footer {
     position: relative;
     z-index: 10;
     margin-top: 40px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme footer {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top-color: #d4d8e8;
+    color: #1a1a2e;
 }
 
 .footer-content {
@@ -551,6 +670,11 @@ footer {
     font-size: 18px;
     margin-bottom: 20px;
     color: #6f54f8;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .footer-section h3 {
+    color: #5638E5;
 }
 
 .footer-links a {
@@ -563,6 +687,10 @@ footer {
     width: fit-content;
 }
 
+body.light-theme .footer-links a {
+    color: #1a1a2e;
+}
+
 .footer-links a:hover {
     color: #5638E5;
     text-decoration: none;
@@ -573,6 +701,11 @@ footer {
     height: 1px;
     background-color: #1A1F36;
     margin: 20px 0;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .footer-separator {
+    background-color: #d4d8e8;
 }
 
 .copyright {
@@ -580,6 +713,11 @@ footer {
     padding-top: 20px;
     font-size: 14px;
     color: #888;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .copyright {
+    color: #6b6b7f;
 }
 
 .navbar {
@@ -592,6 +730,12 @@ footer {
     border-bottom: 1px solid #5638E5;
     position: relative;
     z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #7c5cef;
 }
 
 .nav-left {
@@ -624,13 +768,25 @@ footer {
     transition: color 0.3s ease;
 }
 
+body.light-theme .nav-links a {
+    color: #1a1a2e;
+}
+
 .nav-links a:hover {
     color: #543fce;
+}
+
+body.light-theme .nav-links a:hover {
+    color: #5638E5;
 }
 
 .nav-links a.active {
     color: #543fce;
     font-weight: bold;
+}
+
+body.light-theme .nav-links a.active {
+    color: #5638E5;
 }
 
 .signup-hamburger {
@@ -653,8 +809,18 @@ footer {
     transition: background-color 0.3s ease;
 }
 
+body.light-theme .signup-btn {
+    background-color: #5638E5;
+    border-color: #4325c2;
+    color: white;
+}
+
 .signup-btn:hover {
     background-color: #5638E5;
+}
+
+body.light-theme .signup-btn:hover {
+    background-color: #4325c2;
 }
 
 .hamburger {
@@ -671,6 +837,10 @@ footer {
     background-color: white;
     border-radius: 2px;
     transition: all 0.3s ease;
+}
+
+body.light-theme .hamburger div {
+    background-color: #1a1a2e;
 }
 
 @media (max-width: 768px) {

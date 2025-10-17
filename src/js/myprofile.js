@@ -330,7 +330,7 @@ function validateUrl(url, type = 'general') {
 
         const githubUrl = url.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
         const pathMatch = githubUrl.match(/^github\.com\/(.+)/i);
-        
+
         if (!pathMatch) {
             return {
                 valid: false,
@@ -417,8 +417,8 @@ function validateUrl(url, type = 'general') {
         }
     }
 
-    return { 
-        valid: true, 
+    return {
+        valid: true,
         url: finalUrl
     };
 }
@@ -687,14 +687,14 @@ function addProject() {
 
         const tagArray = values.tags ? values.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
 
-const projectData = {
-    name: values.name,
-    description: values.description,
-    tags: tagArray,
-    projectUrl: projectUrlValidation.valid && projectUrlValidation.url ? projectUrlValidation.url : null,
-    githubUrl: githubUrlValidation.valid && githubUrlValidation.url ? githubUrlValidation.url : null,
-    image: selectedImageData || existingProject?.image || null
-};
+        const projectData = {
+            name: values.name,
+            description: values.description,
+            tags: tagArray,
+            projectUrl: projectUrlValidation.valid && projectUrlValidation.url ? projectUrlValidation.url : null,
+            githubUrl: githubUrlValidation.valid && githubUrlValidation.url ? githubUrlValidation.url : null,
+            image: selectedImageData || existingProject?.image || null
+        };
 
         if (isEditing) {
             projects[editingProjectIndex] = projectData;
@@ -996,6 +996,19 @@ function addExperience() {
         return true;
     });
 }
+
+function initializeDateDropdowns() {
+    const dateContainers = document.querySelectorAll('.date-pair-container');
+    dateContainers.forEach(container => {
+        const selects = container.querySelectorAll('select');
+        selects.forEach(select => {
+            select.addEventListener('change', function() {
+            });
+        });
+    });
+}
+
+initializeDateDropdowns();
 
 function handleFormSubmit(e) {
     e.preventDefault();

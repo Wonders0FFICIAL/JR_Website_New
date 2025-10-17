@@ -131,7 +131,7 @@
             <div class="theme-options">
               <div class="theme-card" data-theme="default">
                 <div class="theme-preview-image">
-                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Default Theme Preview" class="theme-img" data-theme-type="default">
+                  <img src="../assets/images/theme-default-preview.png" alt="Default Theme Preview" class="theme-img" data-theme-type="default">
                 </div>
                 <div class="theme-info">
                   <div class="theme-name">
@@ -146,7 +146,7 @@
 
               <div class="theme-card" data-theme="light">
                 <div class="theme-preview-image">
-                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" alt="Light Theme Preview" class="theme-img" data-theme-type="light">
+                  <img src="../assets/images/theme-light-preview.png" alt="Light Theme Preview" class="theme-img" data-theme-type="light">
                 </div>
                 <div class="theme-info">
                   <div class="theme-name">
@@ -183,38 +183,6 @@
           </div>
 
           <div class="settings-section">
-            <h3>Preview</h3>
-            <p class="section-description">See how your selected theme looks.</p>
-            
-            <div class="preview-container">
-              <div class="preview-window">
-                <div class="preview-window-header">
-                  <div class="preview-window-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <span class="preview-window-title">JR. Dashboard</span>
-                </div>
-                <div class="preview-window-content">
-                  <div class="preview-nav">
-                    <div class="preview-logo"></div>
-                    <div class="preview-nav-items">
-                      <div class="preview-nav-item"></div>
-                      <div class="preview-nav-item"></div>
-                      <div class="preview-nav-item"></div>
-                    </div>
-                  </div>
-                  <div class="preview-main-content">
-                    <div class="preview-card"></div>
-                    <div class="preview-card"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="settings-section">
             <div class="save-changes-container">
               <button class="reset-btn" id="resetAppearance">
                 <i class="fas fa-undo"></i>
@@ -222,7 +190,6 @@
               </button>
               <div style="display: flex; gap: 15px; align-items: center;">
                 <button class="save-btn" id="saveAppearance">
-                  <i class="fas fa-save"></i>
                   Save Changes
                 </button>
                 <div class="save-notice" id="saveNotice" style="display: none;">
@@ -301,14 +268,5 @@
     </footer>
 
     <script src="../js/appearance.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const defaultImg = document.querySelector('.theme-img[data-theme-type="default"]');
-        const lightImg = document.querySelector('.theme-img[data-theme-type="light"]');
-        
-        defaultImg.src = '../assets/images/theme-default-preview.png';
-        lightImg.src = '../assets/images/theme-light-preview.png';
-      });
-    </script>
   </body>
 </html>

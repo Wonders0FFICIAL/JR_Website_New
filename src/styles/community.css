@@ -17,6 +17,12 @@
 body {
     color: white;
     font-family: 'Comfortaa', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 50%, #d4d8e8 100%);
+    color: #1a1a2e;
 }
 
 .navbar {
@@ -26,6 +32,12 @@ body {
     padding: 15px 25px;
     background-color: #0A0D18;
     border-bottom: 1px solid #5638E5;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #7c5cef;
 }
 
 .nav-left {
@@ -58,13 +70,25 @@ body {
     transition: color 0.3s ease;
 }
 
+body.light-theme .nav-links a {
+    color: #1a1a2e;
+}
+
 .nav-links a:hover {
     color: #543fce;
+}
+
+body.light-theme .nav-links a:hover {
+    color: #5638E5;
 }
 
 .nav-links a.active {
     color: #543fce;
     font-weight: bold;
+}
+
+body.light-theme .nav-links a.active {
+    color: #5638E5;
 }
 
 .signup-hamburger {
@@ -87,8 +111,18 @@ body {
     transition: background-color 0.3s ease;
 }
 
+body.light-theme .signup-btn {
+    background-color: #5638E5;
+    border-color: #4325c2;
+    color: white;
+}
+
 .signup-btn:hover {
     background-color: #5638E5;
+}
+
+body.light-theme .signup-btn:hover {
+    background-color: #4325c2;
 }
 
 .hamburger {
@@ -104,6 +138,11 @@ body {
     height: 3px;
     background-color: white;
     border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .hamburger div {
+    background-color: #1a1a2e;
 }
 
 .container {
@@ -115,6 +154,11 @@ body {
     font-size: 40px;
     color: white;
     margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .title {
+    color: #1a1a2e;
 }
 
 .subtitle {
@@ -122,6 +166,11 @@ body {
     margin-top: 5px;
     margin-bottom: 30px;
     color: white;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .subtitle {
+    color: #1a1a2e;
 }
 
 .description {
@@ -130,6 +179,11 @@ body {
     max-width: 800px;
     color: white;
     line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .description {
+    color: #1a1a2e;
 }
 
 .cards-container {
@@ -151,6 +205,12 @@ body {
     flex-direction: column;
     justify-content: space-between;
     min-height: 280px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .community-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #7c5cef;
 }
 
 .community-card.discord {
@@ -180,6 +240,11 @@ body {
         linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) border-box;
 }
 
+body.light-theme .community-card.instagram {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)) padding-box,
+        linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) border-box;
+}
+
 .community-card.twitter {
     border-color: #1D9BF0;
 }
@@ -199,6 +264,11 @@ body {
 .community-card h3 {
     font-size: 22px;
     margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .community-card h3 {
+    color: #1a1a2e;
 }
 
 .community-card p {
@@ -207,6 +277,11 @@ body {
     margin-bottom: 25px;
     color: #cccccc;
     flex-grow: 1;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .community-card p {
+    color: #6b6b7f;
 }
 
 .community-btn {
@@ -256,8 +331,17 @@ body {
     color: #090C15;
 }
 
+body.light-theme .community-btn.forums {
+    background-color: #5638E5;
+    color: white;
+}
+
 .community-btn.forums:hover {
     background-color: #dddce2;
+}
+
+body.light-theme .community-btn.forums:hover {
+    background-color: #4325c2;
 }
 
 .community-btn.youtube {
@@ -308,6 +392,11 @@ body {
     font-size: 32px;
     text-align: center;
     margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .section-title {
+    color: #1a1a2e;
 }
 
 .newsletter-description {
@@ -315,6 +404,11 @@ body {
     max-width: 600px;
     margin: 0 auto 30px;
     color: #cccccc;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .newsletter-description {
+    color: #6b6b7f;
 }
 
 .newsletter-form {
@@ -333,7 +427,13 @@ body {
     color: white;
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .email-input {
+    background-color: #ffffff;
+    border-color: #d4d8e8;
+    color: #1a1a2e;
 }
 
 .email-input:focus {
@@ -373,6 +473,13 @@ footer {
     color: white;
     position: relative;
     z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme footer {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top-color: #d4d8e8;
+    color: #1a1a2e;
 }
 
 .footer-content {
@@ -392,6 +499,11 @@ footer {
     font-size: 18px;
     margin-bottom: 20px;
     color: #6f54f8;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .footer-section h3 {
+    color: #5638E5;
 }
 
 .footer-links a {
@@ -404,6 +516,10 @@ footer {
     width: fit-content;
 }
 
+body.light-theme .footer-links a {
+    color: #1a1a2e;
+}
+
 .footer-links a:hover {
     color: #5638E5;
     text-decoration: none;
@@ -414,6 +530,11 @@ footer {
     height: 1px;
     background-color: #1A1F36;
     margin: 20px 0;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .footer-separator {
+    background-color: #d4d8e8;
 }
 
 .copyright {
@@ -421,6 +542,11 @@ footer {
     padding-top: 20px;
     font-size: 14px;
     color: #888;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .copyright {
+    color: #6b6b7f;
 }
 
 @media (max-width: 768px) {
@@ -441,6 +567,11 @@ footer {
         transform: translateY(-150%);
         transition: transform 0.3s ease;
         z-index: 10;
+    }
+
+    body.light-theme .nav-links {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-bottom-color: #7c5cef;
     }
 
     .nav-links.active {

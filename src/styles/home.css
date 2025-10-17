@@ -17,6 +17,12 @@
 body {
     color: white;
     font-family: 'Comfortaa', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    color: #1a1a2e;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 50%, #d4d8e8 100%);
 }
 
 .navbar {
@@ -29,6 +35,12 @@ body {
     border-bottom: 1px solid #5638E5;
     position: relative;
     z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #7c5cef;
 }
 
 .nav-left {
@@ -61,13 +73,25 @@ body {
     transition: color 0.3s ease;
 }
 
+body.light-theme .nav-links a {
+    color: #1a1a2e;
+}
+
 .nav-links a:hover {
     color: #543fce;
+}
+
+body.light-theme .nav-links a:hover {
+    color: #5638E5;
 }
 
 .nav-links a.active {
     color: #543fce;
     font-weight: bold;
+}
+
+body.light-theme .nav-links a.active {
+    color: #5638E5;
 }
 
 .signup-hamburger {
@@ -90,8 +114,18 @@ body {
     transition: background-color 0.3s ease;
 }
 
+body.light-theme .signup-btn {
+    background-color: #5638E5;
+    border-color: #4325c2;
+    color: white;
+}
+
 .signup-btn:hover {
     background-color: #5638E5;
+}
+
+body.light-theme .signup-btn:hover {
+    background-color: #4325c2;
 }
 
 .hamburger {
@@ -107,6 +141,11 @@ body {
     height: 3px;
     background-color: white;
     border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .hamburger div {
+    background-color: #1a1a2e;
 }
 
 .container {
@@ -119,6 +158,11 @@ body {
     font-size: 40px;
     color: white;
     margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .title {
+    color: #1a1a2e;
 }
 
 .subtitle {
@@ -126,6 +170,11 @@ body {
     margin-top: 5px;
     margin-bottom: 30px;
     color: white;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .subtitle {
+    color: #1a1a2e;
 }
 
 .description {
@@ -135,6 +184,11 @@ body {
     color: white;
     line-height: 1.4;
     margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .description {
+    color: #1a1a2e;
 }
 
 .projects-btn {
@@ -180,6 +234,11 @@ body {
     background-color: #2C2F45;
     position: relative;
     z-index: 5;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .divider {
+    background-color: #d4d8e8;
 }
 
 .testimonials-section {
@@ -192,6 +251,11 @@ body {
 .testimonials-title {
     font-size: 36px;
     margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .testimonials-title {
+    color: #1a1a2e;
 }
 
 .testimonials-container {
@@ -209,7 +273,12 @@ body {
     width: 250px;
     box-shadow: 0 0 0 transparent;
     border: 2px solid #5638E5;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+body.light-theme .testimonial-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #7c5cef;
 }
 
 .testimonial-card:hover {
@@ -217,15 +286,29 @@ body {
     transform: translateY(-5px);
 }
 
+body.light-theme .testimonial-card:hover {
+    box-shadow: 0 0 20px rgba(124, 92, 239, 0.3);
+}
+
 .testimonial-quote {
     font-size: 15px;
     line-height: 1.5;
     margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .testimonial-quote {
+    color: #1a1a2e;
 }
 
 .testimonial-author {
     font-size: 14px;
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .testimonial-author {
+    color: #1a1a2e;
 }
 
 .main-content {
@@ -243,6 +326,13 @@ footer {
     color: white;
     position: relative;
     z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme footer {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top-color: #d4d8e8;
+    color: #1a1a2e;
 }
 
 .footer-content {
@@ -262,6 +352,11 @@ footer {
     font-size: 18px;
     margin-bottom: 20px;
     color: #6f54f8;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .footer-section h3 {
+    color: #5638E5;
 }
 
 .footer-section p {
@@ -288,6 +383,10 @@ footer {
     width: fit-content;
 }
 
+body.light-theme .footer-links a {
+    color: #1a1a2e;
+}
+
 .footer-links a:hover {
     color: #5638E5;
     text-decoration: none;
@@ -298,6 +397,11 @@ footer {
     height: 1px;
     background-color: #1A1F36;
     margin: 20px 0;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .footer-separator {
+    background-color: #d4d8e8;
 }
 
 .copyright {
@@ -305,6 +409,11 @@ footer {
     padding-top: 20px;
     font-size: 14px;
     color: #888;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .copyright {
+    color: #6b6b7f;
 }
 
 .donate-btn {

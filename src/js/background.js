@@ -1,6 +1,38 @@
 let starPositions = [];
 let starsInitialized = false;
 
+function getCurrentTheme() {
+    return localStorage.getItem('theme') || 'default';
+}
+
+function applyThemeToAllPages() {
+    const theme = getCurrentTheme();
+    if (theme === 'light') {
+        document.body.classList.add('light-theme');
+    } else {
+        document.body.classList.remove('light-theme');
+    }
+    
+    if (theme === 'light') {
+        const starsContainer = document.getElementById('stars');
+        if (starsContainer) {
+            starsContainer.style.display = 'none';
+            starsContainer.innerHTML = '';
+        }
+    }
+}
+
+function getStarsEnabled() {
+    const savedStars = localStorage.getItem('starsEnabled');
+    const theme = getCurrentTheme();
+    
+    if (theme === 'light') {
+        return false;
+    }
+    
+    return savedStars === null ? true : savedStars === 'true';
+}
+
 function getCurrentPage() {
     const path = window.location.pathname;
     const filename = path.split('/').pop();
@@ -262,8 +294,28 @@ function getOptimalStarCount() {
 }
 
 function createStars() {
+    if (getCurrentTheme() === 'light') {
+        const starsContainer = document.getElementById('stars');
+        if (starsContainer) {
+            starsContainer.style.display = 'none';
+            starsContainer.innerHTML = '';
+        }
+        return;
+    }
+    
+    if (!getStarsEnabled()) {
+        const starsContainer = document.getElementById('stars');
+        if (starsContainer) {
+            starsContainer.style.display = 'none';
+            starsContainer.innerHTML = '';
+        }
+        return;
+    }
+
     const starsContainer = document.getElementById('stars');
     if (!starsContainer) return;
+
+    starsContainer.style.display = 'block';
     starsContainer.innerHTML = '';
     starPositions = [];
 
@@ -317,35 +369,58 @@ let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-        createStars();
+        if (getStarsEnabled()) {
+            createStars();
+        }
     }, 200);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('storage', function (e) {
+    if (e.key === 'starsEnabled') {
+        if (getStarsEnabled()) {
+            createStars();
+        } else {
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                starsContainer.style.display = 'none';
+                starsContainer.innerHTML = '';
+            }
+        }
+    }
+
+    if (e.key === 'theme') {
+        applyThemeToAllPages();
+        if (getStarsEnabled()) {
+            createStars();
+        } else {
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                starsContainer.style.display = 'none';
+                starsContainer.innerHTML = '';
+            }
+        }
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    applyThemeToAllPages();
+    
     if (document.readyState === 'complete') {
         setTimeout(() => {
-            if (!starsInitialized) {
+            if (!starsInitialized && getStarsEnabled()) {
                 createStars();
             }
         }, getCurrentPage() === 'pricing' ? 400 : 600);
     } else {
         window.addEventListener('load', () => {
             setTimeout(() => {
-                if (!starsInitialized) {
+                if (!starsInitialized && getStarsEnabled()) {
                     createStars();
                 }
             }, getCurrentPage() === 'pricing' ? 400 : 600);
         });
     }
-});
-
-setTimeout(() => {
-    if (!starsInitialized) {
-        createStars();
-    }
-}, getCurrentPage() === 'pricing' ? 1200 : 1500);
-
-document.addEventListener('DOMContentLoaded', () => {
+    
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -355,3 +430,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+window.addEventListener('load', function() {
+    applyThemeToAllPages();
+});
+
+setTimeout(() => {
+    if (!starsInitialized && getStarsEnabled()) {
+        createStars();
+    }
+}, getCurrentPage() === 'pricing' ? 1200 : 1500);

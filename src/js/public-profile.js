@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.body.classList.add('light-theme');
+        } else {
+            document.body.classList.remove('light-theme');
+        }
+    }
+
+    function loadThemeSettings() {
+        const savedTheme = localStorage.getItem('theme') || 'default';
+        applyTheme(savedTheme);
+    }
+
+    loadThemeSettings();
+
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
