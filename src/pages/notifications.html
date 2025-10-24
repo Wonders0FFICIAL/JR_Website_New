@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification Settings</title>
+    <link rel="icon" href="../assets/images/Favicon.png" type="image/png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/notifications.css" />
+  </head>
+
+  <body>
+    <div class="main-content">
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="home.html">
+            <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
+          </a>
+          <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="projects.html">Projects</a>
+            <a href="community.html">Community</a>
+          </div>
+        </div>
+
+        <div class="signup-hamburger">
+          <a href="signup.html" style="text-decoration: none">
+            <button class="signup-btn">Sign Up</button>
+          </a>
+          <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="settings-wrapper">
+        <div class="sidebar">
+          <h2 class="sidebar-title">Settings</h2>
+          <div class="sidebar-links">
+            <a href="public-profile.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/display_name.png" alt="Profile Icon" />
+              </span>
+              <span>Public Profile</span>
+            </a>
+            <a href="account.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/account.png" alt="Account Icon" />
+              </span>
+              <span>Account</span>
+            </a>
+            <a href="appearance.html" class="sidebar-link">
+              <span class="icon">
+               <img src="../assets/images/appearance.png" alt="Appearance Icon" />
+              </span>
+              <span>Appearance</span>
+            </a>
+            <a href="#" class="sidebar-link active">
+              <span class="icon">
+                <img src="../assets/images/notifications.png" alt="Notifications Icon" />
+              </span>
+              <span>Notifications</span>
+            </a>
+            <a href="billing.html" class="sidebar-link">
+              <span class="icon">
+                <img src="../assets/images/billing.png" alt="Billing Icon" />
+              </span>
+              <span>Billing & Plans</span>
+            </a>
+            <a href="privacy.html" class="sidebar-link">
+              <span class="icon">
+             <img src="../assets/images/privacy.png" alt="Privacy Icon" />
+              </span>
+              <span>Privacy</span>
+            </a>
+            <a href="security.html" class="sidebar-link">
+              <span class="icon">
+           <img src="../assets/images/lock.png" alt="Security Icon" />
+              </span>
+              <span>Security</span>
+            </a>
+            <a href="developer.html" class="sidebar-link">
+              <span class="icon">
+<img src="../assets/images/code.png" alt="Developer Icon" />
+              </span>
+              <span>Developer</span>
+            </a>
+            <a href="activity.html" class="sidebar-link">
+              <span class="icon">
+<img src="../assets/images/activity.png" alt="Activity Icon" />
+              </span>
+              <span>Activity</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="content-area">
+          <div class="search-box">
+            <img src="../assets/images/search.png" alt="Search" class="search-icon" />
+            <input type="text" placeholder="Search settings..." />
+          </div>
+
+          <div class="notifications-header">
+            <div class="notifications-title">
+              <h2>Notifications</h2>
+              <p>Manage how you receive notifications</p>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Email Notifications</h3>
+            <p class="section-description">Choose what email notifications you'd like to receive</p>
+            
+            <div class="notification-preferences">
+              <div class="preference-item">
+                <div class="preference-info">
+                  <div class="preference-header">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Account Activity</h4>
+                  </div>
+                  <p>Security alerts, password changes, and login notifications</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="emailAccountActivity" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="preference-item">
+                <div class="preference-info">
+                  <div class="preference-header">
+                    <i class="fas fa-bell"></i>
+                    <h4>Product Updates</h4>
+                  </div>
+                  <p>New features, improvements, and product announcements</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="emailProductUpdates" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="preference-item">
+                <div class="preference-info">
+                  <div class="preference-header">
+                    <i class="fas fa-newspaper"></i>
+                    <h4>Newsletter</h4>
+                  </div>
+                  <p>Weekly digest of blog posts, tips, and tutorials</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="emailNewsletter">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="preference-item">
+                <div class="preference-info">
+                  <div class="preference-header">
+                    <i class="fas fa-bullhorn"></i>
+                    <h4>Marketing</h4>
+                  </div>
+                  <p>Special offers, promotions, and marketing communications</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="emailMarketing">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="preference-item">
+                <div class="preference-info">
+                  <div class="preference-header">
+                    <i class="fas fa-users"></i>
+                    <h4>Community</h4>
+                  </div>
+                  <p>Comments, mentions, and community activity</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="emailCommunity" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+<div class="settings-section">
+  <h3>Push Notifications</h3>
+  <p class="section-description">Browser notifications for real-time updates</p>
+  
+  <div class="push-notification-status" id="pushNotificationStatus">
+    <div class="status-info">
+      <i class="fas fa-info-circle"></i>
+      <div>
+        <strong>Push Notifications Disabled</strong>
+        <p>Enable browser notifications to receive real-time updates</p>
+      </div>
+    </div>
+    <button class="enable-push-btn" id="enablePushBtn">Enable Push Notifications</button>
+  </div>
+
+  <div class="notification-preferences" id="pushPreferences" style="display: none;">
+    <div class="preference-item">
+      <div class="preference-info">
+        <div class="preference-header">
+          <i class="fas fa-comment"></i>
+          <h4>Messages</h4>
+        </div>
+        <p>New messages and direct communications</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="pushMessages" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="preference-item">
+      <div class="preference-info">
+        <div class="preference-header">
+          <i class="fas fa-user-plus"></i>
+          <h4>Followers</h4>
+        </div>
+        <p>New followers and connection requests</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="pushFollowers" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="preference-item">
+      <div class="preference-info">
+        <div class="preference-header">
+          <i class="fas fa-thumbs-up"></i>
+          <h4>Likes & Reactions</h4>
+        </div>
+        <p>Likes, reactions, and engagement on your content</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="pushLikes">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="preference-item">
+      <div class="preference-info">
+        <div class="preference-header">
+          <i class="fas fa-at"></i>
+          <h4>Mentions</h4>
+        </div>
+        <p>When someone mentions you in a post or comment</p>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="pushMentions" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <button class="disable-push-btn" id="disablePushBtn">
+      <i class="fas fa-bell-slash" style="margin-right: 8px;"></i>
+      Disable Push Notifications
+    </button>
+  </div>
+</div>
+
+          <div class="settings-section">
+            <h3>Notification Frequency</h3>
+            <p class="section-description">Control how often you receive email digests</p>
+            
+            <div class="frequency-options">
+              <label class="radio-option">
+                <input type="radio" name="frequency" value="realtime" checked>
+                <div class="radio-content">
+                  <div class="radio-circle"></div>
+                  <div class="radio-text">
+                    <h4>Real-time</h4>
+                    <p>Receive notifications as they happen</p>
+                  </div>
+                </div>
+              </label>
+
+              <label class="radio-option">
+                <input type="radio" name="frequency" value="daily">
+                <div class="radio-content">
+                  <div class="radio-circle"></div>
+                  <div class="radio-text">
+                    <h4>Daily Digest</h4>
+                    <p>Get a summary of notifications once per day</p>
+                  </div>
+                </div>
+              </label>
+
+              <label class="radio-option">
+                <input type="radio" name="frequency" value="weekly">
+                <div class="radio-content">
+                  <div class="radio-circle"></div>
+                  <div class="radio-text">
+                    <h4>Weekly Digest</h4>
+                    <p>Get a summary of notifications once per week</p>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Do Not Disturb</h3>
+            <p class="section-description">Temporarily pause all notifications</p>
+            
+            <div class="dnd-container">
+              <div class="dnd-toggle">
+                <div class="dnd-info">
+                  <i class="fas fa-moon"></i>
+                  <div>
+                    <h4>Enable Do Not Disturb</h4>
+                    <p>Pause all notifications for a set period</p>
+                  </div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="doNotDisturb">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="dnd-schedule" id="dndSchedule" style="display: none;">
+                <div class="schedule-options">
+                  <button class="schedule-btn active" data-duration="1">1 hour</button>
+                  <button class="schedule-btn" data-duration="4">4 hours</button>
+                  <button class="schedule-btn" data-duration="8">8 hours</button>
+                  <button class="schedule-btn" data-duration="24">24 hours</button>
+                </div>
+                <div class="dnd-status" id="dndStatus"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Notification Sounds</h3>
+            <p class="section-description">Enable or disable notification sounds</p>
+            
+            <div class="sound-preferences">
+              <div class="preference-item">
+                <div class="preference-info">
+                  <div class="preference-header">
+                    <i class="fas fa-volume-up"></i>
+                    <h4>Sound Effects</h4>
+                  </div>
+                  <p>Play sound when receiving notifications</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="notificationSounds" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="volume-control" id="volumeControl">
+                <label for="volumeSlider">Volume</label>
+                <div class="volume-slider-container">
+                  <i class="fas fa-volume-down"></i>
+                  <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                  <i class="fas fa-volume-up"></i>
+                  <span class="volume-value" id="volumeValue">70%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="save-btn" id="saveBtn">Save Changes</button>
+            <button type="button" class="cancel-btn" id="cancelBtn">Reset to Default</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+            <a
+              href="https://ko-fi.com/jr_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Donate</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">License Information</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Community</h3>
+          <div class="footer-links">
+            <a
+              href="https://github.com/jr-official"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+            <a
+              href="https://discord.gg/d4kfXDrcG8"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Discord</a
+            >
+            <a
+              href="https://x.com/jr_suite"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X</a
+            >
+            <a
+              href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+      <div class="copyright">© 2025 JR. All rights reserved.</div>
+    </footer>
+
+    <script>
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          document.body.classList.add('light-theme');
+        } else {
+          document.body.classList.remove('light-theme');
+        }
+      }
+
+      function loadThemeSettings() {
+        const savedTheme = localStorage.getItem('theme') || 'default';
+        applyTheme(savedTheme);
+      }
+
+      window.addEventListener('storage', function(e) {
+        if (e.key === 'theme') {
+          applyTheme(e.newValue);
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        loadThemeSettings();
+      });
+    </script>
+
+    <script src="../js/notifications.js"></script>
+  </body>
+</html>
