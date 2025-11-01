@@ -1,0 +1,23 @@
+{
+  "name": "jr-website",
+  "version": "1.0.0",
+  "description": "JR. Website",
+  "main": "src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jr-official/JR_Website_New.git"
+  },
+  "keywords": [
+    "website",
+    "jr-official"
+  ],
+  "author": "Wonders",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jr-official/JR_Website_New/issues"
+  },
+  "homepage": "https://github.com/jr-official/JR_Website_New#readme"
+}
