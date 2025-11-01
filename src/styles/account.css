@@ -1601,3 +1601,47 @@ body.light-theme .confirmation-input input {
         text-align: center;
     }
 }
+
+#addEmailPasswordSection {
+    border-left: 4px solid #5638E5;
+    background-color: rgba(86, 56, 229, 0.05);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+body.light-theme #addEmailPasswordSection {
+    background-color: rgba(86, 56, 229, 0.08);
+}
+
+#addEmailPasswordSection h3 {
+    color: #5638E5;
+    margin-bottom: 15px;
+}
+
+#password-strength-container-add {
+    width: 100%;
+    height: 5px;
+    background-color: #333;
+    margin-top: 8px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+body.light-theme #password-strength-container-add {
+    background-color: #e0e0e0;
+}
+
+#password-strength-bar-add {
+    height: 100%;
+    width: 0;
+    background-color: green;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    #addEmailPasswordSection {
+        padding: 20px 15px;
+        margin: 15px 0;
+    }
+}

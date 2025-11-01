@@ -45,10 +45,24 @@ function hasPasswordAuth() {
     if (currentUser) {
         try {
             const userData = JSON.parse(currentUser);
-            return !userData.provider;
+            return !!(userData.password && userData.password.trim() !== '');
         } catch (e) {
             const userData = JSON.parse(localStorage.getItem(currentUser));
-            return userData ? !userData.provider : false;
+            return userData ? !!(userData.password && userData.password.trim() !== '') : false;
+        }
+    }
+    return false;
+}
+
+function hasSocialLogin() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        try {
+            const userData = JSON.parse(currentUser);
+            return !!userData.provider;
+        } catch (e) {
+            const userData = JSON.parse(localStorage.getItem(currentUser));
+            return userData ? !!userData.provider : false;
         }
     }
     return false;
@@ -117,6 +131,244 @@ function initializeEmail() {
     }
 }
 
+function initializeAddEmailPasswordSection() {
+    const addSection = document.getElementById('addEmailPasswordSection');
+
+    if (hasSocialLogin() && !hasPasswordAuth()) {
+        addSection.style.display = 'block';
+        setupAddEmailPassword();
+    } else {
+        addSection.style.display = 'none';
+    }
+}
+
+function setupAddEmailPassword() {
+    setupPasswordToggle('toggleNewPasswordAdd', 'newPasswordAdd');
+    setupPasswordToggle('toggleConfirmPasswordAdd', 'confirmPasswordAdd');
+
+    const newPasswordInput = document.getElementById('newPasswordAdd');
+    const confirmPasswordInput = document.getElementById('confirmPasswordAdd');
+    const emailInput = document.getElementById('newEmailAdd');
+
+    newPasswordInput.addEventListener('input', function () {
+        validateNewPasswordAdd();
+        updatePasswordStrengthAdd(this.value);
+    });
+
+    confirmPasswordInput.addEventListener('input', function () {
+        validateConfirmPasswordAdd();
+    });
+
+    emailInput.addEventListener('input', function () {
+        const email = this.value.trim();
+        const emailError = document.getElementById('email-add-error');
+
+        if (email.length > 0) {
+            const validation = isValidEmail(email);
+            if (!validation.valid) {
+                emailError.textContent = validation.error;
+            } else {
+                emailError.textContent = '';
+            }
+        } else {
+            emailError.textContent = '';
+        }
+    });
+
+    document.getElementById('saveEmailPasswordBtn').addEventListener('click', function () {
+        const newEmail = document.getElementById('newEmailAdd').value.trim();
+        const newPassword = document.getElementById('newPasswordAdd').value;
+        const confirmPassword = document.getElementById('confirmPasswordAdd').value;
+
+        const emailValid = validateEmailAdd();
+        const newPasswordValid = validateNewPasswordAdd();
+        const confirmPasswordValid = validateConfirmPasswordAdd();
+
+        if (emailValid && newPasswordValid && confirmPasswordValid) {
+            addEmailAndPassword(newEmail, newPassword);
+        }
+    });
+}
+
+function validateEmailAdd() {
+    const email = document.getElementById('newEmailAdd').value.trim();
+    const emailError = document.getElementById('email-add-error');
+    const currentEmail = getCurrentUserEmail();
+
+    if (!email) {
+        emailError.textContent = 'Please enter an email address';
+        return false;
+    }
+
+    const validation = isValidEmail(email);
+    if (!validation.valid) {
+        emailError.textContent = validation.error;
+        return false;
+    }
+
+    if (email.toLowerCase() === currentEmail.toLowerCase()) {
+        emailError.textContent = 'New email must be different from current email';
+        return false;
+    }
+
+    emailError.textContent = '';
+    return true;
+}
+
+function validateNewPasswordAdd() {
+    const newPassword = document.getElementById('newPasswordAdd').value;
+    const errorElement = document.getElementById('new-password-add-error');
+
+    if (!newPassword) {
+        errorElement.textContent = 'Please enter a new password';
+        return false;
+    }
+
+    if (newPassword.length < 6) {
+        errorElement.textContent = 'Password must be at least 6 characters long';
+        return false;
+    }
+
+    errorElement.textContent = '';
+    return true;
+}
+
+function validateConfirmPasswordAdd() {
+    const newPassword = document.getElementById('newPasswordAdd').value;
+    const confirmPassword = document.getElementById('confirmPasswordAdd').value;
+    const errorElement = document.getElementById('confirm-password-add-error');
+
+    if (!confirmPassword) {
+        errorElement.textContent = 'Please confirm your new password';
+        return false;
+    }
+
+    if (newPassword !== confirmPassword) {
+        errorElement.textContent = 'Passwords do not match';
+        return false;
+    }
+
+    errorElement.textContent = '';
+    return true;
+}
+
+function updatePasswordStrengthAdd(password) {
+    const container = document.getElementById('password-strength-container-add');
+    const bar = document.getElementById('password-strength-bar-add');
+
+    if (password.length === 0) {
+        container.style.display = 'none';
+        return;
+    }
+
+    container.style.display = 'block';
+
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+    const strengthPercentage = (strength / 5) * 100;
+    bar.style.width = `${strengthPercentage}%`;
+
+    if (strength <= 1) {
+        bar.style.backgroundColor = '#ff0000';
+    } else if (strength <= 3) {
+        bar.style.backgroundColor = '#ffa500';
+    } else {
+        bar.style.backgroundColor = '#008000';
+    }
+}
+
+function addEmailAndPassword(newEmail, newPassword) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        let userData;
+        let storageKey = 'currentUser';
+
+        try {
+            userData = JSON.parse(currentUser);
+            if (currentUser.includes('_user_')) {
+                storageKey = currentUser;
+            }
+        } catch (e) {
+            userData = JSON.parse(localStorage.getItem(currentUser));
+            storageKey = currentUser;
+        }
+
+        if (userData) {
+            userData.email = newEmail;
+            userData.password = newPassword;
+            userData.emailVerified = false;
+
+            localStorage.setItem(storageKey, JSON.stringify(userData));
+
+            if (storageKey !== 'currentUser') {
+                localStorage.setItem('currentUser', JSON.stringify(userData));
+            }
+
+            showAddEmailPasswordSuccess();
+
+            document.getElementById('addEmailPasswordSection').style.display = 'none';
+
+            document.getElementById('passwordSection').style.display = 'block';
+
+            document.getElementById('currentEmail').textContent = newEmail;
+
+            const verifiedBadge = document.getElementById('verifiedBadge');
+            verifiedBadge.style.display = 'flex';
+            verifiedBadge.style.color = '#ff9800';
+            verifiedBadge.innerHTML = '<i class="fas fa-exclamation-circle"></i> Not Verified';
+
+            document.getElementById('newEmailAdd').value = '';
+            document.getElementById('newPasswordAdd').value = '';
+            document.getElementById('confirmPasswordAdd').value = '';
+            document.getElementById('email-add-error').textContent = '';
+            document.getElementById('new-password-add-error').textContent = '';
+            document.getElementById('confirm-password-add-error').textContent = '';
+            document.getElementById('password-strength-container-add').style.display = 'none';
+            document.getElementById('verificationNotice').style.display = 'flex';
+
+            setTimeout(() => {
+                userData.emailVerified = true;
+                localStorage.setItem(storageKey, JSON.stringify(userData));
+                if (storageKey !== 'currentUser') {
+                    localStorage.setItem('currentUser', JSON.stringify(userData));
+                }
+                verifiedBadge.style.color = '#4CAF50';
+                verifiedBadge.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
+                document.getElementById('verificationNotice').style.display = 'none';
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }, 3000);
+        }
+    }
+}
+
+function showAddEmailPasswordSuccess() {
+    const existingNotice = document.querySelector('.add-email-password-success');
+    if (existingNotice) {
+        existingNotice.remove();
+    }
+
+    const successHTML = `
+        <div class="success-notice add-email-password-success" style="display: flex;">
+            <i class="fas fa-check-circle"></i>
+            <div>
+                <strong>Email & Password Added Successfully</strong>
+                <p>Your account now supports both social login and email/password authentication. You can use either method to sign in.</p>
+            </div>
+        </div>
+    `;
+
+    const addSection = document.getElementById('addEmailPasswordSection');
+    addSection.insertAdjacentHTML('afterend', successHTML);
+}
+
 function initializePasswordSection() {
     const hasPassword = hasPasswordAuth();
     const passwordSection = document.getElementById('passwordSection');
@@ -132,17 +384,19 @@ function initializePasswordSection() {
     const passwordValue = document.getElementById('currentPasswordValue');
     let isPasswordVisible = false;
 
-    togglePasswordBtn.addEventListener('click', function () {
-        const currentPassword = getCurrentUserPassword();
-        if (isPasswordVisible) {
-            passwordValue.textContent = '••••••••';
-            this.innerHTML = '<i class="fa fa-eye"></i>';
-        } else {
-            passwordValue.textContent = currentPassword;
-            this.innerHTML = '<i class="fa fa-eye-slash"></i>';
-        }
-        isPasswordVisible = !isPasswordVisible;
-    });
+    if (togglePasswordBtn) {
+        togglePasswordBtn.addEventListener('click', function () {
+            const currentPassword = getCurrentUserPassword();
+            if (isPasswordVisible) {
+                passwordValue.textContent = '••••••••';
+                this.innerHTML = '<i class="fa fa-eye"></i>';
+            } else {
+                passwordValue.textContent = currentPassword;
+                this.innerHTML = '<i class="fa fa-eye-slash"></i>';
+            }
+            isPasswordVisible = !isPasswordVisible;
+        });
+    }
 }
 
 function setupPasswordChange() {
@@ -150,6 +404,10 @@ function setupPasswordChange() {
     const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
     const savePasswordBtn = document.getElementById('savePasswordBtn');
     const changePasswordForm = document.getElementById('changePasswordForm');
+
+    if (!changePasswordBtn || !cancelPasswordBtn || !savePasswordBtn || !changePasswordForm) {
+        return;
+    }
 
     setupPasswordToggle('toggleCurrentPasswordInput', 'currentPasswordInput');
     setupPasswordToggle('toggleNewPassword', 'newPassword');
@@ -280,6 +538,10 @@ function setupPasswordToggle(toggleId, inputId) {
     const toggleBtn = document.getElementById(toggleId);
     const passwordInput = document.getElementById(inputId);
 
+    if (!toggleBtn || !passwordInput) {
+        return;
+    }
+
     toggleBtn.addEventListener('click', function () {
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
@@ -294,6 +556,10 @@ function setupPasswordToggle(toggleId, inputId) {
 function updatePasswordStrength(password) {
     const passwordStrengthContainer = document.getElementById('password-strength-container');
     const passwordStrengthBar = document.getElementById('password-strength-bar');
+
+    if (!passwordStrengthContainer || !passwordStrengthBar) {
+        return;
+    }
 
     if (password.length === 0) {
         passwordStrengthContainer.style.display = 'none';
@@ -325,18 +591,23 @@ function updateUserPassword(newPassword) {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
         let userData;
+        let storageKey = 'currentUser';
+
         try {
             userData = JSON.parse(currentUser);
+            if (currentUser.includes('_user_')) {
+                storageKey = currentUser;
+            }
         } catch (e) {
             userData = JSON.parse(localStorage.getItem(currentUser));
+            storageKey = currentUser;
         }
 
         if (userData) {
             userData.password = newPassword;
+            localStorage.setItem(storageKey, JSON.stringify(userData));
 
-            if (currentUser.includes('_user_')) {
-                localStorage.setItem(currentUser, JSON.stringify(userData));
-            } else {
+            if (storageKey !== 'currentUser') {
                 localStorage.setItem('currentUser', JSON.stringify(userData));
             }
         }
@@ -353,7 +624,7 @@ function resetPasswordForm() {
     document.getElementById('password-strength-container').style.display = 'none';
 }
 
-document.getElementById('confirmPassword').addEventListener('input', function() {
+document.getElementById('confirmPassword').addEventListener('input', function () {
     const password = this.value;
     const passwordError = document.getElementById('password-error');
     const currentUser = localStorage.getItem('currentUser');
@@ -367,7 +638,7 @@ document.getElementById('confirmPassword').addEventListener('input', function() 
         let userData;
         try {
             userData = JSON.parse(currentUser);
-            if (userData.provider) {
+            if (userData.provider && !userData.password) {
                 passwordError.textContent = 'Social login accounts cannot change email this way';
                 return;
             }
@@ -459,7 +730,7 @@ document.getElementById('saveEmailBtn').addEventListener('click', function () {
 
         try {
             userData = JSON.parse(currentUser);
-            if (userData.provider) {
+            if (userData.provider && !userData.password) {
                 passwordError.textContent = 'Social login accounts cannot change email this way';
                 return;
             }
@@ -473,7 +744,7 @@ document.getElementById('saveEmailBtn').addEventListener('click', function () {
             }
         }
 
-        if (!passwordMatch && !userData.provider) {
+        if (!passwordMatch) {
             passwordError.textContent = 'Incorrect password. Please enter your JR. account password';
             return;
         }
@@ -511,6 +782,10 @@ document.getElementById('saveEmailBtn').addEventListener('click', function () {
             verifiedBadge.style.color = '#4CAF50';
             verifiedBadge.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
             document.getElementById('verificationNotice').style.display = 'none';
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         }, 3000);
     }
 });
@@ -565,13 +840,19 @@ document.querySelectorAll('.connect-btn').forEach(button => {
 
         if (currentUser) {
             let userData;
+            let storageKey = 'currentUser';
+
             try {
                 userData = JSON.parse(currentUser);
+                if (currentUser.includes('_user_')) {
+                    storageKey = currentUser;
+                }
                 if (!userData.linkedAccounts) {
                     userData.linkedAccounts = {};
                 }
             } catch (e) {
                 userData = JSON.parse(localStorage.getItem(currentUser));
+                storageKey = currentUser;
                 if (!userData.linkedAccounts) {
                     userData.linkedAccounts = {};
                 }
@@ -581,27 +862,81 @@ document.querySelectorAll('.connect-btn').forEach(button => {
                 const username = prompt(`Enter your ${provider.charAt(0).toUpperCase() + provider.slice(1)} username:`);
                 if (username) {
                     userData.linkedAccounts[provider] = username;
-                    if (currentUser.includes('_user_')) {
-                        localStorage.setItem(currentUser, JSON.stringify(userData));
-                    } else {
+                    localStorage.setItem(storageKey, JSON.stringify(userData));
+                    if (storageKey !== 'currentUser') {
                         localStorage.setItem('currentUser', JSON.stringify(userData));
                     }
                     updateAccountStatus(provider, username);
+
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
                 }
             } else {
-                if (confirm(`Are you sure you want to disconnect your ${provider.charAt(0).toUpperCase() + provider.slice(1)} account?`)) {
-                    userData.linkedAccounts[provider] = null;
-                    if (currentUser.includes('_user_')) {
-                        localStorage.setItem(currentUser, JSON.stringify(userData));
-                    } else {
-                        localStorage.setItem('currentUser', JSON.stringify(userData));
+                if (hasPasswordAuth()) {
+                    if (confirm(`Are you sure you want to disconnect your ${provider.charAt(0).toUpperCase() + provider.slice(1)} account?`)) {
+                        userData.linkedAccounts[provider] = null;
+                        localStorage.setItem(storageKey, JSON.stringify(userData));
+                        if (storageKey !== 'currentUser') {
+                            localStorage.setItem('currentUser', JSON.stringify(userData));
+                        }
+                        updateAccountStatus(provider, null);
+
+                        showDisconnectSuccess(provider);
+
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
                     }
-                    updateAccountStatus(provider, null);
+                } else {
+                    const connectedAccounts = Object.values(userData.linkedAccounts).filter(account => account !== null).length;
+                    const hasProviderLogin = !!userData.provider;
+
+                    if (connectedAccounts <= 1 && hasProviderLogin) {
+                        alert('You cannot disconnect your only login method. Please add an email and password first.');
+                    } else {
+                        if (confirm(`Are you sure you want to disconnect your ${provider.charAt(0).toUpperCase() + provider.slice(1)} account?`)) {
+                            userData.linkedAccounts[provider] = null;
+                            localStorage.setItem(storageKey, JSON.stringify(userData));
+                            if (storageKey !== 'currentUser') {
+                                localStorage.setItem('currentUser', JSON.stringify(userData));
+                            }
+                            updateAccountStatus(provider, null);
+
+                            showDisconnectSuccess(provider);
+
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1500);
+                        }
+                    }
                 }
             }
         }
     });
 });
+
+function showDisconnectSuccess(provider) {
+    const existingNotice = document.querySelector('.disconnect-success');
+    if (existingNotice) {
+        existingNotice.remove();
+    }
+
+    const successHTML = `
+        <div class="success-notice disconnect-success" style="display: flex;">
+            <i class="fas fa-check-circle"></i>
+            <div>
+                <strong>${provider.charAt(0).toUpperCase() + provider.slice(1)} Account Disconnected</strong>
+                <p>Your ${provider} account has been successfully disconnected from your JR. account.</p>
+            </div>
+        </div>
+    `;
+
+    const linkedAccountsSection = document.querySelector('.settings-section:has(.linked-accounts)');
+    if (linkedAccountsSection) {
+        linkedAccountsSection.insertAdjacentHTML('beforeend', successHTML);
+    }
+}
 
 async function getActiveSessions() {
     const sessions = [];
@@ -771,6 +1106,10 @@ document.getElementById('confirmLogoutBtn').addEventListener('click', function (
                     localStorage.setItem('currentUser', JSON.stringify(userData));
                 }
                 renderSessions();
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
             }
         }
     }
@@ -807,6 +1146,10 @@ document.getElementById('logoutAllBtn').addEventListener('click', function () {
                     localStorage.setItem('currentUser', JSON.stringify(userData));
                 }
                 renderSessions();
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
             }
         }
     }
@@ -873,4 +1216,5 @@ document.addEventListener('DOMContentLoaded', function () {
     setupPasswordChange();
     initializeLinkedAccounts();
     renderSessions();
+    initializeAddEmailPasswordSection();
 });

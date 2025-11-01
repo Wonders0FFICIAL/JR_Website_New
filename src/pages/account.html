@@ -194,6 +194,57 @@
             </div>
           </div>
 
+          <div class="settings-section" id="addEmailPasswordSection" style="display: none;">
+            <h3>Add Email & Password</h3>
+            <p class="section-description">Add an email address and password to your account to enable password login in addition to your social login.</p>
+            
+            <div class="change-email-form">
+              <div class="form-group">
+                <label for="newEmailAdd">Email Address</label>
+                <input
+                  type="email"
+                  id="newEmailAdd"
+                  placeholder="Enter your email address"
+                />
+                <div id="email-add-error" class="error-message"></div>
+              </div>
+              <div class="form-group">
+                <label for="newPasswordAdd">New Password</label>
+                <div class="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="newPasswordAdd"
+                    placeholder="Enter your new password"
+                  />
+                  <button class="toggle-password-btn" id="toggleNewPasswordAdd" type="button">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+                <div id="password-strength-container-add" style="display: none;">
+                  <div id="password-strength-bar-add"></div>
+                </div>
+                <div id="new-password-add-error" class="error-message"></div>
+              </div>
+              <div class="form-group">
+                <label for="confirmPasswordAdd">Confirm New Password</label>
+                <div class="password-input-wrapper">
+                  <input
+                    type="password"
+                    id="confirmPasswordAdd"
+                    placeholder="Confirm your new password"
+                  />
+                  <button class="toggle-password-btn" id="toggleConfirmPasswordAdd" type="button">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </div>
+                <div id="confirm-password-add-error" class="error-message"></div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="save-btn" id="saveEmailPasswordBtn">Add Email & Password</button>
+              </div>
+            </div>
+          </div>
+
           <div class="settings-section" id="passwordSection">
             <h3>Password</h3>
             <p class="section-description">Change your account password. For your security, you'll need to confirm your current password.</p>
