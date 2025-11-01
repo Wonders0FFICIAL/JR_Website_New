@@ -4,6 +4,7 @@
   "description": "JR. Website",
   "main": "src/js/index.js",
   "scripts": {
+    "start": "npx live-server src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jr-official/JR_Website_New/issues"
   },
-  "homepage": "https://github.com/jr-official/JR_Website_New#readme"
+  "homepage": "https://github.com/jr-official/JR_Website_New#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }
