@@ -61,14 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    const ctaButtons = document.querySelectorAll('.plan-cta');
+const ctaButtons = document.querySelectorAll('.plan-cta');
     
     ctaButtons.forEach(button => {
         button.addEventListener('click', () => {
             if (button.textContent === 'Contact Sales') {
                 alert('Thank you for your interest! Our sales team will contact you shortly.');
+            } else if (button.textContent === 'Current Plan') {
+                window.location.href = 'billing.html';
             } else {
-                alert('Thank you for choosing JR! Redirecting to registration...');
+                alert('Redirecting to billing...');
             }
         });
     });
