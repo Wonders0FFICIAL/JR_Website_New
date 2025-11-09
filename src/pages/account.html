@@ -196,9 +196,14 @@
 
           <div class="settings-section" id="addEmailPasswordSection" style="display: none;">
             <h3>Add Email & Password</h3>
-            <p class="section-description">Add an email address and password to your account to enable password login in addition to your social login.</p>
+            <div class="email-container">
+              <div class="current-email">
+                <p class="section-description" style="margin: 0;">Add an email address and password to your account to enable password login in addition to your social login.</p>
+              </div>
+              <button class="change-email-btn" id="addEmailPasswordBtn">Add Info</button>
+            </div>
             
-            <div class="change-email-form">
+            <div class="change-email-form" id="addEmailPasswordForm" style="display: none;">
               <div class="form-group">
                 <label for="newEmailAdd">Email Address</label>
                 <input
@@ -241,6 +246,7 @@
               </div>
               <div class="form-actions">
                 <button type="button" class="save-btn" id="saveEmailPasswordBtn">Add Email & Password</button>
+                <button type="button" class="cancel-btn" id="cancelAddEmailPasswordBtn">Cancel</button>
               </div>
             </div>
           </div>

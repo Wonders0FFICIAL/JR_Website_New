@@ -372,7 +372,7 @@ body.light-theme .settings-section h3 {
 
 .section-description {
     font-size: 14px;
-    color: #a7a7c7;
+    color: #dbdbf2;
     margin-bottom: 25px;
     line-height: 1.5;
     transition: color 0.3s ease;
@@ -1602,20 +1602,12 @@ body.light-theme .confirmation-input input {
     }
 }
 
-#addEmailPasswordSection {
-    border-left: 4px solid #5638E5;
-    background-color: rgba(86, 56, 229, 0.05);
-    padding: 25px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
 body.light-theme #addEmailPasswordSection {
     background-color: rgba(86, 56, 229, 0.08);
 }
 
 #addEmailPasswordSection h3 {
-    color: #5638E5;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 

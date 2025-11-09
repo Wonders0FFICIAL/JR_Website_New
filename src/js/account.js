@@ -133,10 +133,35 @@ function initializeEmail() {
 
 function initializeAddEmailPasswordSection() {
     const addSection = document.getElementById('addEmailPasswordSection');
+    const addForm = document.getElementById('addEmailPasswordForm');
+    const addButton = document.getElementById('addEmailPasswordBtn');
+    const cancelAddBtn = document.getElementById('cancelAddEmailPasswordBtn');
 
     if (hasSocialLogin() && !hasPasswordAuth()) {
         addSection.style.display = 'block';
+        addForm.style.display = 'none';
         setupAddEmailPassword();
+
+        if (addButton) {
+            addButton.addEventListener('click', function () {
+                addForm.style.display = 'block';
+                this.style.display = 'none';
+            });
+        }
+
+        if (cancelAddBtn) {
+            cancelAddBtn.addEventListener('click', function () {
+                addForm.style.display = 'none';
+                addButton.style.display = 'block';
+                document.getElementById('newEmailAdd').value = '';
+                document.getElementById('newPasswordAdd').value = '';
+                document.getElementById('confirmPasswordAdd').value = '';
+                document.getElementById('email-add-error').textContent = '';
+                document.getElementById('new-password-add-error').textContent = '';
+                document.getElementById('confirm-password-add-error').textContent = '';
+                document.getElementById('password-strength-container-add').style.display = 'none';
+            });
+        }
     } else {
         addSection.style.display = 'none';
     }
