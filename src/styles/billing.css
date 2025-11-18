@@ -434,12 +434,11 @@ body.light-theme .plan-price {
     font-weight: 600;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .upgrade-btn:hover {
     background-color: #4325c2;
-    transform: translateY(-2px);
 }
 
 .plan-details {
@@ -609,7 +608,7 @@ body.light-theme .no-payment-message p {
     font-size: 14px;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .add-payment-btn:hover {
@@ -671,37 +670,55 @@ body.light-theme .card-details p {
     gap: 10px;
 }
 
-.edit-payment-btn,
-.delete-payment-btn {
-    background: none;
+.edit-payment-btn {
+    background: #5638E5;
     border: 1px solid #5638E5;
     border-radius: 6px;
     padding: 8px 16px;
     font-family: 'PT Sans', sans-serif;
     font-size: 13px;
-    color: #5638E5;
+    color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .delete-payment-btn {
-    border-color: #ff4444;
-    color: #ff4444;
+    background: #ff4444;
+    border: 1px solid #ff4444;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .edit-payment-btn:hover {
-    background-color: rgba(86, 56, 229, 0.1);
+    background-color: #4325c2;
+    border-color: #4325c2;
 }
 
 .delete-payment-btn:hover {
-    background-color: rgba(255, 68, 68, 0.1);
+    background-color: #ca3636;
+    border-color: #ca3636;
 }
 
 .invoices-table-container {
     overflow-x: auto;
+    border: 2px solid #2C2F45;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+}
+
+body.light-theme .invoices-table-container {
+    border-color: #d4d8e8;
 }
 
 .invoices-table {
@@ -718,7 +735,7 @@ body.light-theme .invoices-table {
 }
 
 .invoices-table thead {
-    background-color: #161830;
+    background-color: #14183080;
     transition: background-color 0.3s ease;
 }
 
@@ -787,21 +804,23 @@ body.light-theme .invoices-table tbody tr:hover {
 }
 
 .download-btn {
-    background: none;
+    background: #5638E5;
     border: 1px solid #5638E5;
     border-radius: 6px;
     padding: 6px 12px;
     font-family: 'PT Sans', sans-serif;
     font-size: 13px;
-    color: #5638E5;
+    color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     display: inline-block;
 }
 
 .download-btn:hover {
-    background-color: rgba(86, 56, 229, 0.1);
+    background-color: #4325c2;
+    border: 1px solid #4325c2;
+    color: rgb(242, 242, 242);
 }
 
 .no-invoices-message {
@@ -851,7 +870,7 @@ body.light-theme .no-invoices-message p {
     font-size: 14px;
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.light-theme .action-btn {
@@ -870,6 +889,7 @@ body.light-theme .action-btn {
 
 .cancel-subscription-btn:hover {
     background-color: rgba(255, 68, 68, 0.1);
+    transform: translateY(-2px);
 }
 
 .support-section {
@@ -1292,7 +1312,7 @@ body.light-theme .modal-security-note {
     font-weight: 600;
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1312,7 +1332,7 @@ body.light-theme .modal-security-note {
     font-weight: 600;
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1320,16 +1340,19 @@ body.light-theme .modal-security-note {
 
 body.light-theme .cancel-btn {
     color: #1a1a2e;
-    border-color: #d4d8e8;
-}
-
-.cancel-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05);
     border-color: #ff4444;
 }
 
+.cancel-btn:hover {
+    background-color: #ff4444;
+    border-color: #ff4444;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
 body.light-theme .cancel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: #ff4444;
+    border-color: #ff4444;
+    color: white;
 }
 
 .cancel-modal {
@@ -1454,7 +1477,7 @@ body.light-theme .subscription-end-info {
     font-weight: 600;
     color: #ff4444;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1469,27 +1492,38 @@ body.light-theme .subscription-end-info {
     transform: translateY(0);
 }
 
-.notification-message {
+.billing-success-message,
+.billing-error-message {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 9999;
-    max-width: 400px;
-    background-color: #161830;
-    border: 1px solid #2C2F45;
-    border-radius: 12px;
-    padding: 18px 20px;
+    max-width: 420px;
+    background-color: #0A0D18;
+    border: 2px solid #4CAF50;
+    border-radius: 14px;
+    padding: 20px 24px;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    animation: slideInRight 0.3s ease;
+    gap: 16px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(86, 56, 229, 0.1);
+    animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+}
+
+body.light-theme .billing-success-message,
+body.light-theme .billing-error-message {
+    background-color: #ffffff;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(124, 92, 239, 0.1);
+}
+
+.billing-error-message {
+    border-color: #ff4444;
 }
 
 @keyframes slideInRight {
     from {
-        transform: translateX(400px);
+        transform: translateX(450px);
         opacity: 0;
     }
 
@@ -1497,223 +1531,247 @@ body.light-theme .subscription-end-info {
         transform: translateX(0);
         opacity: 1;
     }
-}
-
-.notification-message.fade-out {
-    animation: fadeOut 0.3s ease forwards;
 }
 
 @keyframes fadeOut {
     to {
         opacity: 0;
-        transform: translateX(400px);
+        transform: translateX(450px);
     }
 }
 
-body.light-theme .notification-message {
+.billing-success-message i {
+    color: #4CAF50;
+    font-size: 28px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.billing-error-message i {
+    color: #ff4444;
+    font-size: 28px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.billing-success-message div,
+.billing-error-message div {
+    flex: 1;
+}
+
+.billing-success-message strong,
+.billing-error-message strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+body.light-theme .billing-success-message strong,
+body.light-theme .billing-error-message strong {
+    color: #1a1a2e;
+}
+
+.billing-success-message p,
+.billing-error-message p {
+    font-size: 14px;
+    color: #dbdbf2;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'PT Sans', sans-serif;
+}
+
+body.light-theme .billing-success-message p,
+body.light-theme .billing-error-message p {
+    color: #4a4a5e;
+}
+
+.billing-warning-message,
+.billing-info-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    max-width: 420px;
+    background-color: #0A0D18;
+    border: 2px solid #ff9800;
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(86, 56, 229, 0.1);
+    animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+}
+
+body.light-theme .billing-warning-message,
+body.light-theme .billing-info-message {
+    background-color: #ffffff;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(124, 92, 239, 0.1);
+}
+
+.billing-info-message {
+    border-color: #2196F3;
+}
+
+.billing-warning-message i {
+    color: #ff9800;
+    font-size: 28px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(255, 152, 0, 0.3));
+}
+
+.billing-info-message i {
+    color: #2196F3;
+    font-size: 28px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(33, 150, 243, 0.3));
+}
+
+.billing-warning-message div,
+.billing-info-message div {
+    flex: 1;
+}
+
+.billing-warning-message strong,
+.billing-info-message strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: white;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+body.light-theme .billing-warning-message strong,
+body.light-theme .billing-info-message strong {
+    color: #1a1a2e;
+}
+
+.billing-warning-message p,
+.billing-info-message p {
+    font-size: 14px;
+    color: #dbdbf2;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'PT Sans', sans-serif;
+}
+
+body.light-theme .billing-warning-message p,
+body.light-theme .billing-info-message p {
+    color: #4a4a5e;
+}
+
+.project-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background-color: #0A0D18;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid #2C2F45;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .project-tabs {
     background-color: #ffffff;
     border-color: #d4d8e8;
 }
 
-.notification-message.success-message {
-    border-left: 4px solid #4CAF50;
-}
-
-.notification-message.error-message {
-    border-left: 4px solid #ff4444;
-}
-
-.notification-content {
+.project-tab {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    flex: 1;
-}
-
-.notification-content i {
-    font-size: 24px;
-    margin-top: 2px;
-}
-
-.success-message .notification-content i {
-    color: #4CAF50;
-}
-
-.error-message .notification-content i {
-    color: #ff4444;
-}
-
-.notification-text {
-    flex: 1;
-}
-
-.notification-text strong {
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 4px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #0E0F1D;
     color: white;
-}
-
-body.light-theme .notification-text strong {
-    color: #1a1a2e;
-}
-
-.notification-text p {
-    font-size: 13px;
-    color: #a7a7c7;
-    margin: 0;
-    line-height: 1.4;
-}
-
-body.light-theme .notification-text p {
-    color: #6b6b7f;
-}
-
-.notification-close {
-    background: none;
-    border: none;
-    color: #a7a7c7;
-    font-size: 16px;
     cursor: pointer;
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-}
-
-body.light-theme .notification-close {
-    color: #6b6b7f;
-}
-
-.notification-close:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-}
-
-body.light-theme .notification-close:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: #1a1a2e;
-}
-
-.success-notice {
-    background-color: #0A0D18;
-    border: 1px solid #4CAF50;
-    border-radius: 12px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    animation: slideInRight 0.3s ease;
-    max-width: 400px;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-}
-
-body.light-theme .success-notice {
-    background-color: #ffffff;
-    border-color: #4CAF50;
-}
-
-.success-notice i {
-    color: #4CAF50;
-    font-size: 24px;
-    margin-top: 2px;
-}
-
-.success-notice div {
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #2C2F45;
     flex: 1;
+    min-width: 150px;
 }
 
-.success-notice strong {
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 4px;
+body.light-theme .project-tab {
+    background-color: #f8f9fa;
+    color: #1a1a2e;
+    border-color: #d4d8e8;
+}
+
+.project-tab.active {
+    background-color: #0E0634;
+    border-color: #5638E5;
     color: white;
 }
 
-body.light-theme .success-notice strong {
-    color: #1a1a2e;
-}
-
-.success-notice p {
-    font-size: 13px;
-    color: #a7a7c7;
-    margin: 0;
-    line-height: 1.4;
-}
-
-body.light-theme .success-notice p {
-    color: #6b6b7f;
-}
-
-.error-notice {
-    background-color: #0A0D18;
-    border: 1px solid #ff4444;
-    border-radius: 12px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    animation: slideInRight 0.3s ease;
-    max-width: 400px;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-}
-
-body.light-theme .error-notice {
-    background-color: #ffffff;
-    border-color: #ff4444;
-}
-
-.error-notice i {
-    color: #ff4444;
-    font-size: 24px;
-    margin-top: 2px;
-}
-
-.error-notice div {
-    flex: 1;
-}
-
-.error-notice strong {
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 4px;
+body.light-theme .project-tab.active {
+    background-color: #5638E5;
+    border-color: #5638E5;
     color: white;
 }
 
-body.light-theme .error-notice strong {
-    color: #1a1a2e;
+.project-tab:hover:not(.active) {
+    background-color: #141830;
+    border-color: #5638E5;
 }
 
-.error-notice p {
-    font-size: 13px;
-    color: #a7a7c7;
-    margin: 0;
-    line-height: 1.4;
+body.light-theme .project-tab:hover:not(.active) {
+    background-color: #e8eaf0;
+    border-color: #7c5cef;
 }
 
-body.light-theme .error-notice p {
-    color: #6b6b7f;
+.project-tab i {
+    display: none;
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(400px);
-        opacity: 0;
+.select-plan-btn,
+.upgrade-btn,
+.action-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+    outline: 2px solid #5638E5;
+    outline-offset: 2px;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -8px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
-    to {
-        transform: translateX(0);
-        opacity: 1;
+
+    100% {
+        transform: rotate(360deg);
     }
 }
 
@@ -1794,10 +1852,40 @@ body.light-theme .error-notice p {
         justify-content: center;
     }
 
-    .notification-message {
+    .billing-success-message,
+    .billing-error-message,
+    .billing-warning-message,
+    .billing-info-message {
         top: 10px;
         right: 10px;
         left: 10px;
         max-width: none;
+    }
+
+    .project-tabs {
+        flex-direction: column;
+    }
+
+    .project-tab {
+        min-width: auto;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .plan-details {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .payment-method-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .payment-actions {
+        width: 100%;
+        justify-content: space-between;
     }
 }

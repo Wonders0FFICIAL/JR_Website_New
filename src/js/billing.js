@@ -1,48 +1,163 @@
+const memoryStorage = {
+    data: {},
+    getItem(key) {
+        return this.data[key] || null;
+    },
+    setItem(key, value) {
+        this.data[key] = String(value);
+    },
+    removeItem(key) {
+        delete this.data[key];
+    },
+    clear() {
+        this.data = {};
+    }
+};
+
+const PROJECT_CONFIG = {
+    browse: {
+        name: 'JR. Browse',
+        plans: {
+            free: { name: 'Free', price: 0, features: ['Basic browsing', '100 searches/day', 'Standard protection'] },
+            pro: { name: 'Pro', price: 9.99, features: ['Unlimited searches', 'Advanced security', 'Priority support'] },
+            enterprise: { name: 'Enterprise', price: 49.99, features: ['Custom integration', 'Dedicated support', 'Team management'] }
+        },
+        usageMetrics: [
+            { label: 'Searches', current: 50, max: 100 },
+            { label: 'Storage', current: 150, max: 500, unit: 'MB' },
+            { label: 'API Requests', current: 1240, max: 10000 }
+        ]
+    },
+    ai: {
+        name: 'JR. AI',
+        plans: {
+            free: { name: 'Starter', price: 0, features: ['Basic AI models', '100 queries/day', 'Standard response'] },
+            pro: { name: 'Plus', price: 19.99, features: ['Advanced models', 'Unlimited queries', 'Priority access'] },
+            enterprise: { name: 'Enterprise', price: 99.99, features: ['Custom training', 'API access', '24/7 support'] }
+        },
+        usageMetrics: [
+            { label: 'AI Queries', current: 75, max: 100 },
+            { label: 'Model Training', current: 2, max: 5, unit: 'hours' },
+            { label: 'API Calls', current: 850, max: 1000 }
+        ]
+    },
+    cloud: {
+        name: 'JR. Cloud',
+        plans: {
+            free: { name: 'Basic', price: 0, features: ['10GB storage', 'Basic sharing', 'Standard encryption'] },
+            pro: { name: 'Premium', price: 14.99, features: ['1TB storage', 'Advanced sharing', 'End-to-end encryption'] },
+            enterprise: { name: 'Enterprise', price: 79.99, features: ['Unlimited storage', 'Team collaboration', 'Advanced security'] }
+        },
+        usageMetrics: [
+            { label: 'Storage Used', current: 8.5, max: 10, unit: 'GB' },
+            { label: 'File Uploads', current: 45, max: 100 },
+            { label: 'Bandwidth', current: 25, max: 50, unit: 'GB' }
+        ]
+    },
+    lang: {
+        name: 'JR. Lang',
+        plans: {
+            free: { name: 'Community', price: 0, features: ['Basic tools', 'Public repos', 'Standard compiler'] },
+            pro: { name: 'Professional', price: 24.99, features: ['Private repos', 'Advanced compiler', 'Priority support'] },
+            enterprise: { name: 'Enterprise', price: 149.99, features: ['Team tools', 'Custom extensions', '24/7 support'] }
+        },
+        usageMetrics: [
+            { label: 'Compile Time', current: 45, max: 60, unit: 'min' },
+            { label: 'Repositories', current: 3, max: 5 },
+            { label: 'Code Analysis', current: 120, max: 200, unit: 'files' }
+        ]
+    }
+};
+
+let currentProject = 'browse';
+
 function getUserBillingData() {
     const currentUser = getCurrentUser();
     if (!currentUser) {
-        return {
+        return initializeDefaultBillingData();
+    }
+
+    return currentUser.billing || initializeDefaultBillingData();
+}
+
+function initializeDefaultBillingData() {
+    const billingData = {
+        projects: {},
+        paymentMethod: null,
+        sharedInvoices: []
+    };
+
+    Object.keys(PROJECT_CONFIG).forEach(project => {
+        billingData.projects[project] = {
             plan: 'free',
-            planName: 'Free Plan',
-            price: 0,
             cycle: 'monthly',
             nextBillingDate: null,
             status: 'active',
-            paymentMethod: null,
-            invoices: []
+            usage: generateDefaultUsage(project)
         };
-    }
+    });
 
-    return currentUser.billing || {
-        plan: 'free',
-        planName: 'Free Plan',
-        price: 0,
-        cycle: 'monthly',
-        nextBillingDate: null,
+    const signupDate = getSignupDate();
+    billingData.sharedInvoices.push({
+        id: 'SIGNUP-' + Date.now(),
+        date: signupDate,
+        description: 'Welcome to JR.',
+        amount: 0,
         status: 'active',
-        paymentMethod: null,
-        invoices: []
-    };
+        project: 'all'
+    });
+
+    return billingData;
+}
+
+function getSignupDate() {
+    try {
+        const signupData = memoryStorage.getItem('userSignupDate');
+        if (signupData) {
+            return signupData;
+        }
+
+        const demoSignupDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+        memoryStorage.setItem('userSignupDate', demoSignupDate);
+        return demoSignupDate;
+    } catch (e) {
+        console.error('Error getting signup date:', e);
+        return new Date().toISOString();
+    }
+}
+
+function generateDefaultUsage(project) {
+    const config = PROJECT_CONFIG[project];
+    return config.usageMetrics.map(metric => ({
+        ...metric,
+        current: Math.floor(Math.random() * metric.max * 0.8)
+    }));
 }
 
 function getCurrentUser() {
-    const currentUserKey = localStorage.getItem('currentUser');
-    if (!currentUserKey) return null;
-
     try {
-        return JSON.parse(currentUserKey);
+        const currentUserData = memoryStorage.getItem('currentUser');
+        if (!currentUserData) return null;
+
+        return JSON.parse(currentUserData);
     } catch (e) {
-        const userData = localStorage.getItem(currentUserKey);
-        if (userData) {
-            return JSON.parse(userData);
-        }
+        console.error('Error parsing user data:', e);
+        return null;
     }
-    return null;
 }
 
 function saveUserBillingData(billingData) {
-    const currentUserKey = localStorage.getItem('currentUser');
-    if (!currentUserKey) return false;
+    const currentUserKey = memoryStorage.getItem('currentUser');
+    if (!currentUserKey) {
+        const defaultUser = {
+            id: 'demo_user_' + Date.now(),
+            email: 'demo@example.com',
+            name: 'Demo User',
+            billing: billingData
+        };
+        memoryStorage.setItem('currentUser', JSON.stringify(defaultUser));
+        return true;
+    }
 
     let user;
     let storageKey = 'currentUser';
@@ -53,75 +168,131 @@ function saveUserBillingData(billingData) {
             storageKey = currentUserKey;
         }
     } catch (e) {
-        user = JSON.parse(localStorage.getItem(currentUserKey));
+        user = JSON.parse(memoryStorage.getItem(currentUserKey));
         storageKey = currentUserKey;
     }
 
     if (user) {
         user.billing = billingData;
-        localStorage.setItem(storageKey, JSON.stringify(user));
+        memoryStorage.setItem(storageKey, JSON.stringify(user));
         if (storageKey !== 'currentUser') {
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            memoryStorage.setItem('currentUser', JSON.stringify(user));
         }
         return true;
     }
     return false;
 }
 
-function initializeCurrentPlan() {
-    const billingData = getUserBillingData();
+function initializeProjectTabs() {
+    const projectTabs = document.querySelectorAll('.project-tab');
 
-    document.getElementById('planBadge').textContent = billingData.plan.charAt(0).toUpperCase() + billingData.plan.slice(1);
-    document.getElementById('planName').textContent = billingData.planName;
+    projectTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            projectTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
 
-    const priceText = billingData.price === 0
-        ? '$0.00 / month'
-        : `$${billingData.price.toFixed(2)} / ${billingData.cycle}`;
-    document.getElementById('planPrice').textContent = priceText;
-
-    if (billingData.nextBillingDate) {
-        document.getElementById('nextBillingDate').textContent = formatDate(billingData.nextBillingDate);
-    } else {
-        document.getElementById('nextBillingDate').textContent = 'N/A';
-    }
-
-    document.getElementById('planStatus').textContent = billingData.status.charAt(0).toUpperCase() + billingData.status.slice(1);
-
-    const upgradeBtn = document.getElementById('upgradeBtn');
-    if (billingData.plan === 'enterprise') {
-        upgradeBtn.textContent = 'Current Plan';
-        upgradeBtn.disabled = true;
-        upgradeBtn.style.cursor = 'not-allowed';
-    } else if (billingData.plan === 'pro') {
-        upgradeBtn.textContent = 'Upgrade to Enterprise';
-    } else {
-        upgradeBtn.textContent = 'View All Plans';
-    }
-
-    const manageSection = document.getElementById('manageSubscriptionSection');
-    if (billingData.plan !== 'free') {
-        manageSection.style.display = 'block';
-    } else {
-        manageSection.style.display = 'none';
-    }
-
-    updatePlanSelectionButtons(billingData.plan);
+            currentProject = tab.getAttribute('data-project');
+            refreshProjectDisplay();
+        });
+    });
 }
 
-function updatePlanSelectionButtons(currentPlan) {
-    const planButtons = document.querySelectorAll('.select-plan-btn');
-    planButtons.forEach(btn => {
-        const planType = btn.dataset.plan || btn.closest('.plan-option').dataset.plan;
-        if (planType === currentPlan) {
-            btn.textContent = 'Current Plan';
-            btn.classList.add('current');
-            btn.disabled = true;
+function refreshProjectDisplay() {
+    const billingData = getUserBillingData();
+    const projectData = billingData.projects[currentProject];
+    const projectConfig = PROJECT_CONFIG[currentProject];
+    const planConfig = projectConfig.plans[projectData.plan];
+
+    const projectTitle = document.getElementById('projectTitle');
+    const projectSubtitle = document.getElementById('projectSubtitle');
+    const projectName = document.getElementById('projectName');
+
+    if (projectTitle) projectTitle.textContent = `${projectConfig.name} - Billing & Plans`;
+    if (projectSubtitle) projectSubtitle.textContent = `Manage your ${projectConfig.name} subscription and usage`;
+    if (projectName) projectName.textContent = projectConfig.name;
+
+    initializeCurrentPlan();
+    updateUsageDisplay();
+}
+
+function initializeCurrentPlan() {
+    const billingData = getUserBillingData();
+    const projectData = billingData.projects[currentProject];
+    const projectConfig = PROJECT_CONFIG[currentProject];
+    const planConfig = projectConfig.plans[projectData.plan];
+
+    const planName = document.getElementById('planName');
+    const planPrice = document.getElementById('planPrice');
+    const nextBillingDate = document.getElementById('nextBillingDate');
+    const planStatus = document.getElementById('planStatus');
+    const upgradeBtn = document.getElementById('upgradeBtn');
+    const manageSection = document.getElementById('manageSubscriptionSection');
+
+    if (planName) {
+        planName.textContent = `${planConfig.name} Plan`;
+    }
+
+    if (planPrice) {
+        const priceText = planConfig.price === 0
+            ? '$0.00 / month'
+            : `$${planConfig.price.toFixed(2)} / ${projectData.cycle}`;
+        planPrice.textContent = priceText;
+    }
+
+    if (nextBillingDate) {
+        if (projectData.nextBillingDate) {
+            nextBillingDate.textContent = formatDate(projectData.nextBillingDate);
         } else {
-            btn.textContent = 'Select Plan';
-            btn.classList.remove('current');
-            btn.disabled = false;
+            nextBillingDate.textContent = 'N/A';
         }
-    });
+    }
+
+    if (planStatus) {
+        planStatus.textContent = projectData.status.charAt(0).toUpperCase() + projectData.status.slice(1);
+    }
+
+    if (upgradeBtn) {
+        if (projectData.plan === 'enterprise') {
+            upgradeBtn.textContent = 'Current Plan';
+            upgradeBtn.disabled = true;
+            upgradeBtn.style.cursor = 'not-allowed';
+        } else {
+            upgradeBtn.textContent = 'View All Plans';
+            upgradeBtn.disabled = false;
+            upgradeBtn.style.cursor = 'pointer';
+        }
+    }
+
+    if (manageSection) {
+        if (projectData.plan !== 'free') {
+            manageSection.style.display = 'block';
+        } else {
+            manageSection.style.display = 'none';
+        }
+    }
+}
+
+function updateUsageDisplay() {
+    const billingData = getUserBillingData();
+    const projectData = billingData.projects[currentProject];
+    const usageData = projectData.usage;
+
+    for (let i = 0; i < Math.min(usageData.length, 3); i++) {
+        const metric = usageData[i];
+        const usageLabel = document.getElementById(`usageLabel${i + 1}`);
+        const usageCount = document.getElementById(`usageCount${i + 1}`);
+        const usageBar = document.getElementById(`usageBar${i + 1}`);
+
+        if (usageLabel) usageLabel.textContent = metric.label;
+        if (usageCount) {
+            const unit = metric.unit ? ` ${metric.unit}` : '';
+            usageCount.textContent = `${metric.current}${unit} / ${metric.max}${unit}`;
+        }
+        if (usageBar) {
+            const percentage = (metric.current / metric.max) * 100;
+            usageBar.style.width = `${Math.min(percentage, 100)}%`;
+        }
+    }
 }
 
 function formatDate(dateString) {
@@ -133,6 +304,8 @@ function formatDate(dateString) {
 function initializePaymentMethod() {
     const billingData = getUserBillingData();
     const container = document.getElementById('paymentMethodsContainer');
+
+    if (!container) return;
 
     if (billingData.paymentMethod) {
         container.innerHTML = `
@@ -153,8 +326,10 @@ function initializePaymentMethod() {
             </div>
         `;
 
-        document.getElementById('editPaymentBtn').addEventListener('click', showAddPaymentModal);
-        document.getElementById('deletePaymentBtn').addEventListener('click', removePaymentMethod);
+        const editBtn = document.getElementById('editPaymentBtn');
+        const deleteBtn = document.getElementById('deletePaymentBtn');
+        if (editBtn) editBtn.addEventListener('click', () => showAddPaymentModal(true));
+        if (deleteBtn) deleteBtn.addEventListener('click', removePaymentMethod);
     } else {
         container.innerHTML = `
             <div class="no-payment-message">
@@ -164,24 +339,67 @@ function initializePaymentMethod() {
             </div>
         `;
 
-        document.getElementById('addPaymentBtn').addEventListener('click', showAddPaymentModal);
+        const addBtn = document.getElementById('addPaymentBtn');
+        if (addBtn) addBtn.addEventListener('click', () => showAddPaymentModal(false));
     }
 }
 
-function showAddPaymentModal() {
-    document.getElementById('addPaymentModal').style.display = 'flex';
+function showAddPaymentModal(isEdit = false) {
+    const modal = document.getElementById('addPaymentModal');
+    const modalTitle = modal.querySelector('.modal-header h3');
+    const saveBtn = document.getElementById('savePaymentBtn');
+
+    if (isEdit) {
+        modalTitle.textContent = 'Edit Payment Method';
+        saveBtn.textContent = 'Update Card';
+
+        const billingData = getUserBillingData();
+        if (billingData.paymentMethod) {
+            const cardNumberEl = document.getElementById('cardNumber');
+            const expiryDateEl = document.getElementById('expiryDate');
+            const cardholderNameEl = document.getElementById('cardholderName');
+
+            if (cardNumberEl) {
+                cardNumberEl.value = '•••• •••• •••• ' + billingData.paymentMethod.last4;
+                cardNumberEl.placeholder = 'Enter new card or keep existing';
+            }
+
+            if (expiryDateEl) {
+                expiryDateEl.value = billingData.paymentMethod.expiry;
+            }
+
+            if (cardholderNameEl) {
+                cardholderNameEl.value = billingData.paymentMethod.cardholderName;
+            }
+        }
+    } else {
+        modalTitle.textContent = 'Add Payment Method';
+        saveBtn.textContent = 'Add Card';
+        clearPaymentForm();
+    }
+
+    if (modal) modal.style.display = 'flex';
 }
 
 function closeAddPaymentModal() {
-    document.getElementById('addPaymentModal').style.display = 'none';
+    const modal = document.getElementById('addPaymentModal');
+    if (modal) modal.style.display = 'none';
     clearPaymentForm();
 }
 
 function clearPaymentForm() {
-    document.getElementById('cardNumber').value = '';
-    document.getElementById('expiryDate').value = '';
-    document.getElementById('cvv').value = '';
-    document.getElementById('cardholderName').value = '';
+    const cardNumber = document.getElementById('cardNumber');
+    const expiryDate = document.getElementById('expiryDate');
+    const cvv = document.getElementById('cvv');
+    const cardholderName = document.getElementById('cardholderName');
+
+    if (cardNumber) {
+        cardNumber.value = '';
+        cardNumber.placeholder = '1234 5678 9012 3456';
+    }
+    if (expiryDate) expiryDate.value = '';
+    if (cvv) cvv.value = '';
+    if (cardholderName) cardholderName.value = '';
 }
 
 function formatCardNumber(input) {
@@ -192,11 +410,11 @@ function formatCardNumber(input) {
 
 function formatExpiryDate(input) {
     let value = input.value.replace(/\D/g, '');
-    
+
     if (value.length >= 2) {
         let month = value.substring(0, 2);
-        if (month.length === 1 && parseInt(month) > 0) {
-            month = month.padStart(2, '0');
+        if (month.length === 1 && parseInt(month) > 1) {
+            month = '0' + month;
         }
         if (parseInt(month) > 12) {
             month = '12';
@@ -210,17 +428,34 @@ function formatExpiryDate(input) {
 }
 
 function savePaymentMethod() {
-    const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
-    const expiryDate = document.getElementById('expiryDate').value;
-    const cvv = document.getElementById('cvv').value;
-    const cardholderName = document.getElementById('cardholderName').value;
+    const cardNumberEl = document.getElementById('cardNumber');
+    const expiryDateEl = document.getElementById('expiryDate');
+    const cvvEl = document.getElementById('cvv');
+    const cardholderNameEl = document.getElementById('cardholderName');
+
+    if (!cardNumberEl || !expiryDateEl || !cvvEl || !cardholderNameEl) {
+        showErrorMessage('Form elements not found');
+        return;
+    }
+
+    let cardNumber = cardNumberEl.value.replace(/\s/g, '');
+    const expiryDate = expiryDateEl.value;
+    const cvv = cvvEl.value;
+    const cardholderName = cardholderNameEl.value;
+
+    const billingData = getUserBillingData();
+    const isEditingExisting = cardNumber.includes('••••') && billingData.paymentMethod;
+
+    if (isEditingExisting) {
+        cardNumber = '0000000000' + billingData.paymentMethod.last4;
+    }
 
     if (!cardNumber || !expiryDate || !cvv || !cardholderName) {
         showErrorMessage('Please fill in all fields');
         return;
     }
 
-    if (cardNumber.length !== 16) {
+    if (!isEditingExisting && cardNumber.length !== 16) {
         showErrorMessage('Please enter a valid 16-digit card number');
         return;
     }
@@ -230,22 +465,26 @@ function savePaymentMethod() {
         return;
     }
 
-    const expiryRegex = /^(0[1-9]|1[0-2])\/(\d{4})$/;
+    const expiryRegex = /^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/;
     if (!expiryRegex.test(expiryDate)) {
-        showErrorMessage('Please enter a valid expiry date in MM/YYYY format (e.g., 04/2025)');
+        showErrorMessage('Please enter a valid expiry date in MM/YY or MM/YYYY format');
         return;
     }
 
     const [month, year] = expiryDate.split('/');
+    const expMonth = parseInt(month);
+    let expYear = parseInt(year);
+
+    if (year.length === 2) {
+        expYear = 2000 + expYear;
+    }
+
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth() + 1;
 
-    const expMonth = parseInt(month);
-    const expYear = parseInt(year);
-
     if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
-        showErrorMessage('Please enter a future expiry date');
+        showErrorMessage('Card has expired. Please enter a valid future expiry date');
         return;
     }
 
@@ -255,23 +494,23 @@ function savePaymentMethod() {
             id: 'demo_user_' + Date.now(),
             email: 'demo@example.com',
             name: 'Demo User',
-            billing: {}
+            billing: initializeDefaultBillingData()
         };
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        memoryStorage.setItem('currentUser', JSON.stringify(currentUser));
     }
 
-    const billingData = getUserBillingData();
-    billingData.paymentMethod = {
+    const updatedBillingData = getUserBillingData();
+    updatedBillingData.paymentMethod = {
         type: 'Credit Card',
         last4: cardNumber.slice(-4),
         expiry: expiryDate,
         cardholderName: cardholderName
     };
 
-    if (saveUserBillingData(billingData)) {
+    if (saveUserBillingData(updatedBillingData)) {
         closeAddPaymentModal();
         initializePaymentMethod();
-        showSuccessMessage('Payment method added successfully!');
+        showSuccessMessage(isEditingExisting ? 'Payment method updated successfully!' : 'Payment method added successfully!');
     } else {
         showErrorMessage('Failed to save payment method. Please try again.');
     }
@@ -284,7 +523,7 @@ function removePaymentMethod() {
 
     const billingData = getUserBillingData();
     billingData.paymentMethod = null;
-    
+
     if (saveUserBillingData(billingData)) {
         initializePaymentMethod();
         showSuccessMessage('Payment method removed successfully');
@@ -293,69 +532,10 @@ function removePaymentMethod() {
     }
 }
 
-function initializeBillingCycle() {
-    const cycleButtons = document.querySelectorAll('.cycle-btn');
-
-    cycleButtons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            cycleButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            const cycle = this.dataset.cycle;
-            updatePlanPrices(cycle);
-        });
-    });
-}
-
-function updatePlanPrices(cycle) {
-    const monthlyPrices = document.querySelectorAll('.monthly-price');
-    const yearlyPrices = document.querySelectorAll('.yearly-price');
-
-    if (cycle === 'monthly') {
-        monthlyPrices.forEach(el => el.style.display = 'inline');
-        yearlyPrices.forEach(el => el.style.display = 'none');
-    } else {
-        monthlyPrices.forEach(el => el.style.display = 'none');
-        yearlyPrices.forEach(el => el.style.display = 'inline');
-    }
-}
-
-function handlePlanSelection() {
-    const selectButtons = document.querySelectorAll('.select-plan-btn:not(.current)');
-
-    selectButtons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const planOption = this.closest('.plan-option');
-            const plan = planOption.dataset.plan;
-            const cycle = document.querySelector('.cycle-btn.active').dataset.cycle;
-
-            selectPlan(plan, cycle);
-        });
-    });
-}
-
 function selectPlan(plan, cycle) {
-    const planNames = {
-        free: 'Free Plan',
-        pro: 'Pro Plan',
-        enterprise: 'Enterprise Plan'
-    };
-
-    const monthlyPrices = {
-        free: 0,
-        pro: 9.99,
-        enterprise: 49.99
-    };
-
-    const yearlyPrices = {
-        free: 0,
-        pro: 7.99,
-        enterprise: 39.99
-    };
-
-    const price = cycle === 'monthly' ? monthlyPrices[plan] : yearlyPrices[plan];
-
     const billingData = getUserBillingData();
+    const projectConfig = PROJECT_CONFIG[currentProject];
+    const planConfig = projectConfig.plans[plan];
 
     if (plan !== 'free' && !billingData.paymentMethod) {
         showErrorMessage('Please add a payment method before upgrading');
@@ -363,10 +543,9 @@ function selectPlan(plan, cycle) {
         return;
     }
 
-    billingData.plan = plan;
-    billingData.planName = planNames[plan];
-    billingData.price = price;
-    billingData.cycle = cycle;
+    billingData.projects[currentProject].plan = plan;
+    billingData.projects[currentProject].cycle = cycle;
+    billingData.projects[currentProject].price = planConfig.price;
 
     if (plan !== 'free') {
         const nextDate = new Date();
@@ -375,42 +554,49 @@ function selectPlan(plan, cycle) {
         } else {
             nextDate.setFullYear(nextDate.getFullYear() + 1);
         }
-        billingData.nextBillingDate = nextDate.toISOString();
+        billingData.projects[currentProject].nextBillingDate = nextDate.toISOString();
 
         const invoice = {
             id: 'INV-' + Date.now(),
             date: new Date().toISOString(),
-            description: `${planNames[plan]} - ${cycle.charAt(0).toUpperCase() + cycle.slice(1)}`,
-            amount: price,
-            status: 'paid'
+            description: `${projectConfig.name} - ${planConfig.name} (${cycle})`,
+            amount: planConfig.price,
+            status: 'paid',
+            project: currentProject
         };
 
-        if (!billingData.invoices) {
-            billingData.invoices = [];
+        if (!billingData.sharedInvoices) {
+            billingData.sharedInvoices = [];
         }
-        billingData.invoices.unshift(invoice);
+        billingData.sharedInvoices.unshift(invoice);
     } else {
-        billingData.nextBillingDate = null;
+        billingData.projects[currentProject].nextBillingDate = null;
+        billingData.projects[currentProject].price = 0;
     }
 
     saveUserBillingData(billingData);
-    initializeCurrentPlan();
+    refreshProjectDisplay();
     initializeInvoices();
 
-    showSuccessMessage(`Successfully ${plan === 'free' ? 'downgraded to' : 'upgraded to'} ${planNames[plan]}`);
+    showSuccessMessage(`Successfully ${plan === 'free' ? 'downgraded to' : 'upgraded to'} ${planConfig.name} for ${projectConfig.name}`);
 }
 
 function initializeInvoices() {
     const billingData = getUserBillingData();
     const tbody = document.getElementById('invoicesTableBody');
 
-    if (!billingData.invoices || billingData.invoices.length === 0) {
+    if (!tbody) return;
+
+    const projectInvoices = billingData.sharedInvoices ?
+        billingData.sharedInvoices.filter(invoice => invoice.project === currentProject || invoice.project === 'all') : [];
+
+    if (projectInvoices.length === 0) {
         tbody.innerHTML = `
             <tr class="no-data-row">
                 <td colspan="5">
                     <div class="no-invoices-message">
                         <i class="fas fa-receipt"></i>
-                        <p>No payment history available</p>
+                        <p>No payment history available for ${PROJECT_CONFIG[currentProject].name}</p>
                     </div>
                 </td>
             </tr>
@@ -418,7 +604,7 @@ function initializeInvoices() {
         return;
     }
 
-    tbody.innerHTML = billingData.invoices.map(invoice => {
+    tbody.innerHTML = projectInvoices.map(invoice => {
         const statusClass = `status-${invoice.status}`;
         const statusText = invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1);
 
@@ -435,17 +621,51 @@ function initializeInvoices() {
 }
 
 function downloadInvoice(invoiceId) {
-    alert(`Downloading invoice ${invoiceId}...`);
+    try {
+        const billingData = getUserBillingData();
+        const invoice = billingData.sharedInvoices ?
+            billingData.sharedInvoices.find(inv => inv.id === invoiceId) : null;
+
+        if (!invoice) {
+            showErrorMessage('Invoice not found');
+            return;
+        }
+
+        const invoiceContent = `
+INVOICE: ${invoice.id}
+Date: ${formatDate(invoice.date)}
+Description: ${invoice.description}
+Amount: $${invoice.amount.toFixed(2)}
+Status: ${invoice.status.toUpperCase()}
+----------------------------------------
+Thank you for your business!
+        `.trim();
+
+        const blob = new Blob([invoiceContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `invoice-${invoice.id}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        showSuccessMessage(`Invoice ${invoice.id} downloaded`);
+    } catch (error) {
+        console.error('Error downloading invoice:', error);
+        showErrorMessage('Failed to download invoice');
+    }
 }
 
 function showSuccessMessage(message) {
-    const existingMessage = document.querySelector('.billing-success-message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
+    const existingMessages = document.querySelectorAll('.billing-success-message, .billing-error-message, .billing-warning-message, .billing-info-message');
+    existingMessages.forEach(msg => {
+        if (msg.parentNode) msg.remove();
+    });
 
     const messageHTML = `
-        <div class="success-notice billing-success-message">
+        <div class="billing-success-message">
             <i class="fas fa-check-circle"></i>
             <div>
                 <strong>Success</strong>
@@ -456,22 +676,25 @@ function showSuccessMessage(message) {
 
     document.body.insertAdjacentHTML('beforeend', messageHTML);
 
+    const messageElement = document.querySelector('.billing-success-message');
     setTimeout(() => {
-        const msg = document.querySelector('.billing-success-message');
-        if (msg) {
-            msg.remove();
+        if (messageElement && messageElement.parentNode) {
+            messageElement.style.animation = 'fadeOut 0.3s ease forwards';
+            setTimeout(() => {
+                if (messageElement.parentNode) messageElement.remove();
+            }, 300);
         }
     }, 3000);
 }
 
 function showErrorMessage(message) {
-    const existingMessage = document.querySelector('.billing-error-message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
+    const existingMessages = document.querySelectorAll('.billing-success-message, .billing-error-message, .billing-warning-message, .billing-info-message');
+    existingMessages.forEach(msg => {
+        if (msg.parentNode) msg.remove();
+    });
 
     const messageHTML = `
-        <div class="error-notice billing-error-message">
+        <div class="billing-error-message">
             <i class="fas fa-exclamation-circle"></i>
             <div>
                 <strong>Error</strong>
@@ -482,12 +705,73 @@ function showErrorMessage(message) {
 
     document.body.insertAdjacentHTML('beforeend', messageHTML);
 
+    const messageElement = document.querySelector('.billing-error-message');
     setTimeout(() => {
-        const msg = document.querySelector('.billing-error-message');
-        if (msg) {
-            msg.remove();
+        if (messageElement && messageElement.parentNode) {
+            messageElement.style.animation = 'fadeOut 0.3s ease forwards';
+            setTimeout(() => {
+                if (messageElement.parentNode) messageElement.remove();
+            }, 300);
         }
     }, 5000);
+}
+
+function showWarningMessage(message) {
+    const existingMessages = document.querySelectorAll('.billing-success-message, .billing-error-message, .billing-warning-message, .billing-info-message');
+    existingMessages.forEach(msg => {
+        if (msg.parentNode) msg.remove();
+    });
+
+    const messageHTML = `
+        <div class="billing-warning-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>Warning</strong>
+                <p>${message}</p>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', messageHTML);
+
+    const messageElement = document.querySelector('.billing-warning-message');
+    setTimeout(() => {
+        if (messageElement && messageElement.parentNode) {
+            messageElement.style.animation = 'fadeOut 0.3s ease forwards';
+            setTimeout(() => {
+                if (messageElement.parentNode) messageElement.remove();
+            }, 300);
+        }
+    }, 4000);
+}
+
+function showInfoMessage(message) {
+    const existingMessages = document.querySelectorAll('.billing-success-message, .billing-error-message, .billing-warning-message, .billing-info-message');
+    existingMessages.forEach(msg => {
+        if (msg.parentNode) msg.remove();
+    });
+
+    const messageHTML = `
+        <div class="billing-info-message">
+            <i class="fas fa-info-circle"></i>
+            <div>
+                <strong>Info</strong>
+                <p>${message}</p>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', messageHTML);
+
+    const messageElement = document.querySelector('.billing-info-message');
+    setTimeout(() => {
+        if (messageElement && messageElement.parentNode) {
+            messageElement.style.animation = 'fadeOut 0.3s ease forwards';
+            setTimeout(() => {
+                if (messageElement.parentNode) messageElement.remove();
+            }, 300);
+        }
+    }, 3500);
 }
 
 function initializeCancelSubscription() {
@@ -499,90 +783,124 @@ function initializeCancelSubscription() {
 
 function showCancelModal() {
     const billingData = getUserBillingData();
-    if (billingData.nextBillingDate) {
-        document.getElementById('subscriptionEndDate').textContent = formatDate(billingData.nextBillingDate);
+    const projectData = billingData.projects[currentProject];
+    const modal = document.getElementById('cancelSubscriptionModal');
+    const endDateElement = document.getElementById('subscriptionEndDate');
+
+    if (projectData.nextBillingDate && endDateElement) {
+        endDateElement.textContent = formatDate(projectData.nextBillingDate);
     }
-    document.getElementById('cancelSubscriptionModal').style.display = 'flex';
+    if (modal) modal.style.display = 'flex';
 }
 
 function closeCancelModal() {
-    document.getElementById('cancelSubscriptionModal').style.display = 'none';
+    const modal = document.getElementById('cancelSubscriptionModal');
+    if (modal) modal.style.display = 'none';
 }
 
 function cancelSubscription() {
     const billingData = getUserBillingData();
 
-    billingData.status = 'cancelled';
+    billingData.projects[currentProject].status = 'cancelled';
+    billingData.projects[currentProject].plan = 'free';
+    billingData.projects[currentProject].price = 0;
+    billingData.projects[currentProject].nextBillingDate = null;
+
     saveUserBillingData(billingData);
 
     closeCancelModal();
-    showSuccessMessage('Subscription cancelled. Your plan will remain active until ' + formatDate(billingData.nextBillingDate));
+    showSuccessMessage(`Subscription cancelled for ${PROJECT_CONFIG[currentProject].name}. You have been downgraded to the Free plan.`);
 
     setTimeout(() => {
-        window.location.reload();
+        refreshProjectDisplay();
     }, 2000);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    initializeCurrentPlan();
+    initializeProjectTabs();
+    refreshProjectDisplay();
     initializePaymentMethod();
-    initializeBillingCycle();
-    handlePlanSelection();
     initializeInvoices();
     initializeCancelSubscription();
 
-    document.getElementById('closePaymentModal').addEventListener('click', closeAddPaymentModal);
-    document.getElementById('cancelPaymentBtn').addEventListener('click', closeAddPaymentModal);
-    document.getElementById('savePaymentBtn').addEventListener('click', savePaymentMethod);
+    const closePaymentModal = document.getElementById('closePaymentModal');
+    const cancelPaymentBtn = document.getElementById('cancelPaymentBtn');
+    const savePaymentBtn = document.getElementById('savePaymentBtn');
 
-    document.getElementById('cardNumber').addEventListener('input', function(e) {
+    if (closePaymentModal) closePaymentModal.addEventListener('click', closeAddPaymentModal);
+    if (cancelPaymentBtn) cancelPaymentBtn.addEventListener('click', closeAddPaymentModal);
+    if (savePaymentBtn) savePaymentBtn.addEventListener('click', savePaymentMethod);
 
-        this.value = this.value.replace(/\D/g, '');
-        formatCardNumber(this);
-    });
+    const cardNumber = document.getElementById('cardNumber');
+    const expiryDate = document.getElementById('expiryDate');
+    const cvv = document.getElementById('cvv');
 
-    document.getElementById('expiryDate').addEventListener('input', function(e) {
-        this.value = this.value.replace(/\D/g, '');
-        formatExpiryDate(this);
-    });
+    if (cardNumber) {
+        cardNumber.addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '');
+            formatCardNumber(this);
+        });
 
-    document.getElementById('cvv').addEventListener('input', function(e) {
-        this.value = this.value.replace(/\D/g, '').slice(0, 3);
-    });
+        cardNumber.addEventListener('paste', function (e) {
+            e.preventDefault();
+            const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+            this.value = text;
+            formatCardNumber(this);
+        });
+    }
 
-    document.getElementById('cardNumber').addEventListener('paste', function(e) {
-        e.preventDefault();
-        const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
-        this.value = text;
-        formatCardNumber(this);
-    });
+    if (expiryDate) {
+        expiryDate.addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '');
+            formatExpiryDate(this);
+        });
 
-    document.getElementById('expiryDate').addEventListener('paste', function(e) {
-        e.preventDefault();
-        const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
-        this.value = text;
-        formatExpiryDate(this);
-    });
+        expiryDate.addEventListener('paste', function (e) {
+            e.preventDefault();
+            const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+            this.value = text;
+            formatExpiryDate(this);
+        });
+    }
 
-    document.getElementById('closeCancelModal').addEventListener('click', closeCancelModal);
-    document.getElementById('keepSubscriptionBtn').addEventListener('click', closeCancelModal);
-    document.getElementById('confirmCancelBtn').addEventListener('click', cancelSubscription);
+    if (cvv) {
+        cvv.addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 3);
+        });
+    }
 
-    document.getElementById('addPaymentModal').addEventListener('click', function (e) {
-        if (e.target === this) {
-            closeAddPaymentModal();
-        }
-    });
+    const closeCancelModalBtn = document.getElementById('closeCancelModal');
+    const keepSubscriptionBtn = document.getElementById('keepSubscriptionBtn');
+    const confirmCancelBtn = document.getElementById('confirmCancelBtn');
 
-    document.getElementById('cancelSubscriptionModal').addEventListener('click', function (e) {
-        if (e.target === this) {
-            closeCancelModal();
-        }
-    });
+    if (closeCancelModalBtn) closeCancelModalBtn.addEventListener('click', closeCancelModal);
+    if (keepSubscriptionBtn) keepSubscriptionBtn.addEventListener('click', closeCancelModal);
+    if (confirmCancelBtn) confirmCancelBtn.addEventListener('click', cancelSubscription);
 
-    document.getElementById('upgradeBtn').addEventListener('click', function () {
-        if (!this.disabled) {
-            window.location.href = 'pricing.html';
-        }
-    });
+    const addPaymentModal = document.getElementById('addPaymentModal');
+    if (addPaymentModal) {
+        addPaymentModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeAddPaymentModal();
+            }
+        });
+    }
+
+    const cancelSubscriptionModal = document.getElementById('cancelSubscriptionModal');
+    if (cancelSubscriptionModal) {
+        cancelSubscriptionModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeCancelModal();
+            }
+        });
+    }
+
+    const upgradeBtn = document.getElementById('upgradeBtn');
+    if (upgradeBtn) {
+        upgradeBtn.addEventListener('click', function () {
+            if (!this.disabled) {
+                window.location.href = 'pricing.html';
+            }
+        });
+    }
 });
