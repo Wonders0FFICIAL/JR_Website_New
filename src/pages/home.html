@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Home - JR.</title>
     <link rel="icon" href="../assets/images/Favicon.png" type="image/png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/background.css" />
-<link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
   </head>
 
   <body>
@@ -44,15 +45,214 @@
 
       <div class="container">
         <h1 class="title">Welcome to JR.</h1>
-        <h2 class="subtitle">The home of safe, stable and smart projects</h2>
+        <h2 class="subtitle">The home of safe, stable, and smart projects</h2>
         <p class="description">
-          Whether you're a developer or a business looking for innovation, JR.
-          delivers cutting-edge AI, programming tools, and a customizable web
-          experience, all designed to push the boundaries of what's possible.
+          JR. builds foundational software across the modern stack — from programming 
+          languages and AI platforms to browsers, cloud services, and system tools. 
+          Each project is part of a unified ecosystem.
         </p>
-        <a href="projects.html" style="text-decoration: none">
-          <button class="projects-btn">Our Projects</button>
-        </a>
+        <div class="hero-buttons">
+          <a href="signup.html" class="btn-primary">Get Started</a>
+          <a href="projects.html" class="btn-secondary">View Projects</a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="what-we-build">
+        <h2 class="section-title">What We Build</h2>
+        <p class="section-subtitle">
+          JR. focuses on core software layers that modern products depend on.
+        </p>
+        <div class="build-grid">
+          <div class="build-card">
+            <i class="fas fa-code"></i>
+            <h3>Languages & Runtimes</h3>
+            <p>Programming languages and execution environments built for clarity, reliability, and long-term maintainability.</p>
+          </div>
+          <div class="build-card">
+            <i class="fas fa-cloud"></i>
+            <h3>Platforms & Systems</h3>
+            <p>Browsers, cloud infrastructure, and performance-focused systems that manage resources, security, and scale.</p>
+          </div>
+          <div class="build-card">
+            <i class="fas fa-brain"></i>
+            <h3>Intelligence</h3>
+            <p>AI systems and algorithms for reasoning, perception, and decision-making, fully integrable with your stack.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="featured-projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-carousel">
+          <div class="carousel-container" id="carouselContainer">
+            <div class="project-card project-stable">
+              <h3>Juno</h3>
+              <p>A modern programming language focused on clarity, performance, and developer experience. Juno combines the best features of functional and imperative programming with a clean syntax that's easy to learn and powerful to use.</p>
+              
+              <div class="project-details">
+                <div class="project-detail-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <strong>Release Date:</strong>
+                  <span>March 2024 (Stable v1.0)</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-cog"></i>
+                  <strong>Key Features:</strong>
+                  <span>Type inference, pattern matching, concurrency primitives, zero-cost abstractions</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-users"></i>
+                  <strong>Users:</strong>
+                  <span>Over 15,000 developers worldwide</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-download"></i>
+                  <strong>Downloads:</strong>
+                  <span>500,000+ package downloads monthly</span>
+                </div>
+              </div>
+              
+              <span class="project-status status-stable">Stable</span>
+              <span class="project-status" style="background: rgba(34, 197, 94, 0.2); color: #22c55e; border-color: #22c55e;">Open Source</span>
+            </div>
+            
+            <div class="project-card project-beta">
+              <h3>April</h3>
+              <p>An AI platform for analysis, automation, and real-time intelligence. April provides enterprise-grade AI capabilities with privacy-focused architecture and seamless integration with existing systems.</p>
+              
+              <div class="project-details">
+                <div class="project-detail-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <strong>Release Date:</strong>
+                  <span>Beta available now, v1.0 planned for Q3 2024</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-cog"></i>
+                  <strong>Key Features:</strong>
+                  <span>Multi-modal AI, real-time processing, privacy by design, API-first architecture</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-user-friends"></i>
+                  <strong>Early Access:</strong>
+                  <span>500+ companies in private beta</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-database"></i>
+                  <strong>Infrastructure:</strong>
+                  <span>Cloud, on-premise, and hybrid deployments</span>
+                </div>
+              </div>
+              
+              <span class="project-status status-beta">Beta</span>
+              <span class="project-status" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border-color: #3b82f6;">Enterprise Ready</span>
+            </div>
+            
+            <div class="project-card project-alpha">
+              <h3>Avery</h3>
+              <p>A developer-focused cloud platform that simplifies deployment, scaling, and management of applications. Avery provides a seamless experience from development to production.</p>
+              
+              <div class="project-details">
+                <div class="project-detail-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <strong>Release Date:</strong>
+                  <span>Alpha testing, public release planned for Q4 2024</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-cog"></i>
+                  <strong>Key Features:</strong>
+                  <span>Automatic scaling, global CDN, serverless functions, database as a service</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-bolt"></i>
+                  <strong>Performance:</strong>
+                  <span>Cold starts under 100ms, 99.95% uptime SLA</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-shield-alt"></i>
+                  <strong>Security:</strong>
+                  <span>Built-in DDoS protection, automatic SSL, compliance ready</span>
+                </div>
+              </div>
+              
+              <span class="project-status status-alpha">Alpha</span>
+              <span class="project-status" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24; border-color: #fbbf24;">Early Access</span>
+            </div>
+
+            <div class="project-card project-planned">
+              <h3>Natalie</h3>
+              <p>A human-perception and rumor modeling algorithm designed to understand and predict information spread in social networks. Natalie helps organizations manage communication and identify misinformation.</p>
+              
+              <div class="project-details">
+                <div class="project-detail-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <strong>Release Date:</strong>
+                  <span>Research phase, planned for 2025</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-cog"></i>
+                  <strong>Key Features:</strong>
+                  <span>Network analysis, sentiment tracking, prediction models, visualization tools</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-graduation-cap"></i>
+                  <strong>Research Partners:</strong>
+                  <span>Collaborating with 3 universities on algorithm development</span>
+                </div>
+                <div class="project-detail-item">
+                  <i class="fas fa-chart-line"></i>
+                  <strong>Accuracy:</strong>
+                  <span>Current models show 85% prediction accuracy in tests</span>
+                </div>
+              </div>
+              
+              <span class="project-status status-planned">Planned</span>
+              <span class="project-status" style="background: rgba(156, 163, 175, 0.2); color: #9ca3af; border-color: #9ca3af;">Research Phase</span>
+            </div>
+          </div>
+          
+          <div class="carousel-nav">
+            <div class="carousel-arrow" id="prevArrow">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            
+            <div class="carousel-indicators" id="indicators">
+            </div>
+            
+            <div class="carousel-arrow" id="nextArrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="ecosystem-link">
+          <a href="projects.html">
+            Explore the JR. Ecosystem <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="who-for">
+        <h2 class="section-title">Who JR. Is For</h2>
+        <div class="who-for-list">
+          <div class="who-for-item">
+            <i class="fa-solid fa-code"></i>
+            <p>Developers who value control and clarity</p>
+          </div>
+          <div class="who-for-item">
+            <i class="fa-solid fa-people-group"></i>
+            <p>Teams building long-term products</p>
+          </div>
+          <div class="who-for-item">
+            <i class="fa-solid fa-user"></i>
+            <p>Creators who avoid bloated tools</p>
+          </div>
+        </div>
       </div>
 
       <div class="divider"></div>
