@@ -867,7 +867,7 @@ body.light-theme .project-detail-item span {
     color: white;
     font-size: 20px;
     position: relative;
-    z-index: 2;
+    z-index: 15;
     transform-origin: center;
     will-change: transform;
 }
@@ -892,7 +892,7 @@ body.light-theme .carousel-arrow {
     justify-content: center;
     margin-top: 10px;
     position: relative;
-    z-index: 1;
+    z-index: 15;
 }
 
 .indicator {
@@ -902,6 +902,8 @@ body.light-theme .carousel-arrow {
     background: rgba(86, 56, 229, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 15;
 }
 
 .indicator.active {
@@ -917,6 +919,8 @@ body.light-theme .carousel-arrow {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
+    position: relative;
+    z-index: 15;
 }
 
 .ecosystem-link a {
@@ -931,6 +935,8 @@ body.light-theme .carousel-arrow {
     padding: 12px 24px;
     border-radius: 8px;
     background-color: rgba(86, 56, 229, 0.1);
+    position: relative;
+    z-index: 15;
 }
 
 .ecosystem-link a:hover {
@@ -967,7 +973,7 @@ body.light-theme .carousel-arrow {
     background: linear-gradient(135deg, rgba(14, 15, 29, 0.9) 0%, rgba(20, 22, 40, 0.8) 100%);
     backdrop-filter: blur(10px);
     border-radius: 16px;
-    padding: 40px 30px;
+    padding: 30px 30px 60px 30px;
     border: 2px solid rgba(86, 56, 229, 0.3);
     transition: all 0.4s ease;
     text-align: center;
@@ -1026,8 +1032,8 @@ body.light-theme .who-for-item {
 .who-for-item i {
     font-size: 48px;
     color: #5638E5;
-    margin-top: 10px;
-    margin-bottom: 0;
+    margin-top: 35px;
+    margin-bottom: 10px;
     transition: all 0.3s ease;
     position: relative;
     z-index: 2;
@@ -1048,7 +1054,7 @@ body.light-theme .who-for-item {
     line-height: 1.4;
     padding: 0 10px;
     margin-top: auto;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 body.light-theme .who-for-item p {
@@ -1076,11 +1082,11 @@ body.light-theme .testimonial-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
 }
 
-.featured-projects + .divider {
+.featured-projects+.divider {
     margin-top: 30px;
 }
 
-.who-for + .divider {
+.who-for+.divider {
     margin-top: 40px;
 }
 
@@ -1089,7 +1095,7 @@ body.light-theme .testimonial-card {
         grid-template-columns: repeat(2, 1fr);
         max-width: 900px;
     }
-    
+
     .who-for-list {
         grid-template-columns: repeat(2, 1fr);
         max-width: 900px;
@@ -1101,7 +1107,7 @@ body.light-theme .testimonial-card {
         grid-template-columns: repeat(2, 1fr);
         max-width: 700px;
     }
-    
+
     .who-for-list {
         grid-template-columns: repeat(2, 1fr);
         max-width: 700px;
@@ -1234,18 +1240,18 @@ body.light-theme .testimonial-card {
 
     .who-for-item {
         min-height: 160px;
-        padding: 30px 25px;
+        padding: 20px 25px 45px 25px;
     }
 
     .who-for-item i {
         font-size: 36px;
-        margin-bottom: 0;
-        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-top: 0;
     }
 
     .who-for-item p {
         font-size: 20px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     .project-card {
@@ -1301,11 +1307,11 @@ body.light-theme .testimonial-card {
         margin-bottom: 5px;
     }
 
-    .featured-projects + .divider {
+    .featured-projects+.divider {
         margin-top: 20px;
     }
 
-    .who-for + .divider {
+    .who-for+.divider {
         margin-top: 30px;
     }
 }
@@ -1315,37 +1321,37 @@ body.light-theme .testimonial-card {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .build-card {
         min-height: 260px;
         padding: 25px 20px;
     }
-    
+
     .who-for-list {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .who-for-item {
         min-height: 140px;
-        padding: 25px 20px;
+        padding: 20px 20px 30px 20px;
     }
-    
+
     .who-for-item i {
         font-size: 32px;
-        margin-bottom: 0;
-        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-top: 0;
     }
-    
+
     .who-for-item p {
         font-size: 18px;
         margin-bottom: 5px;
     }
-    
+
     .carousel-nav {
         gap: 15px;
     }
-    
+
     .project-card {
         margin-top: 10px;
     }
