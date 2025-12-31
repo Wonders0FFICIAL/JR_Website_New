@@ -870,6 +870,8 @@ body.light-theme .project-detail-item span {
     z-index: 15;
     transform-origin: center;
     will-change: transform;
+    isolation: isolate;
+    backdrop-filter: blur(5px);
 }
 
 body.light-theme .carousel-arrow {
@@ -893,6 +895,7 @@ body.light-theme .carousel-arrow {
     margin-top: 10px;
     position: relative;
     z-index: 15;
+    isolation: isolate;
 }
 
 .indicator {
@@ -904,6 +907,9 @@ body.light-theme .carousel-arrow {
     transition: all 0.3s ease;
     position: relative;
     z-index: 15;
+    isolation: isolate;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 0 2px rgba(10, 13, 24, 0.8);
 }
 
 .indicator.active {
@@ -937,6 +943,8 @@ body.light-theme .carousel-arrow {
     background-color: rgba(86, 56, 229, 0.1);
     position: relative;
     z-index: 15;
+    isolation: isolate;
+    backdrop-filter: blur(5px);
 }
 
 .ecosystem-link a:hover {
