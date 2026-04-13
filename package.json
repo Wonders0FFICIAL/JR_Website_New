@@ -4,7 +4,7 @@
   "description": "JR. Website",
   "main": "src/js/index.js",
   "scripts": {
-    "start": "npx live-server src",
+    "start": "npx live-server .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
