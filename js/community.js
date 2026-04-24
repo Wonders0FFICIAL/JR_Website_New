@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     url = 'https://github.com/jr-official';
                     break;
                 case 'Browse Forums':
-                    url = 'https://forums.jrofficial.org';
+                    url = 'https://jrofficial.org/forums';
                     break;
                 case 'Follow on X':
                     url = 'https://x.com/jr_suite';
