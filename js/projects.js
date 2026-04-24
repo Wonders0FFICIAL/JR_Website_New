@@ -1,28 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    function createStars() {
-        const starsContainer = document.getElementById('stars');
-        const starsCount = 150;
-
-        for (let i = 0; i < starsCount; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-
-            const size = Math.random() * 2 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
-
-            const duration = Math.random() * 3 + 2;
-            star.style.animationDuration = `${duration}s`;
-
-            starsContainer.appendChild(star);
-        }
-    }
-
-    createStars();
-
     const projectsData = {
         'jr-lang': {
             name: 'JR. Lang',

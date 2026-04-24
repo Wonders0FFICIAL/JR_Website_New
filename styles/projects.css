@@ -23,7 +23,6 @@
 body {
     color: white;
     font-family: 'Comfortaa', sans-serif;
-    background: #0A0D18;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -33,36 +32,6 @@ body {
 body.light-theme {
     background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 50%, #d4d8e8 100%);
     color: #1a1a2e;
-}
-
-.stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: radial-gradient(ellipse at center, #0A0D18 0%, #050713 100%);
-}
-
-body.light-theme .stars {
-    background: radial-gradient(ellipse at center, #f5f7fa 0%, #e8eaf0 100%);
-}
-
-.star {
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    animation: twinkle linear infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 0.2;
-    }
-    50% {
-        opacity: 1;
-    }
 }
 
 .navbar {

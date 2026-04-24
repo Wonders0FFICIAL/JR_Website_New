@@ -7,7 +7,7 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 body.light-theme {
@@ -23,50 +23,78 @@ body.light-theme {
     height: 100%;
     pointer-events: none;
     z-index: 1;
-    contain: layout style paint;
+    overflow: hidden;
 }
 
-.star {
+.stars::before {
+    content: '';
     position: absolute;
-    background: white;
+    top: -20%;
+    left: -15%;
+    width: 55%;
+    height: 65%;
+    background: radial-gradient(ellipse at center, rgba(86, 56, 229, 0.18) 0%, rgba(86, 56, 229, 0.06) 50%, transparent 70%);
     border-radius: 50%;
-    animation: twinkle 3s infinite;
-    will-change: opacity, transform;
-    transition: transform 0.1s ease-out;
+    filter: blur(40px);
+    animation: orbDrift1 25s ease-in-out infinite alternate;
 }
 
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 0.2;
-        transform: scale(0.8);
-    }
-    50% {
-        opacity: 0.9;
-        transform: scale(1.1);
-    }
+.stars::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 50%;
+    height: 60%;
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, rgba(86, 56, 229, 0.05) 50%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    animation: orbDrift2 30s ease-in-out infinite alternate;
 }
 
-@media (max-width: 768px) {
-    .star {
-        animation-duration: 4s;
-    }
+.stars .orb-mid {
+    position: absolute;
+    top: 35%;
+    right: 20%;
+    width: 35%;
+    height: 45%;
+    background: radial-gradient(ellipse at center, rgba(67, 37, 194, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: orbDrift3 20s ease-in-out infinite alternate;
+}
 
-    @keyframes twinkle {
-        0%, 100% {
-            opacity: 0.3;
-            transform: scale(0.9);
-        }
-        50% {
-            opacity: 0.8;
-            transform: scale(1.05);
-        }
-    }
+@keyframes orbDrift1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(6%, 8%) scale(1.08); }
+}
+
+@keyframes orbDrift2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-8%, -6%) scale(1.1); }
+}
+
+@keyframes orbDrift3 {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    100% { transform: translate(-5%, 10%) scale(0.92); opacity: 1; }
+}
+
+body.light-theme .stars::before {
+    background: radial-gradient(ellipse at center, rgba(86, 56, 229, 0.07) 0%, transparent 70%);
+}
+
+body.light-theme .stars::after {
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+}
+
+body.light-theme .stars .orb-mid {
+    background: radial-gradient(ellipse at center, rgba(86, 56, 229, 0.05) 0%, transparent 70%);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .star {
+    .stars::before,
+    .stars::after,
+    .stars .orb-mid {
         animation: none;
-        opacity: 0.5;
-        transition: none;
     }
 }
