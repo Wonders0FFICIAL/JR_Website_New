@@ -5,16 +5,12 @@ function getAppearanceSettings() {
     const savedTheme = localStorage.getItem('theme') || 'default';
     const savedStars = localStorage.getItem('starsEnabled');
     const starsEnabled = savedStars === null ? true : savedStars === 'true';
-
-    return {
-        theme: savedTheme,
-        starsEnabled: starsEnabled
-    };
+    return { theme: savedTheme, starsEnabled };
 }
 
 function saveAppearanceSettings(settings) {
     localStorage.setItem('theme', settings.theme);
-    localStorage.setItem('starsEnabled', settings.starsEnabled);
+    localStorage.setItem('starsEnabled', String(settings.starsEnabled));
 }
 
 function applyTheme(theme) {
@@ -25,11 +21,7 @@ function applyTheme(theme) {
     }
 
     document.querySelectorAll('.theme-card').forEach(card => {
-        if (card.dataset.theme === theme) {
-            card.classList.add('selected');
-        } else {
-            card.classList.remove('selected');
-        }
+        card.classList.toggle('selected', card.dataset.theme === theme);
     });
 }
 
@@ -103,28 +95,22 @@ function showSaveNotification() {
 }
 
 function applyToAllPages() {
-    const selectedThemeCard = document.querySelector('.theme-card.selected');
-    const theme = selectedThemeCard ? selectedThemeCard.dataset.theme : 'default';
-    
-    const starsEnabled = (theme === 'light') ? false : document.getElementById('starsToggle').checked;
+    const selectedCard = document.querySelector('.theme-card.selected');
+    const theme = selectedCard ? selectedCard.dataset.theme : currentSelectedTheme;
 
-    const settings = {
-        theme: theme,
-        starsEnabled: starsEnabled
-    };
-
-    saveAppearanceSettings(settings);
+    const starsToggle = document.getElementById('starsToggle');
+    const starsEnabled = theme === 'light'
+        ? false
+        : (starsToggle ? starsToggle.checked : currentStarsToggleState);
 
     currentSelectedTheme = theme;
     currentStarsToggleState = starsEnabled;
 
-    applyTheme(settings.theme);
+    saveAppearanceSettings({ theme, starsEnabled });
+    applyTheme(theme);
     updateStarsToggleState();
-    toggleStars(settings.starsEnabled);
-
+    toggleStars(starsEnabled);
     showSaveNotification();
-
-    console.log('Settings applied to all pages. Other pages will use these settings when loaded.');
 }
 
 function initializeAppearance() {
@@ -162,13 +148,10 @@ function setupThemeSelection() {
             currentSelectedTheme = theme;
 
             document.querySelectorAll('.theme-card').forEach(c => {
-                if (c.dataset.theme === theme) {
-                    c.classList.add('selected');
-                } else {
-                    c.classList.remove('selected');
-                }
+                c.classList.toggle('selected', c.dataset.theme === theme);
             });
 
+            applyTheme(theme);
             updateStarsToggleState();
         });
     });
@@ -178,9 +161,8 @@ function setupStarsToggle() {
     const starsToggle = document.getElementById('starsToggle');
     if (starsToggle) {
         starsToggle.addEventListener('change', function () {
-            if (!starsToggle.disabled) {
+            if (!this.disabled) {
                 currentStarsToggleState = this.checked;
-
                 updateDefaultThemePreview();
             }
         });
@@ -190,9 +172,7 @@ function setupStarsToggle() {
 function setupSaveButton() {
     const saveBtn = document.getElementById('saveAppearance');
     if (saveBtn) {
-        saveBtn.addEventListener('click', function () {
-            applyToAllPages();
-        });
+        saveBtn.addEventListener('click', applyToAllPages);
     }
 }
 
@@ -200,18 +180,19 @@ function setupResetButton() {
     const resetBtn = document.getElementById('resetAppearance');
     if (resetBtn) {
         resetBtn.addEventListener('click', function () {
-            const defaultSettings = {
-                theme: 'default',
-                starsEnabled: true
-            };
+            currentSelectedTheme = 'default';
+            currentStarsToggleState = true;
 
-            currentSelectedTheme = defaultSettings.theme;
-            currentStarsToggleState = defaultSettings.starsEnabled;
-
-            applyTheme(defaultSettings.theme);
+            saveAppearanceSettings({ theme: 'default', starsEnabled: true });
+            applyTheme('default');
             updateStarsToggleState();
-
+            toggleStars(true);
             showSaveNotification();
+
+            const defaultImg = document.querySelector('.theme-img[data-theme-type="default"]');
+            if (defaultImg) {
+                defaultImg.src = '../assets/images/theme-default-stars-preview.png';
+            }
         });
     }
 }
