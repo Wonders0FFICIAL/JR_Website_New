@@ -10,15 +10,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
   <link rel="stylesheet" href="/styles/background.css" />
   <link rel="stylesheet" href="/styles/profile-setup.css" />
+  <style>
+    @media (min-width: 769px) { .hamburger { display: none; } }
+  </style>
 </head>
 <body>
-<div class="stars" id="stars"></div>
-
+<div class="stars" id="stars"><div class="orb-mid"></div></div>
 <div id="loading-indicator" class="loading-indicator" style="display: none;">
   <div class="loading-spinner"></div>
   <p>Processing image...</p>
 </div>
-
 <div class="main-content">
   <nav class="navbar">
     <div class="nav-left">
@@ -36,11 +37,9 @@
       <div class="hamburger"><div></div><div></div><div></div></div>
     </div>
   </nav>
-
   <div class="signup-container">
     <div class="card">
       <h2>Profile</h2>
-
       <div class="profile-picture-container">
         <label>Profile Picture</label>
         <div class="profile-image-wrapper">
@@ -52,41 +51,33 @@
         </div>
         <div class="file-info"><small>Supported formats: JPEG, PNG, WebP (Max 10MB)</small></div>
       </div>
-
       <div class="input-group">
         <label for="username">Username</label>
         <div class="input-container">
-          <div class="input-icon">
-            <img src="../assets/images/username.png" alt="Username icon" class="input-icon-img" />
-          </div>
+          <div class="input-icon"><img src="../assets/images/username.png" alt="Username icon" class="input-icon-img" /></div>
           <input type="text" id="username" placeholder="Enter your username" aria-describedby="username-error" autocomplete="username" />
         </div>
         <div id="username-error" class="error-message" role="alert" aria-live="polite"></div>
       </div>
-
       <div class="input-group">
         <label for="display-name">Display Name</label>
         <div class="input-container">
-          <div class="input-icon">
-            <img src="../assets/images/display_name.png" alt="Display name icon" class="input-icon-img" />
-          </div>
+          <div class="input-icon"><img src="../assets/images/display_name.png" alt="Display name icon" class="input-icon-img" /></div>
           <input type="text" id="display-name" placeholder="Enter a display name" aria-describedby="display-name-error" autocomplete="name" />
         </div>
         <div id="display-name-error" class="error-message" role="alert" aria-live="polite"></div>
       </div>
-
       <button id="save-profile-button" class="btn" type="button">Save Profile</button>
     </div>
   </div>
 </div>
-
 <div id="image-cropper-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-desc" aria-modal="true">
   <div class="modal-content">
     <div class="modal-header">
       <h3 id="modal-title">Adjust Profile Picture</h3>
       <button class="close-modal" type="button" aria-label="Close modal">&times;</button>
     </div>
-    <div id="modal-desc" style="display:none;">Use zoom and drag to adjust your profile picture. Your changes will be applied when you click Done.</div>
+    <div id="modal-desc" style="display:none;">Use zoom and drag to adjust your profile picture.</div>
     <div class="modal-body">
       <div class="cropper-container">
         <div id="image-cropper" aria-label="Image cropping area"></div>
@@ -106,42 +97,29 @@
     </div>
   </div>
 </div>
-
 <div id="error-modal" class="modal" role="dialog" aria-labelledby="error-title" aria-modal="true">
   <div class="modal-content error-modal-content">
     <div class="modal-header">
       <h3 id="error-title">Error</h3>
       <button class="close-error-modal" type="button" aria-label="Close error modal">&times;</button>
     </div>
-    <div class="modal-body">
-      <p id="error-message"></p>
-    </div>
-    <div class="modal-footer">
-      <button id="close-error-btn" class="btn" type="button">OK</button>
-    </div>
+    <div class="modal-body"><p id="error-message"></p></div>
+    <div class="modal-footer"><button id="close-error-btn" class="btn" type="button">OK</button></div>
   </div>
 </div>
-
 <footer>
   <div class="footer-content">
     <div class="footer-section">
       <h3>Quick Links</h3>
       <div class="footer-links">
-        <a href="#">About Us</a>
-        <a href="/blog">Blog</a>
-        <a href="#">Careers</a>
-        <a href="#">Support</a>
-        <a href="#">Contact</a>
+        <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
         <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
       </div>
     </div>
     <div class="footer-section">
       <h3>Legal</h3>
       <div class="footer-links">
-        <a href="#">Terms of Service</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Cookie Policy</a>
-        <a href="#">License Information</a>
+        <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
       </div>
     </div>
     <div class="footer-section">
@@ -157,7 +135,6 @@
   <div class="footer-separator"></div>
   <div class="copyright">© 2026 JR. All rights reserved.</div>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 <script src="/js/profile-setup.js"></script>
 </body>

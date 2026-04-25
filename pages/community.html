@@ -4,24 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Community</title>
-<link rel="icon" href="/assets/images/Favicon.png" type="image/png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="icon" href="/assets/images/Favicon.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/styles/background.css" />
     <link rel="stylesheet" href="/styles/community.css" />
+    <style>
+      @media (min-width: 769px) { .hamburger { display: none; } }
+    </style>
   </head>
-
   <body>
-    <div class="stars" id="stars"></div>
+    <div class="stars" id="stars"><div class="orb-mid"></div></div>
     <div class="main-content">
       <nav class="navbar">
         <div class="nav-left">
-          <a href="/">
-<img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
-          </a>
+          <a href="/"><img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" /></a>
           <div class="nav-links">
             <a href="/">Home</a>
             <a href="/blog">Blog</a>
@@ -30,104 +27,67 @@
             <a href="/community" class="active">Community</a>
           </div>
         </div>
-
         <div class="signup-hamburger">
-<a href="/signup" style="text-decoration: none">
-  <button class="signup-btn">Sign Up</button>
-</a>
-          <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <a href="/signup" style="text-decoration: none"><button class="signup-btn">Sign Up</button></a>
+          <div class="hamburger"><div></div><div></div><div></div></div>
         </div>
       </nav>
-
       <div class="container">
         <h1 class="title">Join Our Community</h1>
         <h2 class="subtitle">Connect, collaborate, and grow with developers worldwide</h2>
-        <p class="description">
-          JR. brings together passionate developers, AI enthusiasts, and technology innovators from around the globe. 
-          Our community is the heart of everything we do - sharing knowledge, building projects together, and pushing the 
-          boundaries of what's possible.
-        </p>
+        <p class="description">JR. brings together passionate developers, AI enthusiasts, and technology innovators from around the globe. Our community is the heart of everything we do - sharing knowledge, building projects together, and pushing the boundaries of what's possible.</p>
       </div>
-
-<div class="cards-container">
-  <div class="community-card">
-    <div class="card-icon">
-      <img src="../assets/images/discord.png" alt="Discord" class="social-icon">
-    </div>
-    <h3>Discord</h3>
-    <p>Join our Discord community to get help, share ideas, and participate in events.</p>
-    <button class="community-btn">Join The Server</button>
-  </div>
-
-  <div class="community-card">
-    <div class="card-icon">
-      <img src="../assets/images/Github.png" alt="GitHub" class="social-icon">
-    </div>
-    <h3>GitHub</h3>
-    <p>Contribute to our open-source projects, report issues, and collaborate with fellow developers.</p>
-    <button class="community-btn">Visit GitHub</button>
-  </div>
-
-  <div class="community-card">
-    <div class="card-icon">
-      <img src="../assets/images/reddit.png" alt="Reddit" class="social-icon">
-    </div>
-    <h3>Reddit</h3>
-    <p>Join our subreddit for community discussions, Q&A sessions, and sharing your projects.</p>
-    <button class="community-btn">Join The Subreddit</button>
-  </div>
-
-  <div class="community-card">
-    <div class="card-icon">
-      <i class="fas fa-comments" style="color: white; font-size: 80px;"></i>
-    </div>
-    <h3>Forums</h3>
-    <p>Dive into in-depth discussions, tutorials, and knowledge sharing on our dedicated forums.</p>
-    <button class="community-btn">Browse Forums</button>
-  </div>
-
-  <div class="community-card">
-    <div class="card-icon">
-      <img src="../assets/images/youtube.png" alt="YouTube" class="social-icon">
-    </div>
-    <h3>YouTube</h3>
-    <p>Subscribe to our channel for tutorials, project showcases, and behind-the-scenes content.</p>
-    <button class="community-btn">Subscribe On YouTube</button>
-  </div>
-
-  <div class="community-card">
-    <div class="card-icon">
-      <img src="../assets/images/instagram.png" alt="Instagram" class="social-icon">
-    </div>
-    <h3>Instagram</h3>
-    <p>Follow our Instagram for behind-the-scenes content, project highlights, and community spotlights.</p>
-    <button class="community-btn">Follow On Instagram</button>
-  </div>
-
-  <div class="community-card">
-    <div class="card-icon">
-      <img src="../assets/images/twitter.png" alt="X" class="social-icon">
-    </div>
-    <h3>X (Twitter)</h3>
-    <p>Follow us on X for the latest updates, announcements, and quick tech discussions.</p>
-    <button class="community-btn">Follow on X</button>
-  </div>
-
-  <div class="community-card">
-    <div class="card-icon">
-      <img src="../assets/images/mastodon.svg" alt="Mastodon" class="social-icon">
-    </div>
-    <h3>Mastodon</h3>
-    <p>Connect with us on the decentralized social network for open discussions and updates.</p>
-    <button class="community-btn">Follow On Mastodon</button>
-  </div>
-</div>
-
-<div class="newsletter-section">
+      <div class="cards-container">
+        <div class="community-card">
+          <div class="card-icon"><img src="../assets/images/discord.png" alt="Discord" class="social-icon"></div>
+          <h3>Discord</h3>
+          <p>Join our Discord community to get help, share ideas, and participate in events.</p>
+          <button class="community-btn">Join The Server</button>
+        </div>
+        <div class="community-card">
+          <div class="card-icon"><img src="../assets/images/Github.png" alt="GitHub" class="social-icon"></div>
+          <h3>GitHub</h3>
+          <p>Contribute to our open-source projects, report issues, and collaborate with fellow developers.</p>
+          <button class="community-btn">Visit GitHub</button>
+        </div>
+        <div class="community-card">
+          <div class="card-icon"><img src="../assets/images/reddit.png" alt="Reddit" class="social-icon"></div>
+          <h3>Reddit</h3>
+          <p>Join our subreddit for community discussions, Q&A sessions, and sharing your projects.</p>
+          <button class="community-btn">Join The Subreddit</button>
+        </div>
+        <div class="community-card">
+          <div class="card-icon"><i class="fas fa-comments" style="color: white; font-size: 80px;"></i></div>
+          <h3>Forums</h3>
+          <p>Dive into in-depth discussions, tutorials, and knowledge sharing on our dedicated forums.</p>
+          <button class="community-btn">Browse Forums</button>
+        </div>
+        <div class="community-card">
+          <div class="card-icon"><img src="../assets/images/youtube.png" alt="YouTube" class="social-icon"></div>
+          <h3>YouTube</h3>
+          <p>Subscribe to our channel for tutorials, project showcases, and behind-the-scenes content.</p>
+          <button class="community-btn">Subscribe On YouTube</button>
+        </div>
+        <div class="community-card">
+          <div class="card-icon"><img src="../assets/images/instagram.png" alt="Instagram" class="social-icon"></div>
+          <h3>Instagram</h3>
+          <p>Follow our Instagram for behind-the-scenes content, project highlights, and community spotlights.</p>
+          <button class="community-btn">Follow On Instagram</button>
+        </div>
+        <div class="community-card">
+          <div class="card-icon"><img src="../assets/images/twitter.png" alt="X" class="social-icon"></div>
+          <h3>X (Twitter)</h3>
+          <p>Follow us on X for the latest updates, announcements, and quick tech discussions.</p>
+          <button class="community-btn">Follow on X</button>
+        </div>
+        <div class="community-card">
+          <div class="card-icon"><img src="../assets/images/mastodon.svg" alt="Mastodon" class="social-icon"></div>
+          <h3>Mastodon</h3>
+          <p>Connect with us on the decentralized social network for open discussions and updates.</p>
+          <button class="community-btn">Follow On Mastodon</button>
+        </div>
+      </div>
+      <div class="newsletter-section">
         <h2 class="section-title">Stay Connected</h2>
         <p class="newsletter-description">Subscribe to our newsletter to get updates on events, new projects, and community highlights.</p>
         <div class="newsletter-form">
@@ -135,31 +95,22 @@
           <button class="subscribe-btn">Subscribe</button>
         </div>
       </div>
-
+    </div>
     <footer>
       <div class="footer-content">
         <div class="footer-section">
           <h3>Quick Links</h3>
           <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="/blog">Blog</a>
-            <a href="#">Careers</a>
-            <a href="#">Support</a>
-            <a href="#">Contact</a>
+            <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
             <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
           </div>
         </div>
-
         <div class="footer-section">
           <h3>Legal</h3>
           <div class="footer-links">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Cookie Policy</a>
-            <a href="#">License Information</a>
+            <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
           </div>
         </div>
-
         <div class="footer-section">
           <h3>Community</h3>
           <div class="footer-links">
@@ -170,11 +121,9 @@
           </div>
         </div>
       </div>
-
       <div class="footer-separator"></div>
       <div class="copyright">© 2026 JR. All rights reserved.</div>
     </footer>
-
     <script src="/js/community.js"></script>
   </body>
 </html>

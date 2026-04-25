@@ -3,26 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Billing & Plans</title>
+    <title>Billing &amp; Plans</title>
     <link rel="icon" href="/assets/images/Favicon.png" type="image/png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/styles/billing.css" />
+    <style>
+      @media (min-width: 769px) { .hamburger { display: none; } }
+    </style>
   </head>
-
   <body>
     <div class="main-content">
       <nav class="navbar">
         <div class="nav-left">
-          <a href="/">
-            <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
-          </a>
+          <a href="/"><img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" /></a>
           <div class="nav-links">
             <a href="/">Home</a>
             <a href="/blog">Blog</a>
@@ -31,108 +25,70 @@
             <a href="/community">Community</a>
           </div>
         </div>
-
         <div class="signup-hamburger">
-          <a href="/signup" style="text-decoration: none">
-            <button class="signup-btn">Sign Up</button>
-          </a>
-          <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <a href="/signup" style="text-decoration: none"><button class="signup-btn">Sign Up</button></a>
+          <div class="hamburger"><div></div><div></div><div></div></div>
         </div>
       </nav>
-
       <div class="settings-wrapper">
         <div class="sidebar">
           <h2 class="sidebar-title">Settings</h2>
           <div class="sidebar-links">
             <a href="/public-profile" class="sidebar-link">
-              <span class="icon">
-                <img src="../assets/images/display_name.png" alt="Profile Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/display_name.png" alt="Profile Icon" /></span>
               <span>Public Profile</span>
             </a>
-            <a href="account.html" class="sidebar-link">
-              <span class="icon">
-                <img src="../assets/images/account.png" alt="Account Icon" />
-              </span>
+            <a href="/account" class="sidebar-link">
+              <span class="icon"><img src="../assets/images/account.png" alt="Account Icon" /></span>
               <span>Account</span>
             </a>
             <a href="/appearance" class="sidebar-link">
-              <span class="icon">
-               <img src="../assets/images/appearance.png" alt="Appearance Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/appearance.png" alt="Appearance Icon" /></span>
               <span>Appearance</span>
             </a>
             <a href="/notifications" class="sidebar-link">
-              <span class="icon">
-                <img src="../assets/images/notifications.png" alt="Notifications Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/notifications.png" alt="Notifications Icon" /></span>
               <span>Notifications</span>
             </a>
             <a href="#" class="sidebar-link active">
-              <span class="icon">
-                <img src="../assets/images/billing.png" alt="Billing Icon" />
-              </span>
-              <span>Billing & Plans</span>
+              <span class="icon"><img src="../assets/images/billing.png" alt="Billing Icon" /></span>
+              <span>Billing &amp; Plans</span>
             </a>
             <a href="/privacy" class="sidebar-link">
-              <span class="icon">
-             <img src="../assets/images/privacy.png" alt="Privacy Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/privacy.png" alt="Privacy Icon" /></span>
               <span>Privacy</span>
             </a>
-            <a href="security.html" class="sidebar-link">
-              <span class="icon">
-           <img src="../assets/images/lock.png" alt="Security Icon" />
-              </span>
+            <a href="/security" class="sidebar-link">
+              <span class="icon"><img src="../assets/images/lock.png" alt="Security Icon" /></span>
               <span>Security</span>
             </a>
-            <a href="developer.html" class="sidebar-link">
-              <span class="icon">
-<img src="../assets/images/code.png" alt="Developer Icon" />
-              </span>
+            <a href="/developer" class="sidebar-link">
+              <span class="icon"><img src="../assets/images/code.png" alt="Developer Icon" /></span>
               <span>Developer</span>
             </a>
-            <a href="activity.html" class="sidebar-link">
-              <span class="icon">
-<img src="../assets/images/activity.png" alt="Activity Icon" />
-              </span>
+            <a href="/activity" class="sidebar-link">
+              <span class="icon"><img src="../assets/images/activity.png" alt="Activity Icon" /></span>
               <span>Activity</span>
             </a>
           </div>
         </div>
-
         <div class="content-area">
           <div class="search-box">
             <img src="../assets/images/search.png" alt="Search" class="search-icon" />
             <input type="text" placeholder="Search settings..." />
           </div>
-
           <div class="project-tabs">
-            <div class="project-tab active" data-project="browse">
-              <span>JR. Browse</span>
-            </div>
-            <div class="project-tab" data-project="ai">
-              <span>JR. AI</span>
-            </div>
-            <div class="project-tab" data-project="cloud">
-              <span>JR. Cloud</span>
-            </div>
-            <div class="project-tab" data-project="lang">
-              <span>JR. Lang</span>
-            </div>
+            <div class="project-tab active" data-project="browse"><span>JR. Browse</span></div>
+            <div class="project-tab" data-project="ai"><span>JR. AI</span></div>
+            <div class="project-tab" data-project="cloud"><span>JR. Cloud</span></div>
+            <div class="project-tab" data-project="lang"><span>JR. Lang</span></div>
           </div>
-
           <div class="billing-header">
             <div class="billing-title">
-              <h2 id="projectTitle">Billing & Plans</h2>
+              <h2 id="projectTitle">Billing &amp; Plans</h2>
               <p id="projectSubtitle">Manage your subscription, invoices, and payment methods</p>
             </div>
           </div>
-
           <div class="settings-section">
             <h3>Current Plan</h3>
             <div class="plan-card" id="currentPlanCard">
@@ -145,61 +101,33 @@
                   <button class="upgrade-btn" id="upgradeBtn">View All Plans</button>
                 </div>
               </div>
-              
               <div class="plan-details">
-                <div class="detail-item">
-                  <span class="detail-label">Next Billing Date:</span>
-                  <span class="detail-value" id="nextBillingDate">N/A</span>
-                </div>
-                <div class="detail-item">
-                  <span class="detail-label">Plan Status:</span>
-                  <span class="detail-value status-active" id="planStatus">Active</span>
-                </div>
-                <div class="detail-item">
-                  <span class="detail-label">Project:</span>
-                  <span class="detail-value" id="projectName">JR. Browse</span>
-                </div>
+                <div class="detail-item"><span class="detail-label">Next Billing Date:</span><span class="detail-value" id="nextBillingDate">N/A</span></div>
+                <div class="detail-item"><span class="detail-label">Plan Status:</span><span class="detail-value status-active" id="planStatus">Active</span></div>
+                <div class="detail-item"><span class="detail-label">Project:</span><span class="detail-value" id="projectName">JR. Browse</span></div>
               </div>
-
               <div class="usage-summary">
                 <h5>Usage This Month</h5>
                 <div class="usage-items">
                   <div class="usage-item">
-                    <div class="usage-header">
-                      <span class="usage-label" id="usageLabel1">Searches</span>
-                      <span class="usage-count" id="usageCount1">50 / 100</span>
-                    </div>
-                    <div class="usage-bar">
-                      <div class="usage-fill" id="usageBar1" style="width: 50%;"></div>
-                    </div>
+                    <div class="usage-header"><span class="usage-label" id="usageLabel1">Searches</span><span class="usage-count" id="usageCount1">50 / 100</span></div>
+                    <div class="usage-bar"><div class="usage-fill" id="usageBar1" style="width: 50%;"></div></div>
                   </div>
                   <div class="usage-item">
-                    <div class="usage-header">
-                      <span class="usage-label" id="usageLabel2">Storage</span>
-                      <span class="usage-count" id="usageCount2">150 MB / 500 MB</span>
-                    </div>
-                    <div class="usage-bar">
-                      <div class="usage-fill" id="usageBar2" style="width: 30%;"></div>
-                    </div>
+                    <div class="usage-header"><span class="usage-label" id="usageLabel2">Storage</span><span class="usage-count" id="usageCount2">150 MB / 500 MB</span></div>
+                    <div class="usage-bar"><div class="usage-fill" id="usageBar2" style="width: 30%;"></div></div>
                   </div>
                   <div class="usage-item">
-                    <div class="usage-header">
-                      <span class="usage-label" id="usageLabel3">Requests</span>
-                      <span class="usage-count" id="usageCount3">1,240 / 10,000</span>
-                    </div>
-                    <div class="usage-bar">
-                      <div class="usage-fill" id="usageBar3" style="width: 12.4%;"></div>
-                    </div>
+                    <div class="usage-header"><span class="usage-label" id="usageLabel3">Requests</span><span class="usage-count" id="usageCount3">1,240 / 10,000</span></div>
+                    <div class="usage-bar"><div class="usage-fill" id="usageBar3" style="width: 12.4%;"></div></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
           <div class="settings-section">
             <h3>Payment Method</h3>
             <p class="section-description">Manage your payment methods for automatic billing</p>
-            
             <div class="payment-methods" id="paymentMethodsContainer">
               <div class="no-payment-message">
                 <i class="fas fa-credit-card"></i>
@@ -208,48 +136,33 @@
               </div>
             </div>
           </div>
-
           <div class="settings-section">
             <h3>Payment History</h3>
             <p class="section-description">View and download your past invoices</p>
-            
             <div class="invoices-table-container">
               <table class="invoices-table" id="invoicesTable">
                 <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Invoice</th>
-                  </tr>
+                  <tr><th>Date</th><th>Description</th><th>Amount</th><th>Status</th><th>Invoice</th></tr>
                 </thead>
                 <tbody id="invoicesTableBody">
                   <tr class="no-data-row">
                     <td colspan="5">
-                      <div class="no-invoices-message">
-                        <i class="fas fa-receipt"></i>
-                        <p>No payment history available</p>
-                      </div>
+                      <div class="no-invoices-message"><i class="fas fa-receipt"></i><p>No payment history available</p></div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-
           <div class="settings-section" id="manageSubscriptionSection" style="display: none;">
             <h3>Manage Subscription</h3>
             <p class="section-description">Make changes to your active subscription</p>
-            
             <div class="subscription-actions">
               <button class="action-btn cancel-subscription-btn" id="cancelSubscriptionBtn">
-                <i class="fas fa-times-circle"></i>
-                Cancel Subscription
+                <i class="fas fa-times-circle"></i> Cancel Subscription
               </button>
             </div>
           </div>
-
           <div class="settings-section support-section">
             <h3>Need Help?</h3>
             <div class="support-content">
@@ -264,7 +177,7 @@
               <div class="support-item">
                 <i class="fas fa-file-contract"></i>
                 <div class="support-text">
-                  <h4>Legal & Policies</h4>
+                  <h4>Legal &amp; Policies</h4>
                   <p>Review our terms, refund policy, and billing information</p>
                   <div class="policy-links">
                     <a href="#">Terms of Service</a>
@@ -278,111 +191,60 @@
         </div>
       </div>
     </div>
-
     <footer>
       <div class="footer-content">
         <div class="footer-section">
           <h3>Quick Links</h3>
           <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="/blog">Blog</a>
-            <a href="#">Careers</a>
-            <a href="#">Support</a>
-            <a href="#">Contact</a>
-            <a
-              href="https://ko-fi.com/jr_official"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Donate</a
-            >
+            <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
+            <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
           </div>
         </div>
-
         <div class="footer-section">
           <h3>Legal</h3>
           <div class="footer-links">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Cookie Policy</a>
-            <a href="#">License Information</a>
+            <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
           </div>
         </div>
-
         <div class="footer-section">
           <h3>Community</h3>
           <div class="footer-links">
-            <a
-              href="https://github.com/jr-official"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub</a
-            >
-            <a
-              href="https://discord.gg/d4kfXDrcG8"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Discord</a
-            >
-            <a
-              href="https://x.com/jr_suite"
-              target="_blank"
-              rel="noopener noreferrer"
-              >X</a
-            >
-            <a
-              href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63"
-              target="_blank"
-              rel="noopener noreferrer"
-              >YouTube</a
-            >
+            <a href="https://github.com/jr-official" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://discord.gg/d4kfXDrcG8" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a href="https://x.com/jr_suite" target="_blank" rel="noopener noreferrer">X</a>
+            <a href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63" target="_blank" rel="noopener noreferrer">YouTube</a>
           </div>
         </div>
       </div>
-
       <div class="footer-separator"></div>
       <div class="copyright">© 2026 JR. All rights reserved.</div>
     </footer>
-
     <div class="modal-overlay" id="addPaymentModal" style="display: none;">
       <div class="modal payment-modal">
         <div class="modal-header">
           <h3>Add Payment Method</h3>
-          <button class="modal-close" id="closePaymentModal">
-            <i class="fas fa-times"></i>
-          </button>
+          <button class="modal-close" id="closePaymentModal"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
           <p class="modal-description">Add a payment method to enable premium features and automatic billing.</p>
           <form id="paymentForm">
             <div class="form-group">
               <label for="cardNumber">Card Number</label>
-              <div class="input-with-icon">
-                <i class="fas fa-credit-card input-icon"></i>
-                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" pattern="[0-9]*" inputmode="numeric" />
-              </div>
+              <div class="input-with-icon"><i class="fas fa-credit-card input-icon"></i><input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" pattern="[0-9]*" inputmode="numeric" /></div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="expiryDate">Expiry Date</label>
-                <div class="input-with-icon">
-                  <i class="fas fa-calendar input-icon"></i>
-                  <input type="text" id="expiryDate" placeholder="MM/YYYY" maxlength="7" />
-                </div>
+                <div class="input-with-icon"><i class="fas fa-calendar input-icon"></i><input type="text" id="expiryDate" placeholder="MM/YYYY" maxlength="7" /></div>
               </div>
               <div class="form-group">
                 <label for="cvv">CVV</label>
-                <div class="input-with-icon">
-                  <i class="fas fa-lock input-icon"></i>
-                  <input type="text" id="cvv" placeholder="123" maxlength="3" />
-                </div>
+                <div class="input-with-icon"><i class="fas fa-lock input-icon"></i><input type="text" id="cvv" placeholder="123" maxlength="3" /></div>
               </div>
             </div>
             <div class="form-group">
               <label for="cardholderName">Cardholder Name</label>
-              <div class="input-with-icon">
-                <i class="fas fa-user input-icon"></i>
-                <input type="text" id="cardholderName" placeholder="John Doe" />
-              </div>
+              <div class="input-with-icon"><i class="fas fa-user input-icon"></i><input type="text" id="cardholderName" placeholder="John Doe" /></div>
             </div>
           </form>
           <div class="modal-security-note">
@@ -392,27 +254,19 @@
         </div>
         <div class="modal-footer">
           <button class="cancel-btn" id="cancelPaymentBtn">Cancel</button>
-          <button class="save-btn" id="savePaymentBtn">
-            Add Card
-          </button>
+          <button class="save-btn" id="savePaymentBtn">Add Card</button>
         </div>
       </div>
     </div>
-
     <div class="modal-overlay" id="cancelSubscriptionModal" style="display: none;">
       <div class="modal cancel-modal">
         <div class="modal-header">
           <h3>Cancel Subscription</h3>
-          <button class="modal-close" id="closeCancelModal">
-            <i class="fas fa-times"></i>
-          </button>
+          <button class="modal-close" id="closeCancelModal"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
-          <div class="warning-icon">
-            <i class="fas fa-exclamation-triangle"></i>
-          </div>
+          <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
           <p class="modal-title-text"><strong>Are you sure you want to cancel?</strong></p>
-          <p>If you cancel your subscription:</p>
           <ul class="cancel-list">
             <li><i class="fas fa-times-circle"></i> You'll lose access to premium features at the end of your billing period</li>
             <li><i class="fas fa-clock"></i> Your data will be retained for 30 days</li>
@@ -424,43 +278,20 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="cancel-btn keep-btn" id="keepSubscriptionBtn">
-            <i class="fas fa-check"></i>
-            Keep Subscription
-          </button>
-          <button class="delete-confirm-btn" id="confirmCancelBtn">
-            <i class="fas fa-times"></i>
-            Cancel Subscription
-          </button>
+          <button class="cancel-btn keep-btn" id="keepSubscriptionBtn"><i class="fas fa-check"></i> Keep Subscription</button>
+          <button class="delete-confirm-btn" id="confirmCancelBtn"><i class="fas fa-times"></i> Cancel Subscription</button>
         </div>
       </div>
     </div>
-
     <script>
       function applyTheme(theme) {
-        if (theme === 'light') {
-          document.body.classList.add('light-theme');
-        } else {
-          document.body.classList.remove('light-theme');
-        }
+        if (theme === 'light') { document.body.classList.add('light-theme'); }
+        else { document.body.classList.remove('light-theme'); }
       }
-
-      function loadThemeSettings() {
-        const savedTheme = localStorage.getItem('theme') || 'default';
-        applyTheme(savedTheme);
-      }
-
-      window.addEventListener('storage', function(e) {
-        if (e.key === 'theme') {
-          applyTheme(e.newValue);
-        }
-      });
-
-      document.addEventListener('DOMContentLoaded', function() {
-        loadThemeSettings();
-      });
+      function loadThemeSettings() { const savedTheme = localStorage.getItem('theme') || 'default'; applyTheme(savedTheme); }
+      window.addEventListener('storage', function(e) { if (e.key === 'theme') { applyTheme(e.newValue); } });
+      document.addEventListener('DOMContentLoaded', function() { loadThemeSettings(); });
     </script>
-
     <script src="/js/billing.js"></script>
   </body>
 </html>

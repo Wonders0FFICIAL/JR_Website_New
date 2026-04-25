@@ -1,156 +1,23 @@
 {
-    "rewrites": [
-        {
-            "source": "/",
-            "destination": "/pages/home.html"
-        },
-        {
-            "source": "/home.html",
-            "destination": "/pages/home.html"
-        },
-        {
-            "source": "/404",
-            "destination": "/pages/404.html"
-        },
-        {
-            "source": "/404.html",
-            "destination": "/pages/404.html"
-        },
-        {
-            "source": "/account",
-            "destination": "/pages/account.html"
-        },
-        {
-            "source": "/account.html",
-            "destination": "/pages/account.html"
-        },
-        {
-            "source": "/activity",
-            "destination": "/pages/activity.html"
-        },
-        {
-            "source": "/activity.html",
-            "destination": "/pages/activity.html"
-        },
-        {
-            "source": "/appearance",
-            "destination": "/pages/appearance.html"
-        },
-        {
-            "source": "/appearance.html",
-            "destination": "/pages/appearance.html"
-        },
-        {
-            "source": "/billing",
-            "destination": "/pages/billing.html"
-        },
-        {
-            "source": "/billing.html",
-            "destination": "/pages/billing.html"
-        },
-        {
-            "source": "/blog",
-            "destination": "/pages/blog.html"
-        },
-        {
-            "source": "/blog.html",
-            "destination": "/pages/blog.html"
-        },
-        {
-            "source": "/community",
-            "destination": "/pages/community.html"
-        },
-        {
-            "source": "/community.html",
-            "destination": "/pages/community.html"
-        },
-        {
-            "source": "/developer",
-            "destination": "/pages/developer.html"
-        },
-        {
-            "source": "/developer.html",
-            "destination": "/pages/developer.html"
-        },
-        {
-            "source": "/login",
-            "destination": "/pages/login.html"
-        },
-        {
-            "source": "/login.html",
-            "destination": "/pages/login.html"
-        },
-        {
-            "source": "/myprofile",
-            "destination": "/pages/myprofile.html"
-        },
-        {
-            "source": "/myprofile.html",
-            "destination": "/pages/myprofile.html"
-        },
-        {
-            "source": "/notifications",
-            "destination": "/pages/notifications.html"
-        },
-        {
-            "source": "/notifications.html",
-            "destination": "/pages/notifications.html"
-        },
-        {
-            "source": "/pricing",
-            "destination": "/pages/pricing.html"
-        },
-        {
-            "source": "/pricing.html",
-            "destination": "/pages/pricing.html"
-        },
-        {
-            "source": "/privacy",
-            "destination": "/pages/privacy.html"
-        },
-        {
-            "source": "/privacy.html",
-            "destination": "/pages/privacy.html"
-        },
-        {
-            "source": "/profile-setup",
-            "destination": "/pages/profile-setup.html"
-        },
-        {
-            "source": "/profile-setup.html",
-            "destination": "/pages/profile-setup.html"
-        },
-        {
-            "source": "/projects",
-            "destination": "/pages/projects.html"
-        },
-        {
-            "source": "/projects.html",
-            "destination": "/pages/projects.html"
-        },
-        {
-            "source": "/public-profile",
-            "destination": "/pages/public-profile.html"
-        },
-        {
-            "source": "/public-profile.html",
-            "destination": "/pages/public-profile.html"
-        },
-        {
-            "source": "/security",
-            "destination": "/pages/security.html"
-        },
-        {
-            "source": "/security.html",
-            "destination": "/pages/security.html"
-        },
-        {
-            "source": "/signup",
-            "destination": "/pages/signup.html"
-        },
-        {
-            "source": "/signup.html",
-            "destination": "/pages/signup.html"
-        }
-    ]
+  "rewrites": [
+    { "source": "/", "destination": "/pages/home.html" },
+    { "source": "/home", "destination": "/pages/home.html" },
+    { "source": "/blog", "destination": "/pages/blog.html" },
+    { "source": "/pricing", "destination": "/pages/pricing.html" },
+    { "source": "/projects", "destination": "/pages/projects.html" },
+    { "source": "/community", "destination": "/pages/community.html" },
+    { "source": "/signup", "destination": "/pages/signup.html" },
+    { "source": "/login", "destination": "/pages/login.html" },
+    { "source": "/profile-setup", "destination": "/pages/profile-setup.html" },
+    { "source": "/myprofile", "destination": "/pages/myprofile.html" },
+    { "source": "/public-profile", "destination": "/pages/public-profile.html" },
+    { "source": "/account", "destination": "/pages/account.html" },
+    { "source": "/appearance", "destination": "/pages/appearance.html" },
+    { "source": "/notifications", "destination": "/pages/notifications.html" },
+    { "source": "/billing", "destination": "/pages/billing.html" },
+    { "source": "/privacy", "destination": "/pages/privacy.html" },
+    { "source": "/security", "destination": "/pages/security.html" },
+    { "source": "/developer", "destination": "/pages/developer.html" },
+    { "source": "/activity", "destination": "/pages/activity.html" }
+  ]
 }

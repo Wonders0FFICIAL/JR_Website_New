@@ -5,53 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account Settings</title>
     <link rel="icon" href="/assets/images/Favicon.png" type="image/png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/styles/account.css" />
     <style>
-      .error-message {
-        color: red;
-        font-size: 14px;
-        margin-top: 8px;
-        font-family: "PT Sans", sans-serif;
-        min-height: 18px;
-        display: block;
-      }
-
-      .input-error {
-        border-color: red !important;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-5px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .error-message:not(:empty) {
-        animation: fadeIn 0.3s ease-in-out;
-      }
+      @media (min-width: 769px) { .hamburger { display: none; } }
+      .error-message { color: red; font-size: 14px; margin-top: 8px; font-family: "PT Sans", sans-serif; min-height: 18px; display: block; }
+      .input-error { border-color: red !important; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+      .error-message:not(:empty) { animation: fadeIn 0.3s ease-in-out; }
     </style>
   </head>
-
   <body>
     <div class="main-content">
       <nav class="navbar">
         <div class="nav-left">
-          <a href="/">
-            <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
-          </a>
+          <a href="/"><img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" /></a>
           <div class="nav-links">
             <a href="/">Home</a>
             <a href="/blog">Blog</a>
@@ -60,123 +29,83 @@
             <a href="/community">Community</a>
           </div>
         </div>
-
         <div class="signup-hamburger">
-          <a href="/signup" style="text-decoration: none">
-            <button class="signup-btn">Sign Up</button>
-          </a>
-          <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <a href="/signup" style="text-decoration: none"><button class="signup-btn">Sign Up</button></a>
+          <div class="hamburger"><div></div><div></div><div></div></div>
         </div>
       </nav>
-
       <div class="settings-wrapper">
         <div class="sidebar">
           <h2 class="sidebar-title">Settings</h2>
           <div class="sidebar-links">
             <a href="/public-profile" class="sidebar-link">
-              <span class="icon">
-                <img src="../assets/images/display_name.png" alt="Profile Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/display_name.png" alt="Profile Icon" /></span>
               <span>Public Profile</span>
             </a>
             <a href="#" class="sidebar-link active">
-              <span class="icon">
-                <img src="../assets/images/account.png" alt="Account Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/account.png" alt="Account Icon" /></span>
               <span>Account</span>
             </a>
             <a href="/appearance" class="sidebar-link">
-              <span class="icon">
-               <img src="../assets/images/appearance.png" alt="Appearance Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/appearance.png" alt="Appearance Icon" /></span>
               <span>Appearance</span>
             </a>
             <a href="/notifications" class="sidebar-link">
-              <span class="icon">
-                <img src="../assets/images/notifications.png" alt="Notifications Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/notifications.png" alt="Notifications Icon" /></span>
               <span>Notifications</span>
             </a>
             <a href="/billing" class="sidebar-link">
-              <span class="icon">
-                <img src="../assets/images/billing.png" alt="Billing Icon" />
-              </span>
-              <span>Billing & Plans</span>
+              <span class="icon"><img src="../assets/images/billing.png" alt="Billing Icon" /></span>
+              <span>Billing &amp; Plans</span>
             </a>
             <a href="/privacy" class="sidebar-link">
-              <span class="icon">
-             <img src="../assets/images/privacy.png" alt="Privacy Icon" />
-              </span>
+              <span class="icon"><img src="../assets/images/privacy.png" alt="Privacy Icon" /></span>
               <span>Privacy</span>
             </a>
-            <a href="security.html" class="sidebar-link">
-              <span class="icon">
-           <img src="../assets/images/lock.png" alt="Security Icon" />
-              </span>
+            <a href="/security" class="sidebar-link">
+              <span class="icon"><img src="../assets/images/lock.png" alt="Security Icon" /></span>
               <span>Security</span>
             </a>
-            <a href="developer.html" class="sidebar-link">
-              <span class="icon">
-<img src="../assets/images/code.png" alt="Developer Icon" />
-              </span>
+            <a href="/developer" class="sidebar-link">
+              <span class="icon"><img src="../assets/images/code.png" alt="Developer Icon" /></span>
               <span>Developer</span>
             </a>
-            <a href="activity.html" class="sidebar-link">
-              <span class="icon">
-<img src="../assets/images/activity.png" alt="Activity Icon" />
-              </span>
+            <a href="/activity" class="sidebar-link">
+              <span class="icon"><img src="../assets/images/activity.png" alt="Activity Icon" /></span>
               <span>Activity</span>
             </a>
           </div>
         </div>
-
         <div class="content-area">
           <div class="search-box">
             <img src="../assets/images/search.png" alt="Search" class="search-icon" />
             <input type="text" placeholder="Search settings..." />
           </div>
-
           <div class="account-header">
             <div class="account-title">
               <h2>Account</h2>
               <p>Manage your account settings</p>
             </div>
           </div>
-
           <div class="settings-section">
             <h3>Email Address</h3>
             <div class="email-container">
               <div class="current-email">
                 <span class="email-label">Current Email:</span>
                 <span class="email-address" id="currentEmail">user@example.com</span>
-                <span class="verified-badge" id="verifiedBadge">
-                  <i class="fas fa-check-circle"></i> Verified
-                </span>
+                <span class="verified-badge" id="verifiedBadge"><i class="fas fa-check-circle"></i> Verified</span>
               </div>
               <button class="change-email-btn" id="changeEmailBtn">Change Email</button>
             </div>
-
             <div class="change-email-form" id="changeEmailForm" style="display: none;">
               <div class="form-group">
                 <label for="newEmail">New Email Address</label>
-                <input
-                  type="email"
-                  id="newEmail"
-                  placeholder="Enter your new email address"
-                />
+                <input type="email" id="newEmail" placeholder="Enter your new email address" />
                 <div id="email-error" class="error-message"></div>
               </div>
               <div class="form-group">
                 <label for="confirmPassword">Confirm Password</label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  placeholder="Enter your current password to confirm"
-                />
+                <input type="password" id="confirmPassword" placeholder="Enter your current password to confirm" />
                 <div id="password-error" class="error-message"></div>
               </div>
               <div class="form-actions">
@@ -184,7 +113,6 @@
                 <button type="button" class="cancel-btn" id="cancelEmailBtn">Cancel</button>
               </div>
             </div>
-
             <div class="verification-notice" id="verificationNotice" style="display: none;">
               <i class="fas fa-clock"></i>
               <div>
@@ -193,124 +121,79 @@
               </div>
             </div>
           </div>
-
           <div class="settings-section" id="addEmailPasswordSection" style="display: none;">
-            <h3>Add Email & Password</h3>
+            <h3>Add Email &amp; Password</h3>
             <div class="email-container">
               <div class="current-email">
                 <p class="section-description" style="margin: 0;">Add an email address and password to your account to enable password login in addition to your social login.</p>
               </div>
               <button class="change-email-btn" id="addEmailPasswordBtn">Add Info</button>
             </div>
-            
             <div class="change-email-form" id="addEmailPasswordForm" style="display: none;">
               <div class="form-group">
                 <label for="newEmailAdd">Email Address</label>
-                <input
-                  type="email"
-                  id="newEmailAdd"
-                  placeholder="Enter your email address"
-                />
+                <input type="email" id="newEmailAdd" placeholder="Enter your email address" />
                 <div id="email-add-error" class="error-message"></div>
               </div>
               <div class="form-group">
                 <label for="newPasswordAdd">New Password</label>
                 <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="newPasswordAdd"
-                    placeholder="Enter your new password"
-                  />
-                  <button class="toggle-password-btn" id="toggleNewPasswordAdd" type="button">
-                    <i class="fa fa-eye"></i>
-                  </button>
+                  <input type="password" id="newPasswordAdd" placeholder="Enter your new password" />
+                  <button class="toggle-password-btn" id="toggleNewPasswordAdd" type="button"><i class="fa fa-eye"></i></button>
                 </div>
-                <div id="password-strength-container-add" style="display: none;">
-                  <div id="password-strength-bar-add"></div>
-                </div>
+                <div id="password-strength-container-add" style="display: none;"><div id="password-strength-bar-add"></div></div>
                 <div id="new-password-add-error" class="error-message"></div>
               </div>
               <div class="form-group">
                 <label for="confirmPasswordAdd">Confirm New Password</label>
                 <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="confirmPasswordAdd"
-                    placeholder="Confirm your new password"
-                  />
-                  <button class="toggle-password-btn" id="toggleConfirmPasswordAdd" type="button">
-                    <i class="fa fa-eye"></i>
-                  </button>
+                  <input type="password" id="confirmPasswordAdd" placeholder="Confirm your new password" />
+                  <button class="toggle-password-btn" id="toggleConfirmPasswordAdd" type="button"><i class="fa fa-eye"></i></button>
                 </div>
                 <div id="confirm-password-add-error" class="error-message"></div>
               </div>
               <div class="form-actions">
-                <button type="button" class="save-btn" id="saveEmailPasswordBtn">Add Email & Password</button>
+                <button type="button" class="save-btn" id="saveEmailPasswordBtn">Add Email &amp; Password</button>
                 <button type="button" class="cancel-btn" id="cancelAddEmailPasswordBtn">Cancel</button>
               </div>
             </div>
           </div>
-
           <div class="settings-section" id="passwordSection">
             <h3>Password</h3>
             <p class="section-description">Change your account password. For your security, you'll need to confirm your current password.</p>
-            
             <div class="password-display-container">
               <div class="current-password-display">
                 <span class="password-label">Current Password:</span>
                 <div class="password-value-container">
                   <span class="password-value" id="currentPasswordValue">••••••••</span>
-                  <button class="toggle-password-visibility" id="toggleCurrentPassword" type="button">
-                    <i class="fa fa-eye"></i>
-                  </button>
+                  <button class="toggle-password-visibility" id="toggleCurrentPassword" type="button"><i class="fa fa-eye"></i></button>
                 </div>
               </div>
               <button class="change-email-btn" id="changePasswordBtn">Change Password</button>
             </div>
-
             <div class="change-password-form" id="changePasswordForm" style="display: none;">
               <div class="form-group">
                 <label for="currentPasswordInput">Current Password</label>
                 <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="currentPasswordInput"
-                    placeholder="Enter your current password"
-                  />
-                  <button class="toggle-password-btn" id="toggleCurrentPasswordInput" type="button">
-                    <i class="fa fa-eye"></i>
-                  </button>
+                  <input type="password" id="currentPasswordInput" placeholder="Enter your current password" />
+                  <button class="toggle-password-btn" id="toggleCurrentPasswordInput" type="button"><i class="fa fa-eye"></i></button>
                 </div>
                 <div id="current-password-error" class="error-message"></div>
               </div>
               <div class="form-group">
                 <label for="newPassword">New Password</label>
                 <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="newPassword"
-                    placeholder="Enter your new password"
-                  />
-                  <button class="toggle-password-btn" id="toggleNewPassword" type="button">
-                    <i class="fa fa-eye"></i>
-                  </button>
+                  <input type="password" id="newPassword" placeholder="Enter your new password" />
+                  <button class="toggle-password-btn" id="toggleNewPassword" type="button"><i class="fa fa-eye"></i></button>
                 </div>
-                <div id="password-strength-container" style="display: none;">
-                  <div id="password-strength-bar"></div>
-                </div>
+                <div id="password-strength-container" style="display: none;"><div id="password-strength-bar"></div></div>
                 <div id="new-password-error" class="error-message"></div>
               </div>
               <div class="form-group">
                 <label for="confirmNewPassword">Confirm New Password</label>
                 <div class="password-input-wrapper">
-                  <input
-                    type="password"
-                    id="confirmNewPassword"
-                    placeholder="Confirm your new password"
-                  />
-                  <button class="toggle-password-btn" id="toggleConfirmPassword" type="button">
-                    <i class="fa fa-eye"></i>
-                  </button>
+                  <input type="password" id="confirmNewPassword" placeholder="Confirm your new password" />
+                  <button class="toggle-password-btn" id="toggleConfirmPassword" type="button"><i class="fa fa-eye"></i></button>
                 </div>
                 <div id="confirm-password-error" class="error-message"></div>
               </div>
@@ -319,7 +202,6 @@
                 <button type="button" class="cancel-btn" id="cancelPasswordBtn">Cancel</button>
               </div>
             </div>
-
             <div class="success-notice" id="passwordSuccessNotice" style="display: none;">
               <i class="fas fa-check-circle"></i>
               <div>
@@ -328,17 +210,13 @@
               </div>
             </div>
           </div>
-
           <div class="settings-section">
             <h3>Linked Accounts</h3>
             <p class="section-description">Connect your JR. account with other services for easier sign-in and enhanced features.</p>
-            
             <div class="linked-accounts">
               <div class="account-item">
                 <div class="account-info">
-                  <div class="account-icon google">
-                    <img src="../assets/images/google.png" alt="Google" />
-                  </div>
+                  <div class="account-icon google"><img src="../assets/images/google.png" alt="Google" /></div>
                   <div class="account-details">
                     <span class="account-name">Google</span>
                     <span class="account-status" id="googleStatus">Not connected</span>
@@ -346,12 +224,9 @@
                 </div>
                 <button class="connect-btn" id="googleBtn" data-provider="google">Connect</button>
               </div>
-
               <div class="account-item">
                 <div class="account-info">
-                  <div class="account-icon github">
-                    <img src="../assets/images/github.png" alt="GitHub" />
-                  </div>
+                  <div class="account-icon github"><img src="../assets/images/github.png" alt="GitHub" /></div>
                   <div class="account-details">
                     <span class="account-name">GitHub</span>
                     <span class="account-status" id="githubStatus">Not connected</span>
@@ -359,12 +234,9 @@
                 </div>
                 <button class="connect-btn" id="githubBtn" data-provider="github">Connect</button>
               </div>
-
               <div class="account-item">
                 <div class="account-info">
-                  <div class="account-icon apple">
-                    <img src="../assets/images/apple.png" alt="Apple" />
-                  </div>
+                  <div class="account-icon apple"><img src="../assets/images/apple.png" alt="Apple" /></div>
                   <div class="account-details">
                     <span class="account-name">Apple</span>
                     <span class="account-status" id="appleStatus">Not connected</span>
@@ -374,19 +246,14 @@
               </div>
             </div>
           </div>
-
           <div class="settings-section">
             <h3>Active Sessions</h3>
             <p class="section-description">Manage devices and locations where you're currently signed in to your JR. account.</p>
-            
-            <div class="sessions-list" id="sessionsList">
-            </div>
-
+            <div class="sessions-list" id="sessionsList"></div>
             <div class="session-management-actions">
               <button class="logout-all-btn" id="logoutAllBtn">Sign Out All Other Sessions</button>
             </div>
           </div>
-
           <div class="settings-section danger-zone">
             <div class="danger-zone-header">
               <i class="fas fa-exclamation-triangle"></i>
@@ -405,83 +272,42 @@
         </div>
       </div>
     </div>
-
     <footer>
       <div class="footer-content">
         <div class="footer-section">
           <h3>Quick Links</h3>
           <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="/blog">Blog</a>
-            <a href="#">Careers</a>
-            <a href="#">Support</a>
-            <a href="#">Contact</a>
-            <a
-              href="https://ko-fi.com/jr_official"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Donate</a
-            >
+            <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
+            <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
           </div>
         </div>
-
         <div class="footer-section">
           <h3>Legal</h3>
           <div class="footer-links">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Cookie Policy</a>
-            <a href="#">License Information</a>
+            <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
           </div>
         </div>
-
         <div class="footer-section">
           <h3>Community</h3>
           <div class="footer-links">
-            <a
-              href="https://github.com/jr-official"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub</a
-            >
-            <a
-              href="https://discord.gg/d4kfXDrcG8"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Discord</a
-            >
-            <a
-              href="https://x.com/jr_suite"
-              target="_blank"
-              rel="noopener noreferrer"
-              >X</a
-            >
-            <a
-              href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63"
-              target="_blank"
-              rel="noopener noreferrer"
-              >YouTube</a
-            >
+            <a href="https://github.com/jr-official" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://discord.gg/d4kfXDrcG8" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a href="https://x.com/jr_suite" target="_blank" rel="noopener noreferrer">X</a>
+            <a href="https://youtube.com/@junior.software?si=PV8v8Rx56eo-TD63" target="_blank" rel="noopener noreferrer">YouTube</a>
           </div>
         </div>
       </div>
-
       <div class="footer-separator"></div>
       <div class="copyright">© 2026 JR. All rights reserved.</div>
     </footer>
-
     <div class="modal-overlay" id="deleteModalOverlay" style="display: none;">
       <div class="modal delete-modal">
         <div class="modal-header">
           <h3>Delete Account</h3>
-          <button class="modal-close" id="closeDeleteModal">
-            <i class="fas fa-times"></i>
-          </button>
+          <button class="modal-close" id="closeDeleteModal"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
-          <div class="warning-icon">
-            <i class="fas fa-exclamation-triangle"></i>
-          </div>
+          <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
           <p><strong>Are you absolutely sure?</strong></p>
           <p>This action will permanently delete your account and all associated data, including:</p>
           <ul>
@@ -490,14 +316,9 @@
             <li>Your subscription and billing history</li>
           </ul>
           <p>This action <strong>cannot be undone</strong>.</p>
-          
           <div class="confirmation-input">
             <label for="deleteConfirmation">Type <strong>DELETE</strong> to confirm:</label>
-            <input
-              type="text"
-              id="deleteConfirmation"
-              placeholder="Type DELETE here"
-            />
+            <input type="text" id="deleteConfirmation" placeholder="Type DELETE here" />
           </div>
         </div>
         <div class="modal-footer">
@@ -506,14 +327,11 @@
         </div>
       </div>
     </div>
-
     <div class="modal-overlay" id="logoutModalOverlay" style="display: none;">
       <div class="modal logout-modal">
         <div class="modal-header">
           <h3>Sign Out Sessions</h3>
-          <button class="modal-close" id="closeLogoutModal">
-            <i class="fas fa-times"></i>
-          </button>
+          <button class="modal-close" id="closeLogoutModal"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
           <p>Are you sure you want to sign out of the selected session(s)?</p>
@@ -525,32 +343,15 @@
         </div>
       </div>
     </div>
-
     <script>
       function applyTheme(theme) {
-        if (theme === 'light') {
-          document.body.classList.add('light-theme');
-        } else {
-          document.body.classList.remove('light-theme');
-        }
+        if (theme === 'light') { document.body.classList.add('light-theme'); }
+        else { document.body.classList.remove('light-theme'); }
       }
-
-      function loadThemeSettings() {
-        const savedTheme = localStorage.getItem('theme') || 'default';
-        applyTheme(savedTheme);
-      }
-
-      window.addEventListener('storage', function(e) {
-        if (e.key === 'theme') {
-          applyTheme(e.newValue);
-        }
-      });
-
-      document.addEventListener('DOMContentLoaded', function() {
-        loadThemeSettings();
-      });
+      function loadThemeSettings() { const savedTheme = localStorage.getItem('theme') || 'default'; applyTheme(savedTheme); }
+      window.addEventListener('storage', function(e) { if (e.key === 'theme') { applyTheme(e.newValue); } });
+      document.addEventListener('DOMContentLoaded', function() { loadThemeSettings(); });
     </script>
-
     <script src="/js/account.js"></script>
   </body>
 </html>

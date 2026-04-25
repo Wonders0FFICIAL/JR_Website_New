@@ -9,17 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="/styles/background.css" />
     <link rel="stylesheet" href="/styles/blog.css" />
+    <style>
+      @media (min-width: 769px) { .hamburger { display: none; } }
+    </style>
 </head>
-
 <body>
-    <div class="stars" id="stars"></div>
-    
+    <div class="stars" id="stars"><div class="orb-mid"></div></div>
     <div class="main-content">
         <nav class="navbar">
             <div class="nav-left">
-                <a href="/">
-                    <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
-                </a>
+                <a href="/"><img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" /></a>
                 <div class="nav-links">
                     <a href="/">Home</a>
                     <a href="/blog" class="active">Blog</a>
@@ -28,19 +27,11 @@
                     <a href="/community">Community</a>
                 </div>
             </div>
-
             <div class="signup-hamburger">
-                <a href="/signup" style="text-decoration: none">
-                    <button class="signup-btn">Sign Up</button>
-                </a>
-                <div class="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <a href="/signup" style="text-decoration: none"><button class="signup-btn">Sign Up</button></a>
+                <div class="hamburger"><div></div><div></div><div></div></div>
             </div>
         </nav>
-
         <section class="hero-section">
             <h1>JR. Blog</h1>
             <p>Discover insights, updates, and innovations from the JR. ecosystem. Stay ahead with the latest in technology, development, and community highlights.</p>
@@ -49,7 +40,6 @@
                 <button><i class="fas fa-search"></i></button>
             </div>
         </section>
-
         <div class="category-filter">
             <button class="category-btn active">All</button>
             <button class="category-btn">Language</button>
@@ -59,7 +49,6 @@
             <button class="category-btn">Cloud</button>
             <button class="category-btn">Tutorials</button>
         </div>
-
         <section class="featured-section">
             <h2 class="section-title">Featured Articles</h2>
             <div class="featured-grid">
@@ -79,147 +68,102 @@
                         </div>
                     </div>
                 </article>
-                
                 <div class="featured-sidebar">
                     <article class="sidebar-post">
-    <h3>JR. Lang v1.2 Released</h3>
-    <p>Enhanced performance and new syntax features</p>
-    <div class="card-footer">
-        <a href="#" class="read-more">Read More</a>
-        <div class="card-meta">
-            <span class="post-date">April 12, 2025</span>
-            <span class="author">by Tim Allen</span>
-        </div>
-    </div>
-</article>
-<article class="sidebar-post">
-    <h3>AI Assistant Updates</h3>
-    <p>Voice control and improved memory capabilities</p>
-    <div class="card-footer">
-        <a href="#" class="read-more">Read More</a>
-        <div class="card-meta">
-            <span class="post-date">April 8, 2025</span>
-            <span class="author">by Joshua Joseph</span>
-        </div>
-    </div>
-</article>
-<article class="sidebar-post">
-    <h3>Cloud Services Launch</h3>
-    <p>Seamless integration with all JR. products</p>
-    <div class="card-footer">
-        <a href="#" class="read-more">Read More</a>
-        <div class="card-meta">
-            <span class="post-date">March 7, 2025</span>
-            <span class="author">by Faheem Ayath</span>
-        </div>
-    </div>
-</article>
+                        <h3>JR. Lang v1.2 Released</h3>
+                        <p>Enhanced performance and new syntax features</p>
+                        <div class="card-footer">
+                            <a href="#" class="read-more">Read More</a>
+                            <div class="card-meta">
+                                <span class="post-date">April 12, 2025</span>
+                                <span class="author">by Tim Allen</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="sidebar-post">
+                        <h3>AI Assistant Updates</h3>
+                        <p>Voice control and improved memory capabilities</p>
+                        <div class="card-footer">
+                            <a href="#" class="read-more">Read More</a>
+                            <div class="card-meta">
+                                <span class="post-date">April 8, 2025</span>
+                                <span class="author">by Joshua Joseph</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="sidebar-post">
+                        <h3>Cloud Services Launch</h3>
+                        <p>Seamless integration with all JR. products</p>
+                        <div class="card-footer">
+                            <a href="#" class="read-more">Read More</a>
+                            <div class="card-meta">
+                                <span class="post-date">March 7, 2025</span>
+                                <span class="author">by Faheem Ayath</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
-
         <section class="recent-section">
             <h2 class="section-title">Recent Articles</h2>
-      
             <div class="blog-grid">
                 <article class="blog-card">
                     <h3>How We Built JR. Browse</h3>
                     <p>From scratch to fast, secure, and customizable — here's the behind-the-scenes story of JR.'s browser journey and the challenges we overcame.</p>
-                    <div class="tags">
-                        <span class="tag">Browser</span>
-                        <span class="tag">Dev Story</span>
-                    </div>
+                    <div class="tags"><span class="tag">Browser</span><span class="tag">Dev Story</span></div>
                     <div class="card-footer">
                         <a href="#" class="read-more">Read More</a>
-                        <div class="card-meta">
-                            <span class="post-date">March 30, 2025</span>
-                            <span class="author">by Alex Chen</span>
-                        </div>
+                        <div class="card-meta"><span class="post-date">March 30, 2025</span><span class="author">by Alex Chen</span></div>
                     </div>
                 </article>
-
                 <article class="blog-card">
                     <h3>Community Spotlight: Amazing JR. Lang Projects</h3>
                     <p>We're featuring some of the coolest tools and applications built by our incredible community using JR. Lang. Get inspired!</p>
-                    <div class="tags">
-                        <span class="tag">Community</span>
-                        <span class="tag">Showcase</span>
-                    </div>
+                    <div class="tags"><span class="tag">Community</span><span class="tag">Showcase</span></div>
                     <div class="card-footer">
                         <a href="#" class="read-more">Read More</a>
-                        <div class="card-meta">
-                            <span class="post-date">March 27, 2025</span>
-                            <span class="author">by Sarah Mitchell</span>
-                        </div>
+                        <div class="card-meta"><span class="post-date">March 27, 2025</span><span class="author">by Sarah Mitchell</span></div>
                     </div>
                 </article>
-
                 <article class="blog-card">
                     <h3>JR. Lang Performance Optimization</h3>
                     <p>With better performance, smarter tooling, and a cleaner syntax, see what makes JR. Lang the developer-favorite it's becoming.</p>
-                    <div class="tags">
-                        <span class="tag">Language</span>
-                        <span class="tag">Performance</span>
-                    </div>
+                    <div class="tags"><span class="tag">Language</span><span class="tag">Performance</span></div>
                     <div class="card-footer">
                         <a href="#" class="read-more">Read More</a>
-                        <div class="card-meta">
-                            <span class="post-date">March 22, 2025</span>
-                            <span class="author">by David Kim</span>
-                        </div>
+                        <div class="card-meta"><span class="post-date">March 22, 2025</span><span class="author">by David Kim</span></div>
                     </div>
                 </article>
-
                 <article class="blog-card">
                     <h3>Setting Up Your JR. Development Environment</h3>
                     <p>A comprehensive guide to configuring your development environment for optimal JR. workflow and productivity.</p>
-                    <div class="tags">
-                        <span class="tag">Tutorial</span>
-                        <span class="tag">Dev Tools</span>
-                    </div>
+                    <div class="tags"><span class="tag">Tutorial</span><span class="tag">Dev Tools</span></div>
                     <div class="card-footer">
                         <a href="#" class="read-more">Read More</a>
-                        <div class="card-meta">
-                            <span class="post-date">March 15, 2025</span>
-                            <span class="author">by Emma Rodriguez</span>
-                        </div>
+                        <div class="card-meta"><span class="post-date">March 15, 2025</span><span class="author">by Emma Rodriguez</span></div>
                     </div>
                 </article>
-
                 <article class="blog-card">
                     <h3>Advanced AI Integration Techniques</h3>
                     <p>Learn how to leverage JR. AI's latest capabilities in your applications with practical examples and best practices.</p>
-                    <div class="tags">
-                        <span class="tag">AI</span>
-                        <span class="tag">Integration</span>
-                    </div>
+                    <div class="tags"><span class="tag">AI</span><span class="tag">Integration</span></div>
                     <div class="card-footer">
                         <a href="#" class="read-more">Read More</a>
-                        <div class="card-meta">
-                            <span class="post-date">March 10, 2025</span>
-                            <span class="author">by Marcus Johnson</span>
-                        </div>
+                        <div class="card-meta"><span class="post-date">March 10, 2025</span><span class="author">by Marcus Johnson</span></div>
                     </div>
                 </article>
-
                 <article class="blog-card">
                     <h3>Security Best Practices for JR. Applications</h3>
                     <p>Essential security guidelines and implementation strategies to keep your JR. applications safe and secure.</p>
-                    <div class="tags">
-                        <span class="tag">Security</span>
-                        <span class="tag">Best Practices</span>
-                    </div>
+                    <div class="tags"><span class="tag">Security</span><span class="tag">Best Practices</span></div>
                     <div class="card-footer">
                         <a href="#" class="read-more">Read More</a>
-                        <div class="card-meta">
-                            <span class="post-date">March 5, 2025</span>
-                            <span class="author">by Lisa Wang</span>
-                        </div>
+                        <div class="card-meta"><span class="post-date">March 5, 2025</span><span class="author">by Lisa Wang</span></div>
                     </div>
                 </article>
             </div>
         </section>
-
         <div class="pagination">
             <button>← Previous</button>
             <button class="active">1</button>
@@ -228,31 +172,21 @@
             <button>Next →</button>
         </div>
     </div>
-
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <div class="footer-links">
-                    <a href="#">About Us</a>
-                    <a href="/blog">Blog</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Support</a>
-                    <a href="#">Contact</a>
+                    <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
                     <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
                 </div>
             </div>
-
             <div class="footer-section">
                 <h3>Legal</h3>
                 <div class="footer-links">
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">License Information</a>
+                    <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
                 </div>
             </div>
-
             <div class="footer-section">
                 <h3>Community</h3>
                 <div class="footer-links">
@@ -263,11 +197,9 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-separator"></div>
         <div class="copyright">© 2026 JR. All rights reserved.</div>
     </footer>
-
     <script src="/js/blog.js"></script>
 </body>
 </html>

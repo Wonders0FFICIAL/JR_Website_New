@@ -9,15 +9,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles/myprofile.css">
     <link rel="stylesheet" href="/styles/background.css">
+    <style>
+      @media (min-width: 769px) { .hamburger { display: none; } }
+    </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <div class="stars" id="stars"><div class="orb-mid"></div></div>
     <div class="main-content">
         <nav class="navbar">
             <div class="nav-left">
-                <a href="/">
-                    <img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" />
-                </a>
+                <a href="/"><img src="../assets/images/JR. Logo.png" alt="JR. Logo" class="logo" /></a>
                 <div class="nav-links">
                     <a href="/">Home</a>
                     <a href="/blog">Blog</a>
@@ -27,17 +28,10 @@
                 </div>
             </div>
             <div class="signup-hamburger">
-                <a href="/signup" style="text-decoration: none">
-                    <button class="signup-btn">Sign Up</button>
-                </a>
-                <div class="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <a href="/signup" style="text-decoration: none"><button class="signup-btn">Sign Up</button></a>
+                <div class="hamburger"><div></div><div></div><div></div></div>
             </div>
         </nav>
-
         <div class="container">
             <header class="profile-header">
                 <div class="cover-photo">
@@ -50,27 +44,17 @@
                     <p class="profile-username" id="profileUsername">@newuser</p>
                     <p class="profile-location"><i class="fas fa-map-marker-alt"></i> Location Not Set</p>
                     <div class="profile-stats">
-                        <div class="stat">
-                            <span class="stat-number">0</span>
-                            <span class="stat-label">Projects</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">0</span>
-                            <span class="stat-label">Followers</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">0</span>
-                            <span class="stat-label">Following</span>
-                        </div>
+                        <div class="stat"><span class="stat-number">0</span><span class="stat-label">Projects</span></div>
+                        <div class="stat"><span class="stat-number">0</span><span class="stat-label">Followers</span></div>
+                        <div class="stat"><span class="stat-number">0</span><span class="stat-label">Following</span></div>
                     </div>
                     <div class="profile-actions">
-                        <button class="edit-profile-btn" onclick="location.href='public-profile.html'">
+                        <button class="edit-profile-btn" onclick="location.href='/public-profile'">
                             <i class="fas fa-edit"></i> Edit Profile
                         </button>
                     </div>
                 </div>
             </header>
-
             <nav class="profile-nav">
                 <button class="nav-btn active" data-section="about">About</button>
                 <button class="nav-btn" data-section="skills">Skills</button>
@@ -78,94 +62,66 @@
                 <button class="nav-btn" data-section="experience">Experience</button>
                 <button class="nav-btn" data-section="contact">Contact</button>
             </nav>
-
             <main class="profile-content">
                 <section id="about" class="content-section active">
                     <h2>About Me</h2>
-                    <div class="about-grid">
-                        <div class="about-text">
-                        </div>
-                    </div>
+                    <div class="about-grid"><div class="about-text"></div></div>
                 </section>
-
                 <section id="skills" class="content-section">
-                    <h2>Skills & Technologies</h2>
+                    <h2>Skills &amp; Technologies</h2>
                     <div class="skills-container">
                         <div class="skill-category">
                             <h3>Frontend</h3>
                             <div class="skill-list">
-                                <button class="add-skill-btn" onclick="addSkill('frontend')">
-                                    <i class="fas fa-plus"></i> Add Skill
-                                </button>
+                                <button class="add-skill-btn" onclick="addSkill('frontend')"><i class="fas fa-plus"></i> Add Skill</button>
                             </div>
                         </div>
                         <div class="skill-category">
                             <h3>Backend</h3>
                             <div class="skill-list">
-                                <button class="add-skill-btn" onclick="addSkill('backend')">
-                                    <i class="fas fa-plus"></i> Add Skill
-                                </button>
+                                <button class="add-skill-btn" onclick="addSkill('backend')"><i class="fas fa-plus"></i> Add Skill</button>
                             </div>
                         </div>
                         <div class="skill-category">
-                            <h3>Tools & Others</h3>
+                            <h3>Tools &amp; Others</h3>
                             <div class="skill-list">
-                                <button class="add-skill-btn" onclick="addSkill('tools')">
-                                    <i class="fas fa-plus"></i> Add Skill
-                                </button>
+                                <button class="add-skill-btn" onclick="addSkill('tools')"><i class="fas fa-plus"></i> Add Skill</button>
                             </div>
                         </div>
                     </div>
                 </section>
-
                 <section id="portfolio" class="content-section">
                     <h2>Portfolio</h2>
                     <div class="portfolio-grid">
                         <div class="add-project-container" onclick="addProject()">
-                            <button class="add-project-btn">
-                                <i class="fas fa-plus"></i> Add Project
-                            </button>
+                            <button class="add-project-btn"><i class="fas fa-plus"></i> Add Project</button>
                             <p style="margin-top: 15px; color: #aaa; font-size: 0.9rem;">Start building your portfolio</p>
                         </div>
                     </div>
                 </section>
-
                 <section id="experience" class="content-section">
                     <h2>Work Experience</h2>
                     <div class="add-experience-container" onclick="addExperience()">
-                        <button class="add-experience-btn">
-                            <i class="fas fa-plus"></i> Add Experience
-                        </button>
+                        <button class="add-experience-btn"><i class="fas fa-plus"></i> Add Experience</button>
                         <p style="margin-top: 15px; color: #aaa; font-size: 0.9rem;">Share your professional journey</p>
                     </div>
-                    <div class="timeline">
-                    </div>
+                    <div class="timeline"></div>
                 </section>
-
                 <section id="contact" class="content-section">
                     <h2>Get In Touch</h2>
                     <div class="contact-container">
                         <div class="contact-info">
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>Not provided yet</p>
-                                </div>
+                                <div><h4>Email</h4><p>Not provided yet</p></div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-phone"></i>
-                                <div>
-                                    <h4>Phone</h4>
-                                    <p>Not provided yet</p>
-                                </div>
+                                <div><h4>Phone</h4><p>Not provided yet</p></div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <h4>Location</h4>
-                                    <p>Location Not Set</p>
-                                </div>
+                                <div><h4>Location</h4><p>Location Not Set</p></div>
                             </div>
                             <div class="social-links">
                                 <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -175,42 +131,28 @@
                             </div>
                         </div>
                         <div class="contact-form" id="contactForm">
-                            <div class="form-group">
-                                <input type="text" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Your Email" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea placeholder="Your Message" rows="5" required></textarea>
-                            </div>
+                            <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+                            <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+                            <div class="form-group"><textarea placeholder="Your Message" rows="5" required></textarea></div>
                             <button type="button" class="btn-submit" onclick="handleFormSubmit(event)">Send Message</button>
                         </div>
                     </div>
                 </section>
             </main>
         </div>
-
         <footer>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <div class="footer-links">
-                        <a href="#">About Us</a>
-                        <a href="/blog">Blog</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Support</a>
-                        <a href="#">Contact</a>
+                        <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
                         <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>Legal</h3>
                     <div class="footer-links">
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Cookie Policy</a>
-                        <a href="#">License Information</a>
+                        <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -227,7 +169,6 @@
             <div class="copyright">© 2026 JR. All rights reserved.</div>
         </footer>
     </div>
-
     <script src="/js/myprofile.js"></script>
 </body>
 </html>
