@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem(userId, JSON.stringify(userData));
             localStorage.setItem('currentUser', userId);
 
-            window.location.href = 'profile-setup.html';
+            window.location.href = '/profile-setup';
         } else {
             if (!isEmailValid) emailInput.focus();
             else if (!isPasswordValid) passwordInput.focus();
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sessions: []
         };
         localStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = 'profile-setup.html';
+        window.location.href = '/profile-setup';
     });
 
     githubBtn.addEventListener('click', () => {
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sessions: []
         };
         localStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = 'profile-setup.html';
+        window.location.href = '/profile-setup';
     });
 
     appleBtn.addEventListener('click', () => {
@@ -164,11 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
             sessions: []
         };
         localStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = 'profile-setup.html';
+        window.location.href = '/profile-setup';
     });
 
     loginBtn.addEventListener('click', () => {
         console.log('Login clicked');
-        window.location.href = 'login.html';
+        window.location.href = '/login';
     });
 });

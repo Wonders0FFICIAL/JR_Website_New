@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     hideLoading();
-    window.location.href = 'myprofile.html';
+    window.location.href = '/myprofile';
   }
 
   function attachEventListeners() {

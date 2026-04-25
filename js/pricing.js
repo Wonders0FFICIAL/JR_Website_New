@@ -68,7 +68,7 @@ const ctaButtons = document.querySelectorAll('.plan-cta');
             if (button.textContent === 'Contact Sales') {
                 alert('Thank you for your interest! Our sales team will contact you shortly.');
             } else if (button.textContent === 'Current Plan') {
-                window.location.href = 'billing.html';
+                window.location.href = '/billing';
             } else {
                 alert('Redirecting to billing...');
             }

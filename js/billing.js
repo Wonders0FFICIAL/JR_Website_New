@@ -899,7 +899,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (upgradeBtn) {
         upgradeBtn.addEventListener('click', function () {
             if (!this.disabled) {
-                window.location.href = 'pricing.html';
+                window.location.href = '/pricing';
             }
         });
     }
