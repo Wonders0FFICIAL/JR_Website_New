@@ -344,34 +344,6 @@ body.light-theme .profile-title p {
     color: #6b6b7f;
 }
 
-.goto-profile-btn {
-    background-color: #0E0634;
-    border: 2px solid #5638E5;
-    border-radius: 7px;
-    padding: 10px 24px;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 15px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-
-body.light-theme .goto-profile-btn {
-    background-color: #5638E5;
-    border-color: #4325c2;
-    color: white;
-}
-
-.goto-profile-btn:hover {
-    background-color: #1a1046;
-}
-
-body.light-theme .goto-profile-btn:hover {
-    background-color: #4325c2;
-}
-
 .settings-form {
     display: flex;
     flex-direction: column;

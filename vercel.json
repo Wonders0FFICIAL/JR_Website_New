@@ -9,7 +9,6 @@
     { "source": "/signup", "destination": "/pages/signup.html" },
     { "source": "/login", "destination": "/pages/login.html" },
     { "source": "/profile-setup", "destination": "/pages/profile-setup.html" },
-    { "source": "/myprofile", "destination": "/pages/myprofile.html" },
     { "source": "/public-profile", "destination": "/pages/public-profile.html" },
     { "source": "/account", "destination": "/pages/account.html" },
     { "source": "/appearance", "destination": "/pages/appearance.html" },
