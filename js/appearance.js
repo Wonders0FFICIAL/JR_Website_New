@@ -49,8 +49,8 @@ function initializeAppearance() {
     const defaultImg = document.querySelector('.theme-img[data-theme-type="default"]');
     const lightImg = document.querySelector('.theme-img[data-theme-type="light"]');
 
-    if (defaultImg) defaultImg.src = '../assets/images/theme-default-preview.png';
-    if (lightImg) lightImg.src = '../assets/images/theme-light-preview.png';
+    if (defaultImg) defaultImg.src = '/assets/images/theme-default-preview.png';
+    if (lightImg) lightImg.src = '/assets/images/theme-light-preview.png';
 }
 
 function setupThemeSelection() {

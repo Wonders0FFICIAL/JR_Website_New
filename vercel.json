@@ -9,14 +9,14 @@
     { "source": "/signup", "destination": "/pages/signup.html" },
     { "source": "/login", "destination": "/pages/login.html" },
     { "source": "/profile-setup", "destination": "/pages/profile-setup.html" },
-    { "source": "/public-profile", "destination": "/pages/public-profile.html" },
-    { "source": "/account", "destination": "/pages/account.html" },
-    { "source": "/appearance", "destination": "/pages/appearance.html" },
-    { "source": "/notifications", "destination": "/pages/notifications.html" },
-    { "source": "/billing", "destination": "/pages/billing.html" },
-    { "source": "/privacy", "destination": "/pages/privacy.html" },
-    { "source": "/security", "destination": "/pages/security.html" },
-    { "source": "/developer", "destination": "/pages/developer.html" },
-    { "source": "/activity", "destination": "/pages/activity.html" }
+    { "source": "/settings/public-profile", "destination": "/pages/settings/public-profile.html" },
+    { "source": "/settings/account", "destination": "/pages/settings/account.html" },
+    { "source": "/settings/appearance", "destination": "/pages/settings/appearance.html" },
+    { "source": "/settings/notifications", "destination": "/pages/settings/notifications.html" },
+    { "source": "/settings/billing", "destination": "/pages/settings/billing.html" },
+    { "source": "/settings/privacy", "destination": "/pages/settings/privacy.html" },
+    { "source": "/settings/security", "destination": "/pages/settings/security.html" },
+    { "source": "/settings/developer", "destination": "/pages/settings/developer.html" },
+    { "source": "/settings/activity", "destination": "/pages/settings/activity.html" }
   ]
 }
