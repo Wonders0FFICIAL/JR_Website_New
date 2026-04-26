@@ -1216,7 +1216,7 @@ document.getElementById('confirmDeleteBtn').addEventListener('click', function (
         }
 
         alert('Your account has been deleted successfully.');
-        window.location.href = '/home';
+        window.location.href = '/';
     }
 });
 
