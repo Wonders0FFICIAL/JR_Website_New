@@ -89,11 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const isPasswordValid = validatePassword();
 
         if (isEmailValid && isPasswordValid) {
-            console.log('Form submitted successfully', {
-                email: emailInput.value,
-                password: passwordInput.value
-            });
-            
             const userId = 'user_' + Date.now();
             sessionStorage.setItem('currentUser', JSON.stringify({
                 id: userId,
@@ -108,46 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     forgotPasswordBtn.addEventListener('click', () => {
-        console.log('Forgot password clicked');
         alert('Password reset link will be sent to your email address.');
     });
     
     googleBtn.addEventListener('click', () => {
-        console.log('Google login clicked');
-        const demoUser = {
-            id: 'google_user_' + Date.now(),
-            email: 'google_user@example.com',
-            provider: 'google'
-        };
-        sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = '/profile-setup';
+        alert('Google login is not available yet. Please use email and password.');
     });
     
     githubBtn.addEventListener('click', () => {
-        console.log('GitHub login clicked');
-        const demoUser = {
-            id: 'github_user_' + Date.now(),
-            email: 'github_user@example.com',
-            provider: 'github'
-        };
-        sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = '/profile-setup';
+        alert('GitHub login is not available yet. Please use email and password.');
     });
     
     appleBtn.addEventListener('click', () => {
-        console.log('Apple login clicked');
-        const demoUser = {
-            id: 'apple_user_' + Date.now(),
-            email: 'apple_user@example.com',
-            provider: 'apple'
-        };
-        sessionStorage.setItem('currentUser', JSON.stringify(demoUser));
-        window.location.href = '/profile-setup';
+        alert('Apple login is not available yet. Please use email and password.');
     });
     
     signupBtn.addEventListener('click', () => {
-        console.log('Sign up clicked');
         window.location.href = '/signup';
     });
+
     updateLayoutForErrors();
 });

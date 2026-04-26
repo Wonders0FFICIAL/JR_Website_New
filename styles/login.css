@@ -240,15 +240,15 @@ body.light-theme .input-group label {
     padding-right: 40px;
     border: 1.57px solid #7157f5;
     border-radius: 8px;
-    background-color: #000;
+    background-color: transparent;
     color: #fff;
     font-size: 16px;
     box-sizing: border-box;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-theme .input-group input {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.6);
     border-color: #d4d8e8;
     color: #1a1a2e;
 }
@@ -256,6 +256,14 @@ body.light-theme .input-group input {
 .input-group input:focus {
     outline: none;
     border-color: #5638E5;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+body.light-theme .input-group input::placeholder {
+    color: rgba(26, 26, 46, 0.4);
 }
 
 .password-container {
@@ -340,13 +348,12 @@ body.light-theme .input-group input {
     color: white;
     box-sizing: border-box;
     text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
     margin-top: 5px;
 }
 
 .btn:hover {
     background-color: #4325c2;
-    transform: translateY(-2px);
 }
 
 .social-login {
@@ -363,22 +370,21 @@ body.light-theme .input-group input {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #33333300;
-    background-color: #000;
+    background-color: transparent;
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body.light-theme .social-btn {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.6);
     color: #1a1a2e;
     border: 1px solid #d4d8e8;
 }
 
 .social-btn:hover {
-    transform: translateY(-2px);
-    background-color: #121212;
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 body.light-theme .social-btn:hover {
@@ -597,26 +603,25 @@ body.light-theme .copyright {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #000;
+    background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.651);
     color: white;
     font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
     cursor: pointer;
 }
 
 body.light-theme .social-icon-btn {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.6);
     border: 1px solid #d4d8e8;
     color: #1a1a2e;
 }
 
 .social-icon-btn:hover {
-    transform: translateY(-2px);
-    background-color: #121212;
+    background-color: rgba(255, 255, 255, 0.08);
     border-color: #ffffff;
 }
 

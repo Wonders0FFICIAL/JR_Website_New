@@ -41,6 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function validateUsername(username) {
     const u = username.trim();
 
+    if (!u) {
+      return { valid: false, error: 'Username is required' };
+    }
+
+    if (u.length < 3 || u.length > 21) {
+      return { valid: false, error: 'Usernames can be 3 to 21 characters long' };
+    }
+
     if (!/^[a-zA-Z0-9._-]*$/.test(u)) {
       return { valid: false, error: 'Only letters, numbers, periods, hyphens and underscores are allowed' };
     }
@@ -63,22 +71,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return { valid: false, error: 'Username cannot be an email address or URL' };
     }
 
-    if (!u) {
-      return { valid: false, error: 'Username is required' };
-    }
-
-    if (u.length < 3 || u.length > 21) {
-      return { valid: false, error: 'Usernames can be 3 to 21 characters long' };
-    }
-
     return { valid: true };
   }
 
   function validateDisplayName(displayName) {
     const d = displayName.trim();
 
-    if (!/^[a-zA-Z0-9._-]*$/.test(d)) {
-      return { valid: false, error: 'Only letters, numbers, periods, hyphens and underscores are allowed' };
+    if (!d) {
+      return { valid: false, error: 'Display name is required' };
+    }
+
+    if (!/^[a-zA-Z0-9._\- ]*$/.test(d)) {
+      return { valid: false, error: 'Only letters, numbers, spaces, periods, hyphens and underscores are allowed' };
     }
 
     if (/[._-]{2}/.test(d)) {

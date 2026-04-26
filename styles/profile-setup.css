@@ -268,7 +268,7 @@ body.light-theme .profile-picture-container label {
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .profile-image:hover {
@@ -299,7 +299,7 @@ body.light-theme .profile-picture-container label {
   padding: 8px 16px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .upload-btn:hover {
@@ -309,7 +309,6 @@ body.light-theme .profile-picture-container label {
 .upload-btn:disabled {
   background-color: #666;
   cursor: not-allowed;
-  transform: none;
 }
 
 .file-info {
@@ -373,15 +372,15 @@ body.light-theme .input-group label {
   padding: 15px 10px 15px 42px;
   border: 1.5px solid #7157f5;
   border-radius: 8px;
-  background-color: #000;
+  background-color: transparent;
   color: #fff;
   font-size: 16px;
   box-sizing: border-box;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-theme .input-group input {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.6);
   border-color: #d4d8e8;
   color: #1a1a2e;
 }
@@ -389,6 +388,14 @@ body.light-theme .input-group input {
 .input-group input:focus {
   outline: none;
   border-color: #5638e5;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.light-theme .input-group input::placeholder {
+  color: rgba(26, 26, 46, 0.4);
 }
 
 .input-group input.error {
@@ -418,19 +425,17 @@ body.light-theme .input-group input {
   color: white;
   box-sizing: border-box;
   text-align: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
   margin-top: 5px;
 }
 
 .btn:hover {
   background-color: #4325c2;
-  transform: translateY(-2px);
 }
 
 .btn:disabled {
   background-color: #666;
   cursor: not-allowed;
-  transform: none;
 }
 
 .secondary-btn {
@@ -441,7 +446,7 @@ body.light-theme .input-group input {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .secondary-btn:hover {
@@ -600,7 +605,7 @@ body.light-theme .zoom-value {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .icon-btn:hover {
