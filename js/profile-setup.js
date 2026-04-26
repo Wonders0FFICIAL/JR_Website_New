@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     hideLoading();
-    window.location.href = '/settings/public-profile';
+    window.location.href = '/settings/profile';
   }
 
   function attachEventListeners() {
