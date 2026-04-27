@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="/styles/profile.css" />
     <style>
       @media (min-width: 769px) { .hamburger { display: none; } }
-      .error-message { color: red; font-size: 14px; margin-top: 8px; font-family: "PT Sans", sans-serif; min-height: 18px; display: block; }
-      .input-error { border-color: red !important; }
+      .error-message { color: #ff6b6b; font-size: 14px; margin-top: 8px; font-family: "PT Sans", sans-serif; min-height: 18px; display: block; }
+      .input-error { border-color: #ff6b6b !important; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
       .error-message:not(:empty) { animation: fadeIn 0.3s ease-in-out; }
     </style>
@@ -34,6 +34,7 @@
           <div class="hamburger"><div></div><div></div><div></div></div>
         </div>
       </nav>
+
       <div class="settings-wrapper">
         <div class="sidebar">
           <h2 class="sidebar-title">Settings</h2>
@@ -60,55 +61,67 @@
             </a>
           </div>
         </div>
+
         <div class="content-area">
           <div class="search-box">
             <img src="/assets/images/search.png" alt="Search" class="search-icon" />
             <input type="text" placeholder="Search settings..." />
           </div>
+
           <div class="profile-header">
             <div class="profile-title">
               <h2>Profile</h2>
               <p>Manage your public profile information</p>
             </div>
           </div>
-          <form class="settings-form">
-            <div class="profile-pic-section">
-              <div class="profile-pic-wrapper">
-                <div class="profile-pic-circle" id="profilePicCircle">
-                  <i class="fa fa-user" style="font-size: 56px; color: #5638e5"></i>
+
+          <div class="profile-card">
+            <div class="profile-top-row">
+              <div class="avatar-col">
+                <div class="profile-pic-wrapper">
+                  <div class="profile-pic-circle" id="profilePicCircle">
+                    <i class="fa fa-user" style="font-size: 64px; color: #5638e5"></i>
+                  </div>
+                  <button type="button" class="edit-pic-btn" id="editPicBtn">
+                    <img src="/assets/images/edit.png" alt="Edit" class="edit-icon" />
+                  </button>
                 </div>
-                <button type="button" class="edit-pic-btn" id="editPicBtn">
-                  <img src="/assets/images/edit.png" alt="Edit" class="edit-icon" />
-                </button>
+                <p class="pic-label">Profile picture</p>
+                <button type="button" class="change-pic-btn" id="changePicBtn">Change</button>
               </div>
-              <p class="pic-label">Profile picture</p>
-            </div>
 
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" id="username" placeholder="Enter a username" autocomplete="off" />
-              <div id="username-error" class="error-message"></div>
-            </div>
+              <div class="fields-col">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" placeholder="Enter a username" autocomplete="off" />
+                  <div id="username-error" class="error-message"></div>
+                </div>
 
-            <div class="form-group">
-              <label for="displayName">Display Name</label>
-              <input type="text" id="displayName" placeholder="Enter a display name" autocomplete="off" />
-              <div id="display-name-error" class="error-message"></div>
+                <div class="form-group">
+                  <label for="displayName">Display Name</label>
+                  <input type="text" id="displayName" placeholder="Enter a display name" autocomplete="off" />
+                  <div id="display-name-error" class="error-message"></div>
+                </div>
+              </div>
             </div>
 
             <div class="user-id-row">
-              <span class="user-id-label">User ID</span>
-              <span class="user-id-value" id="userIdDisplay">—</span>
+              <div class="user-id-left">
+                <span class="user-id-tag">User ID</span>
+                <span class="user-id-value" id="userIdDisplay">—</span>
+              </div>
+              <button type="button" class="copy-id-btn" id="copyIdBtn">Copy</button>
             </div>
 
             <div class="form-actions">
               <button type="button" class="save-btn">Save Changes</button>
               <button type="button" class="cancel-btn">Cancel</button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
+
     <footer>
       <div class="footer-content">
         <div class="footer-section">
@@ -137,6 +150,7 @@
       <div class="footer-separator"></div>
       <div class="copyright">© 2026 JR. All rights reserved.</div>
     </footer>
+
     <script src="/js/profile.js"></script>
   </body>
 </html>
