@@ -94,17 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const isPasswordValid = validatePassword();
 
         if (isEmailValid && isPasswordValid) {
-            const userId = 'user_' + Date.now();
+            const userId = Math.floor(100000000 + Math.random() * 900000000).toString();
+
             const userData = {
-                id: userId,
+                userId: userId,
                 email: emailInput.value,
                 emailVerified: false,
                 linkedAccounts: {},
                 sessions: []
             };
 
-            localStorage.setItem(userId, JSON.stringify(userData));
-            localStorage.setItem('currentUser', userId);
+            sessionStorage.setItem('currentUser', JSON.stringify(userData));
 
             window.location.href = '/profile-setup';
         } else {
