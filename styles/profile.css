@@ -229,33 +229,6 @@ body::after {
     width: 100%;
 }
 
-.search-box input {
-    width: 100%;
-    padding: 13px 15px 13px 48px;
-    background-color: #161830;
-    border: 1px solid #2C2F45;
-    border-radius: 25px;
-    color: white;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-.search-box input:focus {
-    outline: none;
-    border-color: #5638E5;
-}
-
-.search-icon {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-}
-
 .profile-header {
     padding-bottom: 22px;
     border-bottom: 1px solid #543fce;
@@ -313,17 +286,13 @@ body::after {
     height: 140px;
     border-radius: 50%;
     background-color: #161830;
-    border: 2px solid #5638E5;
+    border: 2px solid #4325c2;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.profile-pic-circle:hover {
-    border-color: #7c5cef;
-    box-shadow: 0 0 0 3px rgba(86, 56, 229, 0.2);
+    margin-top: 15px;
 }
 
 .profile-pic-circle img {
@@ -332,29 +301,23 @@ body::after {
     object-fit: cover;
 }
 
-.pic-label {
-    font-size: 13px;
-    color: #6b6b8a;
-    margin: 0;
-    font-family: 'PT Sans', sans-serif;
-}
-
 .change-pic-btn {
-    background: transparent;
+    background: #5b3eec;
     border: 1px solid rgba(86, 56, 229, 0.5);
     border-radius: 20px;
-    padding: 7px 20px;
+    padding: 6px 21px;
     font-family: 'PT Sans', sans-serif;
-    font-size: 13px;
-    color: #9580ff;
+    font-size: 14px;
+    color: #ffffff;
     cursor: pointer;
     transition: all 0.2s ease;
+    margin-top: 30px;
 }
 
 .change-pic-btn:hover {
     background-color: rgba(86, 56, 229, 0.15);
     border-color: #5638E5;
-    color: #b8acff;
+    color: #ffffff;
 }
 
 .fields-col {
@@ -375,7 +338,7 @@ body::after {
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
     font-weight: 700;
-    color: #c9c9e0;
+    color: #e5e5f1;
     letter-spacing: 0.2px;
 }
 
@@ -413,14 +376,14 @@ body::after {
 .user-id-left {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
 }
 
 .user-id-tag {
     font-family: 'PT Sans', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    color: #5638E5;
+    color: #e5e5f1;
     letter-spacing: 1.2px;
     text-transform: uppercase;
 }
@@ -446,9 +409,9 @@ body::after {
 }
 
 .copy-id-btn:hover {
-    border-color: #5638E5;
-    color: #9580ff;
-    background-color: rgba(86, 56, 229, 0.08);
+    border-color: #3fce8c;
+    color: #3fce8c;
+    background-color: transparent;
 }
 
 .copy-id-btn.copied {
