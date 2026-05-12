@@ -1,76 +1,80 @@
 document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.product-tab');
     const tabContents = document.querySelectorAll('.tab-content');
-    
+
+    const pricingContainer = document.querySelector('.pricing-container');
+
     tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            tab.classList.add('active');
-            const tabId = tab.getAttribute('data-tab');
-            document.getElementById(`${tabId}-content`).classList.add('active');
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                activateTab(tab);
+            }
         });
     });
-    
+
+    const ORB_CLASSES = ['orb-moka', 'orb-avery', 'orb-lapis'];
+
+    function activateTab(tab) {
+        tabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+        });
+        tabContents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const tabName = tab.dataset.tab;
+        const target = document.getElementById(`${tabName}-content`);
+        if (target) target.classList.add('active');
+        if (pricingContainer) pricingContainer.dataset.product = tabName;
+
+        document.body.classList.remove(...ORB_CLASSES);
+        if (tabName === 'moka') document.body.classList.add('orb-moka');
+        else if (tabName === 'ai') document.body.classList.add('orb-avery');
+        else if (tabName === 'cloud') document.body.classList.add('orb-lapis');
+    }
+
+    activateTab(document.querySelector('.product-tab.active'));
+
     const billingToggle = document.getElementById('billing-toggle');
     const monthlyPrices = document.querySelectorAll('.monthly-price');
     const yearlyPrices = document.querySelectorAll('.yearly-price');
     const billingPeriods = document.querySelectorAll('.billing-period');
-    const toggleLabels = document.querySelectorAll('.toggle-label');
-    
+    const lblMonthly = document.getElementById('lbl-monthly');
+    const lblYearly = document.getElementById('lbl-yearly');
+
     billingToggle.addEventListener('change', () => {
-        toggleLabels.forEach((label, index) => {
-            label.classList.toggle('active');
-        });
-        
-        if (billingToggle.checked) {
-            monthlyPrices.forEach(price => price.style.display = 'none');
-            yearlyPrices.forEach(price => price.style.display = 'block');
-            billingPeriods.forEach(period => period.textContent = 'per year');
-        } else {
-            monthlyPrices.forEach(price => price.style.display = 'block');
-            yearlyPrices.forEach(price => price.style.display = 'none');
-            billingPeriods.forEach(period => period.textContent = 'per month');
-        }
+        const isYearly = billingToggle.checked;
+        lblMonthly.classList.toggle('active', !isYearly);
+        lblYearly.classList.toggle('active', isYearly);
+
+        monthlyPrices.forEach(el => el.style.display = isYearly ? 'none' : 'block');
+        yearlyPrices.forEach(el => el.style.display = isYearly ? 'block' : 'none');
+        billingPeriods.forEach(el => el.textContent = isYearly ? 'per year' : 'per month');
     });
-    
+
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.addEventListener('click', e => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
         });
     }
 
-    const pricingCards = document.querySelectorAll('.pricing-card');
-    
-    pricingCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-            if (card.classList.contains('featured')) {
-                card.style.boxShadow = '0 10px 30px rgba(86, 56, 229, 0.3)';
-            } else {
-                card.style.boxShadow = '0 10px 30px rgba(86, 56, 229, 0.2)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-            card.style.boxShadow = '';
-        });
-    });
-    
-const ctaButtons = document.querySelectorAll('.plan-cta');
-    
-    ctaButtons.forEach(button => {
+    document.querySelectorAll('.plan-cta').forEach(button => {
         button.addEventListener('click', () => {
-            if (button.textContent === 'Contact Sales') {
-                alert('Thank you for your interest! Our sales team will contact you shortly.');
-            } else if (button.textContent === 'Current Plan') {
+            const label = button.textContent.trim();
+            if (label === 'Contact sales') {
+                window.location.href = '/contact';
+            } else if (label === 'Current plan') {
                 window.location.href = '/billing';
             } else {
-                alert('Redirecting to billing...');
+                window.location.href = '/signup';
             }
         });
     });

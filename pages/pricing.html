@@ -19,296 +19,342 @@
       <nav class="navbar">
         <div class="nav-left">
           <a href="/"><img src="/assets/images/JR. Logo.png" alt="JR. Logo" class="logo" /></a>
-          <div class="nav-links">
+          <div class="nav-links" id="nav-links">
             <a href="/">Home</a>
             <a href="/blog">Blog</a>
             <a href="/pricing" class="active">Pricing</a>
             <a href="/projects">Projects</a>
             <a href="/community">Community</a>
+          </div>        </div>
+        <div class="signup-hamburger">
+          <a href="/signup" style="text-decoration:none"><button class="signup-btn">Sign Up</button></a>
+          <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+            <div></div><div></div><div></div>
           </div>
         </div>
-        <div class="signup-hamburger">
-          <a href="/signup" style="text-decoration: none"><button class="signup-btn">Sign Up</button></a>
-          <div class="hamburger"><div></div><div></div><div></div></div>
-        </div>
       </nav>
+
       <div class="pricing-container">
         <div class="pricing-header">
-          <h1 class="pricing-title">Flexible pricing for everyone</h1>
-          <p class="pricing-subtitle">Choose the right plan for your needs — whether you're a developer, business, or explorer.</p>
+          <h1 class="pricing-title">Flexible plans for<br><span>every kind of builder</span></h1>
+          <p class="pricing-subtitle">Whether you're exploring, shipping, or scaling — there's a plan that fits you perfectly.</p>
         </div>
-        <div class="product-tabs">
-          <div class="product-tab active" data-tab="browse">JR. Browse</div>
-          <div class="product-tab" data-tab="ai">JR. AI</div>
-          <div class="product-tab" data-tab="cloud">JR. Cloud</div>
-          <div class="product-tab" data-tab="lang">JR. Lang</div>
+
+        <div class="product-tabs" role="tablist">
+          <div class="product-tab active" data-tab="moka" role="tab" aria-selected="true" tabindex="0">Moka</div>
+          <div class="product-tab" data-tab="ai" role="tab" aria-selected="false" tabindex="0">Avery</div>
+          <div class="product-tab" data-tab="cloud" role="tab" aria-selected="false" tabindex="0">Lapis</div>
+          <div class="product-tab" data-tab="bundles" role="tab" aria-selected="false" tabindex="0">✦ Bundles</div>
         </div>
+
         <div class="toggle-container">
-          <span class="toggle-label active">Monthly</span>
-          <label class="toggle-switch">
+          <span class="toggle-label active" id="lbl-monthly">Monthly</span>
+          <label class="toggle-switch" aria-label="Toggle billing period">
             <input type="checkbox" id="billing-toggle" />
             <span class="toggle-slider"></span>
           </label>
-          <span class="toggle-label">Yearly <span style="color: #5638e5; font-weight: 600">(Save 20%)</span></span>
+          <span class="toggle-label" id="lbl-yearly">Yearly</span>
+          <span class="save-badge">Save 20%</span>
         </div>
-        <div class="tab-content active" id="browse-content">
-          <div class="pricing-plans">
+
+        <div class="tab-content active" id="moka-content" role="tabpanel">
+          <div class="pricing-plans plans-two">
+
             <div class="pricing-card">
               <h3 class="plan-name">Free</h3>
-              <p class="plan-description">Perfect for exploring JR. Browse</p>
+              <p class="plan-description">Explore Moka at no cost, forever.</p>
               <div class="plan-price">$0</div>
               <div class="price-duration">forever</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Basic browsing experience</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Limited searches per day</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">100 searches per day</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Standard protection</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Community support</span></div>
               </div>
-              <button class="plan-cta">Current Plan</button>
+              <button class="plan-cta">Current plan</button>
             </div>
+
             <div class="pricing-card featured">
               <div class="featured-tag">Popular</div>
               <h3 class="plan-name">Pro</h3>
-              <p class="plan-description">Enhanced browsing for professionals</p>
+              <p class="plan-description">Enhanced browsing for professionals.</p>
               <div class="plan-price monthly-price">$9.99</div>
-              <div class="plan-price yearly-price" style="display: none">$95.90</div>
+              <div class="plan-price yearly-price" style="display:none">$95.90</div>
               <div class="price-duration billing-period">per month</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Free</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited searches</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced security features</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">VPN (3 devices)</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Priority support</span></div>
               </div>
-              <button class="plan-cta featured">Get Started</button>
+              <button class="plan-cta featured-cta">Get started</button>
             </div>
-            <div class="pricing-card">
-              <h3 class="plan-name">Enterprise</h3>
-              <p class="plan-description">For businesses and teams</p>
-              <div class="plan-price">Custom</div>
-              <div class="price-duration">tailored pricing</div>
-              <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Pro</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Dedicated account manager</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Custom integration options</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">24/7 premium support</span></div>
-              </div>
-              <button class="plan-cta">Contact Sales</button>
-            </div>
+
+          </div>
+          <div class="enterprise-strip">
+            <p>Need a custom solution for your team?</p>
+            <a href="/contact">Contact sales <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
           </div>
           <div class="comparison-section">
-            <h3 class="comparison-title">Feature Comparison</h3>
+            <h3 class="comparison-title">Feature comparison</h3>
             <table class="comparison-table">
-              <thead><tr><th>Feature</th><th>Free</th><th>Pro</th><th>Enterprise</th></tr></thead>
+              <thead><tr><th>Feature</th><th>Free</th><th>Pro</th></tr></thead>
               <tbody>
-                <tr><td>Basic browsing</td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
-                <tr><td>Search limit</td><td>100/day</td><td>Unlimited</td><td>Unlimited</td></tr>
-                <tr><td>Ad blocking</td><td>Basic</td><td>Advanced</td><td>Premium</td></tr>
-                <tr><td>Tracker blocking</td><td>Limited</td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
-                <tr><td>Password manager</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
-                <tr><td>VPN access</td><td><i class="fas fa-minus dash-icon"></i></td><td>5 devices</td><td>Unlimited</td></tr>
-                <tr><td>Customer support</td><td>Community</td><td>Priority</td><td>24/7 dedicated</td></tr>
-                <tr><td>Team management</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Daily searches</td><td>100</td><td>Unlimited</td></tr>
+                <tr><td>Ad blocking</td><td>Basic</td><td>Advanced</td></tr>
+                <tr><td>Tracker blocking</td><td>Limited</td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Password manager</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>VPN access</td><td><i class="fas fa-minus dash-icon"></i></td><td>3 devices</td></tr>
+                <tr><td>Support</td><td>Community</td><td>Priority</td></tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="tab-content" id="ai-content">
-          <div class="pricing-plans">
+
+        <div class="tab-content" id="ai-content" role="tabpanel">
+          <div class="pricing-plans plans-two">
+
             <div class="pricing-card">
               <h3 class="plan-name">Starter</h3>
-              <p class="plan-description">Basic AI functionalities</p>
+              <p class="plan-description">Get started with Avery AI, free forever.</p>
               <div class="plan-price">$0</div>
               <div class="price-duration">forever</div>
               <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Access to basic AI models</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">100 AI queries per day</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Basic AI models</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">100 queries per day</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Standard response time</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Community support</span></div>
               </div>
-              <button class="plan-cta">Current Plan</button>
+              <button class="plan-cta">Current plan</button>
             </div>
+
             <div class="pricing-card featured">
               <div class="featured-tag">Popular</div>
               <h3 class="plan-name">Plus</h3>
-              <p class="plan-description">Advanced AI for individuals</p>
+              <p class="plan-description">Advanced AI for power users.</p>
               <div class="plan-price monthly-price">$19.99</div>
-              <div class="plan-price yearly-price" style="display: none">$191.90</div>
+              <div class="plan-price yearly-price" style="display:none">$191.90</div>
               <div class="price-duration billing-period">per month</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Starter</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Access to advanced AI models</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited AI queries</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Priority access</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced AI models</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited queries</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Priority access & faster responses</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Enhanced data privacy</span></div>
               </div>
-              <button class="plan-cta featured">Get Started</button>
+              <button class="plan-cta featured-cta">Get started</button>
             </div>
-            <div class="pricing-card">
-              <h3 class="plan-name">Enterprise</h3>
-              <p class="plan-description">For businesses and teams</p>
-              <div class="plan-price">Custom</div>
-              <div class="price-duration">tailored pricing</div>
-              <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Plus</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Custom AI model training</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">API access</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">24/7 technical support</span></div>
-              </div>
-              <button class="plan-cta">Contact Sales</button>
-            </div>
+
+          </div>
+          <div class="enterprise-strip">
+            <p>Need custom model training or full API access for your team?</p>
+            <a href="/contact">Contact sales <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
           </div>
           <div class="comparison-section">
-            <h3 class="comparison-title">Feature Comparison</h3>
+            <h3 class="comparison-title">Feature comparison</h3>
             <table class="comparison-table">
-              <thead><tr><th>Feature</th><th>Starter</th><th>Plus</th><th>Enterprise</th></tr></thead>
+              <thead><tr><th>Feature</th><th>Starter</th><th>Plus</th></tr></thead>
               <tbody>
-                <tr><td>AI model access</td><td>Basic</td><td>Advanced</td><td>Custom &amp; Premium</td></tr>
-                <tr><td>Queries per day</td><td>100</td><td>Unlimited</td><td>Unlimited</td></tr>
-                <tr><td>Response time</td><td>Standard</td><td>Priority</td><td>Ultra-fast</td></tr>
-                <tr><td>Custom AI training</td><td><i class="fas fa-minus dash-icon"></i></td><td>Limited</td><td><i class="fas fa-check check-icon"></i></td></tr>
-                <tr><td>API access</td><td><i class="fas fa-minus dash-icon"></i></td><td>Limited</td><td><i class="fas fa-check check-icon"></i></td></tr>
-                <tr><td>Data privacy</td><td>Standard</td><td>Enhanced</td><td>Enterprise-grade</td></tr>
-                <tr><td>Customer support</td><td>Community</td><td>Email &amp; Chat</td><td>24/7 dedicated</td></tr>
+                <tr><td>AI model tier</td><td>Basic</td><td>Advanced</td></tr>
+                <tr><td>Daily queries</td><td>100</td><td>Unlimited</td></tr>
+                <tr><td>Response time</td><td>Standard</td><td>Priority</td></tr>
+                <tr><td>Custom AI training</td><td><i class="fas fa-minus dash-icon"></i></td><td>Limited</td></tr>
+                <tr><td>API access</td><td><i class="fas fa-minus dash-icon"></i></td><td>Limited</td></tr>
+                <tr><td>Data privacy</td><td>Standard</td><td>Enhanced</td></tr>
+                <tr><td>Support</td><td>Community</td><td>Email &amp; chat</td></tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="tab-content" id="cloud-content">
-          <div class="pricing-plans">
+
+        <div class="tab-content" id="cloud-content" role="tabpanel">
+          <div class="pricing-plans plans-four">
+
             <div class="pricing-card">
-              <h3 class="plan-name">Basic</h3>
-              <p class="plan-description">Get started with cloud storage</p>
+              <h3 class="plan-name">Starter</h3>
+              <p class="plan-description">Spin up your first VPS in seconds.</p>
               <div class="plan-price">$0</div>
               <div class="price-duration">forever</div>
               <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">10GB storage</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Basic file sharing</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Standard encryption</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">1 vCPU</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">512 MB RAM</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">10 GB SSD storage</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">100 GB bandwidth / mo</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Community support</span></div>
               </div>
-              <button class="plan-cta">Current Plan</button>
+              <button class="plan-cta">Current plan</button>
             </div>
+
+            <div class="pricing-card">
+              <h3 class="plan-name">Standard</h3>
+              <p class="plan-description">More power for apps and side projects.</p>
+              <div class="plan-price monthly-price">$4.99</div>
+              <div class="plan-price yearly-price" style="display:none">$47.90</div>
+              <div class="price-duration billing-period">per month</div>
+              <div class="plan-features">
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">2 vCPUs</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">2 GB RAM</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">60 GB SSD storage</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">1 TB bandwidth / mo</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Email support</span></div>
+              </div>
+              <button class="plan-cta">Get started</button>
+            </div>
+
             <div class="pricing-card featured">
               <div class="featured-tag">Popular</div>
-              <h3 class="plan-name">Premium</h3>
-              <p class="plan-description">Advanced cloud features</p>
+              <h3 class="plan-name">Pro</h3>
+              <p class="plan-description">Production-grade performance and redundancy.</p>
               <div class="plan-price monthly-price">$14.99</div>
-              <div class="plan-price yearly-price" style="display: none">$143.90</div>
+              <div class="plan-price yearly-price" style="display:none">$143.90</div>
               <div class="price-duration billing-period">per month</div>
               <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">1TB storage</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced file sharing</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">End-to-end encryption</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">4 vCPUs</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">8 GB RAM</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">200 GB NVMe SSD</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">5 TB bandwidth / mo</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Automated backups</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Priority support</span></div>
               </div>
-              <button class="plan-cta featured">Get Started</button>
+              <button class="plan-cta featured-cta">Get started</button>
             </div>
+
             <div class="pricing-card">
               <h3 class="plan-name">Enterprise</h3>
-              <p class="plan-description">For businesses and teams</p>
+              <p class="plan-description">Dedicated infrastructure for teams at scale.</p>
               <div class="plan-price">Custom</div>
               <div class="price-duration">tailored pricing</div>
               <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited storage</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Team collaboration tools</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced security features</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">24/7 premium support</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Dedicated bare-metal nodes</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Custom RAM &amp; storage config</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unmetered bandwidth</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Private networking &amp; firewalls</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">24/7 dedicated support</span></div>
               </div>
-              <button class="plan-cta">Contact Sales</button>
+              <button class="plan-cta">Contact sales</button>
             </div>
+
           </div>
           <div class="comparison-section">
-            <h3 class="comparison-title">Feature Comparison</h3>
+            <h3 class="comparison-title">Feature comparison</h3>
             <table class="comparison-table">
-              <thead><tr><th>Feature</th><th>Basic</th><th>Premium</th><th>Enterprise</th></tr></thead>
+              <thead><tr><th>Feature</th><th>Starter</th><th>Standard</th><th>Pro</th><th>Enterprise</th></tr></thead>
               <tbody>
-                <tr><td>Storage</td><td>10GB</td><td>1TB</td><td>Unlimited</td></tr>
-                <tr><td>File sharing</td><td>Basic</td><td>Advanced</td><td>Enterprise</td></tr>
-                <tr><td>File size limit</td><td>100MB</td><td>5GB</td><td>No limit</td></tr>
-                <tr><td>Version history</td><td>7 days</td><td>30 days</td><td>180 days</td></tr>
-                <tr><td>Team collaboration</td><td><i class="fas fa-minus dash-icon"></i></td><td>Basic</td><td>Advanced</td></tr>
-                <tr><td>Security</td><td>Standard</td><td>Enhanced</td><td>Enterprise-grade</td></tr>
-                <tr><td>API access</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
-                <tr><td>Customer support</td><td>Community</td><td>Priority</td><td>24/7 dedicated</td></tr>
+                <tr><td>vCPUs</td><td>1</td><td>2</td><td>4</td><td>Custom</td></tr>
+                <tr><td>RAM</td><td>512 MB</td><td>2 GB</td><td>8 GB</td><td>Custom</td></tr>
+                <tr><td>SSD storage</td><td>10 GB</td><td>60 GB</td><td>200 GB NVMe</td><td>Custom</td></tr>
+                <tr><td>Bandwidth / mo</td><td>100 GB</td><td>1 TB</td><td>5 TB</td><td>Unmetered</td></tr>
+                <tr><td>Automated backups</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Private networking</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Custom firewall rules</td><td><i class="fas fa-minus dash-icon"></i></td><td>Basic</td><td>Advanced</td><td>Full control</td></tr>
+                <tr><td>Support</td><td>Community</td><td>Email</td><td>Priority</td><td>24/7 dedicated</td></tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="tab-content" id="lang-content">
-          <div class="pricing-plans">
+
+        <div class="tab-content" id="bundles-content" role="tabpanel">
+          <div class="bundle-intro">
+            <p>Get the full JR. suite at a discounted rate. Mix products, maximise value.</p>
+          </div>
+          <div class="pricing-plans plans-three">
+
             <div class="pricing-card">
-              <h3 class="plan-name">Community</h3>
-              <p class="plan-description">For individual developers</p>
-              <div class="plan-price">$0</div>
-              <div class="price-duration">forever</div>
+              <h3 class="plan-name">Pro</h3>
+              <p class="bundle-positioning">Everything you need to build & ship</p>
+              <p class="plan-description">Moka Pro + Avery Plus + Lapis Standard</p>
+              <div class="plan-price monthly-price">$29.99</div>
+              <div class="plan-price yearly-price" style="display:none">$287.90</div>
+              <div class="price-duration billing-period">per month</div>
+              <div class="bundle-savings monthly-price">Save $9.97/mo vs buying separately</div>
+              <div class="bundle-savings yearly-price" style="display:none">Save $143.50/yr vs buying separately</div>
               <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Basic development tools</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Public repositories</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Standard compiler access</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Community forum support</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited Moka searches</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited Avery queries</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">2 vCPUs / 2 GB RAM VPS</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Priority support</span></div>
               </div>
-              <button class="plan-cta">Current Plan</button>
+              <button class="plan-cta">Get started</button>
             </div>
+
             <div class="pricing-card featured">
-              <div class="featured-tag">Popular</div>
-              <h3 class="plan-name">Professional</h3>
-              <p class="plan-description">For serious developers</p>
-              <div class="plan-price monthly-price">$24.99</div>
-              <div class="plan-price yearly-price" style="display: none">$239.90</div>
+              <div class="featured-tag">Best value</div>
+              <h3 class="plan-name">Ultimate</h3>
+              <p class="bundle-positioning">Maximum power for serious builders</p>
+              <p class="plan-description">Moka Pro + Avery Plus + Lapis Pro</p>
+              <div class="plan-price monthly-price">$39.99</div>
+              <div class="plan-price yearly-price" style="display:none">$383.90</div>
               <div class="price-duration billing-period">per month</div>
+              <div class="bundle-savings monthly-price">Save $14.98/mo vs buying separately</div>
+              <div class="bundle-savings yearly-price" style="display:none">Save $215.90/yr vs buying separately</div>
               <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Community</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Private repositories</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced compiler features</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Priority support</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Pro bundle</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">4 vCPUs / 8 GB RAM VPS</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">200 GB NVMe SSD</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Automated backups</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced AI models</span></div>
               </div>
-              <button class="plan-cta featured">Get Started</button>
+              <button class="plan-cta featured-cta">Get started</button>
             </div>
+
             <div class="pricing-card">
               <h3 class="plan-name">Enterprise</h3>
-              <p class="plan-description">For development teams</p>
+              <p class="plan-description">Full suite, custom scale, dedicated support.</p>
               <div class="plan-price">Custom</div>
               <div class="price-duration">tailored pricing</div>
               <div class="plan-features">
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Professional</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Team collaboration tools</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Custom compiler extensions</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">24/7 technical support</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Ultimate</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Dedicated bare-metal VPS</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Custom Avery model training</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Team management dashboard</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">24/7 dedicated support</span></div>
               </div>
-              <button class="plan-cta">Contact Sales</button>
+              <button class="plan-cta">Contact sales</button>
             </div>
+
           </div>
           <div class="comparison-section">
-            <h3 class="comparison-title">Feature Comparison</h3>
+            <h3 class="comparison-title">Bundle comparison</h3>
             <table class="comparison-table">
-              <thead><tr><th>Feature</th><th>Community</th><th>Professional</th><th>Enterprise</th></tr></thead>
+              <thead><tr><th>Feature</th><th>Pro</th><th>Ultimate</th><th>Enterprise</th></tr></thead>
               <tbody>
-                <tr><td>Repositories</td><td>Public only</td><td>Public &amp; Private</td><td>Unlimited</td></tr>
-                <tr><td>Compile time</td><td>Standard</td><td>Optimized</td><td>Premium</td></tr>
-                <tr><td>Compiler features</td><td>Basic</td><td>Advanced</td><td>Custom</td></tr>
-                <tr><td>Team collaboration</td><td><i class="fas fa-minus dash-icon"></i></td><td>Up to 5 users</td><td>Unlimited</td></tr>
-                <tr><td>Code analysis</td><td>Basic</td><td>Advanced</td><td>Enterprise-grade</td></tr>
-                <tr><td>CI/CD integration</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
-                <tr><td>API access</td><td>Limited</td><td>Standard</td><td>Full access</td></tr>
-                <tr><td>Customer support</td><td>Community</td><td>Priority</td><td>24/7 dedicated</td></tr>
+                <tr><td>Moka</td><td>Pro</td><td>Pro</td><td>Pro</td></tr>
+                <tr><td>Avery</td><td>Plus</td><td>Plus</td><td>Custom</td></tr>
+                <tr><td>Lapis VPS</td><td>Standard</td><td>Pro</td><td>Bare-metal</td></tr>
+                <tr><td>VPS RAM</td><td>2 GB</td><td>8 GB</td><td>Custom</td></tr>
+                <tr><td>Automated backups</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Custom AI training</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Team management</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Support</td><td>Priority</td><td>Priority</td><td>24/7 dedicated</td></tr>
               </tbody>
             </table>
           </div>
         </div>
+
       </div>
     </div>
+
     <footer>
       <div class="footer-content">
         <div class="footer-section">
           <h3>Quick Links</h3>
           <div class="footer-links">
-            <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
+            <a href="#">About Us</a>
+            <a href="/blog">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
             <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
           </div>
         </div>
         <div class="footer-section">
           <h3>Legal</h3>
           <div class="footer-links">
-            <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">License Information</a>
           </div>
         </div>
         <div class="footer-section">
@@ -324,6 +370,7 @@
       <div class="footer-separator"></div>
       <div class="copyright">© 2026 JR. All rights reserved.</div>
     </footer>
+
     <script src="/js/pricing.js"></script>
   </body>
 </html>
