@@ -62,6 +62,14 @@
     --accent-tab-bg: rgba(244, 114, 182, 0.12);
 }
 
+#forge-content {
+    --accent: #F97316;
+    --accent-glow: rgba(249, 115, 22, 0.18);
+    --accent-glow-strong: rgba(249, 115, 22, 0.35);
+    --accent-subtle: rgba(249, 115, 22, 0.08);
+    --accent-tab-bg: rgba(249, 115, 22, 0.12);
+}
+
 #cloud-content {
     --accent: #0048BA;
     --accent-glow: rgba(0, 72, 186, 0.18);
@@ -78,6 +86,11 @@
 .product-tab[data-tab="ai"].active {
     background: #F472B6;
     box-shadow: 0 0 20px rgba(244, 114, 182, 0.4);
+}
+
+.product-tab[data-tab="forge"].active {
+    background: #F97316;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
 }
 
 .product-tab[data-tab="cloud"].active {
@@ -248,6 +261,11 @@ body {
     box-shadow: 0 0 16px rgba(244, 114, 182, 0.1);
 }
 
+.pricing-container[data-product="forge"] .product-tabs {
+    border-color: rgba(249, 115, 22, 0.35);
+    box-shadow: 0 0 16px rgba(249, 115, 22, 0.1);
+}
+
 .pricing-container[data-product="cloud"] .product-tabs {
     border-color: rgba(0, 72, 186, 0.4);
     box-shadow: 0 0 16px rgba(0, 72, 186, 0.12);
@@ -284,6 +302,7 @@ body {
     color: #fff;
     box-shadow: 0 0 20px var(--purple-glow-strong);
 }
+
 .toggle-container {
     display: flex;
     justify-content: center;
@@ -325,6 +344,12 @@ body {
     color: #F472B6;
     background: rgba(244, 114, 182, 0.12);
     border-color: rgba(244, 114, 182, 0.3);
+}
+
+.pricing-container[data-product="forge"] .save-badge {
+    color: #F97316;
+    background: rgba(249, 115, 22, 0.12);
+    border-color: rgba(249, 115, 22, 0.3);
 }
 
 .pricing-container[data-product="cloud"] .save-badge {
@@ -386,6 +411,11 @@ input:checked + .toggle-slider::before {
 .pricing-container[data-product="ai"] input:checked + .toggle-slider {
     background: #F472B6;
     border-color: #F472B6;
+}
+
+.pricing-container[data-product="forge"] input:checked + .toggle-slider {
+    background: #F97316;
+    border-color: #F97316;
 }
 
 .pricing-container[data-product="cloud"] input:checked + .toggle-slider {
@@ -870,6 +900,21 @@ body.orb-avery .stars .orb-mid {
     transition: background 0.6s ease;
 }
 
+body.orb-forge .stars::before {
+    background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.07) 50%, transparent 70%);
+    transition: background 0.6s ease;
+}
+
+body.orb-forge .stars::after {
+    background: radial-gradient(ellipse at center, rgba(234, 88, 12, 0.16) 0%, rgba(249, 115, 22, 0.05) 50%, transparent 70%);
+    transition: background 0.6s ease;
+}
+
+body.orb-forge .stars .orb-mid {
+    background: radial-gradient(ellipse at center, rgba(234, 88, 12, 0.13) 0%, transparent 70%);
+    transition: background 0.6s ease;
+}
+
 body.orb-lapis .stars::before {
     background: radial-gradient(ellipse at center, rgba(0, 72, 186, 0.22) 0%, rgba(0, 72, 186, 0.08) 50%, transparent 70%);
     transition: background 0.6s ease;
@@ -890,6 +935,10 @@ body.orb-lapis .stars .orb-mid {
 }
 
 #ai-content .plan-price {
+    margin-top: 16px;
+}
+
+#forge-content .plan-price {
     margin-top: 16px;
 }
 

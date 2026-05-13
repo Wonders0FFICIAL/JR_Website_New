@@ -25,7 +25,8 @@
             <a href="/pricing" class="active">Pricing</a>
             <a href="/projects">Projects</a>
             <a href="/community">Community</a>
-          </div>        </div>
+          </div>
+        </div>
         <div class="signup-hamburger">
           <a href="/signup" style="text-decoration:none"><button class="signup-btn">Sign Up</button></a>
           <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
@@ -43,6 +44,7 @@
         <div class="product-tabs" role="tablist">
           <div class="product-tab active" data-tab="moka" role="tab" aria-selected="true" tabindex="0">Moka</div>
           <div class="product-tab" data-tab="ai" role="tab" aria-selected="false" tabindex="0">Avery</div>
+          <div class="product-tab" data-tab="forge" role="tab" aria-selected="false" tabindex="0">Forge</div>
           <div class="product-tab" data-tab="cloud" role="tab" aria-selected="false" tabindex="0">Lapis</div>
           <div class="product-tab" data-tab="bundles" role="tab" aria-selected="false" tabindex="0">✦ Bundles</div>
         </div>
@@ -78,8 +80,8 @@
               <div class="featured-tag">Popular</div>
               <h3 class="plan-name">Pro</h3>
               <p class="plan-description">Enhanced browsing for professionals.</p>
-              <div class="plan-price monthly-price">$9.99</div>
-              <div class="plan-price yearly-price" style="display:none">$95.90</div>
+              <div class="plan-price monthly-price">$4.99</div>
+              <div class="plan-price yearly-price" style="display:none">$47.90</div>
               <div class="price-duration billing-period">per month</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Free</span></div>
@@ -133,8 +135,8 @@
               <div class="featured-tag">Popular</div>
               <h3 class="plan-name">Plus</h3>
               <p class="plan-description">Advanced AI for power users.</p>
-              <div class="plan-price monthly-price">$19.99</div>
-              <div class="plan-price yearly-price" style="display:none">$191.90</div>
+              <div class="plan-price monthly-price">$9.99</div>
+              <div class="plan-price yearly-price" style="display:none">$95.90</div>
               <div class="price-duration billing-period">per month</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Starter</span></div>
@@ -168,6 +170,84 @@
           </div>
         </div>
 
+        <div class="tab-content" id="forge-content" role="tabpanel">
+          <div class="pricing-plans plans-three">
+
+            <div class="pricing-card">
+              <h3 class="plan-name">Free</h3>
+              <p class="plan-description">Core IDE with essential AI to get you building.</p>
+              <div class="plan-price">$0</div>
+              <div class="price-duration">forever</div>
+              <div class="plan-features">
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Full IDE (JS/TS/HTML/CSS)</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Basic AI autocomplete</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Real-time errors + debugging</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">100–200 AI requests / mo</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Standard response speed</span></div>
+              </div>
+              <button class="plan-cta">Current plan</button>
+            </div>
+
+            <div class="pricing-card featured">
+              <div class="featured-tag">Popular</div>
+              <h3 class="plan-name">Pro</h3>
+              <p class="plan-description">Smarter AI for real development.</p>
+              <div class="plan-price monthly-price">$12.99</div>
+              <div class="plan-price yearly-price" style="display:none">$124.70</div>
+              <div class="price-duration billing-period">per month</div>
+              <div class="plan-features">
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Free</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced AI model</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">1,000–2,000 AI requests / mo</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Faster AI responses</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Multi-file context awareness</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Inline refactoring</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Better debugging insights</span></div>
+              </div>
+              <button class="plan-cta featured-cta">Get started</button>
+            </div>
+
+            <div class="pricing-card">
+              <h3 class="plan-name">Ultimate</h3>
+              <p class="plan-description">Full power development, no limits.</p>
+              <div class="plan-price monthly-price">$19.99</div>
+              <div class="plan-price yearly-price" style="display:none">$191.90</div>
+              <div class="price-duration billing-period">per month</div>
+              <div class="plan-features">
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Pro</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Best AI model available</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Very high / near-unlimited usage</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Project-wide intelligence</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced debugging suggestions</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Early access to experimental tools</span></div>
+              </div>
+              <button class="plan-cta">Get started</button>
+            </div>
+
+          </div>
+          <div class="enterprise-strip">
+            <p>Need Forge for your whole engineering team?</p>
+            <a href="/contact">Contact sales <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
+          </div>
+          <div class="comparison-section">
+            <h3 class="comparison-title">Feature comparison</h3>
+            <table class="comparison-table">
+              <thead><tr><th>Feature</th><th>Free</th><th>Pro</th><th>Ultimate</th></tr></thead>
+              <tbody>
+                <tr><td>IDE (JS/TS/HTML/CSS)</td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>AI model tier</td><td>Basic</td><td>Advanced</td><td>Best</td></tr>
+                <tr><td>AI requests / mo</td><td>100–200</td><td>1,000–2,000</td><td>Near-unlimited</td></tr>
+                <tr><td>Response speed</td><td>Standard</td><td>Fast</td><td>Fastest</td></tr>
+                <tr><td>Multi-file context</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Inline refactoring</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Project-wide intelligence</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                <tr><td>Advanced debugging</td><td>Basic</td><td>Better insights</td><td>Advanced suggestions</td></tr>
+                <tr><td>Experimental tools</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-minus dash-icon"></i></td><td>Early access</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div class="tab-content" id="cloud-content" role="tabpanel">
           <div class="pricing-plans plans-four">
 
@@ -189,8 +269,8 @@
             <div class="pricing-card">
               <h3 class="plan-name">Standard</h3>
               <p class="plan-description">More power for apps and side projects.</p>
-              <div class="plan-price monthly-price">$4.99</div>
-              <div class="plan-price yearly-price" style="display:none">$47.90</div>
+              <div class="plan-price monthly-price">$10.00</div>
+              <div class="plan-price yearly-price" style="display:none">$96.00</div>
               <div class="price-duration billing-period">per month</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">2 vCPUs</span></div>
@@ -206,8 +286,8 @@
               <div class="featured-tag">Popular</div>
               <h3 class="plan-name">Pro</h3>
               <p class="plan-description">Production-grade performance and redundancy.</p>
-              <div class="plan-price monthly-price">$14.99</div>
-              <div class="plan-price yearly-price" style="display:none">$143.90</div>
+              <div class="plan-price monthly-price">$20.00</div>
+              <div class="plan-price yearly-price" style="display:none">$192.00</div>
               <div class="price-duration billing-period">per month</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">4 vCPUs</span></div>
@@ -262,16 +342,17 @@
 
             <div class="pricing-card">
               <h3 class="plan-name">Pro</h3>
-              <p class="bundle-positioning">Everything you need to build & ship</p>
-              <p class="plan-description">Moka Pro + Avery Plus + Lapis Standard</p>
-              <div class="plan-price monthly-price">$29.99</div>
-              <div class="plan-price yearly-price" style="display:none">$287.90</div>
+              <p class="bundle-positioning">Everything you need to build &amp; ship</p>
+              <p class="plan-description">Moka Pro + Avery Plus + Forge Pro + Lapis Standard</p>
+              <div class="plan-price monthly-price">$14.99</div>
+              <div class="plan-price yearly-price" style="display:none">$143.90</div>
               <div class="price-duration billing-period">per month</div>
-              <div class="bundle-savings monthly-price">Save $9.97/mo vs buying separately</div>
-              <div class="bundle-savings yearly-price" style="display:none">Save $143.50/yr vs buying separately</div>
+              <div class="bundle-savings monthly-price">Save vs buying separately</div>
+              <div class="bundle-savings yearly-price" style="display:none">Save on yearly vs monthly</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited Moka searches</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Unlimited Avery queries</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Forge Pro (advanced AI IDE)</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">2 vCPUs / 2 GB RAM VPS</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Priority support</span></div>
               </div>
@@ -282,18 +363,19 @@
               <div class="featured-tag">Best value</div>
               <h3 class="plan-name">Ultimate</h3>
               <p class="bundle-positioning">Maximum power for serious builders</p>
-              <p class="plan-description">Moka Pro + Avery Plus + Lapis Pro</p>
-              <div class="plan-price monthly-price">$39.99</div>
-              <div class="plan-price yearly-price" style="display:none">$383.90</div>
+              <p class="plan-description">Moka Pro + Avery Plus + Forge Ultimate + Lapis Pro</p>
+              <div class="plan-price monthly-price">$22.99</div>
+              <div class="plan-price yearly-price" style="display:none">$220.70</div>
               <div class="price-duration billing-period">per month</div>
-              <div class="bundle-savings monthly-price">Save $14.98/mo vs buying separately</div>
-              <div class="bundle-savings yearly-price" style="display:none">Save $215.90/yr vs buying separately</div>
+              <div class="bundle-savings monthly-price">Save vs buying separately</div>
+              <div class="bundle-savings yearly-price" style="display:none">Save on yearly vs monthly</div>
               <div class="plan-features">
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Everything in Pro bundle</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Forge Ultimate (best AI model)</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">4 vCPUs / 8 GB RAM VPS</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">200 GB NVMe SSD</span></div>
                 <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Automated backups</span></div>
-                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Advanced AI models</span></div>
+                <div class="feature-item"><span class="feature-icon"><i class="fas fa-check"></i></span><span class="feature-text">Project-wide AI intelligence</span></div>
               </div>
               <button class="plan-cta featured-cta">Get started</button>
             </div>
@@ -321,6 +403,7 @@
               <tbody>
                 <tr><td>Moka</td><td>Pro</td><td>Pro</td><td>Pro</td></tr>
                 <tr><td>Avery</td><td>Plus</td><td>Plus</td><td>Custom</td></tr>
+                <tr><td>Forge</td><td>Pro</td><td>Ultimate</td><td>Custom</td></tr>
                 <tr><td>Lapis VPS</td><td>Standard</td><td>Pro</td><td>Bare-metal</td></tr>
                 <tr><td>VPS RAM</td><td>2 GB</td><td>8 GB</td><td>Custom</td></tr>
                 <tr><td>Automated backups</td><td><i class="fas fa-minus dash-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>

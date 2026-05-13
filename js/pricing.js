@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const ORB_CLASSES = ['orb-moka', 'orb-avery', 'orb-lapis'];
+    const ORB_CLASSES = ['orb-moka', 'orb-avery', 'orb-forge', 'orb-lapis'];
 
     function activateTab(tab) {
         tabs.forEach(t => {
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove(...ORB_CLASSES);
         if (tabName === 'moka') document.body.classList.add('orb-moka');
         else if (tabName === 'ai') document.body.classList.add('orb-avery');
+        else if (tabName === 'forge') document.body.classList.add('orb-forge');
         else if (tabName === 'cloud') document.body.classList.add('orb-lapis');
     }
 
