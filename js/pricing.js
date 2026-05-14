@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const ORB_CLASSES = ['orb-moka', 'orb-avery', 'orb-forge', 'orb-lapis'];
+    const forgeTab = document.querySelector('.product-tab[data-tab="forge"]');
+    const forgeIcon = forgeTab ? forgeTab.querySelector('.tab-product-icon') : null;
 
     function activateTab(tab) {
         tabs.forEach(t => {
@@ -34,6 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (tabName === 'ai') document.body.classList.add('orb-avery');
         else if (tabName === 'forge') document.body.classList.add('orb-forge');
         else if (tabName === 'cloud') document.body.classList.add('orb-lapis');
+
+        if (forgeIcon) {
+            forgeIcon.src = tabName === 'forge'
+                ? '/assets/images/forge-logo2.png'
+                : '/assets/images/forge-logo.png';
+        }
     }
 
     activateTab(document.querySelector('.product-tab.active'));
