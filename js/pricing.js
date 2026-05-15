@@ -18,6 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const forgeTab = document.querySelector('.product-tab[data-tab="forge"]');
     const forgeIcon = forgeTab ? forgeTab.querySelector('.tab-product-icon') : null;
 
+    const TITLE_GRADIENTS = {
+        moka:    'linear-gradient(135deg, #e8c99a 0%, #C8A27A 55%, #a07040 100%)',
+        ai:      'linear-gradient(135deg, #f9a8d4 0%, #F472B6 55%, #db2777 100%)',
+        forge:   'linear-gradient(135deg, #fdba74 0%, #F97316 55%, #c2410c 100%)',
+        cloud:   'linear-gradient(135deg, #6eaff7 0%, #3b82f6 55%, #0048BA 100%)',
+        bundles: 'linear-gradient(135deg, #c4b0ff 0%, #7c5cf8 50%, #5638E5 100%)',
+    };
+
+    const pricingTitleSpan = document.querySelector('.pricing-title span');
+
+    function setTitleGradient(tabName) {
+        const gradient = TITLE_GRADIENTS[tabName] ?? TITLE_GRADIENTS.bundles;
+        if (pricingTitleSpan) {
+            pricingTitleSpan.style.backgroundImage = gradient;
+        }
+    }
+
     function activateTab(tab) {
         tabs.forEach(t => {
             t.classList.remove('active');
@@ -36,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (tabName === 'ai') document.body.classList.add('orb-avery');
         else if (tabName === 'forge') document.body.classList.add('orb-forge');
         else if (tabName === 'cloud') document.body.classList.add('orb-lapis');
+
+        setTitleGradient(tabName);
 
         if (forgeIcon) {
             forgeIcon.src = tabName === 'forge'

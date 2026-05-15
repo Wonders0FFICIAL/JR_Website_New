@@ -225,6 +225,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: background-image 0.4s ease;
 }
 
 .pricing-subtitle {
@@ -767,11 +768,10 @@ input:checked + .toggle-slider::before {
 }
 
 .bundle-savings {
-    display: inline-flex;
+    display: table;
+    margin: 4px auto 22px;
     align-items: center;
     gap: 5px;
-    margin-top: 4px;
-    margin-bottom: 18px;
     font-size: 12px;
     font-weight: 700;
     color: #4ade80;
@@ -779,6 +779,7 @@ input:checked + .toggle-slider::before {
     border: 1px solid rgba(74, 222, 128, 0.25);
     padding: 4px 10px;
     border-radius: 20px;
+    white-space: nowrap;
 }
 
 footer {
