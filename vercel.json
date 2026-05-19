@@ -4,7 +4,7 @@
     { "source": "/home", "destination": "/pages/index.html" },
     { "source": "/blog", "destination": "/pages/blog.html" },
     { "source": "/pricing", "destination": "/pages/pricing.html" },
-    { "source": "/projects", "destination": "/pages/projects.html" },
+    { "source": "/products", "destination": "/pages/products.html" },
     { "source": "/community", "destination": "/pages/community.html" },
     { "source": "/signup", "destination": "/pages/signup.html" },
     { "source": "/login", "destination": "/pages/login.html" },

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — JR.</title>
+  <link rel="icon" href="/assets/images/Favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/styles/background.css" />
+  <link rel="stylesheet" href="/styles/products.css" />
+  <style>@media (min-width: 769px) { .hamburger { display: none; } }</style>
+</head>
+<body data-active="moka">
+
+  <div class="stars" id="stars"><div class="orb-mid"></div></div>
+  <canvas id="constellation-canvas"></canvas>
+
+  <div class="main-content">
+
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="/"><img src="/assets/images/JR. Logo.png" alt="JR. Logo" class="logo" /></a>
+        <div class="nav-links" id="nav-links">
+          <a href="/">Home</a>
+          <a href="/blog">Blog</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/products" class="active">Products</a>
+          <a href="/community">Community</a>
+        </div>
+      </div>
+      <div class="signup-hamburger">
+        <a href="/signup" style="text-decoration:none"><button class="signup-btn">Sign Up</button></a>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+          <div></div><div></div><div></div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1 class="hero-title">
+        Built for<br>
+        <span class="hero-title-gradient" id="heroGradientText">privacy</span>
+      </h1>
+      <p class="hero-subtitle">Five products. One vision — a faster, smarter, more private digital life.</p>
+    </section>
+
+    <section class="product-selector">
+      <div class="selector-track" id="selectorTrack">
+        <button class="selector-pill active" data-product="moka">
+          <img src="/assets/images/moka-logo.png" alt="" class="pill-icon" data-logo="/assets/images/moka-logo.png" data-logo2="/assets/images/moka-logo.png" />
+          <span>Moka</span>
+        </button>
+        <button class="selector-pill" data-product="avery">
+          <img src="/assets/images/avery-logo.png" alt="" class="pill-icon" data-logo="/assets/images/avery-logo.png" data-logo2="/assets/images/avery-logo.png" />
+          <span>Avery</span>
+        </button>
+        <button class="selector-pill" data-product="forge">
+          <img src="/assets/images/forge-logo.png" alt="" class="pill-icon" data-logo="/assets/images/forge-logo.png" data-logo2="/assets/images/forge-logo2.png" />
+          <span>Forge</span>
+        </button>
+        <button class="selector-pill" data-product="lapis">
+          <img src="/assets/images/lapis-logo.png" alt="" class="pill-icon" data-logo="/assets/images/lapis-logo.png" data-logo2="/assets/images/lapis-logo.png" />
+          <span>Lapis</span>
+        </button>
+        <button class="selector-pill" data-product="juno">
+          <img src="/assets/images/juno-logo.png" alt="" class="pill-icon" data-logo="/assets/images/juno-logo.png" data-logo2="/assets/images/juno-logo2.png" />
+          <span>Juno</span>
+        </button>
+        <div class="selector-indicator" id="selectorIndicator"></div>
+      </div>
+    </section>
+
+    <section class="products-stage" id="productsStage">
+
+      <div class="product-panel active" data-panel="moka">
+        <div class="panel-inner">
+          <div class="panel-left">
+            <div class="panel-badge" style="--badge-color:#C8A27A;--badge-bg:rgba(200,162,122,0.12);">Browser</div>
+            <img src="/assets/images/moka-logo.png" alt="Moka" class="panel-logo" data-logo="/assets/images/moka-logo.png" data-logo2="/assets/images/moka-logo2.png" />
+            <h2 class="panel-name">Moka</h2>
+            <p class="panel-tagline">Browse freely. Track nothing.</p>
+            <p class="panel-desc">Moka is a lightweight, privacy-first browser built for the modern web. Blazing-fast rendering, built-in ad &amp; tracker blocking, and an optional VPN — all in one sleek package. No telemetry. No compromises.</p>
+            <div class="panel-tags">
+              <span class="tag">Privacy</span><span class="tag">Ad Blocking</span><span class="tag">VPN</span><span class="tag">Cross-platform</span><span class="tag">Chromium</span>
+            </div>
+            <div class="panel-status">
+              <span class="status-dot stable"></span>
+              <span class="status-label">Stable</span>
+              <span class="status-version">v1.0.3</span>
+            </div>
+            <div class="panel-actions">
+              <a href="/downloads/moka.zip" class="btn-primary" style="--btn-color:#C8A27A;--btn-glow:rgba(200,162,122,0.4);" download><i class="fas fa-download"></i> Download</a>
+              <a href="/docs/moka" class="btn-secondary"><i class="fas fa-book"></i> Docs</a>
+              <a href="/pricing" class="btn-ghost"><i class="fas fa-tag"></i> Pricing</a>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="panel-features-grid">
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(200,162,122,0.15);--fi-text:#C8A27A;"><i class="fas fa-shield-alt"></i></div><div class="feature-card-title">Ad &amp; tracker blocking</div><div class="feature-card-desc">Blocks thousands of trackers and ads automatically, right out of the box.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(200,162,122,0.15);--fi-text:#C8A27A;"><i class="fas fa-globe"></i></div><div class="feature-card-title">Integrated VPN</div><div class="feature-card-desc">Secure tunnel to 30+ global regions, baked right into the browser.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(200,162,122,0.15);--fi-text:#C8A27A;"><i class="fas fa-bolt"></i></div><div class="feature-card-title">Fast rendering</div><div class="feature-card-desc">Optimised Chromium engine loads pages faster with fewer resources used.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(200,162,122,0.15);--fi-text:#C8A27A;"><i class="fas fa-fingerprint"></i></div><div class="feature-card-title">Fingerprint protection</div><div class="feature-card-desc">Enhanced privacy mode shields your digital fingerprint from tracking.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(200,162,122,0.15);--fi-text:#C8A27A;"><i class="fas fa-sync-alt"></i></div><div class="feature-card-title">Cross-device sync</div><div class="feature-card-desc">Bookmarks, history and settings synced securely across all your devices.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(200,162,122,0.15);--fi-text:#C8A27A;"><i class="fas fa-sliders-h"></i></div><div class="feature-card-title">Custom controls</div><div class="feature-card-desc">Granular controls for blocking, exceptions, and privacy per site.</div></div>
+            </div>
+            <div class="ecosystem-strip">
+              <div class="ecosystem-inner">
+                <div class="ecosystem-text">
+                  <h3>The complete JR. ecosystem</h3>
+                  <p>Bundle all products and save up to 34% compared to buying separately.</p>
+                </div>
+                <a href="/pricing" class="ecosystem-cta">View bundles <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-panel" data-panel="avery">
+        <div class="panel-inner">
+          <div class="panel-left">
+            <div class="panel-badge" style="--badge-color:#F472B6;--badge-bg:rgba(244,114,182,0.12);">AI Assistant</div>
+            <img src="/assets/images/avery-logo.png" alt="Avery" class="panel-logo" data-logo="/assets/images/avery-logo.png" data-logo2="/assets/images/avery-logo2.png" />
+            <h2 class="panel-name">Avery</h2>
+            <p class="panel-tagline">Intelligence that works with you.</p>
+            <p class="panel-desc">Avery is JR.'s advanced AI assistant — capable of deep research, code generation, data analysis, and natural conversation. Powered by state-of-the-art models with memory that learns your preferences over time.</p>
+            <div class="panel-tags">
+              <span class="tag">AI Chat</span><span class="tag">Code Gen</span><span class="tag">Research</span><span class="tag">Memory</span><span class="tag">Integrations</span>
+            </div>
+            <div class="panel-status">
+              <span class="status-dot beta"></span>
+              <span class="status-label">Beta</span>
+              <span class="status-version">Early access</span>
+            </div>
+            <div class="panel-actions">
+              <a href="https://ai.jrofficial.org" class="btn-primary" style="--btn-color:#F472B6;--btn-glow:rgba(244,114,182,0.4);" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Try Avery</a>
+              <a href="/docs/avery" class="btn-secondary"><i class="fas fa-book"></i> Docs</a>
+              <a href="/pricing" class="btn-ghost"><i class="fas fa-tag"></i> Pricing</a>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="panel-features-grid">
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(244,114,182,0.15);--fi-text:#F472B6;"><i class="fas fa-brain"></i></div><div class="feature-card-title">Top-tier models</div><div class="feature-card-desc">Access basic through top-tier AI models depending on your plan.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(244,114,182,0.15);--fi-text:#F472B6;"><i class="fas fa-code"></i></div><div class="feature-card-title">Code generation</div><div class="feature-card-desc">Write, debug, and refactor code across dozens of languages with AI.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(244,114,182,0.15);--fi-text:#F472B6;"><i class="fas fa-search"></i></div><div class="feature-card-title">Deep research</div><div class="feature-card-desc">Built-in web search with synthesis and citations across multiple sources.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(244,114,182,0.15);--fi-text:#F472B6;"><i class="fas fa-memory"></i></div><div class="feature-card-title">Persistent memory</div><div class="feature-card-desc">Avery remembers your preferences and context across all sessions.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(244,114,182,0.15);--fi-text:#F472B6;"><i class="fas fa-plug"></i></div><div class="feature-card-title">Integrations</div><div class="feature-card-desc">Connect to your favourite apps and automate workflows seamlessly.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(244,114,182,0.15);--fi-text:#F472B6;"><i class="fas fa-chart-bar"></i></div><div class="feature-card-title">Data analysis</div><div class="feature-card-desc">Upload CSVs and spreadsheets — Avery charts, summarises, and explains.</div></div>
+            </div>
+            <div class="ecosystem-strip">
+              <div class="ecosystem-inner">
+                <div class="ecosystem-text">
+                  <h3>The complete JR. ecosystem</h3>
+                  <p>Bundle all products and save up to 34% compared to buying separately.</p>
+                </div>
+                <a href="/pricing" class="ecosystem-cta">View bundles <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-panel" data-panel="forge">
+        <div class="panel-inner">
+          <div class="panel-left">
+            <div class="panel-badge" style="--badge-color:#F97316;--badge-bg:rgba(249,115,22,0.12);">IDE</div>
+            <img src="/assets/images/forge-logo.png" alt="Forge" class="panel-logo" data-logo="/assets/images/forge-logo.png" data-logo2="/assets/images/forge-logo2.png" />
+            <h2 class="panel-name">Forge</h2>
+            <p class="panel-tagline">The IDE that ships with you.</p>
+            <p class="panel-desc">Forge is an AI-native code editor built for the web. Full JS/TS/HTML/CSS support with an advanced AI co-pilot — autocomplete, refactoring, multi-file context, and project-wide intelligence. Ship faster, debug smarter.</p>
+            <div class="panel-tags">
+              <span class="tag">Code Editor</span><span class="tag">AI Copilot</span><span class="tag">JS/TS</span><span class="tag">Refactoring</span><span class="tag">Debugging</span>
+            </div>
+            <div class="panel-status">
+              <span class="status-dot stable"></span>
+              <span class="status-label">Stable</span>
+              <span class="status-version">v2.1.4</span>
+            </div>
+            <div class="panel-actions">
+              <a href="/downloads/forge.zip" class="btn-primary" style="--btn-color:#F97316;--btn-glow:rgba(249,115,22,0.4);" download><i class="fas fa-download"></i> Download</a>
+              <a href="/docs/forge" class="btn-secondary"><i class="fas fa-book"></i> Docs</a>
+              <a href="/pricing" class="btn-ghost"><i class="fas fa-tag"></i> Pricing</a>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="panel-features-grid">
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(249,115,22,0.15);--fi-text:#F97316;"><i class="fas fa-robot"></i></div><div class="feature-card-title">AI autocomplete</div><div class="feature-card-desc">Intelligent, context-aware completions that understand your whole project.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(249,115,22,0.15);--fi-text:#F97316;"><i class="fas fa-file-code"></i></div><div class="feature-card-title">Multi-file context</div><div class="feature-card-desc">AI that understands relationships across all your project files at once.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(249,115,22,0.15);--fi-text:#F97316;"><i class="fas fa-magic"></i></div><div class="feature-card-title">Inline refactoring</div><div class="feature-card-desc">Select any code block and let Forge rewrite, clean, or restructure it.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(249,115,22,0.15);--fi-text:#F97316;"><i class="fas fa-bug"></i></div><div class="feature-card-title">Smart debugging</div><div class="feature-card-desc">Real-time error highlighting with AI explanations and fix suggestions.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(249,115,22,0.15);--fi-text:#F97316;"><i class="fas fa-project-diagram"></i></div><div class="feature-card-title">Project intelligence</div><div class="feature-card-desc">Understands your entire codebase to give accurate, relevant suggestions.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(249,115,22,0.15);--fi-text:#F97316;"><i class="fas fa-flask"></i></div><div class="feature-card-title">Experimental tools</div><div class="feature-card-desc">Ultimate users get early access to cutting-edge dev tooling as it ships.</div></div>
+            </div>
+            <div class="ecosystem-strip">
+              <div class="ecosystem-inner">
+                <div class="ecosystem-text">
+                  <h3>The complete JR. ecosystem</h3>
+                  <p>Bundle all products and save up to 34% compared to buying separately.</p>
+                </div>
+                <a href="/pricing" class="ecosystem-cta">View bundles <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-panel" data-panel="lapis">
+        <div class="panel-inner">
+          <div class="panel-left">
+            <div class="panel-badge" style="--badge-color:#60a5fa;--badge-bg:rgba(0,72,186,0.12);">VPS</div>
+            <img src="/assets/images/lapis-logo.png" alt="Lapis" class="panel-logo" data-logo="/assets/images/lapis-logo.png" data-logo2="/assets/images/lapis-logo2.png" />
+            <h2 class="panel-name">Lapis</h2>
+            <p class="panel-tagline">Your server. Your rules.</p>
+            <p class="panel-desc">Lapis is JR.'s VPS platform — raw, dedicated compute provisioned in seconds. Deploy any stack on full root-access virtual machines, with private networking, managed storage, and real-time resource monitoring baked right in.</p>
+            <div class="panel-tags">
+              <span class="tag">VPS</span><span class="tag">Root Access</span><span class="tag">Linux</span><span class="tag">Private Networking</span><span class="tag">Snapshots</span>
+            </div>
+            <div class="panel-status">
+              <span class="status-dot alpha"></span>
+              <span class="status-label">Alpha</span>
+              <span class="status-version">v3.2.0</span>
+            </div>
+            <div class="panel-actions">
+              <a href="/downloads/lapis.zip" class="btn-primary" style="--btn-color:#3b82f6;--btn-glow:rgba(59,130,246,0.4);" download><i class="fas fa-download"></i> Download</a>
+              <a href="/docs/lapis" class="btn-secondary"><i class="fas fa-book"></i> Docs</a>
+              <a href="/pricing" class="btn-ghost"><i class="fas fa-tag"></i> Pricing</a>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="panel-features-grid">
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,72,186,0.15);--fi-text:#60a5fa;"><i class="fas fa-server"></i></div><div class="feature-card-title">Dedicated VPS</div><div class="feature-card-desc">Full root-access virtual machines from 1 vCPU / 512 MB RAM to high-memory nodes.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,72,186,0.15);--fi-text:#60a5fa;"><i class="fas fa-network-wired"></i></div><div class="feature-card-title">Private networking</div><div class="feature-card-desc">Isolated VPC networking between your servers with no public exposure by default.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,72,186,0.15);--fi-text:#60a5fa;"><i class="fas fa-terminal"></i></div><div class="feature-card-title">Any stack, any OS</div><div class="feature-card-desc">Deploy Ubuntu, Debian, or bring your own image — Lapis stays out of your way.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,72,186,0.15);--fi-text:#60a5fa;"><i class="fas fa-lock"></i></div><div class="feature-card-title">Firewall controls</div><div class="feature-card-desc">Per-server and group-level firewall rules manageable via dashboard or API.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,72,186,0.15);--fi-text:#60a5fa;"><i class="fas fa-history"></i></div><div class="feature-card-title">Snapshots &amp; backups</div><div class="feature-card-desc">On-demand snapshots and scheduled backups with instant one-click restore.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,72,186,0.15);--fi-text:#60a5fa;"><i class="fas fa-chart-line"></i></div><div class="feature-card-title">Resource monitoring</div><div class="feature-card-desc">Real-time CPU, RAM, disk, and bandwidth graphs with threshold-based alerts.</div></div>
+            </div>
+            <div class="ecosystem-strip">
+              <div class="ecosystem-inner">
+                <div class="ecosystem-text">
+                  <h3>The complete JR. ecosystem</h3>
+                  <p>Bundle all products and save up to 34% compared to buying separately.</p>
+                </div>
+                <a href="/pricing" class="ecosystem-cta">View bundles <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-panel" data-panel="juno">
+        <div class="panel-inner">
+          <div class="panel-left">
+            <div class="panel-badge" style="--badge-color:#00E0A4;--badge-bg:rgba(0,200,150,0.12);">Language</div>
+            <img src="/assets/images/juno-logo.png" alt="Juno" class="panel-logo" data-logo="/assets/images/juno-logo.png" data-logo2="/assets/images/juno-logo2.png" />
+            <h2 class="panel-name">Juno</h2>
+            <p class="panel-tagline">Compiled. Fast. Expressive.</p>
+            <p class="panel-desc">Juno is a modern compiled programming language built for performance and clarity. With a strong static type system, native concurrency, and a zero-overhead compilation model, Juno lets you write expressive code that runs at the speed of metal.</p>
+            <div class="panel-tags">
+              <span class="tag">Compiled</span><span class="tag">Statically Typed</span><span class="tag">Concurrency</span><span class="tag">Memory-safe</span><span class="tag">Cross-platform</span>
+            </div>
+            <div class="panel-status">
+              <span class="status-dot beta"></span>
+              <span class="status-label">Beta</span>
+              <span class="status-version">v0.4.1</span>
+            </div>
+            <div class="panel-actions">
+              <a href="/downloads/juno.zip" class="btn-primary" style="--btn-color:#00C896;--btn-glow:rgba(0,200,150,0.4);" download><i class="fas fa-download"></i> Download</a>
+              <a href="/docs/juno" class="btn-secondary"><i class="fas fa-book"></i> Docs</a>
+              <a href="https://github.com/jr-official" class="btn-ghost" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="panel-features-grid">
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,200,150,0.15);--fi-text:#00E0A4;"><i class="fas fa-microchip"></i></div><div class="feature-card-title">Native compilation</div><div class="feature-card-desc">Compiles directly to native machine code with absolutely zero runtime overhead.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,200,150,0.15);--fi-text:#00E0A4;"><i class="fas fa-check-double"></i></div><div class="feature-card-title">Static type system</div><div class="feature-card-desc">Powerful type inference catches bugs at compile time, not in production.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,200,150,0.15);--fi-text:#00E0A4;"><i class="fas fa-random"></i></div><div class="feature-card-title">Native concurrency</div><div class="feature-card-desc">First-class async/await and lightweight threads baked into the language core.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,200,150,0.15);--fi-text:#00E0A4;"><i class="fas fa-shield-alt"></i></div><div class="feature-card-title">Memory safety</div><div class="feature-card-desc">Ownership model prevents dangling pointers and data races at compile time.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,200,150,0.15);--fi-text:#00E0A4;"><i class="fas fa-boxes"></i></div><div class="feature-card-title">Standard library</div><div class="feature-card-desc">Batteries-included stdlib covering I/O, networking, collections and more.</div></div>
+              <div class="feature-card"><div class="feature-icon-wrap" style="--fi-color:rgba(0,200,150,0.15);--fi-text:#00E0A4;"><i class="fas fa-laptop-code"></i></div><div class="feature-card-title">Cross-platform</div><div class="feature-card-desc">Compile once, target Linux, macOS, and Windows from a single codebase.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="#">About Us</a><a href="/blog">Blog</a><a href="#">Careers</a><a href="#">Support</a><a href="#">Contact</a>
+          <a href="https://ko-fi.com/jr_official" target="_blank" rel="noopener noreferrer">Donate</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <div class="footer-links">
+          <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">License Information</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Community</h3>
+        <div class="footer-links">
+          <a href="https://github.com/jr-official" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://discord.gg/d4kfXDrcG8" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://x.com/jr_suite" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://youtube.com/@junior.software" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-separator"></div>
+    <div class="copyright">© 2026 JR. All rights reserved.</div>
+  </footer>
+
+  <script src="/js/products.js"></script>
+</body>
+</html>
