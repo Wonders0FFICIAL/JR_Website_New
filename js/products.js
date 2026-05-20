@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     juno:  { word: 'speed',    r: 0,   g: 200, b: 150 },
   };
 
-  const SKELETON_DURATION = 620;
-  const SKELETON_HOLD     = 260;
-  const SKELETON_FADE     = 300;
+  const TRANSITION_DURATION = 880;
 
   let currentProduct = 'moka';
 
@@ -28,6 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let W, H;
   let targetR = 200, targetG = 162, targetB = 122;
   let currentR = 200, currentG = 162, currentB = 122;
+  let colorDirty = false;
+
+  heroGrad.textContent = PRODUCTS[currentProduct].word;
+
+  function updatePillLogos(activeId) {
+    pills.forEach(pill => {
+      const img = pill.querySelector('.pill-icon');
+      if (!img) return;
+      img.src = pill.dataset.product === activeId ? img.dataset.logo2 : img.dataset.logo;
+    });
+  }
 
   function resizeCanvas() {
     W = canvas.width  = window.innerWidth;
@@ -50,10 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => { resizeCanvas(); buildStars(); });
 
   function lerpColor() {
+    if (!colorDirty) return;
     const speed = 0.04;
     currentR += (targetR - currentR) * speed;
     currentG += (targetG - currentG) * speed;
     currentB += (targetB - currentB) * speed;
+    if (
+      Math.abs(targetR - currentR) < 0.1 &&
+      Math.abs(targetG - currentG) < 0.1 &&
+      Math.abs(targetB - currentB) < 0.1
+    ) {
+      currentR = targetR; currentG = targetG; currentB = targetB;
+      colorDirty = false;
+    }
   }
 
   function drawConstellation() {
@@ -109,9 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid       = panel.querySelector('.panel-features-grid');
     const ecosystem  = panel.querySelector('.ecosystem-strip');
     const cards      = grid ? Array.from(grid.querySelectorAll('.feature-card')) : [];
-    const hasEco     = !!ecosystem;
 
-    if (grid)      grid.style.cssText      = 'display:none !important;';
+    if (grid)      grid.style.cssText = 'display:none !important;';
     if (ecosystem) ecosystem.style.cssText = 'display:none !important;';
 
     const skeletonWrap = document.createElement('div');
@@ -127,9 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     skeletonWrap.appendChild(skeletonGrid);
 
-    let skeletonEco = null;
-    if (hasEco) {
-      skeletonEco = document.createElement('div');
+    if (ecosystem) {
+      const skeletonEco = document.createElement('div');
       skeletonEco.className = 'skeleton-ecosystem';
       skeletonEco.innerHTML = '<div class="skeleton-eco-text"><div class="skeleton-line skeleton-eco-title"></div><div class="skeleton-line skeleton-eco-sub"></div></div><div class="skeleton-eco-btn"></div>';
       skeletonWrap.appendChild(skeletonEco);
@@ -137,34 +153,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (panelRight) panelRight.prepend(skeletonWrap);
 
-    return { skeletonWrap };
+    return skeletonWrap;
   }
 
-  function revealCards(panel, skeletons) {
+  function revealPanel(panel, skeletonWrap) {
     const grid      = panel.querySelector('.panel-features-grid');
     const ecosystem = panel.querySelector('.ecosystem-strip');
-    const { skeletonWrap } = skeletons || {};
 
-    if (skeletonWrap) {
-      skeletonWrap.style.transition = `opacity ${SKELETON_FADE}ms ease`;
-      skeletonWrap.style.opacity    = '0';
-      setTimeout(() => {
-        skeletonWrap.remove();
-        if (grid)      grid.style.cssText      = '';
-        if (ecosystem) ecosystem.style.cssText = '';
-      }, SKELETON_FADE);
-    } else {
-      if (grid)      grid.style.cssText      = '';
+    skeletonWrap.style.transition = 'opacity 300ms ease';
+    skeletonWrap.style.opacity    = '0';
+    setTimeout(() => {
+      skeletonWrap.remove();
+      if (grid)      grid.style.cssText = '';
       if (ecosystem) ecosystem.style.cssText = '';
-    }
-  }
-
-  function updatePillLogos(activeId) {
-    pills.forEach(pill => {
-      const img = pill.querySelector('.pill-icon');
-      if (!img) return;
-      img.src = pill.dataset.product === activeId ? img.dataset.logo2 : img.dataset.logo;
-    });
+    }, 300);
   }
 
   function switchProduct(id) {
@@ -174,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const data = PRODUCTS[id];
     targetR = data.r; targetG = data.g; targetB = data.b;
+    colorDirty = true;
 
     document.body.dataset.active = id;
 
@@ -204,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nextPanel.style.transition = 'none';
     nextPanel.classList.add('active');
 
-    const skeletons = buildSkeletons(nextPanel);
+    const skeletonWrap = buildSkeletons(nextPanel);
 
     requestAnimationFrame(() => requestAnimationFrame(() => {
       nextPanel.style.transition = 'opacity 0.42s cubic-bezier(0.22,1,0.36,1), transform 0.42s cubic-bezier(0.22,1,0.36,1)';
@@ -216,8 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nextPanel.style.transition = '';
       nextPanel.style.opacity    = '';
       nextPanel.style.transform  = '';
-      revealCards(nextPanel, skeletons);
-    }, SKELETON_DURATION + SKELETON_HOLD);
+      revealPanel(nextPanel, skeletonWrap);
+    }, TRANSITION_DURATION);
   }
 
   pills.forEach((pill, i) => {
@@ -237,9 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const initialPill = document.querySelector('.selector-pill.active');
   if (initialPill) positionIndicator(initialPill);
-
-  const initialPanel = document.querySelector('.product-panel.active');
-  if (initialPanel) revealCards(initialPanel, {});
+  updatePillLogos(currentProduct);
 
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
