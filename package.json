@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jr-official/JR_Website_New.git"
+    "url": "git+https://github.com/jr-official/jr-website.git"
   },
   "keywords": [
     "website",
@@ -18,9 +18,9 @@
   "author": "Wonders",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/jr-official/JR_Website_New/issues"
+    "url": "https://github.com/jr-official/jr-website/issues"
   },
-  "homepage": "https://github.com/jr-official/JR_Website_New#readme",
+  "homepage": "https://github.com/jr-official/jr-website#readme",
   "devDependencies": {
     "live-server": "^1.2.2"
   }
