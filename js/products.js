@@ -4,12 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     moka:  { word: 'browsing', r: 200, g: 162, b: 122 },
     avery: { word: 'thinking', r: 244, g: 114, b: 182 },
     forge: { word: 'shipping', r: 249, g: 115, b: 22  },
-    lapis: { word: 'hosting',  r: 96,  g: 165, b: 250 },
+    lapis: { word: 'hosting',  r: 0,   g: 72,  b: 186 },
     juno:  { word: 'speed',    r: 0,   g: 200, b: 150 },
   };
 
   const SKELETON_DURATION = 620;
   const SKELETON_HOLD     = 260;
+  const SKELETON_FADE     = 300;
 
   let currentProduct = 'moka';
 
@@ -104,81 +105,57 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function buildSkeletons(panel) {
-    const grid = panel.querySelector('.panel-features-grid');
-    const ecosystem = panel.querySelector('.ecosystem-strip');
+    const panelRight = panel.querySelector('.panel-right');
+    const grid       = panel.querySelector('.panel-features-grid');
+    const ecosystem  = panel.querySelector('.ecosystem-strip');
+    const cards      = grid ? Array.from(grid.querySelectorAll('.feature-card')) : [];
+    const hasEco     = !!ecosystem;
 
-    const cards = grid ? Array.from(grid.querySelectorAll('.feature-card')) : [];
+    if (grid)      grid.style.cssText      = 'display:none !important;';
+    if (ecosystem) ecosystem.style.cssText = 'display:none !important;';
 
-    cards.forEach(card => {
-      card.style.transition = 'none';
-      card.style.opacity    = '0';
-      card.style.transform  = 'translateY(14px)';
-      card.dataset.skeletonPending = '1';
-    });
+    const skeletonWrap = document.createElement('div');
+    skeletonWrap.className = 'skeleton-wrap';
 
     const skeletonGrid = document.createElement('div');
     skeletonGrid.className = 'skeleton-grid';
-
     cards.forEach(() => {
       const sk = document.createElement('div');
       sk.className = 'skeleton-card';
       sk.innerHTML = '<div class="skeleton-icon"></div><div class="skeleton-line skeleton-title"></div><div class="skeleton-line skeleton-desc-1"></div><div class="skeleton-line skeleton-desc-2"></div>';
       skeletonGrid.appendChild(sk);
     });
-
-    if (grid) grid.before(skeletonGrid);
+    skeletonWrap.appendChild(skeletonGrid);
 
     let skeletonEco = null;
-    if (ecosystem) {
-      ecosystem.style.transition = 'none';
-      ecosystem.style.opacity    = '0';
-      ecosystem.style.transform  = 'translateY(10px)';
-
+    if (hasEco) {
       skeletonEco = document.createElement('div');
       skeletonEco.className = 'skeleton-ecosystem';
       skeletonEco.innerHTML = '<div class="skeleton-eco-text"><div class="skeleton-line skeleton-eco-title"></div><div class="skeleton-line skeleton-eco-sub"></div></div><div class="skeleton-eco-btn"></div>';
-      ecosystem.after(skeletonEco);
+      skeletonWrap.appendChild(skeletonEco);
     }
 
-    return { skeletonGrid, skeletonEco };
+    if (panelRight) panelRight.prepend(skeletonWrap);
+
+    return { skeletonWrap };
   }
 
   function revealCards(panel, skeletons) {
     const grid      = panel.querySelector('.panel-features-grid');
     const ecosystem = panel.querySelector('.ecosystem-strip');
-    const cards     = grid ? Array.from(grid.querySelectorAll('.feature-card')) : [];
+    const { skeletonWrap } = skeletons || {};
 
-    const { skeletonGrid, skeletonEco } = skeletons || {};
-
-    if (skeletonGrid) {
-      skeletonGrid.classList.add('skeleton-fade-out');
-      setTimeout(() => skeletonGrid.remove(), 350);
-    }
-
-    if (skeletonEco) {
-      const ecoDelay = cards.length * 65 + 60;
+    if (skeletonWrap) {
+      skeletonWrap.style.transition = `opacity ${SKELETON_FADE}ms ease`;
+      skeletonWrap.style.opacity    = '0';
       setTimeout(() => {
-        skeletonEco.classList.add('skeleton-fade-out');
-        setTimeout(() => skeletonEco.remove(), 350);
-      }, ecoDelay);
-    }
-
-    cards.forEach((card, i) => {
-      delete card.dataset.skeletonPending;
-      setTimeout(() => {
-        card.style.transition = `opacity 0.48s cubic-bezier(0.22,1,0.36,1), transform 0.48s cubic-bezier(0.22,1,0.36,1)`;
-        card.style.opacity    = '1';
-        card.style.transform  = 'translateY(0)';
-      }, i * 65);
-    });
-
-    if (ecosystem) {
-      const delay = cards.length * 65 + 60;
-      setTimeout(() => {
-        ecosystem.style.transition = `opacity 0.45s cubic-bezier(0.22,1,0.36,1), transform 0.45s cubic-bezier(0.22,1,0.36,1)`;
-        ecosystem.style.opacity    = '1';
-        ecosystem.style.transform  = 'translateY(0)';
-      }, delay);
+        skeletonWrap.remove();
+        if (grid)      grid.style.cssText      = '';
+        if (ecosystem) ecosystem.style.cssText = '';
+      }, SKELETON_FADE);
+    } else {
+      if (grid)      grid.style.cssText      = '';
+      if (ecosystem) ecosystem.style.cssText = '';
     }
   }
 
@@ -222,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevPanel) prevPanel.classList.remove('active');
     if (!nextPanel) return;
 
-    nextPanel.style.opacity   = '0';
-    nextPanel.style.transform = 'translateY(12px)';
+    nextPanel.style.opacity    = '0';
+    nextPanel.style.transform  = 'translateY(12px)';
     nextPanel.style.transition = 'none';
     nextPanel.classList.add('active');
 
@@ -262,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (initialPill) positionIndicator(initialPill);
 
   const initialPanel = document.querySelector('.product-panel.active');
-  if (initialPanel) revealCards(initialPanel, { skeletonGrid: null, skeletonEco: null });
+  if (initialPanel) revealCards(initialPanel, {});
 
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
