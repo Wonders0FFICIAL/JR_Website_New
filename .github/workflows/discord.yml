@@ -50,7 +50,7 @@ jobs:
                 ],
 
                 footer: {
-                  text: "JR. Website • GitHub Actions"
+                  text: "JR. Website・GitHub Actions"
                 },
 
                 timestamp: now | todate
