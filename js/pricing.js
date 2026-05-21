@@ -127,9 +127,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-function setNavbarAccent(tabName) {
-    document.body.dataset.pricing = tabName;
-}
+    function setNavbarAccent(tabName) {
+        const c = PRODUCT_COLORS[tabName] ?? PRODUCT_COLORS.bundles;
+        const color = NAVBAR_COLORS[tabName] ?? NAVBAR_COLORS.bundles;
+        const rgb = `${c.r},${c.g},${c.b}`;
+
+        // Set directly on :root inline style — beats any stylesheet rule regardless of specificity
+        const root = document.documentElement;
+        root.style.setProperty('--accent',            color);
+        root.style.setProperty('--accent-glow',       `rgba(${rgb},0.18)`);
+        root.style.setProperty('--accent-glow-strong',`rgba(${rgb},0.35)`);
+        root.style.setProperty('--accent-subtle',     `rgba(${rgb},0.08)`);
+        root.style.setProperty('--accent-tab-bg',     `rgba(${rgb},0.12)`);
+
+        // Also set data attribute for CSS selectors that need it
+        document.body.dataset.pricing = tabName;
+    }
 
     function setConstellationColor(tabName) {
         const c = PRODUCT_COLORS[tabName] ?? PRODUCT_COLORS.bundles;
