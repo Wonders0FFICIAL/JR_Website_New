@@ -117,7 +117,7 @@ body {
     padding: 15px 25px;
     background-color: rgba(10, 13, 24, 0.8);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid #5638E5;
+    border-bottom: 1px solid var(--accent);
     position: relative;
     z-index: 10;
     transition: border-bottom-color 0.4s ease;
@@ -154,12 +154,12 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--nav-accent, #5638E5);
+    color: var(--accent);
 }
 
 .nav-links a.active {
-    color: var(--nav-accent, #5638E5);
-    font-weight: 600;
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .signup-hamburger {
@@ -964,3 +964,11 @@ body.orb-lapis .stars .orb-mid {
 #bundles-content .plan-price {
     margin-top: 16px;
 }
+
+
+/* Global accent driven from body — makes navbar border + nav link colors update */
+body[data-pricing="moka"]    { --accent: #C8A27A; --accent-glow: rgba(200,162,122,0.18); --accent-glow-strong: rgba(200,162,122,0.35); --accent-subtle: rgba(200,162,122,0.08); }
+body[data-pricing="ai"]      { --accent: #F472B6; --accent-glow: rgba(244,114,182,0.18); --accent-glow-strong: rgba(244,114,182,0.35); --accent-subtle: rgba(244,114,182,0.08); }
+body[data-pricing="forge"]   { --accent: #F97316; --accent-glow: rgba(249,115,22,0.18);  --accent-glow-strong: rgba(249,115,22,0.35);  --accent-subtle: rgba(249,115,22,0.08);  }
+body[data-pricing="cloud"]   { --accent: #0048BA; --accent-glow: rgba(0,72,186,0.18);    --accent-glow-strong: rgba(0,72,186,0.4);     --accent-subtle: rgba(0,72,186,0.08);    }
+body[data-pricing="bundles"] { --accent: #5638E5; --accent-glow: rgba(86,56,229,0.18);   --accent-glow-strong: rgba(86,56,229,0.35);   --accent-subtle: rgba(86,56,229,0.08);   }

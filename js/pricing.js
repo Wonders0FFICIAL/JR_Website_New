@@ -127,13 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    function setNavbarAccent(tabName) {
-        const color = NAVBAR_COLORS[tabName] ?? NAVBAR_COLORS.bundles;
-        if (navbar) {
-            navbar.style.borderBottomColor = color;
-            navbar.style.setProperty('--nav-accent', color);
-        }
-    }
+function setNavbarAccent(tabName) {
+    document.body.dataset.pricing = tabName;
+}
 
     function setConstellationColor(tabName) {
         const c = PRODUCT_COLORS[tabName] ?? PRODUCT_COLORS.bundles;
