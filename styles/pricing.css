@@ -120,6 +120,7 @@ body {
     border-bottom: 1px solid #5638E5;
     position: relative;
     z-index: 10;
+    transition: border-bottom-color 0.4s ease;
 }
 
 .nav-left {
@@ -153,12 +154,12 @@ body {
 }
 
 .nav-links a:hover {
-    color: #543fce;
+    color: var(--nav-accent, #5638E5);
 }
 
 .nav-links a.active {
-    color: #543fce;
-    font-weight: bold;
+    color: var(--nav-accent, #5638E5);
+    font-weight: 600;
 }
 
 .signup-hamburger {
@@ -178,26 +179,11 @@ body {
     color: white;
     cursor: pointer;
     margin-right: 10px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.4s ease;
 }
 
 .signup-btn:hover {
     background-color: #5638E5;
-}
-
-.hamburger {
-    width: 25px;
-    height: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-}
-
-.hamburger div {
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
 }
 
 .pricing-container {
@@ -901,19 +887,6 @@ footer {
         padding: 10px 8px;
         font-size: 12px;
     }
-}
-
-.nav-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: #0A0D18;
-    padding: 20px;
-    box-shadow: 0 5px 10px #00000033;
-    z-index: 100;
 }
 
 body.orb-moka .stars::before {
