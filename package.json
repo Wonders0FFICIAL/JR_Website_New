@@ -5,6 +5,7 @@
   "main": "src/js/index.js",
   "scripts": {
     "start": "npx live-server .",
+    "build": "echo 'No build step required'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
