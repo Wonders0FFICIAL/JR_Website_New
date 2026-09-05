@@ -6,17 +6,12 @@
     <title>Home</title>
     <link rel="icon" href="/assets/images/Favicon.png" type="image/png" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=PT+Sans:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/styles/background.css" />
     <link rel="stylesheet" href="/styles/home.css" />
-    <style>
-      @media (min-width: 769px) {
-        .hamburger { display: none; }
-      }
-    </style>
   </head>
 
   <body>
@@ -41,283 +36,224 @@
           <a href="/signup" style="text-decoration: none">
             <button class="signup-btn">Sign Up</button>
           </a>
-          <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
         </div>
       </nav>
 
-      <div class="container">
-
-        <h1 class="title">Welcome to JR.</h1>
-        <h2 class="subtitle">The home of safe, stable, and smart projects</h2>
-        <p class="description">
-          JR. builds foundational software across the modern stack — from programming 
-          languages and AI platforms to browsers, cloud services, and system tools. 
-          Each project is part of a unified ecosystem.
-        </p>
-        <div class="hero-buttons">
-          <a href="/signup" class="btn-primary">Get Started</a>
-          <a href="/products" class="btn-secondary">View Products</a>
+      <section class="hero">
+        <div class="hero-copy">
+          <h1 class="hero-title">Software for the <span>systems behind software.</span></h1>
+          <p class="hero-lead">
+            JR. builds developer-focused software across languages, infrastructure,
+            intelligence, and tools — designed to stay powerful without becoming
+            difficult to understand.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="/products">Explore Products <i class="fas fa-arrow-right"></i></a>
+            <a class="btn-secondary" href="#why-jr">Why JR.</a>
+          </div>
+          <div class="hero-meta">
+            <span>Building in public</span>
+            <span class="meta-dot">·</span>
+            <span>Developer-first</span>
+            <span class="meta-dot">·</span>
+            <span>Long-term thinking</span>
+          </div>
         </div>
-      </div>
+
+        <div class="ecosystem-orbit" id="ecosystemOrbit" aria-label="JR ecosystem visualization">
+          <div class="orbit orbit-1"></div>
+          <div class="orbit orbit-2"></div>
+          <div class="orbit orbit-3"></div>
+          <div class="center-node">
+            <span>JR<span>.</span></span>
+            <small>ecosystem</small>
+          </div>
+          <div class="node node-juno node-green"><b>Juno</b><small>Language</small></div>
+          <div class="node node-april node-blue"><b>Avery</b><small>AI</small></div>
+          <div class="node node-avery node-amber"><b>Lapis</b><small>VPS</small></div>
+          <div class="node node-forge node-violet"><b>Forge</b><small>IDE</small></div>
+        </div>
+      </section>
 
       <div class="divider"></div>
 
-      <div class="what-we-build">
-        <h2 class="section-title">What We Build</h2>
-        <p class="section-subtitle">
-          JR. focuses on core software layers that modern products depend on.
-        </p>
-        <div class="build-grid">
-          <div class="build-card">
-            <i class="fas fa-code"></i>
-            <h3>Languages & Runtimes</h3>
+      <section class="section capability-section" id="what-we-build">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">What we build</div>
+            <h2>One ecosystem. Multiple layers.</h2>
+          </div>
+          <p>JR. focuses on core software layers that modern products depend on.</p>
+        </div>
+
+        <div class="capability-grid">
+          <article class="capability-card">
+            <div class="icon-box"><i class="fas fa-code"></i></div>
+            <h3>Languages &amp; Runtimes</h3>
             <p>Programming languages and execution environments built for clarity, reliability, and long-term maintainability.</p>
-          </div>
-          <div class="build-card">
-            <i class="fas fa-cloud"></i>
-            <h3>Platforms & Systems</h3>
+          </article>
+          <article class="capability-card">
+            <div class="icon-box"><i class="fas fa-cloud"></i></div>
+            <h3>Platforms &amp; Systems</h3>
             <p>Browsers, cloud infrastructure, and performance-focused systems that manage resources, security, and scale.</p>
-          </div>
-          <div class="build-card">
-            <i class="fas fa-brain"></i>
+          </article>
+          <article class="capability-card">
+            <div class="icon-box"><i class="fas fa-brain"></i></div>
             <h3>Intelligence</h3>
             <p>AI systems and algorithms for reasoning, perception, and decision-making, fully integrable with your stack.</p>
-          </div>
+          </article>
         </div>
-      </div>
+      </section>
 
       <div class="divider"></div>
 
-      <div class="featured-projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-carousel">
-          <div class="carousel-container" id="carouselContainer">
-            <div class="project-card project-stable">
-              <h3>Juno</h3>
-              <p>A modern programming language focused on clarity, performance, and developer experience. Juno combines the best features of functional and imperative programming with a clean syntax that's easy to learn and powerful to use.</p>
-              
-              <div class="project-details">
-                <div class="project-detail-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <strong>Release Date:</strong>
-                  <span>March 2024 (Stable v1.0)</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-cog"></i>
-                  <strong>Key Features:</strong>
-                  <span>Type inference, pattern matching, concurrency primitives, zero-cost abstractions</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-users"></i>
-                  <strong>Users:</strong>
-                  <span>Over 15,000 developers worldwide</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-download"></i>
-                  <strong>Downloads:</strong>
-                  <span>500,000+ package downloads monthly</span>
-                </div>
-              </div>
-              
-              <span class="project-status status-stable">Stable</span>
-              <span class="project-status" style="background: rgba(34, 197, 94, 0.2); color: #22c55e; border-color: #22c55e;">Open Source</span>
-            </div>
-            
-            <div class="project-card project-beta">
-              <h3>April</h3>
-              <p>An AI platform for analysis, automation, and real-time intelligence. April provides enterprise-grade AI capabilities with privacy-focused architecture and seamless integration with existing systems.</p>
-              
-              <div class="project-details">
-                <div class="project-detail-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <strong>Release Date:</strong>
-                  <span>Beta available now, v1.0 planned for Q2 2026</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-cog"></i>
-                  <strong>Key Features:</strong>
-                  <span>Multi-modal AI, real-time processing, privacy by design, API-first architecture</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-user-friends"></i>
-                  <strong>Early Access:</strong>
-                  <span>500+ companies in private beta</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-database"></i>
-                  <strong>Infrastructure:</strong>
-                  <span>Cloud, on-premise, and hybrid deployments</span>
-                </div>
-              </div>
-              
-              <span class="project-status status-beta">Beta</span>
-              <span class="project-status" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border-color: #3b82f6;">Enterprise Ready</span>
-            </div>
-            
-            <div class="project-card project-alpha">
-              <h3>Avery</h3>
-              <p>A developer-focused cloud platform that simplifies deployment, scaling, and management of applications. Avery provides a seamless experience from development to production.</p>
-              
-              <div class="project-details">
-                <div class="project-detail-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <strong>Release Date:</strong>
-                  <span>Alpha testing, public release planned for Q2 2028</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-cog"></i>
-                  <strong>Key Features:</strong>
-                  <span>Automatic scaling, global CDN, serverless functions, database as a service</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-bolt"></i>
-                  <strong>Performance:</strong>
-                  <span>Cold starts under 100ms, 99.95% uptime SLA</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-shield-alt"></i>
-                  <strong>Security:</strong>
-                  <span>Built-in DDoS protection, automatic SSL, compliance ready</span>
-                </div>
-              </div>
-              
-              <span class="project-status status-alpha">Alpha</span>
-              <span class="project-status" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24; border-color: #fbbf24;">Early Access</span>
-            </div>
-            
-            <div class="project-card project-planned">
-              <h3>Forge</h3>
-              <p>A next-generation integrated development environment built for modern software development. Forge combines intelligent code assistance, seamless collaboration tools, and cloud-native workflows to revolutionize how teams build software together.</p>
-              
-              <div class="project-details">
-                <div class="project-detail-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <strong>Release Date:</strong>
-                  <span>Concept phase, planned for 2029</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-cog"></i>
-                  <strong>Key Features:</strong>
-                  <span>AI pair programming, real-time collaboration, cloud workspaces, integrated CI/CD</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-terminal"></i>
-                  <strong>Supported Languages:</strong>
-                  <span>Juno, JavaScript/TypeScript, Python, Go, Rust, and 20+ more</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-bolt"></i>
-                  <strong>Performance:</strong>
-                  <span>Instant startup, near-native editing speed, minimal resource usage</span>
-                </div>
-              </div>
-              
-              <span class="project-status status-planned">Planned</span>
-              <span class="project-status" style="background: rgba(139, 92, 246, 0.2); color: #8b5cf6; border-color: #8b5cf6;">Developer Preview</span>
-            </div>
+      <section class="section featured-section" id="products">
+        <div class="section-heading compact">
+          <div>
+            <div class="eyebrow">Featured product</div>
+            <h2>Built around the developer.</h2>
+          </div>
+          <a class="text-link" href="#product-grid">View all products <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-            <div class="project-card project-planned">
-              <h3>Natalie</h3>
-              <p>A human-perception and rumor modeling algorithm designed to understand and predict information spread in social networks. Natalie helps organizations manage communication and identify misinformation.</p>
-              
-              <div class="project-details">
-                <div class="project-detail-item">
-                  <i class="fas fa-calendar-alt"></i>
-                  <strong>Release Date:</strong>
-                  <span>Research phase, planned for 2027</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-cog"></i>
-                  <strong>Key Features:</strong>
-                  <span>Network analysis, sentiment tracking, prediction models, visualization tools</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-graduation-cap"></i>
-                  <strong>Research Partners:</strong>
-                  <span>Collaborating with 3 universities on algorithm development</span>
-                </div>
-                <div class="project-detail-item">
-                  <i class="fas fa-chart-line"></i>
-                  <strong>Accuracy:</strong>
-                  <span>Current models show 85% prediction accuracy in tests</span>
-                </div>
-              </div>
-              
-              <span class="project-status status-planned">Planned</span>
-              <span class="project-status" style="background: rgba(156, 163, 175, 0.2); color: #9ca3af; border-color: #9ca3af;">Research Phase</span>
+        <article class="featured-card">
+          <div class="featured-copy">
+            <div class="product-pill"><img src="/assets/images/juno-logo.png" alt="Juno logo" />Juno</div>
+            <h3>A modern programming language for developers who want control without unnecessary complexity.</h3>
+            <p>
+              Juno combines a clean syntax with strong fundamentals, explicit
+              design, and a practical developer experience.
+            </p>
+            <div class="feature-points">
+              <div><strong>01</strong><span>Readable syntax</span></div>
+              <div><strong>02</strong><span>Predictable execution</span></div>
+              <div><strong>03</strong><span>Built for long-lived software</span></div>
+            </div>
+            <div class="hero-actions">
+              <a class="green-btn" href="/products">Explore Juno <i class="fas fa-arrow-right"></i></a>
+              <a class="btn-secondary" href="https://github.com/jr-official" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
-          
-          <div class="carousel-nav">
-            <div class="carousel-arrow" id="prevArrow">
-              <i class="fas fa-chevron-left"></i>
+          <div class="code-window" aria-hidden="true">
+            <div class="window-bar">
+              <span></span><span></span><span></span>
+              <div>hello.juno</div>
             </div>
-            
-            <div class="carousel-indicators" id="indicators">
-            </div>
-            
-            <div class="carousel-arrow" id="nextArrow">
-              <i class="fas fa-chevron-right"></i>
-            </div>
+            <pre><span class="muted">// a small program</span>
+<span class="purple">fn</span> main() {
+    <span class="green">let</span> message = <span class="orange">"Hello, Juno."</span>
+
+    print(message)
+}
+
+<span class="muted">// clear by design.</span></pre>
           </div>
+        </article>
+
+        <div class="product-grid" id="product-grid">
+          <article class="product-card card-moka">
+            <div class="product-top">
+              <div class="product-symbol"><img src="/assets/images/moka-logo.png" alt="Moka" /></div>
+              <span class="product-status"><span class="status-dot" style="background:#C8A27A;"></span>Stable · v1.0.3</span>
+            </div>
+            <h3>Moka</h3>
+            <p>Browse freely. Track nothing.</p>
+            <a href="/products">Explore <span><i class="fas fa-arrow-right"></i></span></a>
+          </article>
+          <article class="product-card card-avery">
+            <div class="product-top">
+              <div class="product-symbol"><img src="/assets/images/avery-logo.png" alt="Avery" /></div>
+              <span class="product-status"><span class="status-dot" style="background:#F472B6;"></span>Beta · Early access</span>
+            </div>
+            <h3>Avery</h3>
+            <p>Intelligence that works with you.</p>
+            <a href="/products">Explore <span><i class="fas fa-arrow-right"></i></span></a>
+          </article>
+          <article class="product-card card-forge">
+            <div class="product-top">
+              <div class="product-symbol"><img src="/assets/images/forge-logo.png" alt="Forge" /></div>
+              <span class="product-status"><span class="status-dot" style="background:#F97316;"></span>Stable · v2.1.4</span>
+            </div>
+            <h3>Forge</h3>
+            <p>The IDE that ships with you.</p>
+            <a href="/products">Explore <span><i class="fas fa-arrow-right"></i></span></a>
+          </article>
+          <article class="product-card card-lapis">
+            <div class="product-top">
+              <div class="product-symbol"><img src="/assets/images/lapis-logo.png" alt="Lapis" /></div>
+              <span class="product-status"><span class="status-dot" style="background:#60a5fa;"></span>Alpha · v3.2.0</span>
+            </div>
+            <h3>Lapis</h3>
+            <p>Your server. Your rules.</p>
+            <a href="/products">Explore <span><i class="fas fa-arrow-right"></i></span></a>
+          </article>
         </div>
-        
-        <div class="ecosystem-link">
-          <a href="/products">
-            Explore the JR. Ecosystem <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
+      </section>
 
       <div class="divider"></div>
 
-      <div class="who-for">
-        <h2 class="section-title">Who JR. Is For</h2>
-        <div class="who-for-list">
-          <div class="who-for-item">
-            <i class="fa-solid fa-code"></i>
-            <p>Developers who value control and clarity</p>
+      <section class="section why-section" id="why-jr">
+        <div class="why-panel">
+          <div>
+            <div class="eyebrow">Why JR.</div>
+            <h2>Software should stay understandable as it becomes more powerful.</h2>
           </div>
-          <div class="who-for-item">
-            <i class="fa-solid fa-people-group"></i>
-            <p>Teams building long-term products</p>
-          </div>
-          <div class="who-for-item">
-            <i class="fa fa-building"></i>
-            <p>Enterprises scaling software</p>
+          <div class="why-copy">
+            <p>
+              JR. exists to build software that rewards curiosity instead of hiding
+              complexity behind layers of abstraction.
+            </p>
+            <p>
+              We care about good primitives, thoughtful interfaces, and systems that
+              remain useful years after the novelty wears off.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
       <div class="divider"></div>
 
-      <div class="testimonials-section">
-        <h2 class="testimonials-title">What Our Community Says</h2>
-        <div class="testimonials-container">
-          <div class="testimonial-card">
-            <p class="testimonial-quote">
-“JR.’s tools feel like they’re built by people who actually understand developers. The workflow is fast, clean, and doesn’t get in your way.”
-            </p>
-            <p class="testimonial-author">— Anush S.</p>
+      <section class="section audience-section" id="who-for">
+        <div class="section-heading centered">
+          <div>
+            <div class="eyebrow">Built for builders</div>
+            <h2>Who JR. is for</h2>
           </div>
-          <div class="testimonial-card">
-            <p class="testimonial-quote">
-“I started using JR. for internal tooling and ended up relying on it way more than expected! It’s reliable, and the performance difference is really noticeable.”
-            </p>
-            <p class="testimonial-author">— Cassandra M.</p>
-          </div>
-          <div class="testimonial-card">
-            <p class="testimonial-quote">
-“What stands out about JR. is how practical everything is. No unnecessary features, just solid tools that solved my problems.”
-            </p>
-            <p class="testimonial-author">— Alex R.</p>
-          </div>
+          <p>Different people. One shared priority: better software.</p>
         </div>
-      </div>
+        <div class="audience-grid">
+          <article>
+            <span class="audience-number">01</span>
+            <h3>Developers</h3>
+            <p>Tools that give you control instead of getting in your way.</p>
+          </article>
+          <article>
+            <span class="audience-number">02</span>
+            <h3>Teams</h3>
+            <p>Platforms and systems designed for software that needs to last.</p>
+          </article>
+          <article>
+            <span class="audience-number">03</span>
+            <h3>Enterprises</h3>
+            <p>Infrastructure built to scale securely alongside your business.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="cta-section" id="get-started">
+        <div class="cta-glow"></div>
+        <div class="eyebrow">Start exploring</div>
+        <h2>Build with JR.</h2>
+        <p>Get started, explore the products, or see what we're building next.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/signup">Get Started <i class="fas fa-arrow-right"></i></a>
+          <a class="btn-secondary" href="/products">View Products</a>
+          <a class="btn-secondary" href="https://docs.jrofficial.org">Docs</a>
+        </div>
+      </section>
+
     </div>
 
     <footer>
