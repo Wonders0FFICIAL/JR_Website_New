@@ -254,7 +254,17 @@ body.light-theme .section-heading > p {
 
 #what-we-build .section-heading > div {
     position: relative;
-    left: -100px;
+    left: 0;
+}
+
+#what-we-build .section-heading {
+    position: relative;
+    left: -200px;
+}
+
+#what-we-build .capability-grid {
+    position: relative;
+    left: 0px;
 }
 
 @media (max-width: 900px) {
@@ -527,7 +537,7 @@ body.light-theme .hero-meta {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 34px;
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
@@ -1173,6 +1183,11 @@ body.light-theme .copyright {
     .featured-section .section-heading > div,
     .featured-section .section-heading > .text-link {
         top: 0;
+        left: 0;
+    }
+
+    #what-we-build .section-heading,
+    #what-we-build .capability-grid {
         left: 0;
     }
 
